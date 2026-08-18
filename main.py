@@ -2,6 +2,7 @@ import os
 import time
 import funktions
 import menues
+import charakter_bip
 
 hauptmenue = True
 
@@ -31,15 +32,14 @@ while hauptmenue == True:
 
     if wahl == 1:
         os.system("cls")
-        print("Spiel wird gestartet...")
+        print("Neues Spiel startet...")
         hauptmenue = True
-        funktions.bestaetigung_menue("Spiel wird gestartet...")
+        funktions.bestaetigung_menue("Neues Spiel startet...")
 
     elif wahl == 2:
         os.system("cls")
-        print("oeffne Bibliothek...")
-        hauptmenue = True
-        funktions.bestaetigung_menue("oeffne Bibliothek...")
+        while True:
+            charakter_bip.charakter_bip()
 
     elif wahl == 3:
         os.system("cls")
