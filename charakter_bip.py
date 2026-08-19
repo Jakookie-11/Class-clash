@@ -32,12 +32,27 @@ def charaktere_anzeigen():
 
     os.system("cls")
 
-    for schlüssel, wert in charaktere.Jakob.items():
-        print(schlüssel)
+    charaktere_anzeigen = True
 
-    print()
+    while charaktere_anzeigen == True:
+        print()
+        print("----Jakob----")
+        for schlüssel, wert in charaktere.Jakob.items():
+            print(f"{schlüssel} : {wert}")
 
-    for schlüssel, wert in charaktere.Leo.items():
-        print(schlüssel)
+        print()
 
-    funktions.bestaetigung_menue(charaktere.Jakob)
+        print("----Leo----")
+        for schlüssel, wert in charaktere.Leo.items():
+            print(f"{schlüssel} : {wert}")
+
+        ready = input("Fertig?" )
+        if ready == "ja":
+            charaktere_anzeigen = False
+            os.system("cls")
+        else:
+            os.system("cls")
+        
+       
+
+    
