@@ -33,22 +33,24 @@ while hauptmenue == True:
     if wahl == 1:
         os.system("cls")
         print("Neues Spiel startet...")
-        hauptmenue = True
         funktions.bestaetigung_menue("Neues Spiel startet...")
 
     elif wahl == 2:
         os.system("cls")
         while True:
-            charakter_bip.charakter_bip()
+            is_brake_charakter_bib = charakter_bip.charakter_bip()
+
+            if is_brake_charakter_bib == 1:
+                break
 
     elif wahl == 3:
         os.system("cls")
         print("oeffne Einstellungen...")
-        hauptmenue = True
         funktions.bestaetigung_menue("oeffne Einstellungen...")
 
     elif wahl == 4:
         os.system("cls")
+        print()
         print("BYE")
         print()
         time.sleep(4)
