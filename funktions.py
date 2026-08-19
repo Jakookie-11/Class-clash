@@ -44,7 +44,7 @@ def menue(bibliothek):
 def bestaetigung_menue(wofür):
 
     brake = False
-    ready = input("Fertig? ")
+    ready = input("Fertig?")
 
     while brake == False:
 
@@ -61,4 +61,5 @@ def bestaetigung_menue(wofür):
             elif isinstance(wofür, dict):
                 for schlüssel, wert in wofür.items():
                     print(schlüssel)
+
                 ready = input("Fertig? ")
