@@ -25,6 +25,7 @@ def ressourcen_verändern(welche, wie_viel):
                 print(f"Zu wenig {welche}")
                 time.sleep(2)
                 os.system("cls")
+                return 1
 
         elif wie_viel > 0:
             ressourcen[welche] = ressourcen[welche] + wie_viel
