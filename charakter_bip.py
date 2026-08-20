@@ -33,17 +33,15 @@ def charaktere_anzeigen():
     charaktere_anzeigen = True
 
     while charaktere_anzeigen == True:
-        print()
-        print("----Jakob----")
-        for schlüssel, wert in charaktere.Jakob.items():
-            print(f"{schlüssel} : {wert}")
 
         print()
+        for schlüssel, wert in charaktere.Charaktere.items():
+            print(f"----{schlüssel}----")
 
-        print("----Leo----")
-        for schlüssel, wert in charaktere.Leo.items():
-            print(f"{schlüssel} : {wert}")
+            for eigenschaft, wert_der_eigenschaft in wert.items():
+                print(f"{eigenschaft} : {wert_der_eigenschaft}")
 
+            print()
 
         #---Ende---#
         ready = input("Fertig?" )
