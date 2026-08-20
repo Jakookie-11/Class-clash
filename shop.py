@@ -7,8 +7,15 @@ def shop():
 
     while  True:
         os.system("cls")
+        print("==================")
+        print("       Shop       ")
+        print("==================")
         print()
+        print("=====Guthaben=====")
         ressourcen.ressourcen_anzeigen()
+        print("==================")
+        print()
+        print("Zu Kaufen:")
         print()
 
         wahl = funktions.menue(menues.shop)
