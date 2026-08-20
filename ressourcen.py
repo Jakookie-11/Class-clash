@@ -31,9 +31,3 @@ def ressourcen_verändern(welche, wie_viel):
 
     else:
         print("Kauf abgebrochen")
-
-ressourcen_anzeigen()
-
-ressourcen_verändern("Credits   ", -100)
-
-ressourcen_anzeigen()

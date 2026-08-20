@@ -7,8 +7,6 @@ def menue(bibliothek):
 
     while True:
 
-        os.system("cls")
-
         #---printen der Wahlen---#
         for schlüssel, wert in bibliothek.items():
             print(schlüssel)
@@ -50,6 +48,7 @@ def bestaetigung_menue(wofür):
 
         if ready == "ja":
             brake = True
+            os.system("cls")
 
         else:
             os.system("cls")
