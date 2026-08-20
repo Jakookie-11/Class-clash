@@ -51,7 +51,12 @@ def charaktere_anzeigen():
         else:
             os.system("cls")
         
-       
+
+def level_up(wen):  
+    charaktere.Charaktere[wen]["Level     "] = charaktere.Charaktere[wen]["Level     "] + 1
+    charaktere.Charaktere[wen]["HP        "] = charaktere.Charaktere[wen]["HP        "] * 1.2
+    charaktere.Charaktere[wen]["Schaden   "] = charaktere.Charaktere[wen]["Schaden   "] * 1.2 
+
 
 def charaktere_aufleveln():
     os.system("cls")
@@ -59,16 +64,18 @@ def charaktere_aufleveln():
     charaktere_aufleveln = True
 
     while charaktere_aufleveln == True:
+
+        os.system("cls")
     
         wen = input("Wen möchtest du leveln? ")
 
-        charaktere.Charaktere[wen]["Level     "] = charaktere.Charaktere[wen]["Level     "] + 1
-        charaktere.Charaktere[wen]["HP        "] = charaktere.Charaktere[wen]["HP        "] * 1.2
-        charaktere.Charaktere[wen]["Schaden   "] = charaktere.Charaktere[wen]["Schaden   "] * 1.2
+        #--Eingentliches Level_up--#
+        level_up(wen)
 
         os.system("cls")
 
         print(f"Gelevelt: {wen}")
+        print("---Status---")
         for schlüssel, wert in charaktere.Charaktere[wen].items():
             print(f"{schlüssel} : {wert}")
 
@@ -80,5 +87,4 @@ def charaktere_aufleveln():
            charaktere_aufleveln = True 
 
         else:
-            os.system("cls")
             charaktere_aufleveln = False
