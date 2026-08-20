@@ -6,7 +6,6 @@ import charaktere
 
 def charakter_bip():
     #---Menü---#
-
     charakter_bip_menue = True
 
     while charakter_bip_menue == True:
