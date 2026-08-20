@@ -19,9 +19,7 @@ def charakter_bip():
             charaktere_anzeigen()
 
         elif wahl == 2:
-            os.system("cls")
-            print("Leveln in Arbeit...")
-            funktions.bestaetigung_menue("Leveln in Arbeit...")
+            charaktere_aufleveln()
 
         elif wahl == 3:
             return 1
@@ -46,6 +44,8 @@ def charaktere_anzeigen():
         for schlüssel, wert in charaktere.Leo.items():
             print(f"{schlüssel} : {wert}")
 
+
+        #---Ende---#
         ready = input("Fertig?" )
         if ready == "ja":
             charaktere_anzeigen = False
@@ -55,4 +55,32 @@ def charaktere_anzeigen():
         
        
 
+def charaktere_aufleveln():
+    os.system("cls")
     
+    charaktere_aufleveln = True
+
+    while charaktere_aufleveln == True:
+    
+        wen = input("Wen möchtest du leveln? ")
+
+        charaktere.Charaktere[wen]["Level     "] = charaktere.Charaktere[wen]["Level     "] + 1
+        charaktere.Charaktere[wen]["HP        "] = charaktere.Charaktere[wen]["HP        "] * 1.2
+        charaktere.Charaktere[wen]["Schaden   "] = charaktere.Charaktere[wen]["Schaden   "] * 1.2
+
+        os.system("cls")
+
+        print(f"Gelevelt: {wen}")
+        for schlüssel, wert in charaktere.Charaktere[wen].items():
+            print(f"{schlüssel} : {wert}")
+
+        nochmal = input("Nochmal? ")
+
+        os.system("cls")
+
+        if nochmal == "ja":
+           charaktere_aufleveln = True 
+
+        else:
+            os.system("cls")
+            charaktere_aufleveln = False
