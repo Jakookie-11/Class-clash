@@ -109,6 +109,12 @@ def charaktere_aufleveln():
         #--Level des zu upgraden gewünschten charakters--#
         aktuelles_level_des_chrakters = charaktere.Charaktere[wen]["Level     "]
 
+        if aktuelles_level_des_chrakters == 13:
+            print("Charakter auf maximalem Level.")
+            time.sleep(2)
+            os.system("cls")
+            break
+
         #--credit Kosten berechnen--#
         kosten_für_level_up = level_kosten_credits(aktuelles_level_des_chrakters)
 
