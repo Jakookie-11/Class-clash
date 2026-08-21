@@ -1,8 +1,10 @@
 import os
 import time
+
 import funktions
 import menues
 import charakter_bip
+import shop
 
 hauptmenue = True
 
@@ -24,6 +26,7 @@ print()
 print(f"Willkommen {spieler}")
 time.sleep(2)
 
+os.system("cls")
 
 #-----Hauptmenü-----#
 while hauptmenue == True:
@@ -41,7 +44,9 @@ while hauptmenue == True:
             is_brake_charakter_bib = charakter_bip.charakter_bip()
 
             if is_brake_charakter_bib == 1:
+                os.system("cls")
                 break
+                
 
     elif wahl == 3:
         os.system("cls")
@@ -49,6 +54,14 @@ while hauptmenue == True:
         funktions.bestaetigung_menue("oeffne Einstellungen...")
 
     elif wahl == 4:
+        while True:
+            is_brake_shop = shop.shop()
+
+            if is_brake_shop == 1:
+                os.system("cls")
+                break
+
+    else:
         os.system("cls")
         print()
         print("BYE")

@@ -3,7 +3,8 @@
 Jakob = {
     "Name      " : "Jakob",
     "Level     " : 1,
-    "HP        " : 100,
+    "Klasse    " : "Tank",
+    "HP        " : 200,
     "Schaden   " : 10
 }
 
@@ -12,8 +13,9 @@ Jakob = {
 Leo = {
     "Name      " : "Leo",
     "Level     " : 1,
-    "HP        " : 90,
-    "Schaden   " : 10
+    "Klasse    " : "Angreifer",
+    "HP        " : 70,
+    "Schaden   " : 20
 }
 
 
@@ -21,7 +23,8 @@ Leo = {
 Simon = {
     "Name      " : "Simon",
     "Level     " : 1,
-    "HP        " : 90,
+    "Klasse    " : "Unterstützer",
+    "HP        " : 110,
     "Schaden   " : 10
 }
 
