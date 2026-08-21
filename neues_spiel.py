@@ -18,7 +18,7 @@ def neues_spiel():
         os.system("cls")
 
         if wahl == 1:
-            print()
+            kampf()
 
         elif wahl == 2:
             print("Kampangen in arbeit...")
@@ -50,7 +50,7 @@ def charaktere_auswaelen():
     print("Team 2:")
     print()
 
-    Leader_team_2    = input("Leader:")
+    Leader_team_2    = input("Leader: ")
     spieler_2_team_2 = input("Spieler_2: ")
 
     time.sleep(1)
@@ -93,14 +93,39 @@ def charaktere_auswaelen():
 
     
 
-
-
-
+def schnellster_charakter_ermitteln (ausgewählte_charaktere_list):
+    reinfolge = sorted(ausgewählte_charaktere_list, key=lambda name: charaktere.Charaktere[name]["Speed     "], reverse=True)
+    return reinfolge
     
 
-    
 
 
+def kampf():
 
-def benutzer_definierter_kampf():
-    print()
+    os.system("cls")
+
+    #---Charaktere bekommen---#
+    leader_1, spieler_2_1, leader_2, spieler_2_2 = charaktere_auswaelen()
+
+    #---Charaktere als list speichern---#
+    ausgewählte_charaktere = [
+        leader_1,
+        spieler_2_1,
+        leader_2,
+        spieler_2_2
+    ]
+
+    #---reinfolge ermitteln---#
+    reinfolge = schnellster_charakter_ermitteln(ausgewählte_charaktere)
+
+    while True:
+        print("=========================")
+        print("          Kampf          ")
+        print("=========================")
+        print()
+        print(f"{"Team 1:" :<20}{"Team 2:" :<20}")
+        print(f"{charaktere.Charaktere[leader_1]["Name      "] :<10}{charaktere.Charaktere[leader_1]["HP        "] :<10}{charaktere.Charaktere[leader_2]["Name      "] :<10}{charaktere.Charaktere[leader_2]["HP        "] :<10}")
+        print(f"{charaktere.Charaktere[spieler_2_1]["Name      "] :<10}{charaktere.Charaktere[spieler_2_1]["HP        "] :<10}{charaktere.Charaktere[spieler_2_2]["Name      "] :<10}{charaktere.Charaktere[spieler_2_2]["HP        "] :<10}")
+
+
+        os.system("cls")

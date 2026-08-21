@@ -7,7 +7,10 @@ Jakob = {
     "Klasse    "   : "Tank",
     "HP        "   : 200,
     "Schaden   "   : -10,
-    "Faehigkeit 1" : faehigkeiten.einfacher_angriff 
+    "Speed     "   : 100,
+    "Faehigkeit 1" : faehigkeiten.einfacher_angriff,
+    "Faehigkeit 2" : "",
+    "Faehigkeit 3" : "" 
 }
 
 
@@ -18,7 +21,10 @@ Leo = {
     "Klasse    "   : "Angreifer",
     "HP        "   : 70,
     "Schaden   "   : -20,
-    "Faehigkeit 1" : faehigkeiten.einfacher_angriff
+    "Speed     "   : 80,
+    "Faehigkeit 1" : faehigkeiten.einfacher_angriff,
+    "Faehigkeit 2" : "",
+    "Faehigkeit 3" : ""
 }
 
 
@@ -29,8 +35,10 @@ Simon = {
     "Klasse    "   : "Unterstützer",
     "HP        "   : 110,
     "Schaden   "   : -10,
+    "Speed     "   : 70,
     "Faehigkeit 1" : faehigkeiten.einfacher_angriff,
-    "Faehigkeit 2" : faehigkeiten.einfache_heilung
+    "Faehigkeit 2" : faehigkeiten.einfache_heilung,
+    "Faehigkeit 3" : ""
 }
 
 #---Max---#
@@ -40,7 +48,10 @@ Max = {
     "Klasse    "   : "Tank",
     "HP        "   : 200,
     "Schaden   "   : -10,
-    "Faehigkeit 1" : faehigkeiten.einfacher_angriff   
+    "Speed     "   : 90,
+    "Faehigkeit 1" : faehigkeiten.einfacher_angriff,
+    "Faehigkeit 2" : "",
+    "Faehigkeit 3" : ""   
 }
 
 
