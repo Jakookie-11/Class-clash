@@ -5,6 +5,7 @@ import funktions
 import menues
 import charakter_bip
 import shop
+import neues_spiel
 
 hauptmenue = True
 
@@ -35,8 +36,12 @@ while hauptmenue == True:
 
     if wahl == 1:
         os.system("cls")
-        print("Neues Spiel startet...")
-        funktions.bestaetigung_menue("Neues Spiel startet...")
+        while True:
+            is_brake_neues_spiel = neues_spiel.neues_spiel()
+
+            if is_brake_neues_spiel == 1:
+                os.system("cls")
+                break
 
     elif wahl == 2:
         os.system("cls")
