@@ -18,7 +18,7 @@ def shop():
         print("Zu Kaufen:")
         print()
 
-        wahl = funktions.menue(menues.shop)
+        wahl = funktions.menue(menues.shop_menue)
 
         if wahl == 1:
             ressourcen.ressourcen_verändern("Credits   ", 1000)

@@ -14,9 +14,15 @@ charakter_bip_menue = {
     "3) Zurueck"  : ""
 }
 
-shop = {
+shop_menue = {
     "1) 1000 Credits   " : "",
     "2) 20   Material 1" : "",
     "3) 20   Energie   " : "",
     "4) Zurueck        " : ""
+}
+
+neues_spiel_menue = {
+    "1) benutzer definieter Kampf" : "",
+    "2) Kampange(n)"               : "",
+    "3) Zurueck"                   : ""
 }
