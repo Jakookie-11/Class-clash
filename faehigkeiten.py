@@ -15,6 +15,6 @@ def einfacher_angriff(angreifer, ziel):
 
 
 
-def einfache_heilung(wen):
-    
+def einfache_heilung(wer, wen):
+
     HP_verändern(wen, 50)
