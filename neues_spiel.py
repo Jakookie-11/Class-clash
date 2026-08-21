@@ -104,6 +104,8 @@ def kampf():
 
     os.system("cls")
 
+    zug = 0
+
     #---Charaktere bekommen---#
     leader_1, spieler_2_1, leader_2, spieler_2_2 = charaktere_auswaelen()
 
@@ -123,9 +125,33 @@ def kampf():
         print("          Kampf          ")
         print("=========================")
         print()
+        #--Teams + HP anzeigen--#
         print(f"{"Team 1:" :<20}{"Team 2:" :<20}")
-        print(f"{charaktere.Charaktere[leader_1]["Name      "] :<10}{charaktere.Charaktere[leader_1]["HP        "] :<10}{charaktere.Charaktere[leader_2]["Name      "] :<10}{charaktere.Charaktere[leader_2]["HP        "] :<10}")
-        print(f"{charaktere.Charaktere[spieler_2_1]["Name      "] :<10}{charaktere.Charaktere[spieler_2_1]["HP        "] :<10}{charaktere.Charaktere[spieler_2_2]["Name      "] :<10}{charaktere.Charaktere[spieler_2_2]["HP        "] :<10}")
+        print(f"{charaktere.Charaktere[leader_1]["Name      "] :<10}{charaktere.Charaktere[leader_1]["HP        "] :<20}{charaktere.Charaktere[leader_2]["Name      "] :<10}{charaktere.Charaktere[leader_2]["HP        "]}")
+        print(f"{charaktere.Charaktere[spieler_2_1]["Name      "] :<10}{charaktere.Charaktere[spieler_2_1]["HP        "] :<20}{charaktere.Charaktere[spieler_2_2]["Name      "] :<10}{charaktere.Charaktere[spieler_2_2]["HP        "]}")
+        
+        print("================================================================================")
+        print()
+        #--Wer ist am zug--#
+        wer = reinfolge[zug]
+
+        print(f"{wer} ist am zug!")
+        print("----Stats----")
+        print(f"HP        : {charaktere.Charaktere[wer]["HP        "]}")
+        print(f"Schaden   : {charaktere.Charaktere[wer]["Schaden   "]}")
 
 
-        os.system("cls")
+
+
+
+
+
+
+
+        zug += 1
+
+        if zug >= len(reinfolge):
+            zug = 0
+
+
+    
