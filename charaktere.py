@@ -1,59 +1,79 @@
 import faehigkeiten
 
+
+
+class charakter:
+
+    def __init__(
+        self,
+        name: str,
+        klasse: str,
+        hp: int,
+        schaden: int,
+        speed: int,
+        level: int = 1,
+        faehigkeit_1=None,
+        faehigkeit_2=None,
+        faehigkeit_3=None        
+
+    ):
+
+        self.name = name
+        self.klasse = klasse
+        self.hp = hp
+        self.schaden = schaden
+        self.speed = speed
+        self.level = level
+
+        self.faehigkeit_1 = faehigkeit_1
+        self.faehigkeit_2 = faehigkeit_2
+        self.faehigkeit_3 = faehigkeit_3        
+
+
+
 #---Jakob---#
-Jakob = {
-    "Name      "   : "Jakob",
-    "Level     "   : 1,
-    "Klasse    "   : "Tank",
-    "HP        "   : 200,
-    "Schaden   "   : -10,
-    "Speed     "   : 100,
-    "Faehigkeit 1" : faehigkeiten.einfacher_angriff,
-    "Faehigkeit 2" : "",
-    "Faehigkeit 3" : "" 
-}
+Jakob = charakter(
+    "Jakob",
+    "Tank",
+    200,
+    -10,
+    100,
+    faehigkeit_1=faehigkeiten.einfacher_angriff
+)
 
 
 #---Leo---#
-Leo = {
-    "Name      "   : "Leo",
-    "Level     "   : 1,
-    "Klasse    "   : "Angreifer",
-    "HP        "   : 70,
-    "Schaden   "   : -20,
-    "Speed     "   : 80,
-    "Faehigkeit 1" : faehigkeiten.einfacher_angriff,
-    "Faehigkeit 2" : "",
-    "Faehigkeit 3" : ""
-}
+Leo = charakter(
+    "Leo",
+    "Angreifer",
+    70,
+    -20,
+    80,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+)
 
 
 #---Simon---#
-Simon = {
-    "Name      "   : "Simon",
-    "Level     "   : 1,
-    "Klasse    "   : "Unterstützer",
-    "HP        "   : 110,
-    "Schaden   "   : -10,
-    "Speed     "   : 70,
-    "Faehigkeit 1" : faehigkeiten.einfacher_angriff,
-    "Faehigkeit 2" : faehigkeiten.einfache_heilung,
-    "Faehigkeit 3" : ""
-}
+Simon = charakter(
+    "Simon",
+    "Unterstuetzer",
+    110,
+    -10,
+    70,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.einfache_heilung
+)
+
 
 #---Max---#
-Max = {
-    "Name      "   : "Max",
-    "Level     "   : 1,
-    "Klasse    "   : "Tank",
-    "HP        "   : 200,
-    "Schaden   "   : -10,
-    "Speed     "   : 90,
-    "Faehigkeit 1" : faehigkeiten.einfacher_angriff,
-    "Faehigkeit 2" : "",
-    "Faehigkeit 3" : ""   
-}
-
+Max = charakter(
+    "Max",
+    "Tank",
+    200,
+    -10,
+    90,
+    faehigkeit_1=faehigkeiten.einfacher_angriff
+)
 
 
 #----Charaktere----#
