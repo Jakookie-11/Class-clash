@@ -36,7 +36,7 @@ Jakob = charakter(
     "Jakob",
     "Tank",
     200,
-    -10,
+    -100,
     100,
     faehigkeit_1=faehigkeiten.einfacher_angriff
 )
@@ -57,7 +57,7 @@ Leo = charakter(
 Simon = charakter(
     "Simon",
     "Unterstuetzer",
-    110,
+    100,
     -10,
     70,
     faehigkeit_1=faehigkeiten.einfacher_angriff,

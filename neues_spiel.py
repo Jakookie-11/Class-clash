@@ -219,6 +219,7 @@ def kampf():
             os.system("cls")
             print("Team 1 hat gewonnen!")
             time.sleep(5)
+            os.system("cls")
             break
 
         is_win_team_2 = is_win(team_1)
@@ -228,7 +229,6 @@ def kampf():
             print("Team 2 hat gewonnen!")
             time.sleep(5)
             os.system("cls")
-
             break        
 
 
