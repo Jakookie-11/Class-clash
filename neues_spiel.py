@@ -30,6 +30,19 @@ def neues_spiel():
 
 
 
+def charakter_anzeigen(name):
+    charakter = charaktere.Charaktere[name]
+
+    print(f"Name    : {charakter.name}")
+    print(f"Level   : {charakter.level}")
+    print(f"Klasse  : {charakter.klasse}")
+    print(f"HP      : {charakter.hp}")
+    print(f"Schaden : {charakter.schaden}")
+    print(f"Speed   : {charakter.speed}")
+
+
+
+
 def charaktere_auswaelen():
 
     os.system("cls")
@@ -59,34 +72,31 @@ def charaktere_auswaelen():
     while True:
 
         print("-----Team_1-----")
-        for schlüssel, wert in charaktere.Charaktere[Leader_team_1].items():
-            print(f"{schlüssel} : {wert}")
+
+        charakter_anzeigen(Leader_team_1)
 
         print()
 
-        for schlüssel, wert in charaktere.Charaktere[spieler_2_team_1].items():
-            print(f"{schlüssel} : {wert}")
+        charakter_anzeigen(spieler_2_team_1)
 
         print()
         print()
 
         print("-----Team_2-----")
-        for schlüssel, wert in charaktere.Charaktere[Leader_team_2].items():
-            print(f"{schlüssel} : {wert}")
+
+        charakter_anzeigen(Leader_team_2)
 
         print()
 
-        for schlüssel, wert in charaktere.Charaktere[spieler_2_team_2].items():
-            print(f"{schlüssel} : {wert}")
-
-        time.sleep(1)
+        charakter_anzeigen(spieler_2_team_2)
 
         print()
+
         ready = input("Fertig? ")
 
         if ready == "ja":
             return Leader_team_1, spieler_2_team_1, Leader_team_2, spieler_2_team_2
-    
+
         else:
             os.system("cls")
 
@@ -94,7 +104,7 @@ def charaktere_auswaelen():
     
 
 def schnellster_charakter_ermitteln (ausgewählte_charaktere_list):
-    reinfolge = sorted(ausgewählte_charaktere_list, key=lambda name: charaktere.Charaktere[name]["Speed     "], reverse=True)
+    reinfolge = sorted(ausgewählte_charaktere_list, key=lambda name: charaktere.Charaktere[name].speed, reverse=True)
     return reinfolge
 
 
@@ -105,7 +115,7 @@ def tote_charaktere_entvernen(ausgewaehlte_charaktere):
     neue_liste = []
 
     for name in ausgewaehlte_charaktere:
-        if charaktere.Charaktere[name]["HP        "] >0:
+        if charaktere.Charaktere[name].hp >0:
             neue_liste.append(name)
 
     return neue_liste
@@ -115,7 +125,7 @@ def tote_charaktere_entvernen(ausgewaehlte_charaktere):
 
 def is_win(team):
     for name in team:
-        if charaktere.Charaktere[name]["HP        "] >0:
+        if charaktere.Charaktere[name].hp >0:
             return False
 
     return True
@@ -165,8 +175,8 @@ def kampf():
         print()
         #--Teams + HP anzeigen--#
         print(f"{"Team 1:" :<30}{"Team 2:" :<30}")
-        print(f"{charaktere.Charaktere[leader_1]["Name      "] :<10}{charaktere.Charaktere[leader_1]["HP        "] :<20}{charaktere.Charaktere[leader_2]["Name      "] :<10}{charaktere.Charaktere[leader_2]["HP        "]}")
-        print(f"{charaktere.Charaktere[spieler_2_1]["Name      "] :<10}{charaktere.Charaktere[spieler_2_1]["HP        "] :<20}{charaktere.Charaktere[spieler_2_2]["Name      "] :<10}{charaktere.Charaktere[spieler_2_2]["HP        "]}")
+        print(f"{charaktere.Charaktere[leader_1].name :<10}{charaktere.Charaktere[leader_1].hp :<20}{charaktere.Charaktere[leader_2].name :<10}{charaktere.Charaktere[leader_2].hp}")
+        print(f"{charaktere.Charaktere[spieler_2_1].name :<10}{charaktere.Charaktere[spieler_2_1].hp :<20}{charaktere.Charaktere[spieler_2_2].name :<10}{charaktere.Charaktere[spieler_2_2].hp}")
 
         print()
         print("================================================================================")
@@ -177,21 +187,21 @@ def kampf():
 
         print(f"{wer} ist am zug!")
         print("----Status----")
-        print(f"HP        : {charaktere.Charaktere[wer]["HP        "]}")
-        print(f"Schaden   : {charaktere.Charaktere[wer]["Schaden   "]}")
+        print(f"HP        : {charaktere.Charaktere[wer].hp}")
+        print(f"Schaden   : {charaktere.Charaktere[wer].schaden}")
         print()
-        print(f"1) {charaktere.Charaktere[wer]["Faehigkeit 1"]}")
-        print(f"2) {charaktere.Charaktere[wer]["Faehigkeit 2"]}")
-        print(f"3) {charaktere.Charaktere[wer]["Faehigkeit 3"]}")
+        print(f"1) {charaktere.Charaktere[wer].faehigkeit_1}")
+        print(f"2) {charaktere.Charaktere[wer].faehigkeit_2}")
+        print(f"3) {charaktere.Charaktere[wer].faehigkeit_3}")
 
         wahl = input("wahl? ")
 
         if wahl == "1":
-            faehigkeit = charaktere.Charaktere[wer]["Faehigkeit 1"]
+            faehigkeit = charaktere.Charaktere[wer].faehigkeit_1
         elif wahl == "2":
-            faehigkeit = charaktere.Charaktere[wer]["Faehigkeit 2"]
+            faehigkeit = charaktere.Charaktere[wer].faehigkeit_2
         else:
-            faehigkeit = charaktere.Charaktere[wer]["Faehigkeit 3"]
+            faehigkeit = charaktere.Charaktere[wer].faehigkeit_3
 
 
         ziel = input("Mit wem soll diese Faehigkeit interagieren? ")
@@ -209,6 +219,7 @@ def kampf():
             os.system("cls")
             print("Team 1 hat gewonnen!")
             time.sleep(5)
+            os.system("cls")
             break
 
         is_win_team_2 = is_win(team_1)
@@ -218,7 +229,6 @@ def kampf():
             print("Team 2 hat gewonnen!")
             time.sleep(5)
             os.system("cls")
-
             break        
 
 

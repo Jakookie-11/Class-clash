@@ -40,12 +40,18 @@ def charaktere_anzeigen():
     while charaktere_anzeigen == True:
 
         print()
-        for schlüssel, wert in charaktere.Charaktere.items():
+        for schlüssel, charakter in charaktere.Charaktere.items():
             print(f"----{schlüssel}----")
 
-            for eigenschaft, wert_der_eigenschaft in wert.items():
-                print(f"{eigenschaft} : {wert_der_eigenschaft}")
-
+            print(f"Name         : {charakter.name}")
+            print(f"Level        : {charakter.level}")
+            print(f"Klasse       : {charakter.klasse}")
+            print(f"HP           : {charakter.hp}")
+            print(f"Schaden      : {charakter.schaden}")
+            print(f"Speed        : {charakter.speed}")
+            print(f"Faehigkeit 1 : {charakter.faehigkeit_1}")
+            print(f"Faehigkeit 2 : {charakter.faehigkeit_2}")
+            print(f"Faehigkeit 3 : {charakter.faehigkeit_3}")
             print()
 
         #---Ende---#
@@ -60,9 +66,9 @@ def charaktere_anzeigen():
 
 
 def level_up(wen):  
-    charaktere.Charaktere[wen]["Level     "] = charaktere.Charaktere[wen]["Level     "] + 1
-    charaktere.Charaktere[wen]["HP        "] = charaktere.Charaktere[wen]["HP        "] * 1.2
-    charaktere.Charaktere[wen]["Schaden   "] = charaktere.Charaktere[wen]["Schaden   "] * 1.2 
+    charaktere.Charaktere[wen].level = charaktere.Charaktere[wen].level + 1
+    charaktere.Charaktere[wen].hp = charaktere.Charaktere[wen].hp * 1.2
+    charaktere.Charaktere[wen].schaden = charaktere.Charaktere[wen].schaden * 1.2 
 
 
 
@@ -107,7 +113,7 @@ def charaktere_aufleveln():
         wen = input("Wen möchtest du leveln? ")
 
         #--Level des zu upgraden gewünschten charakters--#
-        aktuelles_level_des_chrakters = charaktere.Charaktere[wen]["Level     "]
+        aktuelles_level_des_chrakters = charaktere.Charaktere[wen].level
 
         if aktuelles_level_des_chrakters == 13:
             print("Charakter auf maximalem Level.")
@@ -130,8 +136,22 @@ def charaktere_aufleveln():
 
         print(f"Gelevelt: {wen}")
         print("---Status---")
-        for schlüssel, wert in charaktere.Charaktere[wen].items():
-            print(f"{schlüssel} : {wert}")
+
+        charakter = charaktere.Charaktere[wen]
+
+        print()
+        print(f"----{wen}----")
+        print(f"Name         : {charakter.name}")
+        print(f"Level        : {charakter.level}")
+        print(f"Klasse       : {charakter.klasse}")
+        print(f"HP           : {charakter.hp}")
+        print(f"Schaden      : {charakter.schaden}")
+        print(f"Speed        : {charakter.speed}")
+        print(f"Faehigkeit 1 : {charakter.faehigkeit_1}")
+        print(f"Faehigkeit 2 : {charakter.faehigkeit_2}")
+        print(f"Faehigkeit 3 : {charakter.faehigkeit_3}")
+
+        print()
 
         nochmal = input("Nochmal? ")
 

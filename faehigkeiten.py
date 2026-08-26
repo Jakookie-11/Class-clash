@@ -1,14 +1,14 @@
 import charaktere
 
 def HP_verändern(wem, wie_viel):
-    charaktere.Charaktere[wem]["HP        "] = charaktere.Charaktere[wem]["HP        "] +wie_viel
+    charaktere.Charaktere[wem].hp = charaktere.Charaktere[wem].hp +wie_viel
 
 
 
 
 def einfacher_angriff(angreifer, ziel):
 
-    schaden =  charaktere.Charaktere[angreifer]["Schaden   "]
+    schaden =  charaktere.Charaktere[angreifer].schaden
 
     HP_verändern(ziel, schaden)
 
