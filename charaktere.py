@@ -29,7 +29,10 @@ class charakter:
 
         self.faehigkeit_1 = faehigkeit_1
         self.faehigkeit_2 = faehigkeit_2
-        self.faehigkeit_3 = faehigkeit_3        
+        self.faehigkeit_3 = faehigkeit_3
+
+        self.status_effekte = []
+               
 
 
 
@@ -41,7 +44,8 @@ Jakob = charakter(
     -100,
     "light_side",
     100,
-    faehigkeit_1=faehigkeiten.einfacher_angriff
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.starker_schlag
 )
 
 
