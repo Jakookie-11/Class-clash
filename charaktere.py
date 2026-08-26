@@ -45,7 +45,8 @@ Jakob = charakter(
     "light_side",
     100,
     faehigkeit_1=faehigkeiten.einfacher_angriff,
-    faehigkeit_2=faehigkeiten.starker_schlag
+    faehigkeit_2=faehigkeiten.starker_schlag,
+    faehigkeit_3=faehigkeiten.bleibender_schlag
 )
 
 
@@ -58,6 +59,7 @@ Leo = charakter(
     "light_side",
     80,
     faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.blutiger_schlag
 )
 
 
@@ -70,7 +72,8 @@ Simon = charakter(
     "dark_side",
     70,
     faehigkeit_1=faehigkeiten.einfacher_angriff,
-    faehigkeit_2=faehigkeiten.einfache_heilung
+    faehigkeit_2=faehigkeiten.einfache_heilung,
+    faehigkeit_3=faehigkeiten.staerkende_heilung
 )
 
 
