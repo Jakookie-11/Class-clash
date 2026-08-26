@@ -38,6 +38,7 @@ def charakter_anzeigen(name):
     print(f"Klasse  : {charakter.klasse}")
     print(f"HP      : {charakter.hp}")
     print(f"Schaden : {charakter.schaden}")
+    print(f"Seite   : {charakter.seite}")
     print(f"Speed   : {charakter.speed}")
 
 

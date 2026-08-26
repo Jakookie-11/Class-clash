@@ -10,6 +10,7 @@ class charakter:
         klasse: str,
         hp: int,
         schaden: int,
+        seite: str,
         speed: int,
         level: int = 1,
         faehigkeit_1=None,
@@ -22,6 +23,7 @@ class charakter:
         self.klasse = klasse
         self.hp = hp
         self.schaden = schaden
+        self.seite = seite
         self.speed = speed
         self.level = level
 
@@ -37,6 +39,7 @@ Jakob = charakter(
     "Tank",
     200,
     -100,
+    "light_side",
     100,
     faehigkeit_1=faehigkeiten.einfacher_angriff
 )
@@ -48,6 +51,7 @@ Leo = charakter(
     "Angreifer",
     70,
     -20,
+    "light_side",
     80,
     faehigkeit_1=faehigkeiten.einfacher_angriff,
 )
@@ -59,6 +63,7 @@ Simon = charakter(
     "Unterstuetzer",
     100,
     -10,
+    "dark_side",
     70,
     faehigkeit_1=faehigkeiten.einfacher_angriff,
     faehigkeit_2=faehigkeiten.einfache_heilung
@@ -71,6 +76,7 @@ Max = charakter(
     "Tank",
     200,
     -10,
+    "dark_side",
     90,
     faehigkeit_1=faehigkeiten.einfacher_angriff
 )

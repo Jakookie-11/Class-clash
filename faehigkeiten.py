@@ -10,6 +10,9 @@ def einfacher_angriff(angreifer, ziel):
 
     schaden =  charaktere.Charaktere[angreifer].schaden
 
+    if charaktere.Charaktere[angreifer].seite == charaktere.Charaktere[ziel].seite:
+        schaden *= 0.8
+
     HP_verändern(ziel, schaden)
 
 
