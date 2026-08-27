@@ -3,7 +3,7 @@ import time
 
 import charaktere
 import menues
-import faehigkeiten
+import status_effekte
 import funktions
 
 
@@ -38,6 +38,7 @@ def charakter_anzeigen(name):
     print(f"Klasse  : {charakter.klasse}")
     print(f"HP      : {charakter.hp}")
     print(f"Schaden : {charakter.schaden}")
+    print(f"Seite   : {charakter.seite}")
     print(f"Speed   : {charakter.speed}")
 
 
@@ -185,55 +186,71 @@ def kampf():
         #--Wer ist am zug--#
         wer = reinfolge[zug]
 
-        print(f"{wer} ist am zug!")
-        print("----Status----")
-        print(f"HP        : {charaktere.Charaktere[wer].hp}")
-        print(f"Schaden   : {charaktere.Charaktere[wer].schaden}")
-        print()
-        print(f"1) {charaktere.Charaktere[wer].faehigkeit_1}")
-        print(f"2) {charaktere.Charaktere[wer].faehigkeit_2}")
-        print(f"3) {charaktere.Charaktere[wer].faehigkeit_3}")
+        if status_effekte.status_effekt_vorhanden(wer, "betaeubt") == True:
 
-        wahl = input("wahl? ")
-
-        if wahl == "1":
-            faehigkeit = charaktere.Charaktere[wer].faehigkeit_1
-        elif wahl == "2":
-            faehigkeit = charaktere.Charaktere[wer].faehigkeit_2
-        else:
-            faehigkeit = charaktere.Charaktere[wer].faehigkeit_3
-
-
-        ziel = input("Mit wem soll diese Faehigkeit interagieren? ")
-
-        #---Eigentliche Fähigkeit---#
-        faehigkeit(wer, ziel)
-
-        #---tote charaktäre entvernen---#
-        ausgewaehlte_charaktere = tote_charaktere_entvernen(ausgewaehlte_charaktere)
-        reinfolge = schnellster_charakter_ermitteln(ausgewaehlte_charaktere)
-
-        #---Sieg?---#
-        is_win_team_1 = is_win(team_2)
-        if is_win_team_1 == True:
             os.system("cls")
-            print("Team 1 hat gewonnen!")
-            time.sleep(5)
-            os.system("cls")
-            break
+            print(f"{wer} ist betaeubt und setzt aus!")
+            time.sleep(2)
+            status_effekte.status_effekte_aktualisieren(wer)
 
-        is_win_team_2 = is_win(team_1)
-        if is_win_team_2 == True:
-            os.system("cls")
+            zug += 1
+            
+            if zug >= len(reinfolge):
+                zug = 0
+
+        else:       
+            print(f"{wer} ist am zug!")
+            print("----Status----")
+            print(f"HP        : {charaktere.Charaktere[wer].hp}")
+            print(f"Schaden   : {charaktere.Charaktere[wer].schaden}")
             print()
-            print("Team 2 hat gewonnen!")
-            time.sleep(5)
-            os.system("cls")
-            break        
+            print(f"1) {charaktere.Charaktere[wer].faehigkeit_1}")
+            print(f"2) {charaktere.Charaktere[wer].faehigkeit_2}")
+            print(f"3) {charaktere.Charaktere[wer].faehigkeit_3}")
+
+            wahl = input("wahl? ")
+
+            if wahl == "1":
+                faehigkeit = charaktere.Charaktere[wer].faehigkeit_1
+            elif wahl == "2":
+                faehigkeit = charaktere.Charaktere[wer].faehigkeit_2
+            else:
+                faehigkeit = charaktere.Charaktere[wer].faehigkeit_3
+
+
+            ziel = input("Mit wem soll diese Faehigkeit interagieren? ")
+
+            #---Eigentliche Fähigkeit---#
+            faehigkeit(wer, ziel)
+
+            #---Effekte aktuallisieren---#
+            status_effekte.status_effekte_aktualisieren(wer)
+
+            #---tote charaktäre entvernen---#
+            ausgewaehlte_charaktere = tote_charaktere_entvernen(ausgewaehlte_charaktere)
+            reinfolge = schnellster_charakter_ermitteln(ausgewaehlte_charaktere)
+
+            #---Sieg?---#
+            is_win_team_1 = is_win(team_2)
+            if is_win_team_1 == True:
+                os.system("cls")
+                print("Team 1 hat gewonnen!")
+                time.sleep(5)
+                os.system("cls")
+                break
+
+            is_win_team_2 = is_win(team_1)
+            if is_win_team_2 == True:
+                os.system("cls")
+                print()
+                print("Team 2 hat gewonnen!")
+                time.sleep(5)
+                os.system("cls")
+                break        
 
 
 
-        zug += 1
+            zug += 1
 
-        if zug >= len(reinfolge):
-            zug = 0
+            if zug >= len(reinfolge):
+                zug = 0
