@@ -5,6 +5,8 @@ import menues
 import funktions
 import charaktere
 import ressourcen
+import confic
+
 
 
 
@@ -15,7 +17,7 @@ def charakter_bip():
 
     while charakter_bip_menue == True:
 
-        os.system("cls")
+        os.system(confic.terminal_clear)
 
         wahl = funktions.menue(menues.charakter_bip_menue)
 
@@ -33,7 +35,7 @@ def charakter_bip():
 
 def charaktere_anzeigen():
 
-    os.system("cls")
+    os.system(confic.terminal_clear)
 
     charaktere_anzeigen = True
 
@@ -58,9 +60,9 @@ def charaktere_anzeigen():
         ready = input("Fertig?" )
         if ready == "ja":
             charaktere_anzeigen = False
-            os.system("cls")
+            os.system(confic.terminal_clear)
         else:
-            os.system("cls")
+            os.system(confic.terminal_clear)
         
 
 
@@ -102,13 +104,13 @@ def level_kosten_credits(wievieltes_update):
 
 
 def charaktere_aufleveln():
-    os.system("cls")
+    os.system(confic.terminal_clear)
     
     charaktere_aufleveln = True
 
     while charaktere_aufleveln == True:
 
-        os.system("cls")
+        os.system(confic.terminal_clear)
     
         wen = input("Wen möchtest du leveln? ")
 
@@ -118,7 +120,7 @@ def charaktere_aufleveln():
         if aktuelles_level_des_chrakters == 13:
             print("Charakter auf maximalem Level.")
             time.sleep(2)
-            os.system("cls")
+            os.system(confic.terminal_clear)
             break
 
         #--credit Kosten berechnen--#
@@ -132,7 +134,7 @@ def charaktere_aufleveln():
         #--Eingentliches Level_up--#
         level_up(wen)
 
-        os.system("cls")
+        os.system(confic.terminal_clear)
 
         print(f"Gelevelt: {wen}")
         print("---Status---")
@@ -155,7 +157,7 @@ def charaktere_aufleveln():
 
         nochmal = input("Nochmal? ")
 
-        os.system("cls")
+        os.system(confic.terminal_clear)
 
         if nochmal == "ja":
            charaktere_aufleveln = True 

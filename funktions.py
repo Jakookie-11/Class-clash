@@ -1,6 +1,7 @@
 import os
 import time
 
+import confic
 
 def menue(bibliothek):
 
@@ -48,10 +49,10 @@ def bestaetigung_menue(wofür):
 
         if ready == "ja":
             brake = True
-            os.system("cls")
+            os.system(confic.terminal_clear)
 
         else:
-            os.system("cls")
+            os.system(confic.terminal_clear)
             if isinstance(wofür, str):
                 print(wofür)
 

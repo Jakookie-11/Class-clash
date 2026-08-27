@@ -7,10 +7,11 @@ import charakter_bip
 import shop
 import neues_spiel
 from saves import speichern
+import confic
 
 hauptmenue = True
 
-os.system("cls")
+os.system(confic.terminal_clear)
 
 #---Vorbild---#
 print("======================")
@@ -20,44 +21,44 @@ print("======================")
 time.sleep(2)
 
 #---Begrüsung_Spieler---#
-os.system("cls")
+os.system(confic.terminal_clear)
 spieler = input("Wie heisst du? ")
 time.sleep(1)
-os.system("cls")
+os.system(confic.terminal_clear)
 print()
 print(f"Willkommen {spieler}")
 time.sleep(2)
 
-os.system("cls")
+os.system(confic.terminal_clear)
 
 speichern.spiel_laden(spieler)
 
 #-----Hauptmenü-----#
 while hauptmenue == True:
     wahl = funktions.menue(menues.hauptmenue)
-    os.system("cls")
+    os.system(confic.terminal_clear)
 
     if wahl == 1:
-        os.system("cls")
+        os.system(confic.terminal_clear)
         while True:
             is_brake_neues_spiel = neues_spiel.neues_spiel()
 
             if is_brake_neues_spiel == 1:
-                os.system("cls")
+                os.system(confic.terminal_clear)
                 break
 
     elif wahl == 2:
-        os.system("cls")
+        os.system(confic.terminal_clear)
         while True:
             is_brake_charakter_bib = charakter_bip.charakter_bip()
 
             if is_brake_charakter_bib == 1:
-                os.system("cls")
+                os.system(confic.terminal_clear)
                 break
                 
 
     elif wahl == 3:
-        os.system("cls")
+        os.system(confic.terminal_clear)
         print("oeffne Einstellungen...")
         funktions.bestaetigung_menue("oeffne Einstellungen...")
 
@@ -66,21 +67,21 @@ while hauptmenue == True:
             is_brake_shop = shop.shop()
 
             if is_brake_shop == 1:
-                os.system("cls")
+                os.system(confic.terminal_clear)
                 break
 
     elif wahl == 5:
-        os.system("cls")
+        os.system(confic.terminal_clear)
         speichern.spiel_speichern(spieler)
         print("Spiel wird gespeichert...")
         time.sleep(1)
-        os.system("cls")
+        os.system(confic.terminal_clear)
 
     else:
-        os.system("cls")
+        os.system(confic.terminal_clear)
         print()
         print("BYE")
         print()
         time.sleep(4)
-        os.system("cls")
+        os.system(confic.terminal_clear)
         hauptmenue = False                  

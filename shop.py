@@ -1,12 +1,14 @@
 import os
+
 import funktions
 import menues
 import ressourcen
+import confic
 
 def shop():
 
     while  True:
-        os.system("cls")
+        os.system(confic.terminal_clear)
         print("==================")
         print("       Shop       ")
         print("==================")
