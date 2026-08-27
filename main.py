@@ -6,6 +6,7 @@ import menues
 import charakter_bip
 import shop
 import neues_spiel
+from saves import speichern
 
 hauptmenue = True
 
@@ -28,6 +29,8 @@ print(f"Willkommen {spieler}")
 time.sleep(2)
 
 os.system("cls")
+
+speichern.spiel_laden(spieler)
 
 #-----Hauptmenü-----#
 while hauptmenue == True:
@@ -66,10 +69,18 @@ while hauptmenue == True:
                 os.system("cls")
                 break
 
+    elif wahl == 5:
+        os.system("cls")
+        speichern.spiel_speichern(spieler)
+        print("Spiel wird gespeichert...")
+        time.sleep(1)
+        os.system("cls")
+
     else:
         os.system("cls")
         print()
         print("BYE")
         print()
         time.sleep(4)
+        os.system("cls")
         hauptmenue = False                  
