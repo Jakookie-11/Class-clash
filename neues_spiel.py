@@ -8,13 +8,13 @@ import funktions
 import confic
 
 
-def neues_spiel():
+def neues_spiel(spieler_name):
 
     neues_spiel_menue = True
 
     while neues_spiel_menue == True:
 
-        wahl = funktions.menue(menues.neues_spiel_menue)
+        wahl = funktions.menue(menues.neues_spiel_menue, spieler_name)
 
         os.system(confic.terminal_clear)
 
@@ -59,14 +59,40 @@ def charaktere_auswaelen():
     print()
 
     Leader_team_1    = input("Leader: ")
+
+    if not Leader_team_1 in charaktere.Charaktere:
+        print("---Dieser Charakter existiert nicht!---")
+        time.sleep(2)
+        funktions.zeilen_loeschen(2)
+        Leader_team_1    = input("Leader: ")
+
     spieler_2_team_1 = input("Spieler_2: ")
+
+    if not spieler_2_team_1 in charaktere.Charaktere:
+        print("---Dieser Charakter existiert nicht!---")
+        time.sleep(2)
+        funktions.zeilen_loeschen(2)
+        spieler_2_team_1 = input("Spieler_2: ")
 
     print()
     print("Team 2:")
     print()
 
     Leader_team_2    = input("Leader: ")
+
+    if not Leader_team_2 in charaktere.Charaktere:
+        print("---Dieser Charakter existiert nicht!---")
+        time.sleep(2)
+        funktions.zeilen_loeschen(2)
+        Leader_team_2    = input("Leader: ")
+
     spieler_2_team_2 = input("Spieler_2: ")
+
+    if not spieler_2_team_2 in charaktere.Charaktere:
+        print("---Dieser Charakter existiert nicht!---")
+        time.sleep(2)
+        funktions.zeilen_loeschen(2)
+        spieler_2_team_2 = input("Spieler_2: ")
 
     time.sleep(1)
     os.system(confic.terminal_clear)

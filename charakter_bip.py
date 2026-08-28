@@ -11,7 +11,7 @@ import confic
 
 
 
-def charakter_bip():
+def charakter_bip(spieler_name):
     #---Menü---#
     charakter_bip_menue = True
 
@@ -19,7 +19,7 @@ def charakter_bip():
 
         os.system(confic.terminal_clear)
 
-        wahl = funktions.menue(menues.charakter_bip_menue)
+        wahl = funktions.menue(menues.charakter_bip_menue, spieler_name)
 
         if wahl == 1:
             charaktere_anzeigen()

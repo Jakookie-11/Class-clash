@@ -22,7 +22,20 @@ time.sleep(2)
 
 #---Begrüsung_Spieler---#
 os.system(confic.terminal_clear)
-spieler = input("Wie heisst du? ")
+while True:
+    spieler = input("Wie heisst du? ")
+    passwort = input("Passwort? ")
+    print()
+
+    if passwort == confic.passwoerter[spieler]:
+        print("Passwort korrekt")
+        break
+    else:
+        print("Passwort falsch")
+        time.sleep(2)
+        os.system(confic.terminal_clear)
+        funktions.zeilen_loeschen(4)
+
 time.sleep(1)
 os.system(confic.terminal_clear)
 print()
@@ -35,13 +48,13 @@ speichern.spiel_laden(spieler)
 
 #-----Hauptmenü-----#
 while hauptmenue == True:
-    wahl = funktions.menue(menues.hauptmenue)
+    wahl = funktions.menue(menues.hauptmenue, spieler)
     os.system(confic.terminal_clear)
 
     if wahl == 1:
         os.system(confic.terminal_clear)
         while True:
-            is_brake_neues_spiel = neues_spiel.neues_spiel()
+            is_brake_neues_spiel = neues_spiel.neues_spiel(spieler)
 
             if is_brake_neues_spiel == 1:
                 os.system(confic.terminal_clear)
@@ -50,7 +63,7 @@ while hauptmenue == True:
     elif wahl == 2:
         os.system(confic.terminal_clear)
         while True:
-            is_brake_charakter_bib = charakter_bip.charakter_bip()
+            is_brake_charakter_bib = charakter_bip.charakter_bip(spieler)
 
             if is_brake_charakter_bib == 1:
                 os.system(confic.terminal_clear)
@@ -64,7 +77,7 @@ while hauptmenue == True:
 
     elif wahl == 4:
         while True:
-            is_brake_shop = shop.shop()
+            is_brake_shop = shop.shop(spieler)
 
             if is_brake_shop == 1:
                 os.system(confic.terminal_clear)
