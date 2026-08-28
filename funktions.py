@@ -1,9 +1,10 @@
 import os
 import time
 
+import confic
+from saves import speichern
 
-def menue(bibliothek):
-
+def menue(bibliothek, spieler_name):
 
     while True:
 
@@ -36,7 +37,9 @@ def menue(bibliothek):
             return(8)
         else:
             print("Error 1")
+            speichern.spiel_speichern(spieler_name)
             time.sleep(600)
+
 
 
 def bestaetigung_menue(wofür):
@@ -48,10 +51,10 @@ def bestaetigung_menue(wofür):
 
         if ready == "ja":
             brake = True
-            os.system("cls")
+            os.system(confic.terminal_clear)
 
         else:
-            os.system("cls")
+            os.system(confic.terminal_clear)
             if isinstance(wofür, str):
                 print(wofür)
 
@@ -62,3 +65,9 @@ def bestaetigung_menue(wofür):
                     print(schlüssel)
 
                 ready = input("Fertig? ")
+
+
+
+def zeilen_loeschen(anzahl):
+    for _ in range(anzahl):
+        print("\033[1A\033[2K", end="")

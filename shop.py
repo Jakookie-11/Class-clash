@@ -1,12 +1,14 @@
 import os
+
 import funktions
 import menues
 import ressourcen
+import confic
 
-def shop():
+def shop(spieler_name):
 
     while  True:
-        os.system("cls")
+        os.system(confic.terminal_clear)
         print("==================")
         print("       Shop       ")
         print("==================")
@@ -18,7 +20,7 @@ def shop():
         print("Zu Kaufen:")
         print()
 
-        wahl = funktions.menue(menues.shop_menue)
+        wahl = funktions.menue(menues.shop_menue, spieler_name)
 
         if wahl == 1:
             ressourcen.ressourcen_verändern("Credits   ", 1000)

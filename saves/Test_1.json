@@ -1,0 +1,1 @@
+{"spieler_name": "Test_1", "ressourcen": {"Credits   ": 1500, "Material 1": 110, "Energie   ": 120}, "charaktere": {"Jakob": {"hp": 288.0, "schaden": -144.0, "level": 3}, "Leo": {"hp": 84.0, "schaden": -24.0, "level": 2}, "Simon": {"hp": 120.0, "schaden": -12.0, "level": 2}, "Max": {"hp": 200, "schaden": -10, "level": 1}}}

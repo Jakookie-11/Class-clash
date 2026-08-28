@@ -5,7 +5,9 @@ hauptmenue = {
     "2) Charaktere"    : "",
     "3) Einstellungen" : "",
     "4) Shop         " : "",
-    "5) Beenden"       : ""
+    "5) Speichern"     : "", 
+    "6) Beenden"       : ""
+    
 }
 
 charakter_bip_menue = {

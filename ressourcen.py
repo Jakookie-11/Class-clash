@@ -1,6 +1,8 @@
 import time
 import os
 
+import confic
+
 ressourcen = {
     "Credits   " : 1000,
     "Material 1" : 50,
@@ -24,7 +26,7 @@ def ressourcen_verändern(welche, wie_viel):
             else:
                 print(f"Zu wenig {welche}")
                 time.sleep(2)
-                os.system("cls")
+                os.system(confic.terminal_clear)
                 return 1
 
         elif wie_viel > 0:

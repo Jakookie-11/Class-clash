@@ -5,17 +5,18 @@ import charaktere
 import menues
 import status_effekte
 import funktions
+import confic
 
 
-def neues_spiel():
+def neues_spiel(spieler_name):
 
     neues_spiel_menue = True
 
     while neues_spiel_menue == True:
 
-        wahl = funktions.menue(menues.neues_spiel_menue)
+        wahl = funktions.menue(menues.neues_spiel_menue, spieler_name)
 
-        os.system("cls")
+        os.system(confic.terminal_clear)
 
         if wahl == 1:
             kampf()
@@ -46,7 +47,7 @@ def charakter_anzeigen(name):
 
 def charaktere_auswaelen():
 
-    os.system("cls")
+    os.system(confic.terminal_clear)
 
     print("Verfügbare Charaktere:")
     print()
@@ -58,17 +59,43 @@ def charaktere_auswaelen():
     print()
 
     Leader_team_1    = input("Leader: ")
+
+    if not Leader_team_1 in charaktere.Charaktere:
+        print("---Dieser Charakter existiert nicht!---")
+        time.sleep(2)
+        funktions.zeilen_loeschen(2)
+        Leader_team_1    = input("Leader: ")
+
     spieler_2_team_1 = input("Spieler_2: ")
+
+    if not spieler_2_team_1 in charaktere.Charaktere:
+        print("---Dieser Charakter existiert nicht!---")
+        time.sleep(2)
+        funktions.zeilen_loeschen(2)
+        spieler_2_team_1 = input("Spieler_2: ")
 
     print()
     print("Team 2:")
     print()
 
     Leader_team_2    = input("Leader: ")
+
+    if not Leader_team_2 in charaktere.Charaktere:
+        print("---Dieser Charakter existiert nicht!---")
+        time.sleep(2)
+        funktions.zeilen_loeschen(2)
+        Leader_team_2    = input("Leader: ")
+
     spieler_2_team_2 = input("Spieler_2: ")
 
+    if not spieler_2_team_2 in charaktere.Charaktere:
+        print("---Dieser Charakter existiert nicht!---")
+        time.sleep(2)
+        funktions.zeilen_loeschen(2)
+        spieler_2_team_2 = input("Spieler_2: ")
+
     time.sleep(1)
-    os.system("cls")
+    os.system(confic.terminal_clear)
 
     while True:
 
@@ -99,7 +126,7 @@ def charaktere_auswaelen():
             return Leader_team_1, spieler_2_team_1, Leader_team_2, spieler_2_team_2
 
         else:
-            os.system("cls")
+            os.system(confic.terminal_clear)
 
 
     
@@ -136,7 +163,7 @@ def is_win(team):
 
 def kampf():
 
-    os.system("cls")
+    os.system(confic.terminal_clear)
 
     zug = 0
 
@@ -168,7 +195,7 @@ def kampf():
 
     while True:
 
-        os.system("cls")
+        os.system(confic.terminal_clear)
 
         print("=========================")
         print("          Kampf          ")
@@ -188,7 +215,7 @@ def kampf():
 
         if status_effekte.status_effekt_vorhanden(wer, "betaeubt") == True:
 
-            os.system("cls")
+            os.system(confic.terminal_clear)
             print(f"{wer} ist betaeubt und setzt aus!")
             time.sleep(2)
             status_effekte.status_effekte_aktualisieren(wer)
@@ -233,19 +260,19 @@ def kampf():
             #---Sieg?---#
             is_win_team_1 = is_win(team_2)
             if is_win_team_1 == True:
-                os.system("cls")
+                os.system(confic.terminal_clear)
                 print("Team 1 hat gewonnen!")
                 time.sleep(5)
-                os.system("cls")
+                os.system(confic.terminal_clear)
                 break
 
             is_win_team_2 = is_win(team_1)
             if is_win_team_2 == True:
-                os.system("cls")
+                os.system(confic.terminal_clear)
                 print()
                 print("Team 2 hat gewonnen!")
                 time.sleep(5)
-                os.system("cls")
+                os.system(confic.terminal_clear)
                 break        
 
 
