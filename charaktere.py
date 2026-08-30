@@ -67,7 +67,7 @@ Leo = charakter(
 Simon = charakter(
     "Simon",
     "Unterstuetzer",
-    100,
+    110,
     -10,
     "dark_side",
     70,

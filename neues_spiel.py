@@ -202,10 +202,14 @@ def kampf():
         print("=========================")
         print()
         #--Teams + HP anzeigen--#
-        print(f"{"Team 1:" :<30}{"Team 2:" :<30}")
-        print(f"{charaktere.Charaktere[leader_1].name :<10}{charaktere.Charaktere[leader_1].hp :<20}{charaktere.Charaktere[leader_2].name :<10}{charaktere.Charaktere[leader_2].hp}")
-        print(f"{charaktere.Charaktere[spieler_2_1].name :<10}{charaktere.Charaktere[spieler_2_1].hp :<20}{charaktere.Charaktere[spieler_2_2].name :<10}{charaktere.Charaktere[spieler_2_2].hp}")
-
+        print("----Team 1----")
+        print(f"{leader_1:<10} {charaktere.Charaktere[leader_1].hp:<10} HP   {status_effekte.status_effekte_anzeigen(leader_1)}")
+        print(f"{spieler_2_1:<10} {charaktere.Charaktere[spieler_2_1].hp:<10} HP   {status_effekte.status_effekte_anzeigen(spieler_2_1)}")
+        print()
+        print()
+        print("----Team 2----")
+        print(f"{leader_2:<10} {charaktere.Charaktere[leader_2].hp:<10} HP   {status_effekte.status_effekte_anzeigen(leader_2)}")
+        print(f"{spieler_2_2:<10} {charaktere.Charaktere[spieler_2_2].hp:<10} HP   {status_effekte.status_effekte_anzeigen(spieler_2_2)}")
         print()
         print("================================================================================")
         print()
@@ -256,38 +260,48 @@ def kampf():
                     funktions.zeilen_loeschen(2)
 
 
-        ziel = input("Mit wem soll diese Faehigkeit interagieren? ")
-        #---Eigentliche Fähigkeit---#
-        faehigkeit(wer, ziel)
+            ziel = input("Mit wem soll diese Faehigkeit interagieren? ")
+            #---Eigentliche Fähigkeit---#
+            faehigkeit(wer, ziel)
 
-        #---Effekte aktuallisieren---#
-        status_effekte.status_effekte_aktualisieren(wer)
+            #---Effekte aktuallisieren---#
+            status_effekte.status_effekte_aktualisieren(wer)
 
-        #---tote charaktäre entvernen---#
-        ausgewaehlte_charaktere = tote_charaktere_entvernen(ausgewaehlte_charaktere)
-        reinfolge = schnellster_charakter_ermitteln(ausgewaehlte_charaktere)
+            #---tote charaktäre entvernen---#
+            ausgewaehlte_charaktere = tote_charaktere_entvernen(ausgewaehlte_charaktere)
+            reinfolge = schnellster_charakter_ermitteln(ausgewaehlte_charaktere)
 
-        #---Sieg?---#
-        is_win_team_1 = is_win(team_2)
-        if is_win_team_1 == True:
-            os.system(confic.terminal_clear)
-            print("Team 1 hat gewonnen!")
-            time.sleep(5)
-            os.system(confic.terminal_clear)
-            break
+            #---Sieg?---#
+            is_win_team_1 = is_win(team_2)
+            if is_win_team_1 == True:
+                os.system(confic.terminal_clear)
+                print("Team 1 hat gewonnen!")
+                time.sleep(5)
+                os.system(confic.terminal_clear)
 
-        is_win_team_2 = is_win(team_1)
-        if is_win_team_2 == True:
-            os.system(confic.terminal_clear)
-            print()
-            print("Team 2 hat gewonnen!")
-            time.sleep(5)
-            os.system(confic.terminal_clear)
-            break        
+                #---Status Effekte zurücksetzen---#
+                for name in charaktere.Charaktere:
+                    charaktere.Charaktere[name].status_effekte = []
+
+                break
+
+            is_win_team_2 = is_win(team_1)
+            if is_win_team_2 == True:
+                os.system(confic.terminal_clear)
+                print()
+                print("Team 2 hat gewonnen!")
+                time.sleep(5)
+                os.system(confic.terminal_clear)
+
+                #---Status Effekte zurücksetzen---#
+                for name in charaktere.Charaktere:
+                    charaktere.Charaktere[name].status_effekte = []
+                    
+                break        
 
 
 
-        zug += 1
+            zug += 1
 
-        if zug >= len(reinfolge):
-            zug = 0
+            if zug >= len(reinfolge):
+                zug = 0

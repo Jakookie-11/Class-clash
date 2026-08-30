@@ -70,3 +70,14 @@ def status_effekte_aktualisieren(wer):
         effekt for effekt in charakter.status_effekte
         if effekt.dauer > 0
     ]
+
+
+
+def status_effekte_anzeigen(wem):
+
+    ausgabe = ""
+
+    for effekt in charaktere.Charaktere[wem].status_effekte:
+        ausgabe += f"[{effekt.name} {effekt.dauer}] "
+
+    return ausgabe
