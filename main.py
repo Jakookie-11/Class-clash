@@ -92,6 +92,10 @@ while hauptmenue == True:
 
     else:
         os.system(confic.terminal_clear)
+        speichern.spiel_speichern(spieler)
+        print("Spiel wird gespeichert...")
+        time.sleep(1)
+        os.system(confic.terminal_clear)
         print()
         print("BYE")
         print()
