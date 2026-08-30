@@ -213,6 +213,7 @@ def kampf():
         #--Wer ist am zug--#
         wer = reinfolge[zug]
 
+        #--Betäubt?--#
         if status_effekte.status_effekt_vorhanden(wer, "betaeubt") == True:
 
             os.system(confic.terminal_clear)
@@ -225,59 +226,68 @@ def kampf():
             if zug >= len(reinfolge):
                 zug = 0
 
-        else:       
-            print(f"{wer} ist am zug!")
-            print("----Status----")
-            print(f"HP        : {charaktere.Charaktere[wer].hp}")
-            print(f"Schaden   : {charaktere.Charaktere[wer].schaden}")
-            print()
-            print(f"1) {charaktere.Charaktere[wer].faehigkeit_1}")
-            print(f"2) {charaktere.Charaktere[wer].faehigkeit_2}")
-            print(f"3) {charaktere.Charaktere[wer].faehigkeit_3}")
-
-            wahl = input("wahl? ")
-
-            if wahl == "1":
-                faehigkeit = charaktere.Charaktere[wer].faehigkeit_1
-            elif wahl == "2":
-                faehigkeit = charaktere.Charaktere[wer].faehigkeit_2
-            else:
-                faehigkeit = charaktere.Charaktere[wer].faehigkeit_3
-
-
-            ziel = input("Mit wem soll diese Faehigkeit interagieren? ")
-
-            #---Eigentliche Fähigkeit---#
-            faehigkeit(wer, ziel)
-
-            #---Effekte aktuallisieren---#
-            status_effekte.status_effekte_aktualisieren(wer)
-
-            #---tote charaktäre entvernen---#
-            ausgewaehlte_charaktere = tote_charaktere_entvernen(ausgewaehlte_charaktere)
-            reinfolge = schnellster_charakter_ermitteln(ausgewaehlte_charaktere)
-
-            #---Sieg?---#
-            is_win_team_1 = is_win(team_2)
-            if is_win_team_1 == True:
-                os.system(confic.terminal_clear)
-                print("Team 1 hat gewonnen!")
-                time.sleep(5)
-                os.system(confic.terminal_clear)
-                break
-
-            is_win_team_2 = is_win(team_1)
-            if is_win_team_2 == True:
-                os.system(confic.terminal_clear)
+        else:
+            while True:       
+                print(f"{wer} ist am zug!")
+                print("----Status----")
+                print(f"HP        : {charaktere.Charaktere[wer].hp}")
+                print(f"Schaden   : {charaktere.Charaktere[wer].schaden}")
                 print()
-                print("Team 2 hat gewonnen!")
-                time.sleep(5)
-                os.system(confic.terminal_clear)
-                break        
+                print(f"1) {charaktere.Charaktere[wer].faehigkeit_1}")
+                print(f"2) {charaktere.Charaktere[wer].faehigkeit_2}")
+                print(f"3) {charaktere.Charaktere[wer].faehigkeit_3}")
+
+                wahl = input("wahl? ")
+
+                if wahl == "1":
+                    faehigkeit = charaktere.Charaktere[wer].faehigkeit_1
+                    break
+                elif wahl == "2":
+                    faehigkeit = charaktere.Charaktere[wer].faehigkeit_2
+                    break
+                elif wahl == "3":
+                    faehigkeit = charaktere.Charaktere[wer].faehigkeit_3
+                    break
+                else:
+                    funktions.zeilen_loeschen(9)
+                    print()
+                    print("Diese Fähigkeit existiert nicht")
+                    time.sleep(1)
+                    funktions.zeilen_loeschen(2)
+
+
+        ziel = input("Mit wem soll diese Faehigkeit interagieren? ")
+        #---Eigentliche Fähigkeit---#
+        faehigkeit(wer, ziel)
+
+        #---Effekte aktuallisieren---#
+        status_effekte.status_effekte_aktualisieren(wer)
+
+        #---tote charaktäre entvernen---#
+        ausgewaehlte_charaktere = tote_charaktere_entvernen(ausgewaehlte_charaktere)
+        reinfolge = schnellster_charakter_ermitteln(ausgewaehlte_charaktere)
+
+        #---Sieg?---#
+        is_win_team_1 = is_win(team_2)
+        if is_win_team_1 == True:
+            os.system(confic.terminal_clear)
+            print("Team 1 hat gewonnen!")
+            time.sleep(5)
+            os.system(confic.terminal_clear)
+            break
+
+        is_win_team_2 = is_win(team_1)
+        if is_win_team_2 == True:
+            os.system(confic.terminal_clear)
+            print()
+            print("Team 2 hat gewonnen!")
+            time.sleep(5)
+            os.system(confic.terminal_clear)
+            break        
 
 
 
-            zug += 1
+        zug += 1
 
-            if zug >= len(reinfolge):
-                zug = 0
+        if zug >= len(reinfolge):
+            zug = 0
