@@ -33,4 +33,7 @@ def ressourcen_verändern(welche, wie_viel):
             ressourcen[welche] = ressourcen[welche] + wie_viel
 
     else:
+        print("Kauf abgebrochen.")
+        time.sleep(2)
+        os.system(confic.terminal_clear)
         return 1

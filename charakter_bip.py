@@ -111,8 +111,17 @@ def charaktere_aufleveln():
     while charaktere_aufleveln == True:
 
         os.system(confic.terminal_clear)
-    
-        wen = input("Wen möchtest du leveln? ")
+
+        while True:
+            wen = input("Wen möchtest du leveln? ")
+
+            if not wen in charaktere.Charaktere:
+                print()
+                print("---Dieser Charakter existiert nicht!---")
+                time.sleep(2)
+                funktions.zeilen_loeschen(3)
+            else:
+                break
 
         #--Level des zu upgraden gewünschten charakters--#
         aktuelles_level_des_chrakters = charaktere.Charaktere[wen].level

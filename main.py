@@ -1,6 +1,8 @@
 import os
 import time
 
+import bcrypt
+
 import funktions
 import menues
 import charakter_bip
@@ -27,9 +29,13 @@ while True:
     passwort = input("Passwort? ")
     print()
 
-    if passwort == confic.passwoerter[spieler]:
+    if bcrypt.checkpw(
+        passwort.encode("utf-8"),
+        confic.passwoerter[spieler]
+        ):
         print("Passwort korrekt")
         break
+        
     else:
         print("Passwort falsch")
         time.sleep(2)
@@ -91,6 +97,10 @@ while hauptmenue == True:
         os.system(confic.terminal_clear)
 
     else:
+        os.system(confic.terminal_clear)
+        speichern.spiel_speichern(spieler)
+        print("Spiel wird gespeichert...")
+        time.sleep(1)
         os.system(confic.terminal_clear)
         print()
         print("BYE")
