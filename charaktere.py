@@ -59,7 +59,8 @@ Leo = charakter(
     "light_side",
     80,
     faehigkeit_1=faehigkeiten.einfacher_angriff,
-    faehigkeit_2=faehigkeiten.blutiger_schlag
+    faehigkeit_2=faehigkeiten.blutiger_schlag,
+    faehigkeit_3=faehigkeiten.bleibender_schlag
 )
 
 
@@ -85,7 +86,9 @@ Max = charakter(
     -10,
     "dark_side",
     90,
-    faehigkeit_1=faehigkeiten.einfacher_angriff
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.blutiger_schlag,
+    faehigkeit_3=faehigkeiten.staerkende_heilung
 )
 
 
