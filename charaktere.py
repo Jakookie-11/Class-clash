@@ -1,4 +1,5 @@
 import faehigkeiten
+import copy
 
 
 
@@ -27,9 +28,9 @@ class charakter:
         self.speed = speed
         self.level = level
 
-        self.faehigkeit_1 = faehigkeit_1
-        self.faehigkeit_2 = faehigkeit_2
-        self.faehigkeit_3 = faehigkeit_3
+        self.faehigkeit_1 = copy.copy(faehigkeit_1)
+        self.faehigkeit_2 = copy.copy(faehigkeit_2)
+        self.faehigkeit_3 = copy.copy(faehigkeit_3)
 
         self.status_effekte = []
                

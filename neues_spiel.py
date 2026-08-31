@@ -335,7 +335,6 @@ def kampf():
 
             #---Effekte aktuallisieren---#
             status_effekte.status_effekte_aktualisieren(wer)
-            abklingzeiten_aktualisieren(wer)
 
             #---tote charaktäre entvernen---#
             ausgewaehlte_charaktere = tote_charaktere_entvernen(ausgewaehlte_charaktere)
