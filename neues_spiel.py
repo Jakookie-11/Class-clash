@@ -6,6 +6,7 @@ import menues
 import status_effekte
 import funktions
 import confic
+import faehigkeiten
 
 
 def neues_spiel(spieler_name):
@@ -237,21 +238,51 @@ def kampf():
                 print(f"HP        : {charaktere.Charaktere[wer].hp}")
                 print(f"Schaden   : {charaktere.Charaktere[wer].schaden}")
                 print()
-                print(f"1) {charaktere.Charaktere[wer].faehigkeit_1}")
-                print(f"2) {charaktere.Charaktere[wer].faehigkeit_2}")
-                print(f"3) {charaktere.Charaktere[wer].faehigkeit_3}")
+                print(f"1) {charaktere.Charaktere[wer].faehigkeit_1.__name__.replace('_', ' ').title()}")
+                print(f"2) {charaktere.Charaktere[wer].faehigkeit_2.__name__.replace('_', ' ').title()}")
+                print(f"3) {charaktere.Charaktere[wer].faehigkeit_3.__name__.replace('_', ' ').title()}")
+                print()
+                print("Doppelte Zahl für die Erklärung der Fähigkeit")
+                print()
 
                 wahl = input("wahl? ")
 
                 if wahl == "1":
                     faehigkeit = charaktere.Charaktere[wer].faehigkeit_1
                     break
+
+                elif wahl == "11":
+                    print()
+                    eval("faehigkeiten." + charaktere.Charaktere[wer].faehigkeit_1.__name__ + "_erklaerung()")
+                    print()
+                    fertig = input("Fertig? ")
+                    if fertig == "ja":
+                        funktions.zeilen_loeschen(16)
+
                 elif wahl == "2":
                     faehigkeit = charaktere.Charaktere[wer].faehigkeit_2
                     break
+
+                elif wahl == "22":
+                    print()
+                    eval("faehigkeiten." + charaktere.Charaktere[wer].faehigkeit_2.__name__ + "_erklaerung()")
+                    print()
+                    fertig = input("Fertig? ")
+                    if fertig == "ja":
+                        funktions.zeilen_loeschen(16)
+
                 elif wahl == "3":
                     faehigkeit = charaktere.Charaktere[wer].faehigkeit_3
                     break
+
+                elif wahl == "33":
+                    print()
+                    eval("faehigkeiten." + charaktere.Charaktere[wer].faehigkeit_3.__name__ + "_erklaerung()")
+                    print()
+                    fertig = input("Fertig? ")
+                    if fertig == "ja":
+                        funktions.zeilen_loeschen(16)
+
                 else:
                     funktions.zeilen_loeschen(9)
                     print()

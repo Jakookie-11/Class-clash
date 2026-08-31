@@ -37,7 +37,12 @@ def entgültigen_schaden_berechnen(wer):
 
     return schaden
 
+
+
 #----------------------Fähigkeiten----------------------#
+
+
+
 
 def einfacher_angriff(wer, wen):
 
@@ -47,6 +52,11 @@ def einfacher_angriff(wer, wen):
         schaden *= 0.8
 
     HP_verändern(wen, schaden)
+
+def einfacher_angriff_erklaerung():
+    print("Einfacher Angriff: Ein einfacher Angriff, der einfachen Schaden verursacht.")
+
+
 
 
 
@@ -61,10 +71,21 @@ def blutiger_schlag(wer, wen):
 
     HP_verändern(wen, schaden)
 
+def blutiger_schlag_erklaerung():
+    print("Blutiger Schlag: Ein Angriff, der einfachen Schaden verursacht und den Gegner schwächt, sodass er weniger Schaden verursacht.")
+
+
+
+
 
 def einfache_heilung(wer, wen):
 
     HP_verändern(wen, 50)
+
+def einfache_heilung_erklaerung():
+    print("Einfache Heilung: Eine Heilung, die 50 HP wiederherstellt.")
+
+
 
 
 
@@ -73,6 +94,11 @@ def staerkende_heilung(wer, wen):
     status_effekte.status_effekte_hinzufügen(wen, status_effekte.schaden_plus)
 
     HP_verändern(wen, 50)
+
+def staerkende_heilung_erklaerung():
+    print("Stärkende Heilung: Eine Heilung, die 50 HP wiederherstellt und den Gegner stärkt, sodass er mehr Schaden verursacht.")
+
+
 
 
 
@@ -87,6 +113,11 @@ def starker_schlag(wer, wen):
 
     HP_verändern(wen, schaden)
 
+def starker_schlag_erklaerung():
+    print("Starker Schlag: Ein starker Angriff, der einfachen Schaden verursacht und den Gegner betäubt")
+
+
+
 
 
 def bleibender_schlag(wer, wen):
@@ -99,3 +130,6 @@ def bleibender_schlag(wer, wen):
     status_effekte.status_effekte_hinzufügen(wen, status_effekte.damage_over_time_1)
 
     HP_verändern(wen, schaden)
+
+def bleibender_schlag_erklaerung():
+    print("Bleibender Schlag: Ein Angriff, der einfachen Schaden verursacht und den Gegner mit Schaden über Zeit belegt.")
