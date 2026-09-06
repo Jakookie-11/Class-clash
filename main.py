@@ -22,7 +22,7 @@ print("Class clash")
 print("======================")
 time.sleep(2)
 
-#---Begrüsung_Spieler---#
+#---Begrüsung_Spieler/Anmeldung---#
 os.system(confic.terminal_clear)
 while True:
     spieler = input("Wie heisst du? ")

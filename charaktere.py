@@ -1,4 +1,5 @@
 import faehigkeiten
+import copy
 
 
 
@@ -27,9 +28,9 @@ class charakter:
         self.speed = speed
         self.level = level
 
-        self.faehigkeit_1 = faehigkeit_1
-        self.faehigkeit_2 = faehigkeit_2
-        self.faehigkeit_3 = faehigkeit_3
+        self.faehigkeit_1 = copy.copy(faehigkeit_1)
+        self.faehigkeit_2 = copy.copy(faehigkeit_2)
+        self.faehigkeit_3 = copy.copy(faehigkeit_3)
 
         self.status_effekte = []
                
@@ -59,7 +60,8 @@ Leo = charakter(
     "light_side",
     80,
     faehigkeit_1=faehigkeiten.einfacher_angriff,
-    faehigkeit_2=faehigkeiten.blutiger_schlag
+    faehigkeit_2=faehigkeiten.blutiger_schlag,
+    faehigkeit_3=faehigkeiten.bleibender_schlag
 )
 
 
@@ -67,7 +69,7 @@ Leo = charakter(
 Simon = charakter(
     "Simon",
     "Unterstuetzer",
-    100,
+    110,
     -10,
     "dark_side",
     70,
@@ -85,7 +87,9 @@ Max = charakter(
     -10,
     "dark_side",
     90,
-    faehigkeit_1=faehigkeiten.einfacher_angriff
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.blutiger_schlag,
+    faehigkeit_3=faehigkeiten.staerkende_heilung
 )
 
 

@@ -37,9 +37,33 @@ def entgültigen_schaden_berechnen(wer):
 
     return schaden
 
+
+
 #----------------------Fähigkeiten----------------------#
 
-def einfacher_angriff(wer, wen):
+
+class faehigkeit:
+
+    def __init__(
+        self,
+        name : str,
+        funktion : object,
+        max_abklingzeit : int,
+        abklingzeit : int,
+        zieltyp : str
+        ):
+
+        self.name = name
+        self.funktion = funktion
+        self.max_abklingzeit = max_abklingzeit
+        self.abklingzeit = abklingzeit
+        self.zieltyp = zieltyp
+
+
+
+
+
+def einfacher_angriff_obj(wer, wen):
 
     schaden =  entgültigen_schaden_berechnen(wer)
 
@@ -48,9 +72,22 @@ def einfacher_angriff(wer, wen):
 
     HP_verändern(wen, schaden)
 
+def einfacher_angriff_erklaerung():
+    print("Einfacher Angriff: Ein einfacher Angriff, der einfachen Schaden verursacht.")
+
+einfacher_angriff = faehigkeit(
+    "einfacher_angriff",
+    einfacher_angriff_obj,
+    0,
+    0,
+    "gegner"
+)
 
 
-def blutiger_schlag(wer, wen):
+
+
+
+def blutiger_schlag_obj(wer, wen):
 
     schaden =  entgültigen_schaden_berechnen(wer)
 
@@ -61,22 +98,62 @@ def blutiger_schlag(wer, wen):
 
     HP_verändern(wen, schaden)
 
+def blutiger_schlag_erklaerung():
+    print("Blutiger Schlag: Ein Angriff, der einfachen Schaden verursacht und den Gegner schwächt, sodass er weniger Schaden verursacht.")
 
-def einfache_heilung(wer, wen):
+blutiger_schlag = faehigkeit(
+    "blutiger_schlag",
+    blutiger_schlag_obj,
+    2,
+    0,
+    "gegner"
+)
+
+
+
+
+
+def einfache_heilung_obj(wer, wen):
 
     HP_verändern(wen, 50)
 
+def einfache_heilung_erklaerung():
+    print("Einfache Heilung: Eine Heilung, die 50 HP wiederherstellt.")
+
+einfache_heilung = faehigkeit(
+    "einfache_heilung",
+    einfache_heilung_obj,
+    3,
+    0,
+    "verbündete"
+)
 
 
-def staerkende_heilung(wer, wen):
+
+
+
+def staerkende_heilung_obj(wer, wen):
 
     status_effekte.status_effekte_hinzufügen(wen, status_effekte.schaden_plus)
 
     HP_verändern(wen, 50)
 
+def staerkende_heilung_erklaerung():
+    print("Stärkende Heilung: Eine Heilung, die 50 HP wiederherstellt und den Gegner stärkt, sodass er mehr Schaden verursacht.")
+
+staerkende_heilung = faehigkeit(
+    "staerkende_heilung",
+    staerkende_heilung_obj,
+    4,
+    0,
+    "verbündete"
+)
 
 
-def starker_schlag(wer, wen):
+
+
+
+def starker_schlag_obj(wer, wen):
 
     schaden =  entgültigen_schaden_berechnen(wer)
 
@@ -87,9 +164,22 @@ def starker_schlag(wer, wen):
 
     HP_verändern(wen, schaden)
 
+def starker_schlag_erklaerung():
+    print("Starker Schlag: Ein starker Angriff, der einfachen Schaden verursacht und den Gegner betäubt")
+
+starker_schlag = faehigkeit(
+    "starker_schlag",
+    starker_schlag_obj,
+    4,
+    0,
+    "gegner"
+)
 
 
-def bleibender_schlag(wer, wen):
+
+
+
+def bleibender_schlag_obj(wer, wen):
 
     schaden =  entgültigen_schaden_berechnen(wer)
 
@@ -99,3 +189,14 @@ def bleibender_schlag(wer, wen):
     status_effekte.status_effekte_hinzufügen(wen, status_effekte.damage_over_time_1)
 
     HP_verändern(wen, schaden)
+
+def bleibender_schlag_erklaerung():
+    print("Bleibender Schlag: Ein Angriff, der einfachen Schaden verursacht und den Gegner mit Schaden über Zeit belegt.")
+
+bleibender_schlag = faehigkeit(
+    "bleibender_schlag",
+    bleibender_schlag_obj,
+    2,
+    0,
+    "gegner"
+)
