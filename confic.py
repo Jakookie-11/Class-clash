@@ -1,3 +1,3 @@
-terminal_clear = "clear"
+terminal_clear = "cls"
 
 passwoerter = {}
