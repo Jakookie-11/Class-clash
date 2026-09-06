@@ -1,4 +1,6 @@
 import json
+import os
+from datetime import datetime
 
 import charaktere
 import ressourcen
@@ -19,10 +21,22 @@ def spiel_speichern(spieler):
 
     datei = f"saves/{spieler}.json"
 
+    #---Erstellungsdatum holen---#
+    if os.path.exists(datei):
+        alte_datei = open(datei, "r")
+        alte_daten = json.load(alte_datei)
+        alte_datei.close()
+
+        erstellungsdatum = alte_daten["Erstellungsdatum"]
+    else:
+        erstellungsdatum = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
     datei = open(datei, "w")
 
     daten = {
         "spieler_name"    : spieler,
+        "Erstellungsdatum" : erstellungsdatum,
+        "Letztes_Speichern" : datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "ressourcen"      : ressourcen.ressourcen,
         "charaktere"      : gespeicherte_charaktere
     }

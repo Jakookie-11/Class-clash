@@ -9,6 +9,9 @@ import shop
 import neues_spiel
 from saves import speichern
 import begin
+import einstellungen
+
+
 
 hauptmenue = True
 
@@ -20,7 +23,7 @@ while hauptmenue == True:
     os.system(confic.terminal_clear)
 
     if wahl == 1:
-        while True:
+        while True:    
             is_brake_neues_spiel = neues_spiel.neues_spiel(spieler)
 
             if is_brake_neues_spiel == 1:
@@ -37,8 +40,12 @@ while hauptmenue == True:
                 
 
     elif wahl == 3:
-        print("oeffne Einstellungen...")
-        funktions.bestaetigung_menue("oeffne Einstellungen...")
+        while True:
+            is_brake_einstellungen = einstellungen.einstellungen(spieler)
+
+            if is_brake_einstellungen == 1:
+                os.system(confic.terminal_clear)
+                break
 
     elif wahl == 4:
         while True:
