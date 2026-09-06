@@ -80,43 +80,77 @@ def passwort_aendern(spieler_name):
             time.sleep(2)
             funktions.zeilen_loeschen(3)
 
-            neues_passwort = input("Neues Passwort: ")
-            funktions.zeilen_loeschen(1)
-            neues_passwort_wiederholen = input("Neues Passwort wiederholen: ")
+            while True:
 
-            if neues_passwort == neues_passwort_wiederholen:
+                while True:
 
-                bestätigung = input("Bist du sicher, dass du dein Passwort aendern willst? (ja/nein) ")
-                if bestätigung == "ja":
-                    neues_passwort_hash = bcrypt.hashpw(
-                        neues_passwort.encode("utf-8"),
-                        bcrypt.gensalt()
-                    )
+                    neues_passwort = input("Neues Passwort: ")
 
-                    #---Passwort in saves/passwoerter.json speichern---#
-                    confic.passwoerter[spieler_name] = neues_passwort_hash.decode("utf-8")
+                    if neues_passwort == "":
+                        print()
+                        print("Passwort darf nicht leer sein")
+                        time.sleep(2)
+                        funktions.zeilen_loeschen(3)
 
-                    datei = open("saves/passwoerter.json", "w")
+                    elif len(neues_passwort) < 6:
+                        print()
+                        print("Passwort muss mindestens 6 Zeichen lang sein")
+                        time.sleep(2)
+                        funktions.zeilen_loeschen(3)
 
-                    daten = {
-                        "passwoerter": confic.passwoerter
-                    }
+                    else:
+                        break
 
-                    json.dump(daten, datei)
 
-                    datei.close()
+                funktions.zeilen_loeschen(1)
+                neues_passwort_wiederholen = input("Neues Passwort wiederholen: ")
 
-                    print()
-                    print("Passwort erfolgreich geaendert")
-                    time.sleep(2)
-                    return 1
+                if neues_passwort == neues_passwort_wiederholen:
 
+                    bestätigung = input("Bist du sicher, dass du dein Passwort aendern willst? (ja/nein) ")
+
+                    if bestätigung == "ja":
+
+                        bestätigung_2 = input("schreibe: ich bin mir sicher, dass ich mein Passwort aendern moechte :   ")
+
+                        if bestätigung_2 == "ich bin mir sicher, dass ich mein Passwort aendern moechte":
+
+                            neues_passwort_hash = bcrypt.hashpw(
+                                neues_passwort.encode("utf-8"),
+                                bcrypt.gensalt()
+                            )
+
+                            #---Passwort in saves/passwoerter.json speichern---#
+                            confic.passwoerter[spieler_name] = neues_passwort_hash.decode("utf-8")
+
+                            datei = open("saves/passwoerter.json", "w")
+
+                            daten = {
+                                "passwoerter": confic.passwoerter
+                            }
+
+                            json.dump(daten, datei)
+
+                            datei.close()
+
+                            print()
+                            print("Passwort erfolgreich geaendert")
+                            time.sleep(2)
+                            return 1
+
+                        else:
+                            print()
+                            print("Passwort aendern abgebrochen")
+                            time.sleep(2)
+                            return 1
+
+                    else:
+                        print()
+                        print("Passwort aendern abgebrochen")
+                        time.sleep(2)
+                        return 1
                 else:
                     print()
-                    print("Passwort aendern abgebrochen")
+                    print("Passwoerter stimmen nicht ueberein")
                     time.sleep(2)
                     return 1
-            else:
-                print()
-                print("Passwoerter stimmen nicht ueberein")
-                time.sleep(2)
