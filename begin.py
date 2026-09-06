@@ -19,7 +19,6 @@ def begin():
     datei.close()
 
     for spieler, passwort in daten["passwoerter"].items():
-        passwort = passwort.encode("utf-8")
         confic.passwoerter[spieler] = passwort
 
 
@@ -52,7 +51,7 @@ def begin():
 
                 if bcrypt.checkpw(
                     passwort.encode("utf-8"),
-                    confic.passwoerter[spieler]
+                    confic.passwoerter[spieler].encode("utf-8")
                     ):
                     print("Passwort korrekt")
                     break
@@ -141,7 +140,7 @@ def begin():
                             passwort_hash = bcrypt.hashpw(
                                 passwort.encode("utf-8"),
                                 bcrypt.gensalt()
-                            )
+                            ).decode("utf-8")
 
                             confic.passwoerter[spieler] = passwort_hash
                             speichern.spiel_speichern(spieler)
@@ -151,12 +150,13 @@ def begin():
                         datei = f"saves/passwoerter.json"
                         datei = open(datei, "w")
 
+                        passwoerter_fuer_json = {}
+
                         for spieler, passwort in confic.passwoerter.items():
-                            passwort = passwort.decode("utf-8")
-                            confic.passwoerter[spieler] = passwort
+                            passwoerter_fuer_json[spieler] = passwort
 
                         daten = {
-                            "passwoerter": confic.passwoerter
+                            "passwoerter": passwoerter_fuer_json
                         }
 
                         json.dump(daten, datei)
