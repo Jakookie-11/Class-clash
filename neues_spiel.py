@@ -315,10 +315,10 @@ def kampf():
                     funktions.zeilen_loeschen(14)
                     continue
                 else:
-                    faehigkeit.abklingzeit = faehigkeit.max_abklingzeit
 
                     ziel = input("Mit wem soll diese Faehigkeit interagieren? ")
 
+                    #---Ziel existiert?---#
                     if not ziel in ausgewaehlte_charaktere:
                         funktions.zeilen_loeschen(13)
                         print()
@@ -326,6 +326,30 @@ def kampf():
                         time.sleep(2)
                         funktions.zeilen_loeschen(2)
                         continue
+
+
+                    #---Zieltyp überprüfen---#
+                    if faehigkeit.zieltyp == "gegner":
+                        if wer in team_1 and ziel in team_1 or wer in team_2 and ziel in team_2:
+                            funktions.zeilen_loeschen(13)
+                            print()
+                            print("Diese Fähigkeit kann nur auf Gegner angewendet werden")
+                            time.sleep(2)
+                            funktions.zeilen_loeschen(2)
+                            continue
+
+                    if faehigkeit.zieltyp == "verbündete":
+                        if wer in team_1 and ziel in team_2 or wer in team_2 and ziel in team_1:
+                            funktions.zeilen_loeschen(13)
+                            print()
+                            print("Diese Fähigkeit kann nur auf Verbündete angewendet werden")
+                            time.sleep(2)
+                            funktions.zeilen_loeschen(2)
+                            continue
+
+
+                    #---Abklingzeit auf max setzen---#
+                    faehigkeit.abklingzeit = faehigkeit.max_abklingzeit
 
                     #---Eigentliche Fähigkeit---#
                     faehigkeit.funktion(wer, ziel)

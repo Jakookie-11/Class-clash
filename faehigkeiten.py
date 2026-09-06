@@ -49,13 +49,15 @@ class faehigkeit:
         name : str,
         funktion : object,
         max_abklingzeit : int,
-        abklingzeit : int
+        abklingzeit : int,
+        zieltyp : str
         ):
 
         self.name = name
         self.funktion = funktion
         self.max_abklingzeit = max_abklingzeit
         self.abklingzeit = abklingzeit
+        self.zieltyp = zieltyp
 
 
 
@@ -77,7 +79,8 @@ einfacher_angriff = faehigkeit(
     "einfacher_angriff",
     einfacher_angriff_obj,
     0,
-    0
+    0,
+    "gegner"
 )
 
 
@@ -102,7 +105,8 @@ blutiger_schlag = faehigkeit(
     "blutiger_schlag",
     blutiger_schlag_obj,
     2,
-    0
+    0,
+    "gegner"
 )
 
 
@@ -120,7 +124,8 @@ einfache_heilung = faehigkeit(
     "einfache_heilung",
     einfache_heilung_obj,
     3,
-    0
+    0,
+    "verbündete"
 )
 
 
@@ -140,7 +145,8 @@ staerkende_heilung = faehigkeit(
     "staerkende_heilung",
     staerkende_heilung_obj,
     4,
-    0
+    0,
+    "verbündete"
 )
 
 
@@ -165,7 +171,8 @@ starker_schlag = faehigkeit(
     "starker_schlag",
     starker_schlag_obj,
     4,
-    0
+    0,
+    "gegner"
 )
 
 
@@ -190,5 +197,6 @@ bleibender_schlag = faehigkeit(
     "bleibender_schlag",
     bleibender_schlag_obj,
     2,
-    0
+    0,
+    "gegner"
 )
