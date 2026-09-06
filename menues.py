@@ -5,8 +5,7 @@ hauptmenue = {
     "2) Charaktere"    : "",
     "3) Einstellungen" : "",
     "4) Shop         " : "",
-    "5) Speichern"     : "", 
-    "6) Beenden"       : ""
+    "5) Beenden"       : ""
     
 }
 
@@ -27,4 +26,10 @@ neues_spiel_menue = {
     "1) benutzer-definieter Kampf" : "",
     "2) Kampange(n)"               : "",
     "3) Zurueck"                   : ""
+}
+
+anmelden_menue = {
+    "1) Anmelden" : "",
+    "2) Registrieren" : "",
+    "3) Admin" : "",
 }

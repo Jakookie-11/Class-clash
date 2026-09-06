@@ -4,15 +4,15 @@ import time
 import confic
 from saves import speichern
 
-def menue(bibliothek, spieler_name):
+def menue(bibliothek, spieler_name=None):
 
     while True:
+
+        os.system(confic.terminal_clear)
 
         #---printen der Wahlen---#
         for schlüssel, wert in bibliothek.items():
             print(schlüssel)
-
-        time.sleep(1)
 
         #---Wahl---#
         auswahl = input("Wahl? ")
@@ -36,9 +36,8 @@ def menue(bibliothek, spieler_name):
         elif auswahl == "8":
             return(8)
         else:
-            print("Error 1")
-            speichern.spiel_speichern(spieler_name)
-            time.sleep(600)
+            continue
+
 
 
 
