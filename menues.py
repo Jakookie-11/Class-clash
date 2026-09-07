@@ -41,7 +41,8 @@ anmelden_menue = {
 
 einstellungen_menue = {
     "1) Profil" : "",
-    "2) Zurueck" : ""
+    "2) Credits" : "",
+    "3) Zurueck" : ""
 }
 #->Y
 profil_menue = {
