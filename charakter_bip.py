@@ -13,9 +13,8 @@ import confic
 
 def charakter_bip(spieler_name):
     #---Menü---#
-    charakter_bip_menue = True
 
-    while charakter_bip_menue == True:
+    while True:
 
         os.system(confic.terminal_clear)
 

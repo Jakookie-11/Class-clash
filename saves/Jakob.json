@@ -1,1 +1,0 @@
-{"spieler_name": "Jakob", "ressourcen": {"Credits   ": 1000, "Material 1": 50, "Energie   ": 100}, "charaktere": {"Jakob": {"hp": 200, "schaden": -100, "level": 1}, "Leo": {"hp": 70, "schaden": -20, "level": 1}, "Simon": {"hp": 110, "schaden": -10, "level": 1}, "Max": {"hp": 200, "schaden": -10, "level": 1}}}

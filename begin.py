@@ -163,6 +163,9 @@ def begin():
                         datei.close()
 
                         registieren = False
+
+                        
+
                         break
 
                     else:
