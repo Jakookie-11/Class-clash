@@ -49,7 +49,7 @@ while hauptmenue == True:
 
     elif wahl == 4:
         while True:
-            is_brake_shop = shop.shop(spieler)
+            is_brake_shop = shop.shop()
 
             if is_brake_shop == 1:
                 os.system(confic.terminal_clear)

@@ -4,12 +4,11 @@ import time
 import confic
 from saves import speichern
 
-def menue(bibliothek, spieler_name=None, clear_terminal=True):
+def menue(bibliothek, spieler_name=None,):
 
     while True:
 
-        if clear_terminal == True:
-            os.system(confic.terminal_clear)
+        os.system(confic.terminal_clear)
 
         #---printen der Wahlen---#
         for schlüssel, wert in bibliothek.items():

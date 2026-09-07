@@ -8,6 +8,7 @@ import confic
 
 import menues
 import funktions
+import credits
 
 def einstellungen(spieler_name):
 
@@ -23,6 +24,14 @@ def einstellungen(spieler_name):
             is_breake_profil_einstellungen = profil_enstellungen(spieler_name)
 
             if is_breake_profil_einstellungen == 1:
+                continue
+
+        elif wahl == 2:
+            os.system(confic.terminal_clear)
+
+            is_break_credits = credits.credits()
+
+            if is_break_credits == 1:
                 continue
             
 

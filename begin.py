@@ -25,10 +25,10 @@ def begin():
     os.system(confic.terminal_clear)
 
     #---Vorbild---#
-    print("======================")
-    print("Willkommen bei ")
-    print("Class clash")
-    print("======================")
+    print("══════════════════════════════")
+    print("        Willkommen bei ")
+    print("          Class clash")
+    print("══════════════════════════════")
     time.sleep(2)
 
     while True:

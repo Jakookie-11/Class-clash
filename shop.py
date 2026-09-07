@@ -5,30 +5,35 @@ import menues
 import ressourcen
 import confic
 
-def shop(spieler_name):
+def shop():
+
+    bibliothek = menues.shop_menue
 
     while  True:
         os.system(confic.terminal_clear)
-        print("==================")
-        print("       Shop       ")
-        print("==================")
+        print("══════════════════════════════")
+        print("             Shop")
+        print("══════════════════════════════")
         print()
-        print("=====Guthaben=====")
+        print("═══════════Guthaben═══════════")
         ressourcen.ressourcen_anzeigen()
-        print("==================")
+        print("══════════════════════════════")
         print()
         print("Zu Kaufen:")
         print()
 
-        wahl = funktions.menue(menues.shop_menue, spieler_name, clear_terminal=False)
+        for schlüssel, wert in bibliothek.items():
+            print(schlüssel)
 
-        if wahl == 1:
+        wahl = input("Wahl? ")
+
+        if wahl == "1":
             ressourcen.ressourcen_verändern("Credits   ", 1000)
 
-        elif wahl == 2:
+        elif wahl == "2":
             ressourcen.ressourcen_verändern("Material 1", 20)
 
-        elif wahl == 3:
+        elif wahl == "3":
             ressourcen.ressourcen_verändern("Energie   ", 20)
 
         else:
