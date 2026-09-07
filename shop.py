@@ -20,7 +20,7 @@ def shop(spieler_name):
         print("Zu Kaufen:")
         print()
 
-        wahl = funktions.menue(menues.shop_menue, spieler_name)
+        wahl = funktions.menue(menues.shop_menue, spieler_name, clear_terminal=False)
 
         if wahl == 1:
             ressourcen.ressourcen_verändern("Credits   ", 1000)
