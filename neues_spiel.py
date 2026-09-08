@@ -372,9 +372,11 @@ def kampf():
                 time.sleep(5)
                 os.system(confic.terminal_clear)
 
-                #---Status Effekte zurücksetzen---#
+                #---Status Effekte / HP zurücksetzen---#
                 for name in charaktere.Charaktere:
                     charaktere.Charaktere[name].status_effekte = []
+
+                faehigkeiten.HP_zuruecksetzen()
 
                 break
 
@@ -386,9 +388,11 @@ def kampf():
                 time.sleep(5)
                 os.system(confic.terminal_clear)
 
-                #---Status Effekte zurücksetzen---#
+                #---Status Effekte / HP zurücksetzen---#
                 for name in charaktere.Charaktere:
                     charaktere.Charaktere[name].status_effekte = []
+
+                faehigkeiten.HP_zuruecksetzen()
                     
                 break        
 

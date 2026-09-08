@@ -4,7 +4,22 @@ import status_effekte
 
 
 def HP_verändern(wem, wie_viel):
-    charaktere.Charaktere[wem].hp = charaktere.Charaktere[wem].hp +wie_viel
+    charakter = charaktere.Charaktere[wem]
+
+    charakter.hp += wie_viel
+
+    if charakter.hp > charakter.max_hp:
+        charakter.hp = charakter.max_hp
+
+    elif charakter.hp <= 0:
+        charakter.hp = -1
+
+
+
+def HP_zuruecksetzen():
+    for charakter in charaktere.Charaktere.values():
+        charakter.max_hp = charakter.max_max_hp
+        charakter.hp = charakter.max_hp
 
 
 
@@ -73,7 +88,7 @@ def einfacher_angriff_obj(wer, wen):
     HP_verändern(wen, schaden)
 
 def einfacher_angriff_erklaerung():
-    print("Einfacher Angriff: Ein einfacher Angriff, der einfachen Schaden verursacht.")
+    print("Einfacher Angriff: Ein Angriff, der einfachen Schaden verursacht.")
 
 einfacher_angriff = faehigkeit(
     "einfacher_angriff",
@@ -139,7 +154,7 @@ def staerkende_heilung_obj(wer, wen):
     HP_verändern(wen, 50)
 
 def staerkende_heilung_erklaerung():
-    print("Stärkende Heilung: Eine Heilung, die 50 HP wiederherstellt und den Gegner stärkt, sodass er mehr Schaden verursacht.")
+    print("Stärkende Heilung: Eine Heilung, die 50 HP wiederherstellt und den anvisierten Verbündeten stärkt, sodass er mehr Schaden verursacht.")
 
 staerkende_heilung = faehigkeit(
     "staerkende_heilung",
@@ -165,7 +180,7 @@ def starker_schlag_obj(wer, wen):
     HP_verändern(wen, schaden)
 
 def starker_schlag_erklaerung():
-    print("Starker Schlag: Ein starker Angriff, der einfachen Schaden verursacht und den Gegner betäubt")
+    print("Starker Schlag: Ein Angriff, der einfachen Schaden verursacht und den Gegner betäubt")
 
 starker_schlag = faehigkeit(
     "starker_schlag",

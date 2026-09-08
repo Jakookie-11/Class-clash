@@ -10,6 +10,8 @@ class charakter:
         name: str,
         klasse: str,
         hp: int,
+        max_hp: int,
+        max_max_hp,
         schaden: int,
         seite: str,
         speed: int,
@@ -23,6 +25,8 @@ class charakter:
         self.name = name
         self.klasse = klasse
         self.hp = hp
+        self.max_hp = max_hp
+        self.max_max_hp = max_max_hp
         self.schaden = schaden
         self.seite = seite
         self.speed = speed
@@ -42,6 +46,8 @@ Jakob = charakter(
     "Jakob",
     "Tank",
     200,
+    200,
+    200,
     -100,
     "light_side",
     100,
@@ -55,6 +61,8 @@ Jakob = charakter(
 Leo = charakter(
     "Leo",
     "Angreifer",
+    70,
+    70,
     70,
     -20,
     "light_side",
@@ -70,6 +78,8 @@ Simon = charakter(
     "Simon",
     "Unterstuetzer",
     110,
+    110,
+    110,
     -10,
     "dark_side",
     70,
@@ -83,6 +93,8 @@ Simon = charakter(
 Max = charakter(
     "Max",
     "Tank",
+    200,
+    200,
     200,
     -10,
     "dark_side",
