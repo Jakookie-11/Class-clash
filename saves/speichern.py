@@ -15,6 +15,8 @@ def spiel_speichern(spieler):
     for name, charakter in charaktere.Charaktere.items():
         gespeicherte_charaktere[name] = {
             "hp" : charakter.hp,
+            "max_hp" : charakter.max_hp,
+            "max_max_hp" : charakter.max_max_hp,
             "schaden" : charakter.schaden,
             "level" : charakter.level
         }
@@ -64,5 +66,7 @@ def spiel_laden(spieler):
         charakter = charaktere.Charaktere[name]
 
         charakter.hp = gespeicherte_charaktere["hp"]
+        charakter.max_hp = gespeicherte_charaktere["max_hp"]
+        charakter.max_max_hp = gespeicherte_charaktere["max_max_hp"]
         charakter.schaden = gespeicherte_charaktere["schaden"]
         charakter.level = gespeicherte_charaktere["level"]

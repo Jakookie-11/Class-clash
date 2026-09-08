@@ -4,7 +4,22 @@ import status_effekte
 
 
 def HP_verändern(wem, wie_viel):
-    charaktere.Charaktere[wem].hp = charaktere.Charaktere[wem].hp +wie_viel
+    charakter = charaktere.Charaktere[wem]
+
+    charakter.hp += wie_viel
+
+    if charakter.hp > charakter.max_hp:
+        charakter.hp = charakter.max_hp
+
+    elif charakter.hp <= 0:
+        charakter.hp = -1
+
+
+
+def HP_zuruecksetzen():
+    for charakter in charaktere.Charaktere.values():
+        charakter.max_hp = charakter.max_max_hp
+        charakter.hp = charakter.max_hp
 
 
 
