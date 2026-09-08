@@ -1,6 +1,7 @@
 import os
 import time
 import zipfile
+import shutil
 
 import confic
 from urllib.request import urlopen
@@ -85,6 +86,7 @@ def online_version_abrufen():
 
 
 def update_herunterladen():
+    os.makedirs("update", exist_ok=True)
     url = "https://raw.githubusercontent.com/Jakookie-11/Class-clash/Version-information-and-asking/Class-clash-Version-information-and-asking.zip"
 
     antwort = urlopen(url)
@@ -97,7 +99,10 @@ def update_herunterladen():
     datei = zipfile.ZipFile("update/update.zip", "r")
     datei.extractall("update")
     datei.close()
+
     os.remove("update/update.zip")
+    shutil.rmtree("update/Class-clash-Version-information-and-asking/saves")
+    shutil.rmtree("update/Class-clash-Version-information-and-asking/.vscode")
 
 
 
