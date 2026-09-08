@@ -6,7 +6,7 @@ import json
 import confic
 
 import funktions
-from saves import speichern
+import speichern
 import menues
 
 
@@ -117,7 +117,7 @@ def begin():
                     os.system(confic.terminal_clear)
 
                     speichern.spiel_laden(spieler)
-                    
+
                     return spieler
 
 

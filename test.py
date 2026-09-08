@@ -2,4 +2,4 @@
 
 import funktions
 
-print(funktions.versionen_vergleichen())
+funktions.update_herunterladen()

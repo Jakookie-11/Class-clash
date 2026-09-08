@@ -1,8 +1,8 @@
 import os
 import time
+import zipfile
 
 import confic
-from saves import speichern
 from urllib.request import urlopen
 
 def menue(bibliothek, spieler_name=None,):
@@ -81,6 +81,23 @@ def online_version_abrufen():
     inhalt = antwort.read().decode("utf-8")
 
     return inhalt
+
+
+
+def update_herunterladen():
+    url = "https://raw.githubusercontent.com/Jakookie-11/Class-clash/Version-information-and-asking/Class-clash-Version-information-and-asking.zip"
+
+    antwort = urlopen(url)
+    inhalt = antwort.read()
+
+    datei = open("update/update.zip", "wb")
+    datei.write(inhalt)
+    datei.close()
+
+    datei = zipfile.ZipFile("update/update.zip", "r")
+    datei.extractall("update")
+    datei.close()
+    os.remove("update/update.zip")
 
 
 

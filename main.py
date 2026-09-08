@@ -7,7 +7,7 @@ import menues
 import charakter_bip
 import shop
 import neues_spiel
-from saves import speichern
+import speichern
 import begin
 import einstellungen
 
