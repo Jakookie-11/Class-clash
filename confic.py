@@ -1,4 +1,4 @@
-version = "1.0.0-beta"
+version = "0.9.0-beta"
 
 first_start_configurator = True
 
