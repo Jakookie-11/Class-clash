@@ -2,6 +2,7 @@ import os
 import time
 import bcrypt
 import json
+
 import confic
 
 import funktions
@@ -10,6 +11,43 @@ import menues
 
 
 def begin():
+
+    speichern.confic_setup_laden()
+
+    if confic.first_start_configurator == True:
+
+        print("════════════════════════════════")
+        print("           CLASS CLASH")
+        print("════════════════════════════════")
+        print()
+        print("Willkommen!")
+        print()
+        print("Auf welchem System spielst du?")
+        print()
+        print("[1] Windows")
+        print("[2] Linux")
+        print()
+
+        while True:
+
+            betriebssystem = input("Wahl? ")
+
+            if betriebssystem == "1":
+                confic.first_start_configurator = False
+                confic.terminal_clear = "cls"
+                os.system(confic.terminal_clear)
+                break
+            elif betriebssystem == "2":
+                confic.first_start_configurator = False
+                confic.terminal_clear = "clear"
+                os.system(confic.terminal_clear)
+                break
+            else:
+                funktions.zeilen_loeschen(1)
+                continue
+
+
+    speichern.confic_setup_speichern()
 
     datei = f"saves/passwoerter.json"
     datei = open(datei, "r")

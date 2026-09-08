@@ -1,22 +1,15 @@
 #----------Tests----------#
 
-#import json
-#import confic
+import json
+import confic
 
-#datei = f"saves/passwoerter.json"
-#datei = open(datei, "w")
+datei = f"saves/confic_setup.json"
+datei = open(datei, "w")
 
-#for spieler, passwort in confic.passwoerter.items():
-#    passwort = passwort.decode("utf-8")
-#    confic.passwoerter[spieler] = passwort
+daten = {
+    "starter_menue"  : confic.first_start_configurator,
+    "terminal_clear" : confic.terminal_clear
+}
 
-#daten = {
-#    "passwoerter": confic.passwoerter
-#}
-
-#json.dump(daten, datei)
-#datei.close()
-
-import shop
-
-shop.shop()
+json.dump(daten, datei)
+datei.close()

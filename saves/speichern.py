@@ -2,6 +2,8 @@ import json
 import os
 from datetime import datetime
 
+import confic
+
 import charaktere
 import ressourcen
 
@@ -45,6 +47,33 @@ def spiel_speichern(spieler):
 
     json.dump(daten, datei)
 
+    datei.close()
+
+
+
+def confic_setup_laden():
+    datei = f"saves/confic_setup.json"
+    datei = open(datei, "r")
+
+    daten = json.load(datei)
+
+    datei.close()
+
+    confic.first_start_configurator = daten["starter_menue"]
+    confic.terminal_clear = daten["terminal_clear"]
+
+
+
+def confic_setup_speichern():
+    datei = f"saves/confic_setup.json"
+    datei = open(datei, "w")
+
+    daten = {
+        "starter_menue"  : confic.first_start_configurator,
+        "terminal_clear" : confic.terminal_clear
+    }
+
+    json.dump(daten, datei)
     datei.close()
 
 

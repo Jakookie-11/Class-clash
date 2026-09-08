@@ -13,9 +13,10 @@ import einstellungen
 
 
 
-hauptmenue = True
 
 spieler = begin.begin()
+
+hauptmenue = True
 
 #-----Hauptmenü-----#
 while hauptmenue == True:
