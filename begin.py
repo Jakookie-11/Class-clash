@@ -54,7 +54,7 @@ def begin():
     speichern.confic_setup_speichern()
 
 
-    if not funktions.online_version_abrufen() == confic.version:
+    if not funktions.versionen_vergleichen():
         os.system(confic.terminal_clear)
 
         subprocess.Popen([sys.executable, "updater.py"])
