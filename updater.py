@@ -4,6 +4,7 @@ from urllib.request import urlopen
 import zipfile
 import subprocess
 import sys
+import time
 
 
 os.makedirs("update", exist_ok=True)
@@ -49,7 +50,8 @@ for datei in os.listdir("update/Class-clash-main"):
 
 shutil.rmtree("update/")
 
-subprocess.run([sys.executable, "main.py"])
 print("UPDATER FERTIG")
+
+time.sleep(2)
 
 sys.exit()
