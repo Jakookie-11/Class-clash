@@ -85,6 +85,12 @@ def online_version_abrufen():
 
 
 
+def lokale_version_abrufen():
+    with open("version.txt", "r") as datei:
+        return datei.read().strip()
+
+
+
 
 def versionen_vergleichen():
 
