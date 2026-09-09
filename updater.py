@@ -39,7 +39,8 @@ for datei in os.listdir("."):
         os.remove(datei)
 
 
-shutil.rmtree("__pycache__")
+if os.path.exists("__pycache__"):
+    shutil.rmtree("__pycache__")
 
 
 for datei in os.listdir("update/Class-clash-main"):
@@ -53,20 +54,32 @@ shutil.rmtree("update/")
 
 import charaktere
 
-datei = "saves/confic_setup.json"
-datei = open(datei, "r")
+for spieler in os.listdir("saves"):
 
-daten = json.load(datei)
+    if spieler.endswith(".json") and spieler != "confic_setup.json" and spieler != "passwoerter.json":
 
-datei.close()
+        datei = f"saves/{spieler}"
+        datei = open(datei, "r")
 
-for charakter in charaktere.Charaktere:
-    if charakter not in daten["charaktere"]:
-        daten["charaktere"][charakter] = charaktere.Charaktere[charakter]
+        daten = json.load(datei)
 
-datei = open("saves/confic_setup.json", "w")
-json.dump(daten, datei)
-datei.close()
+        datei.close()
+
+        for charakter in charaktere.Charaktere:
+            if charakter not in daten["charaktere"]:
+                neuer_charakter = charaktere.Charaktere[charakter]
+
+                daten["charaktere"][charakter] = {
+                    "hp": neuer_charakter.hp,
+                    "max_hp": neuer_charakter.max_hp,
+                    "max_max_hp": neuer_charakter.max_max_hp,
+                    "schaden": neuer_charakter.schaden,
+                    "level": neuer_charakter.level
+                }
+
+        datei = open(f"saves/{spieler}", "w")
+        json.dump(daten, datei)
+        datei.close()
 
 os.system(confic.terminal_clear)
 
