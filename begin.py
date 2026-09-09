@@ -71,7 +71,7 @@ def begin():
     print("║                                        ║")
     print("║               BETA TEST                ║")
     print("║                                        ║")
-    print("║          Version 1.0.0-beta            ║")
+    print(f"║          Version {funktions.lokale_version_abrufen}            ║")
     print("║                                        ║")
     print("║  !! Diese Version befindet sich noch   ║")
     print("║     in der Beta-Phase.                 ║")

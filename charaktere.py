@@ -105,10 +105,27 @@ Max = charakter(
 )
 
 
+#---Lovis H---#
+Lovis_H = charakter(
+    "Lovis_H",
+    "unterstuetzer",
+    100,
+    100,
+    100,
+    -10,
+    "dark_side",
+    85,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.blutiger_schlag,
+    faehigkeit_3=faehigkeiten.staerkende_heilung
+)
+
+
 #----Charaktere----#
 Charaktere = {
-    "Jakob" : Jakob,
-    "Leo"   : Leo,
-    "Simon" : Simon,
-    "Max"   : Max
+    "Jakob"   : Jakob,
+    "Leo"     : Leo,
+    "Simon"   : Simon,
+    "Max"     : Max,
+    "Lovis_H" : Lovis_H
 }

@@ -5,6 +5,7 @@ import zipfile
 import confic
 import sys
 import time
+import json
 
 
 os.makedirs("update", exist_ok=True)
@@ -49,6 +50,23 @@ for datei in os.listdir("update/Class-clash-main"):
 
 
 shutil.rmtree("update/")
+
+import charaktere
+
+datei = "saves/confic_setup.json"
+datei = open(datei, "r")
+
+daten = json.load(datei)
+
+datei.close()
+
+for charakter in charaktere.Charaktere:
+    if charakter not in daten["charaktere"]:
+        daten["charaktere"][charakter] = charaktere.Charaktere[charakter]
+
+datei = open("saves/confic_setup.json", "w")
+json.dump(daten, datei)
+datei.close()
 
 os.system(confic.terminal_clear)
 
