@@ -2,7 +2,7 @@ import os
 import shutil
 from urllib.request import urlopen
 import zipfile
-import subprocess
+import confic
 import sys
 import time
 
@@ -50,6 +50,7 @@ for datei in os.listdir("update/Class-clash-main"):
 
 shutil.rmtree("update/")
 
+os.system(confic.terminal_clear)
 print("UPDATER FERTIG")
 
 time.sleep(2)
