@@ -1,8 +1,10 @@
 import os
 import time
+import zipfile
+import shutil
 
 import confic
-from saves import speichern
+from urllib.request import urlopen
 
 def menue(bibliothek, spieler_name=None,):
 
@@ -70,3 +72,29 @@ def bestaetigung_menue(wofür):
 def zeilen_loeschen(anzahl):
     for _ in range(anzahl):
         print("\033[1A\033[2K", end="")
+
+
+
+def online_version_abrufen():
+    url = "https://raw.githubusercontent.com/Jakookie-11/Class-clash/main/version.txt"
+
+    antwort = urlopen(url)
+    inhalt = antwort.read().decode("utf-8")
+
+    return inhalt
+
+
+
+
+def versionen_vergleichen():
+
+    online_version = online_version_abrufen()
+
+    aktuelle_version = confic.version
+
+    if online_version == aktuelle_version:
+
+        return True
+
+    else:
+        return False

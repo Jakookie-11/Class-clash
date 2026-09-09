@@ -1,13 +1,14 @@
 import os
 import time
 import confic
+import sys
 
 import funktions
 import menues
 import charakter_bip
 import shop
 import neues_spiel
-from saves import speichern
+import speichern
 import begin
 import einstellungen
 
@@ -15,6 +16,9 @@ import einstellungen
 
 
 spieler = begin.begin()
+
+if spieler == "break":
+    sys.exit()
 
 hauptmenue = True
 

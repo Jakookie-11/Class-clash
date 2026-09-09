@@ -52,7 +52,7 @@ def spiel_speichern(spieler):
 
 
 def confic_setup_laden():
-    datei = f"saves/confic_setup.json"
+    datei = "saves/confic_setup.json"
     datei = open(datei, "r")
 
     daten = json.load(datei)
@@ -65,7 +65,7 @@ def confic_setup_laden():
 
 
 def confic_setup_speichern():
-    datei = f"saves/confic_setup.json"
+    datei = "saves/confic_setup.json"
     datei = open(datei, "w")
 
     daten = {

@@ -238,7 +238,7 @@ def profil_zuruecksetzen(spieler_name):
             datei.close()
 
             #---Generelle Daten holen---#
-            datei = f"saves/standard.json"
+            datei = "standard.json"
             datei = open(datei, "r")
             generelle_daten = json.load(datei)
 
