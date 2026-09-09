@@ -17,6 +17,10 @@ import einstellungen
 
 spieler = begin.begin()
 
+print("Online:", repr(funktions.online_version_abrufen()))
+print("Lokal: ", repr(confic.version))
+time.sleep(3)
+
 if spieler == "break":
     sys.exit()
 

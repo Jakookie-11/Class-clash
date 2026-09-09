@@ -20,10 +20,10 @@ datei = zipfile.ZipFile("update/update.zip", "r")
 datei.extractall("update")
 datei.close()
 
-os.remove("update/update.zip")
-os.remove("update/main/updater.py")
-shutil.rmtree("update/main/saves")
-shutil.rmtree("update/main/.vscode")
+os.remove("update/Class-clash-main/update.zip")
+os.remove("update/Class-clash-main/updater.py")
+shutil.rmtree("update/Class-clash-main/saves")
+shutil.rmtree("update/Class-clash-main/.vscode")
 
 
 for datei in os.listdir("."):
@@ -40,15 +40,16 @@ for datei in os.listdir("."):
 shutil.rmtree("__pycache__")
 
 
-for datei in os.listdir("update/main"):
+for datei in os.listdir("update/Class-clash-main"):
     shutil.move(
-        "update/main/" + datei,
+        "update/Class-clash-main/" + datei,
         "."
     )
 
 
 shutil.rmtree("update/")
 
-subprocess.Popen([sys.executable, "main.py"])
+subprocess.run([sys.executable, "main.py"])
+print("UPDATER FERTIG")
 
 sys.exit()
