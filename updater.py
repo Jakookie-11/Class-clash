@@ -20,7 +20,7 @@ datei = zipfile.ZipFile("update/update.zip", "r")
 datei.extractall("update")
 datei.close()
 
-os.remove("update/Class-clash-main/update.zip")
+os.remove("update/update.zip")
 os.remove("update/Class-clash-main/updater.py")
 shutil.rmtree("update/Class-clash-main/saves")
 shutil.rmtree("update/Class-clash-main/.vscode")
