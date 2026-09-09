@@ -29,6 +29,9 @@ if spieler == "break":
     spieler = begin.begin()
 
 #-----Hauptmenü-----#
+
+hauptmenue = True
+
 while hauptmenue == True:
     wahl = funktions.menue(menues.hauptmenue, spieler)
     os.system(confic.terminal_clear)
