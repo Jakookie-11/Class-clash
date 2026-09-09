@@ -27,6 +27,8 @@ if spieler == "break":
 
     os.execv(sys.executable, [sys.executable, "main.py"])
 
+    spieler = begin.begin()
+
 #-----Hauptmenü-----#
 while hauptmenue == True:
     wahl = funktions.menue(menues.hauptmenue, spieler)

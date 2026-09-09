@@ -53,16 +53,6 @@ def begin():
 
     speichern.confic_setup_speichern()
 
-
-    if not funktions.versionen_vergleichen():
-        os.system(confic.terminal_clear)
-
-        subprocess.Popen([sys.executable, "updater.py"])
-
-        return "break"
-
-
-
     datei = f"saves/passwoerter.json"
     datei = open(datei, "r")
 
@@ -80,7 +70,7 @@ def begin():
 
         os.system(confic.terminal_clear)
 
-        if funktions.versionen_vergleichen() == True or pass_update == True:
+        if funktions.versionen_vergleichen() or pass_update == True:
 
             #---Vorbild---#
             print("══════════════════════════════")
@@ -245,7 +235,7 @@ def begin():
                 print("      UPDATE VERFÜGBAR")
                 print("════════════════════════════")
                 print()
-                print(f"Aktuelle Version: {confic.version}")
+                print(f"Aktuelle Version: {funktions.lokale_version_abrufen()}")
                 print(f"Neueste Version : {funktions.online_version_abrufen()}")
                 print()
                 print("[1] Jetzt  Updaten")
