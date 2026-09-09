@@ -4,6 +4,8 @@ import bcrypt
 import json
 
 import confic
+import subprocess
+import sys
 
 import funktions
 import speichern
@@ -50,6 +52,16 @@ def begin():
 
 
     speichern.confic_setup_speichern()
+
+
+    if not funktions.online_version_abrufen() == confic.version:
+        os.system(confic.terminal_clear)
+
+        subprocess.Popen([sys.executable, "updater.py"])
+
+        return "break"
+
+
 
     datei = f"saves/passwoerter.json"
     datei = open(datei, "r")

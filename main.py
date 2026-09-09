@@ -1,6 +1,7 @@
 import os
 import time
 import confic
+import sys
 
 import funktions
 import menues
@@ -15,6 +16,9 @@ import einstellungen
 
 
 spieler = begin.begin()
+
+if spieler == "break":
+    sys.exit()
 
 hauptmenue = True
 

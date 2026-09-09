@@ -85,26 +85,6 @@ def online_version_abrufen():
 
 
 
-def update_herunterladen():
-    os.makedirs("update", exist_ok=True)
-    url = "https://raw.githubusercontent.com/Jakookie-11/Class-clash/Version-information-and-asking/Class-clash-Version-information-and-asking.zip"
-
-    antwort = urlopen(url)
-    inhalt = antwort.read()
-
-    datei = open("update/update.zip", "wb")
-    datei.write(inhalt)
-    datei.close()
-
-    datei = zipfile.ZipFile("update/update.zip", "r")
-    datei.extractall("update")
-    datei.close()
-
-    os.remove("update/update.zip")
-    shutil.rmtree("update/Class-clash-Version-information-and-asking/saves")
-    shutil.rmtree("update/Class-clash-Version-information-and-asking/.vscode")
-
-
 
 def versionen_vergleichen():
 
