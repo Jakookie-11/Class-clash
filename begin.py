@@ -254,8 +254,7 @@ def begin():
                 wahl = input("Wahl? ")
 
                 if wahl == "1":
-                    time.sleep(100)
-                    break
+                    return "break"
 
                 elif wahl == "2":
                     pass_update = True

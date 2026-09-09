@@ -11,20 +11,21 @@ import neues_spiel
 import speichern
 import begin
 import einstellungen
+import subprocess
 
 
 
 
 spieler = begin.begin()
 
-print("Online:", repr(funktions.online_version_abrufen()))
-print("Lokal: ", repr(confic.version))
-time.sleep(3)
-
 if spieler == "break":
-    sys.exit()
 
-hauptmenue = True
+    subprocess.run([sys.executable, "updater.py"])
+
+    print("UPDATER IST ZURÜCK")
+    input("ENTER DRÜCKEN...")
+
+    os.execv(sys.executable, [sys.executable, "main.py"])
 
 #-----Hauptmenü-----#
 while hauptmenue == True:
