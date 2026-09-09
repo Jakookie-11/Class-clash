@@ -7,7 +7,7 @@ import sys
 
 
 os.makedirs("update", exist_ok=True)
-url = "https://raw.githubusercontent.com/Jakookie-11/Class-clash/Version-information-and-asking/Class-clash-Version-information-and-asking.zip"
+url = "https://raw.githubusercontent.com/Jakookie-11/Class-clash/main/update.zip"
 
 antwort = urlopen(url)
 inhalt = antwort.read()
@@ -21,9 +21,9 @@ datei.extractall("update")
 datei.close()
 
 os.remove("update/update.zip")
-os.remove("update/Class-clash-Version-information-and-asking/updater.py")
-shutil.rmtree("update/Class-clash-Version-information-and-asking/saves")
-shutil.rmtree("update/Class-clash-Version-information-and-asking/.vscode")
+os.remove("update/main/updater.py")
+shutil.rmtree("update/main/saves")
+shutil.rmtree("update/main/.vscode")
 
 
 for datei in os.listdir("."):
@@ -40,9 +40,9 @@ for datei in os.listdir("."):
 shutil.rmtree("__pycache__")
 
 
-for datei in os.listdir("update/Class-clash-Version-information-and-asking"):
+for datei in os.listdir("update/main"):
     shutil.move(
-        "update/Class-clash-Version-information-and-asking/" + datei,
+        "update/main/" + datei,
         "."
     )
 

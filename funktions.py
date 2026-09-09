@@ -76,7 +76,7 @@ def zeilen_loeschen(anzahl):
 
 
 def online_version_abrufen():
-    url = "https://raw.githubusercontent.com/Jakookie-11/Class-clash/Version-information-and-asking/version.txt"
+    url = "https://raw.githubusercontent.com/Jakookie-11/Class-clash/main/version.txt"
 
     antwort = urlopen(url)
     inhalt = antwort.read().decode("utf-8")
