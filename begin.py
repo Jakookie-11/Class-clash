@@ -66,6 +66,23 @@ def begin():
 
     os.system(confic.terminal_clear)
 
+    print("╔════════════════════════════════════════╗")
+    print("║              CLASS CLASH               ║")
+    print("║                                        ║")
+    print("║               BETA TEST                ║")
+    print("║                                        ║")
+    print("║          Version 1.0.0-beta            ║")
+    print("║                                        ║")
+    print("║  !! Diese Version befindet sich noch   ║")
+    print("║     in der Beta-Phase.                 ║")
+    print("║                                        ║")
+    print("║  Fehler können auftreten.              ║")
+    print("║  Bitte melde gefundene Probleme.       ║")
+    print("║                                        ║")
+    print("║          Viel Erfolg, Spieler!         ║")
+    print("╚════════════════════════════════════════╝")
+    input("Enter...")
+
     while True:
 
         os.system(confic.terminal_clear)
