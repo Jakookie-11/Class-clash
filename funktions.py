@@ -81,7 +81,7 @@ def online_version_abrufen():
     antwort = urlopen(url)
     inhalt = antwort.read().decode("utf-8")
 
-    return inhalt
+    return inhalt.strip()
 
 
 
@@ -90,7 +90,8 @@ def versionen_vergleichen():
 
     online_version = online_version_abrufen()
 
-    aktuelle_version = confic.version
+    with open("version.txt", "r") as datei:
+        aktuelle_version = datei.read().strip()
 
     if online_version == aktuelle_version:
 
