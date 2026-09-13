@@ -105,9 +105,9 @@ Max = charakter(
 )
 
 
-#---Lovis H---#
-Lovis_H = charakter(
-    "Lovis_H",
+#---Lovis---#
+Lovis = charakter(
+    "Lovis",
     "unterstuetzer",
     100,
     100,
@@ -127,5 +127,5 @@ Charaktere = {
     "Leo"     : Leo,
     "Simon"   : Simon,
     "Max"     : Max,
-    "Lovis_H" : Lovis_H
+    "Lovis"   : Lovis,
 }
