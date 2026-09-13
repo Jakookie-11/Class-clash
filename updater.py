@@ -6,10 +6,11 @@ import confic
 import sys
 import time
 import json
+import funktions
 
 
 os.makedirs("update", exist_ok=True)
-url = "https://raw.githubusercontent.com/Jakookie-11/Class-clash/main/update.zip"
+url = funktions.daten_herunterladen()
 
 antwort = urlopen(url)
 inhalt = antwort.read()

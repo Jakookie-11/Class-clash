@@ -2,6 +2,7 @@ import os
 import time
 import zipfile
 import shutil
+import json
 
 import confic
 from urllib.request import urlopen
@@ -76,12 +77,12 @@ def zeilen_loeschen(anzahl):
 
 
 def online_version_abrufen():
-    url = "https://raw.githubusercontent.com/Jakookie-11/Class-clash/main/version.txt"
+    url = "https://api.github.com/repos/Jakookie-11/Class-clash/releases/latest"
+    github_antwort = urlopen(url)
 
-    antwort = urlopen(url)
-    inhalt = antwort.read().decode("utf-8")
+    daten = json.loads(github_antwort.read())
 
-    return inhalt.strip()
+    return daten["tag_name"]
 
 
 
@@ -105,3 +106,18 @@ def versionen_vergleichen():
 
     else:
         return False
+
+
+
+def daten_herunterladen():
+    url = "https://api.github.com/repos/Jakookie-11/Class-clash/releases/latest"
+    github_antwort = urlopen(url)
+    
+    daten = json.loads(github_antwort.read())
+
+    for asset in daten["assets"]:
+        if asset["name"] == "update.zip":
+            url_to_return = asset["browser_download_url"]
+
+
+    return url_to_return

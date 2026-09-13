@@ -2,4 +2,4 @@
 
 import funktions
 
-funktions.update_herunterladen()
+print(funktions.daten_herunterladen())
