@@ -35,6 +35,21 @@ probleme = {
             "id": "CC-002",
             "beschreibung": "Im Shop werden die Ressourcen nicht angezeigt",
             "status": "behoben"
-        }
+        },
+        {
+            "id": "CC-003",
+            "beschreibung": "Kein resetten der Apklingzeiten nach dem Kampf",
+            "status": "behoben"  
+        },
+        {
+            "id": "CC-004",
+            "beschreibung": "Lovis heisst Lovis_H und nicht Lovis",
+            "status": "behoben"
+        },
+        {
+            "id": "CC-005",
+            "beschreibung": "Ganzes Gegnerteam tot, aber kein Win_Bildschirm",
+            "status": "behoben"
+        },
     ]
 }

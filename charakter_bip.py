@@ -24,7 +24,10 @@ def charakter_bip(spieler_name):
             charaktere_anzeigen()
 
         elif wahl == 2:
-            charaktere_aufleveln()
+            is_break = charaktere_aufleveln()
+
+            if is_break == 1:
+                continue
 
         elif wahl == 3:
             return 1
@@ -112,9 +115,12 @@ def charaktere_aufleveln():
         os.system(confic.terminal_clear)
 
         while True:
-            wen = input("Wen möchtest du leveln? ")
+            wen = input("Wen möchtest du leveln? (Name/Abbruch) ")
 
-            if not wen in charaktere.Charaktere:
+            if wen == "Abbruch" or wen == "abbruch":
+                os.system(confic.terminal_clear)
+                return 1
+            elif not wen in charaktere.Charaktere:
                 print()
                 print("---Dieser Charakter existiert nicht!---")
                 time.sleep(2)
@@ -137,7 +143,7 @@ def charaktere_aufleveln():
         is_break = ressourcen.ressourcen_verändern("Credits   ", kosten_für_level_up)
 
         if is_break == 1:
-            break
+            return 1
 
         #--Eingentliches Level_up--#
         level_up(wen)
@@ -171,4 +177,4 @@ def charaktere_aufleveln():
            charaktere_aufleveln = True 
 
         else:
-            charaktere_aufleveln = False
+            return 1

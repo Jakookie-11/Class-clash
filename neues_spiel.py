@@ -178,6 +178,29 @@ def abklingzeiten_aktualisieren(von_wem):
 
 
 
+def alle_faehigkeits_abklingzeiten_resetten():
+
+    for faehigkeit in faehigkeiten.alle_fähigkeiten:
+        faehigkeit.abklingzeit = 0
+
+
+
+
+def alle_statuseffekte_resetten():
+    for name in charaktere.Charaktere:
+        charaktere.Charaktere[name].status_effekte = []
+
+
+
+
+def HP_zuruecksetzen():
+    for charakter in charaktere.Charaktere.values():
+        charakter.max_hp = charakter.max_max_hp
+        charakter.hp = charakter.max_hp
+
+
+
+
 def kampf():
 
     os.system(confic.terminal_clear)
@@ -240,10 +263,17 @@ def kampf():
             os.system(confic.terminal_clear)
             print(f"{wer} ist betaeubt und setzt aus!")
             time.sleep(2)
+
             status_effekte.status_effekte_aktualisieren(wer)
 
+            ausgewaehlte_charaktere = tote_charaktere_entvernen(ausgewaehlte_charaktere)
+            reinfolge = schnellster_charakter_ermitteln(ausgewaehlte_charaktere)
+
+            if wer not in reinfolge:
+                zug -= 1
+
             zug += 1
-            
+
             if zug >= len(reinfolge):
                 zug = 0
 
@@ -361,8 +391,13 @@ def kampf():
             status_effekte.status_effekte_aktualisieren(wer)
 
             #---tote charaktäre entvernen---#
+            alte_position = zug
+
             ausgewaehlte_charaktere = tote_charaktere_entvernen(ausgewaehlte_charaktere)
             reinfolge = schnellster_charakter_ermitteln(ausgewaehlte_charaktere)
+
+            if wer not in reinfolge:
+                zug -= 1
 
             #---Sieg?---#
             is_win_team_1 = is_win(team_2)
@@ -372,11 +407,10 @@ def kampf():
                 time.sleep(5)
                 os.system(confic.terminal_clear)
 
-                #---Status Effekte / HP zurücksetzen---#
-                for name in charaktere.Charaktere:
-                    charaktere.Charaktere[name].status_effekte = []
-
-                faehigkeiten.HP_zuruecksetzen()
+                #---Status Effekte / HP / Abklingzeiten zurücksetzen---#
+                alle_statuseffekte_resetten()
+                alle_faehigkeits_abklingzeiten_resetten()
+                HP_zuruecksetzen()
 
                 break
 
@@ -388,11 +422,10 @@ def kampf():
                 time.sleep(5)
                 os.system(confic.terminal_clear)
 
-                #---Status Effekte / HP zurücksetzen---#
-                for name in charaktere.Charaktere:
-                    charaktere.Charaktere[name].status_effekte = []
-
-                faehigkeiten.HP_zuruecksetzen()
+                #---Status Effekte / HP / Abklingzeiten zurücksetzen---#
+                alle_statuseffekte_resetten()
+                alle_faehigkeits_abklingzeiten_resetten()
+                HP_zuruecksetzen()
                     
                 break        
 

@@ -16,13 +16,6 @@ def HP_verändern(wem, wie_viel):
 
 
 
-def HP_zuruecksetzen():
-    for charakter in charaktere.Charaktere.values():
-        charakter.max_hp = charakter.max_max_hp
-        charakter.hp = charakter.max_hp
-
-
-
 def effekte_berügsichtigen(wer):
 
     to_return = 1
@@ -215,3 +208,16 @@ bleibender_schlag = faehigkeit(
     0,
     "gegner"
 )
+
+
+
+
+alle_fähigkeiten = [
+    einfacher_angriff,
+    einfache_heilung,
+    blutiger_schlag,
+    staerkende_heilung,
+    starker_schlag,
+    bleibender_schlag
+    
+]
