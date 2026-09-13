@@ -10,6 +10,7 @@ import funktions
 
 
 os.makedirs("update", exist_ok=True)
+
 url = funktions.daten_herunterladen()
 
 antwort = urlopen(url)
@@ -19,23 +20,30 @@ datei = open("update/update.zip", "wb")
 datei.write(inhalt)
 datei.close()
 
+
 datei = zipfile.ZipFile("update/update.zip", "r")
 datei.extractall("update")
 datei.close()
 
-os.remove("update/update.zip")
-os.remove("update/Class-clash-main/updater.py")
+
+if os.path.exists("update/Class-clash-main/updater.py"):
+    os.remove("update/Class-clash-main/updater.py")
+
 shutil.rmtree("update/Class-clash-main/saves")
 shutil.rmtree("update/Class-clash-main/.vscode")
 
 
 for datei in os.listdir("."):
+
     if datei.endswith(".py") and datei != "updater.py":
         os.remove(datei)
+
     elif datei.endswith(".txt"):
         os.remove(datei)
+
     elif datei.endswith(".json"):
         os.remove(datei)
+
     elif datei.endswith(".zip"):
         os.remove(datei)
 
@@ -45,6 +53,7 @@ if os.path.exists("__pycache__"):
 
 
 for datei in os.listdir("update/Class-clash-main"):
+
     shutil.move(
         "update/Class-clash-main/" + datei,
         "."
@@ -53,11 +62,17 @@ for datei in os.listdir("update/Class-clash-main"):
 
 shutil.rmtree("update/")
 
+
 import charaktere
+
 
 for spieler in os.listdir("saves"):
 
-    if spieler.endswith(".json") and spieler != "confic_setup.json" and spieler != "passwoerter.json":
+    if (
+        spieler.endswith(".json")
+        and spieler != "confic_setup.json"
+        and spieler != "passwoerter.json"
+    ):
 
         datei = f"saves/{spieler}"
         datei = open(datei, "r")
@@ -66,8 +81,11 @@ for spieler in os.listdir("saves"):
 
         datei.close()
 
+
         for charakter in charaktere.Charaktere:
+
             if charakter not in daten["charaktere"]:
+
                 neuer_charakter = charaktere.Charaktere[charakter]
 
                 daten["charaktere"][charakter] = {
@@ -78,9 +96,13 @@ for spieler in os.listdir("saves"):
                     "level": neuer_charakter.level
                 }
 
+
         datei = open(f"saves/{spieler}", "w")
+
         json.dump(daten, datei)
+
         datei.close()
+
 
 os.system(confic.terminal_clear)
 
