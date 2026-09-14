@@ -7,6 +7,7 @@ import status_effekte
 import funktions
 import confic
 import faehigkeiten
+import ki
 
 
 def neues_spiel(spieler_name):
@@ -102,8 +103,8 @@ def charaktere_auswaelen(nur_eigenes_team=False):
             funktions.zeilen_loeschen(2)
             spieler_2_team_2 = input("Spieler_2: ")
 
-        time.sleep(1)
-        os.system(confic.terminal_clear)
+    time.sleep(1)
+    os.system(confic.terminal_clear)
 
     while True:
 
@@ -216,7 +217,7 @@ def HP_zuruecksetzen():
 
 
 
-def kampf(leader_1=None, spieler_2_1 = None, leader_2= None, spieler_2_2 = None):
+def kampf(leader_1=None, spieler_2_1 = None, leader_2= None, spieler_2_2 = None, Ki=1):
 
     os.system(confic.terminal_clear)
 
@@ -298,124 +299,132 @@ def kampf(leader_1=None, spieler_2_1 = None, leader_2= None, spieler_2_2 = None)
 
         else:
 
-            #--Zugriff auf Fähigkeiten--#
+            if wer in team_1:
 
-            while True:       
-                print(f"{wer} ist am zug!")
-                print("----Status----")
-                print(f"HP        : {charaktere.Charaktere[wer].hp}")
-                print(f"Schaden   : {charaktere.Charaktere[wer].schaden}")
-                print()
-                print(f"1) {charaktere.Charaktere[wer].faehigkeit_1.name :20}Cooldown: {charaktere.Charaktere[wer].faehigkeit_1.abklingzeit}")
-                print(f"2) {charaktere.Charaktere[wer].faehigkeit_2.name :20}Cooldown: {charaktere.Charaktere[wer].faehigkeit_2.abklingzeit}")
-                print(f"3) {charaktere.Charaktere[wer].faehigkeit_3.name :20}Cooldown: {charaktere.Charaktere[wer].faehigkeit_3.abklingzeit}")
-                print()
-                print("Doppelte Zahl für die Erklärung der Fähigkeit")
-                print("Abbrechen um den kampf abzubrechen")
-                print()
+                #--Zugriff auf Fähigkeiten--#
 
-                wahl = input("wahl? ")
-
-                #--Prüfen ob abbrechen--#
-                if wahl == "Abbrechen" or wahl == "abbrechen":
-                    return 1
-
-                if wahl == "1":
-                    faehigkeit = charaktere.Charaktere[wer].faehigkeit_1
-
-                elif wahl == "11":
+                while True:       
+                    print(f"{wer} ist am zug!")
+                    print("----Status----")
+                    print(f"HP        : {charaktere.Charaktere[wer].hp}")
+                    print(f"Schaden   : {charaktere.Charaktere[wer].schaden}")
                     print()
-                    eval("faehigkeiten." + charaktere.Charaktere[wer].faehigkeit_1.name + "_erklaerung()")
+                    print(f"1) {charaktere.Charaktere[wer].faehigkeit_1.name :20}Cooldown: {charaktere.Charaktere[wer].faehigkeit_1.abklingzeit}")
+                    print(f"2) {charaktere.Charaktere[wer].faehigkeit_2.name :20}Cooldown: {charaktere.Charaktere[wer].faehigkeit_2.abklingzeit}")
+                    print(f"3) {charaktere.Charaktere[wer].faehigkeit_3.name :20}Cooldown: {charaktere.Charaktere[wer].faehigkeit_3.abklingzeit}")
                     print()
-                    fertig = input("Fertig? ")
-                    funktions.zeilen_loeschen(16)
-                    continue
-
-                elif wahl == "2":
-                    faehigkeit = charaktere.Charaktere[wer].faehigkeit_2
-
-                elif wahl == "22":
+                    print("Doppelte Zahl für die Erklärung der Fähigkeit")
+                    print("Abbrechen um den kampf abzubrechen")
                     print()
-                    eval("faehigkeiten." + charaktere.Charaktere[wer].faehigkeit_2.name + "_erklaerung()")
-                    print()
-                    fertig = input("Fertig? ")
-                    funktions.zeilen_loeschen(16)
-                    continue
 
-                elif wahl == "3":
-                    faehigkeit = charaktere.Charaktere[wer].faehigkeit_3
+                    wahl = input("wahl? ")
 
-                elif wahl == "33":
-                    print()
-                    eval("faehigkeiten." + charaktere.Charaktere[wer].faehigkeit_3.name + "_erklaerung()")
-                    print()
-                    fertig = input("Fertig? ")
-                    funktions.zeilen_loeschen(16)
-                    continue
+                    #--Prüfen ob abbrechen--#
+                    if wahl == "Abbrechen" or wahl == "abbrechen":
+                        return 1
 
-                else:
-                    funktions.zeilen_loeschen(12)
-                    print()
-                    print("Diese Fähigkeit existiert nicht")
-                    time.sleep(1)
-                    funktions.zeilen_loeschen(2)
-                    continue
+                    if wahl == "1":
+                        faehigkeit = charaktere.Charaktere[wer].faehigkeit_1
 
+                    elif wahl == "11":
+                        print()
+                        eval("faehigkeiten." + charaktere.Charaktere[wer].faehigkeit_1.name + "_erklaerung()")
+                        print()
+                        fertig = input("Fertig? ")
+                        funktions.zeilen_loeschen(17)
+                        continue
 
-                if faehigkeit.abklingzeit > 0:
-                    print()
-                    print("Diese Fähigkeit ist noch auf Abklingzeit")
-                    time.sleep(2)
-                    funktions.zeilen_loeschen(14)
-                    continue
-                else:
+                    elif wahl == "2":
+                        faehigkeit = charaktere.Charaktere[wer].faehigkeit_2
 
-                    ziel = input("Mit wem soll diese Faehigkeit interagieren? ")
+                    elif wahl == "22":
+                        print()
+                        eval("faehigkeiten." + charaktere.Charaktere[wer].faehigkeit_2.name + "_erklaerung()")
+                        print()
+                        fertig = input("Fertig? ")
+                        funktions.zeilen_loeschen(17)
+                        continue
 
-                    #---Ziel existiert?---#
-                    if not ziel in ausgewaehlte_charaktere:
+                    elif wahl == "3":
+                        faehigkeit = charaktere.Charaktere[wer].faehigkeit_3
+
+                    elif wahl == "33":
+                        print()
+                        eval("faehigkeiten." + charaktere.Charaktere[wer].faehigkeit_3.name + "_erklaerung()")
+                        print()
+                        fertig = input("Fertig? ")
+                        funktions.zeilen_loeschen(17)
+                        continue
+
+                    else:
                         funktions.zeilen_loeschen(13)
                         print()
-                        print("Dieser Charakter existiert nicht")
-                        time.sleep(2)
+                        print("Diese Fähigkeit existiert nicht")
+                        time.sleep(1)
                         funktions.zeilen_loeschen(2)
                         continue
 
 
-                    #---Zieltyp überprüfen---#
-                    if faehigkeit.zieltyp == "gegner":
-                        if wer in team_1 and ziel in team_1 or wer in team_2 and ziel in team_2:
-                            funktions.zeilen_loeschen(13)
+                    if faehigkeit.abklingzeit > 0:
+                        print()
+                        print("Diese Fähigkeit ist noch auf Abklingzeit")
+                        time.sleep(2)
+                        funktions.zeilen_loeschen(15)
+                        continue
+                    else:
+
+                        ziel = input("Mit wem soll diese Faehigkeit interagieren? ")
+
+                        #---Ziel existiert?---#
+                        if not ziel in ausgewaehlte_charaktere:
+                            funktions.zeilen_loeschen(14)
                             print()
-                            print("Diese Fähigkeit kann nur auf Gegner angewendet werden")
+                            print("Dieser Charakter existiert nicht")
                             time.sleep(2)
                             funktions.zeilen_loeschen(2)
                             continue
 
-                    if faehigkeit.zieltyp == "verbündete":
-                        if wer in team_1 and ziel in team_2 or wer in team_2 and ziel in team_1:
-                            funktions.zeilen_loeschen(13)
-                            print()
-                            print("Diese Fähigkeit kann nur auf Verbündete angewendet werden")
-                            time.sleep(2)
-                            funktions.zeilen_loeschen(2)
-                            continue
+
+                        #---Zieltyp überprüfen---#
+                        if faehigkeit.zieltyp == "gegner":
+                            if wer in team_1 and ziel in team_1 or wer in team_2 and ziel in team_2:
+                                funktions.zeilen_loeschen(14)
+                                print()
+                                print("Diese Fähigkeit kann nur auf Gegner angewendet werden")
+                                time.sleep(2)
+                                funktions.zeilen_loeschen(2)
+                                continue
+
+                        if faehigkeit.zieltyp == "verbündete":
+                            if wer in team_1 and ziel in team_2 or wer in team_2 and ziel in team_1:
+                                funktions.zeilen_loeschen(14)
+                                print()
+                                print("Diese Fähigkeit kann nur auf Verbündete angewendet werden")
+                                time.sleep(2)
+                                funktions.zeilen_loeschen(2)
+                                continue
 
 
-                    #---Abklingzeit auf max setzen---#
-                    faehigkeit.abklingzeit = faehigkeit.max_abklingzeit
+                        #---Abklingzeit auf max setzen---#
+                        faehigkeit.abklingzeit = faehigkeit.max_abklingzeit
 
-                    #---Eigentliche Fähigkeit---#
-                    faehigkeit.funktion(wer, ziel)
-                    abklingzeiten_aktualisieren(wer)
-                    break
+                        #---Eigentliche Fähigkeit---#
+                        faehigkeit.funktion(wer, ziel)
+                        abklingzeiten_aktualisieren(wer)
+                        break
+
+            else:
+                faehigkeit, ziel = ki.ki_zug(wer, team_1, team_2, Ki)
+                faehigkeit.abklingzeit = faehigkeit.max_abklingzeit
+                faehigkeit.funktion(wer, ziel)
+                abklingzeiten_aktualisieren(wer)
+
 
 
             #---Effekte aktuallisieren---#
             status_effekte.status_effekte_aktualisieren(wer)
 
             #---tote charaktäre entvernen---#
-            alte_position = zug
 
             ausgewaehlte_charaktere = tote_charaktere_entvernen(ausgewaehlte_charaktere)
             reinfolge = schnellster_charakter_ermitteln(ausgewaehlte_charaktere)
