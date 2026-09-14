@@ -33,22 +33,23 @@ neues_spiel_menue = {
 
 
 anmelden_menue = {
-    "1) Anmelden" : "",
+    "1) Anmelden"     : "",
     "2) Registrieren" : "",
-    "3) Admin" : "",
+    "3) Admin"        : "",
 }
 
 
 einstellungen_menue = {
-    "1) Profil" : "",
-    "2) Credits" : "",
-    "3) Zurueck" : ""
+    "1) Profil"         : "",
+    "2) Credits"        : "",
+    "3) Wichtige Links" : "",
+    "4) Zurueck"        : ""
 }
 #->Y
 profil_menue = {
-    "1) Passwort aendern" : "",
-    "2) Profil Daten zeigen" : "",
+    "1) Passwort aendern"     : "",
+    "2) Profil Daten zeigen"  : "",
     "3) Profil Zuruecksetzen" : "",
-    "4) Profil Loeschen" : "",
-    "5) Zurueck" : ""
+    "4) Profil Loeschen"      : "",
+    "5) Zurueck"              : ""
 }
