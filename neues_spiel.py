@@ -409,14 +409,14 @@ def kampf(leader_1=None, spieler_2_1 = None, leader_2= None, spieler_2_2 = None,
                         faehigkeit.abklingzeit = faehigkeit.max_abklingzeit
 
                         #---Eigentliche Fähigkeit---#
-                        faehigkeit.funktion(wer, ziel)
+                        faehigkeit.funktion(wer, ziel, team_1)
                         abklingzeiten_aktualisieren(wer)
                         break
 
             else:
                 faehigkeit, ziel = ki.ki_zug(wer, team_1, team_2, Ki)
                 faehigkeit.abklingzeit = faehigkeit.max_abklingzeit
-                faehigkeit.funktion(wer, ziel)
+                faehigkeit.funktion(wer, ziel, team_2)
                 abklingzeiten_aktualisieren(wer)
 
 
