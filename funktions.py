@@ -70,9 +70,11 @@ def bestaetigung_menue(wofür):
 
 
 
+
 def zeilen_loeschen(anzahl):
     for _ in range(anzahl):
         print("\033[1A\033[2K", end="")
+
 
 
 
@@ -83,6 +85,7 @@ def online_version_abrufen():
     daten = json.loads(github_antwort.read())
 
     return daten["tag_name"]
+
 
 
 
@@ -106,6 +109,7 @@ def versionen_vergleichen():
 
     else:
         return False
+
 
 
 

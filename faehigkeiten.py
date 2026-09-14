@@ -48,6 +48,8 @@ def entgültigen_schaden_berechnen(wer):
 
 
 #----------------------Fähigkeiten----------------------#
+#Eine Faehigkeit besteht immer aus dem oby, also dem modul, was beeinflusst, einer erklärung und einer faehigkeiten klasse, 
+#welche sachen wie Abklingzeiten enthält.
 
 
 class faehigkeit:

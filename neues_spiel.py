@@ -15,12 +15,15 @@ def neues_spiel(spieler_name):
 
     while neues_spiel_menue == True:
 
-        wahl = funktions.menue(menues.neues_spiel_menue, spieler_name)
-
         os.system(confic.terminal_clear)
 
+        wahl = funktions.menue(menues.neues_spiel_menue, spieler_name)
+
         if wahl == 1:
-            kampf()
+            is_break_kampf = kampf()
+
+            if is_break_kampf == 1:
+                continue
 
         elif wahl == 2:
             print("Kampangen in arbeit...")
@@ -292,9 +295,14 @@ def kampf():
                 print(f"3) {charaktere.Charaktere[wer].faehigkeit_3.name :20}Cooldown: {charaktere.Charaktere[wer].faehigkeit_3.abklingzeit}")
                 print()
                 print("Doppelte Zahl für die Erklärung der Fähigkeit")
+                print("Abbrechen um den kampf abzubrechen")
                 print()
 
                 wahl = input("wahl? ")
+
+                #--Prüfen ob abbrechen--#
+                if wahl == "Abbrechen" or wahl == "abbrechen":
+                    return 1
 
                 if wahl == "1":
                     faehigkeit = charaktere.Charaktere[wer].faehigkeit_1
@@ -412,7 +420,7 @@ def kampf():
                 alle_faehigkeits_abklingzeiten_resetten()
                 HP_zuruecksetzen()
 
-                break
+                return 1
 
             is_win_team_2 = is_win(team_1)
             if is_win_team_2 == True:
@@ -427,7 +435,7 @@ def kampf():
                 alle_faehigkeits_abklingzeiten_resetten()
                 HP_zuruecksetzen()
                     
-                break        
+                return 1       
 
 
 
