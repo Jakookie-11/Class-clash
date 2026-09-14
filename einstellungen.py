@@ -33,6 +33,11 @@ def einstellungen(spieler_name):
 
             if is_break_credits == 1:
                 continue
+
+        elif wahl == 3:
+            os.system(confic.terminal_clear)
+
+            wichtige_links_zeigen()
             
 
         else:
@@ -339,3 +344,25 @@ def profil_loeschen(spieler_name):
         print("Profil Loeschen abgebrochen")
         time.sleep(2)
         return 1
+
+
+
+
+def wichtige_links_zeigen():
+
+    wichtige_links = {
+        "Python                  " : "https://www.python.org/downloads/",
+        "Github des Spiels       " : "https://github.com/Jakookie-11/Class-clash",
+        "Issues des Spiels melden" : "https://github.com/Jakookie-11/Class-clash/issues"
+    }
+
+    print("══════════════════════════════")
+    print("        Wichtige Links")
+    print("══════════════════════════════")
+    print()
+
+    for schlüssel, wert in wichtige_links.items():
+        print(f"{schlüssel} : {wert}")
+
+    print()
+    input("Enter...")
