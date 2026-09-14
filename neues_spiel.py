@@ -49,7 +49,7 @@ def charakter_anzeigen(name):
 
 
 
-def charaktere_auswaelen():
+def charaktere_auswaelen(nur_eigenes_team=False):
 
     os.system(confic.terminal_clear)
 
@@ -78,28 +78,32 @@ def charaktere_auswaelen():
         funktions.zeilen_loeschen(2)
         spieler_2_team_1 = input("Spieler_2: ")
 
-    print()
-    print("Team 2:")
-    print()
+    #---falls auch gegner---#
 
-    Leader_team_2    = input("Leader: ")
+    if nur_eigenes_team == False:
 
-    if not Leader_team_2 in charaktere.Charaktere:
-        print("---Dieser Charakter existiert nicht!---")
-        time.sleep(2)
-        funktions.zeilen_loeschen(2)
+        print()
+        print("Team 2:")
+        print()
+
         Leader_team_2    = input("Leader: ")
 
-    spieler_2_team_2 = input("Spieler_2: ")
+        if not Leader_team_2 in charaktere.Charaktere:
+            print("---Dieser Charakter existiert nicht!---")
+            time.sleep(2)
+            funktions.zeilen_loeschen(2)
+            Leader_team_2    = input("Leader: ")
 
-    if not spieler_2_team_2 in charaktere.Charaktere:
-        print("---Dieser Charakter existiert nicht!---")
-        time.sleep(2)
-        funktions.zeilen_loeschen(2)
         spieler_2_team_2 = input("Spieler_2: ")
 
-    time.sleep(1)
-    os.system(confic.terminal_clear)
+        if not spieler_2_team_2 in charaktere.Charaktere:
+            print("---Dieser Charakter existiert nicht!---")
+            time.sleep(2)
+            funktions.zeilen_loeschen(2)
+            spieler_2_team_2 = input("Spieler_2: ")
+
+        time.sleep(1)
+        os.system(confic.terminal_clear)
 
     while True:
 
@@ -112,22 +116,30 @@ def charaktere_auswaelen():
         charakter_anzeigen(spieler_2_team_1)
 
         print()
-        print()
 
-        print("-----Team_2-----")
+        #---falls auch gegner---#
+        if nur_eigenes_team == False:
+            print()
 
-        charakter_anzeigen(Leader_team_2)
+            print("-----Team_2-----")
 
-        print()
+            charakter_anzeigen(Leader_team_2)
 
-        charakter_anzeigen(spieler_2_team_2)
+            print()
 
-        print()
+            charakter_anzeigen(spieler_2_team_2)
+
+            print()
 
         ready = input("Fertig? ")
 
-        if ready == "ja":
-            return Leader_team_1, spieler_2_team_1, Leader_team_2, spieler_2_team_2
+        if ready == "ja" or ready == "":
+
+            if nur_eigenes_team == False:
+                return Leader_team_1, spieler_2_team_1, Leader_team_2, spieler_2_team_2
+
+            elif nur_eigenes_team == True:
+                return Leader_team_1, spieler_2_team_1
 
         else:
             os.system(confic.terminal_clear)
@@ -204,14 +216,18 @@ def HP_zuruecksetzen():
 
 
 
-def kampf():
+def kampf(leader_1=None, spieler_2_1 = None, leader_2= None, spieler_2_2 = None):
 
     os.system(confic.terminal_clear)
 
     zug = 0
 
     #---Charaktere bekommen---#
-    leader_1, spieler_2_1, leader_2, spieler_2_2 = charaktere_auswaelen()
+    if leader_1 == None and spieler_2_1 == None and leader_2 != None:
+        leader_1, spieler_2_1 = charaktere_auswaelen(nur_eigenes_team=True)
+
+    else:
+        leader_1, spieler_2_1, leader_2, spieler_2_2 = charaktere_auswaelen()
 
     #---Charaktere als list speichern---#
     ausgewaehlte_charaktere = [
