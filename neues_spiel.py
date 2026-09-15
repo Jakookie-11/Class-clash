@@ -1,5 +1,6 @@
 import os
 import time
+import re
 
 import charaktere
 import menues
@@ -8,6 +9,12 @@ import funktions
 import confic
 import faehigkeiten
 import ki
+
+
+GRUEN = "\033[32m"
+GELB = "\033[33m"
+CYAN = "\033[36m"
+RESET = "\033[0m"
 
 
 def neues_spiel(spieler_name):
@@ -217,6 +224,82 @@ def HP_zuruecksetzen():
 
 
 
+def text_auffuellen(text, breite):
+    sichtbare_laenge = len(re.sub(r"\033\[[0-9;]*m", "", text))
+    return text + " " * max(0, breite - sichtbare_laenge)
+
+
+
+
+def kampf_charakter_anzeigen(name):
+    charakter = charaktere.Charaktere[name]
+
+    gefuellt = int(20 * charakter.hp / charakter.max_hp)
+    leer = 20 - gefuellt
+    balken = "█" * gefuellt + "░" * leer
+
+    text = []
+
+    text.append(f"{CYAN}{name}{RESET}")
+    text.append(
+        f"{GRUEN}{balken} "
+        f"{charakter.hp}/{charakter.max_hp} HP{RESET}"
+    )
+
+    text.append(f"Level {charakter.level} | {charakter.klasse}")
+
+    if charakter.status_effekte:
+        text.append(f"{GELB}Effekte:{RESET}")
+
+        for effekt in charakter.status_effekte:
+            text.append(f"{GELB}{effekt.name} ({effekt.dauer}){RESET}")
+    else:
+        text.append("Effekte: Keine")
+
+    return text
+
+
+
+
+def kampf_team_anzeigen(team_1, team_2):
+        
+    TEAM_BREITE = 35
+
+    print(f"{'TEAM 1':<{TEAM_BREITE}}{'TEAM 2':<{TEAM_BREITE}}")
+    print(f"{'────────────────────':<{TEAM_BREITE}}{'────────────────────':<{TEAM_BREITE}}")
+
+    for i in range(max(len(team_1), len(team_2))):
+
+        if i < len(team_1):
+            links = kampf_charakter_anzeigen(team_1[i])
+        else:
+            links = [""] * 4
+
+        if i < len(team_2):
+            rechts = kampf_charakter_anzeigen(team_2[i])
+        else:
+            rechts = [""] * 4
+
+        max_zeilen = max(len(links), len(rechts))
+
+        for j in range(max_zeilen):
+            if j < len(links):
+                l = links[j]
+            else:
+                l = ""
+
+            if j < len(rechts):
+                r = rechts[j]
+            else:
+                r = ""
+
+            print(text_auffuellen(l, TEAM_BREITE) + r)
+
+        print()
+
+
+
+
 def kampf(leader_1=None, spieler_2_1 = None, leader_2= None, spieler_2_2 = None, Ki=1):
 
     os.system(confic.terminal_clear)
@@ -257,21 +340,13 @@ def kampf(leader_1=None, spieler_2_1 = None, leader_2= None, spieler_2_2 = None,
 
         os.system(confic.terminal_clear)
 
-        print("=========================")
+        print("═════════════════════════")
         print("          Kampf          ")
-        print("=========================")
+        print("═════════════════════════")
         print()
         #--Teams + HP anzeigen--#
-        print("----Team 1----")
-        print(f"{leader_1:<10} {charaktere.Charaktere[leader_1].hp:<10} HP   {status_effekte.status_effekte_anzeigen(leader_1)}")
-        print(f"{spieler_2_1:<10} {charaktere.Charaktere[spieler_2_1].hp:<10} HP   {status_effekte.status_effekte_anzeigen(spieler_2_1)}")
-        print()
-        print()
-        print("----Team 2----")
-        print(f"{leader_2:<10} {charaktere.Charaktere[leader_2].hp:<10} HP   {status_effekte.status_effekte_anzeigen(leader_2)}")
-        print(f"{spieler_2_2:<10} {charaktere.Charaktere[spieler_2_2].hp:<10} HP   {status_effekte.status_effekte_anzeigen(spieler_2_2)}")
-        print()
-        print("================================================================================")
+        kampf_team_anzeigen(team_1, team_2)
+        print("═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════")
         print()
 
         #--Wer ist am zug--#
@@ -309,9 +384,9 @@ def kampf(leader_1=None, spieler_2_1 = None, leader_2= None, spieler_2_2 = None,
                     print(f"HP        : {charaktere.Charaktere[wer].hp}")
                     print(f"Schaden   : {charaktere.Charaktere[wer].schaden}")
                     print()
-                    print(f"1) {charaktere.Charaktere[wer].faehigkeit_1.name :20}Cooldown: {charaktere.Charaktere[wer].faehigkeit_1.abklingzeit}")
-                    print(f"2) {charaktere.Charaktere[wer].faehigkeit_2.name :20}Cooldown: {charaktere.Charaktere[wer].faehigkeit_2.abklingzeit}")
-                    print(f"3) {charaktere.Charaktere[wer].faehigkeit_3.name :20}Cooldown: {charaktere.Charaktere[wer].faehigkeit_3.abklingzeit}")
+                    print(f"[1] {charaktere.Charaktere[wer].faehigkeit_1.name :20}Cooldown: {charaktere.Charaktere[wer].faehigkeit_1.abklingzeit}")
+                    print(f"[2] {charaktere.Charaktere[wer].faehigkeit_2.name :20}Cooldown: {charaktere.Charaktere[wer].faehigkeit_2.abklingzeit}")
+                    print(f"[3] {charaktere.Charaktere[wer].faehigkeit_3.name :20}Cooldown: {charaktere.Charaktere[wer].faehigkeit_3.abklingzeit}")
                     print()
                     print("Doppelte Zahl für die Erklärung der Fähigkeit")
                     print("Abbrechen um den kampf abzubrechen")
@@ -327,10 +402,11 @@ def kampf(leader_1=None, spieler_2_1 = None, leader_2= None, spieler_2_2 = None,
                         faehigkeit = charaktere.Charaktere[wer].faehigkeit_1
 
                     elif wahl == "11":
+                        faehigkeit = charaktere.Charaktere[wer].faehigkeit_1
                         print()
-                        eval("faehigkeiten." + charaktere.Charaktere[wer].faehigkeit_1.name + "_erklaerung()")
+                        print(faehigkeit.erklaerung)
                         print()
-                        fertig = input("Fertig? ")
+                        input("Fertig? ")
                         funktions.zeilen_loeschen(17)
                         continue
 
@@ -338,10 +414,11 @@ def kampf(leader_1=None, spieler_2_1 = None, leader_2= None, spieler_2_2 = None,
                         faehigkeit = charaktere.Charaktere[wer].faehigkeit_2
 
                     elif wahl == "22":
+                        faehigkeit = charaktere.Charaktere[wer].faehigkeit_2
                         print()
-                        eval("faehigkeiten." + charaktere.Charaktere[wer].faehigkeit_2.name + "_erklaerung()")
+                        print(faehigkeit.erklaerung)
                         print()
-                        fertig = input("Fertig? ")
+                        input("Fertig? ")
                         funktions.zeilen_loeschen(17)
                         continue
 
@@ -349,10 +426,11 @@ def kampf(leader_1=None, spieler_2_1 = None, leader_2= None, spieler_2_2 = None,
                         faehigkeit = charaktere.Charaktere[wer].faehigkeit_3
 
                     elif wahl == "33":
+                        faehigkeit = charaktere.Charaktere[wer].faehigkeit_3
                         print()
-                        eval("faehigkeiten." + charaktere.Charaktere[wer].faehigkeit_3.name + "_erklaerung()")
+                        print(faehigkeit.erklaerung)
                         print()
-                        fertig = input("Fertig? ")
+                        input("Fertig? ")
                         funktions.zeilen_loeschen(17)
                         continue
 
