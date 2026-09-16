@@ -48,9 +48,10 @@ Jakob = charakter(
     200,
     200,
     200,
-    -100,
+    -20,
     "light_side",
     100,
+    1,
     faehigkeit_1=faehigkeiten.einfacher_angriff,
     faehigkeit_2=faehigkeiten.starker_schlag,
     faehigkeit_3=faehigkeiten.bleibender_schlag
@@ -67,6 +68,7 @@ Leo = charakter(
     -20,
     "light_side",
     80,
+    1,
     faehigkeit_1=faehigkeiten.einfacher_angriff,
     faehigkeit_2=faehigkeiten.blutiger_schlag,
     faehigkeit_3=faehigkeiten.bleibender_schlag
@@ -83,6 +85,7 @@ Simon = charakter(
     -10,
     "dark_side",
     70,
+    1,
     faehigkeit_1=faehigkeiten.einfacher_angriff,
     faehigkeit_2=faehigkeiten.einfache_heilung,
     faehigkeit_3=faehigkeiten.staerkende_heilung
@@ -99,6 +102,7 @@ Max = charakter(
     -10,
     "dark_side",
     90,
+    1,
     faehigkeit_1=faehigkeiten.einfacher_angriff,
     faehigkeit_2=faehigkeiten.blutiger_schlag,
     faehigkeit_3=faehigkeiten.staerkende_heilung
@@ -115,10 +119,63 @@ Lovis = charakter(
     -10,
     "dark_side",
     85,
+    1,
     faehigkeit_1=faehigkeiten.einfacher_angriff,
     faehigkeit_2=faehigkeiten.blutiger_schlag,
     faehigkeit_3=faehigkeiten.staerkende_heilung
 )
+
+
+
+
+
+#----------npcs----------#
+
+fuenftklaessler = charakter(
+    "fuenftklaessler",
+    "npc",
+    70,
+    70,
+    70,
+    -7,
+    50,
+    1,
+    faehigkeit_1=faehigkeiten.radiergummi_wefen,          # 0
+    faehigkeit_2=faehigkeiten.er_hat_nichts_gemacht,      # 4
+    faehigkeit_3=faehigkeiten.hordenangriff               # 5
+)
+
+
+cooler_fuenftklaessler = charakter(
+    "cooler_fuenftklaessler",
+    "npc",
+    80,
+    80,
+    80,
+    -8,
+    60,
+    1,
+    faehigkeit_1=faehigkeiten.ey_was_guckst_du,            # 0
+    faehigkeit_2=faehigkeiten.sonnenbrille_auf,            # 4
+    faehigkeit_3=faehigkeiten.ranzenwurf                   # 5
+)
+
+
+streber = charakter(
+    "streber",
+    "npc",
+    60,
+    60,
+    60,
+    -6,
+    70,
+    1,
+    faehigkeit_1=faehigkeiten.das_ist_falsch,               # 0
+    faehigkeit_2=faehigkeiten.hausaufgaben_zeigen,          # 3
+    faehigkeit_3=faehigkeiten.musterloesung                 # 4
+)
+
+
 
 
 #----Charaktere----#
@@ -128,4 +185,8 @@ Charaktere = {
     "Simon"   : Simon,
     "Max"     : Max,
     "Lovis"   : Lovis,
+
+    "fuenftklaessler": fuenftklaessler,
+    "cooler_fuenftklaessler": cooler_fuenftklaessler,
+    "streber": streber
 }

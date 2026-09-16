@@ -2,8 +2,13 @@ import charaktere
 import status_effekte
 
 
+# ══════════════════════════════════════════════════════════════
+# Allgemeine Funktionen
+# ══════════════════════════════════════════════════════════════
+
 
 def HP_verändern(wem, wie_viel):
+
     charakter = charaktere.Charaktere[wem]
 
     charakter.hp += wie_viel
@@ -13,7 +18,6 @@ def HP_verändern(wem, wie_viel):
 
     elif charakter.hp <= 0:
         charakter.hp = -1
-
 
 
 def effekte_berügsichtigen(wer):
@@ -35,7 +39,6 @@ def effekte_berügsichtigen(wer):
     return to_return
 
 
-
 def entgültigen_schaden_berechnen(wer):
 
     faktor_1 = charaktere.Charaktere[wer].schaden
@@ -46,180 +49,396 @@ def entgültigen_schaden_berechnen(wer):
     return schaden
 
 
+# ══════════════════════════════════════════════════════════════
+# Fähigkeiten-Klasse
+# ══════════════════════════════════════════════════════════════
 
-#----------------------Fähigkeiten----------------------#
-#Eine Faehigkeit besteht immer aus dem oby, also dem modul, was beeinflusst, einer erklärung und einer faehigkeiten klasse, 
-#welche sachen wie Abklingzeiten enthält.
+# Eine Fähigkeit besteht immer aus:
+# - dem Objekt, also der Funktion, die etwas beeinflusst
+# - einer Erklärung
+# - der Fähigkeiten-Klasse, welche Sachen wie Abklingzeiten enthält
 
 
 class faehigkeit:
 
     def __init__(
         self,
-        name : str,
-        funktion : object,
-        max_abklingzeit : int,
-        abklingzeit : int,
-        zieltyp : str
-        ):
+        name: str,
+        funktion: object,
+        erklaerung: str,
+        max_abklingzeit: int,
+        abklingzeit: int,
+        zieltyp: str
+    ):
 
         self.name = name
         self.funktion = funktion
+        self.erklaerung = erklaerung
         self.max_abklingzeit = max_abklingzeit
         self.abklingzeit = abklingzeit
         self.zieltyp = zieltyp
 
 
+# ══════════════════════════════════════════════════════════════
+# Allgemeine Fähigkeiten
+# ══════════════════════════════════════════════════════════════
 
 
+def einfacher_angriff_obj(wer, wen, team=None):
 
-def einfacher_angriff_obj(wer, wen):
-
-    schaden =  entgültigen_schaden_berechnen(wer)
+    schaden = entgültigen_schaden_berechnen(wer)
 
     if charaktere.Charaktere[wer].seite == charaktere.Charaktere[wen].seite:
         schaden *= 0.8
 
     HP_verändern(wen, schaden)
 
-def einfacher_angriff_erklaerung():
-    print("Einfacher Angriff: Ein Angriff, der einfachen Schaden verursacht.")
 
 einfacher_angriff = faehigkeit(
     "einfacher_angriff",
     einfacher_angriff_obj,
+    "Ein Angriff, der einfachen Schaden verursacht.",
     0,
     0,
     "gegner"
 )
 
 
-
-
-
-def blutiger_schlag_obj(wer, wen):
-
-    schaden =  entgültigen_schaden_berechnen(wer)
-
-    if charaktere.Charaktere[wer].seite == charaktere.Charaktere[wen].seite:
-        schaden *= 0.8
-
-    status_effekte.status_effekte_hinzufügen(wen, status_effekte.schaden_minus)
-
-    HP_verändern(wen, schaden)
-
-def blutiger_schlag_erklaerung():
-    print("Blutiger Schlag: Ein Angriff, der einfachen Schaden verursacht und den Gegner schwächt, sodass er weniger Schaden verursacht.")
-
-blutiger_schlag = faehigkeit(
-    "blutiger_schlag",
-    blutiger_schlag_obj,
-    2,
-    0,
-    "gegner"
-)
-
-
-
-
-
-def einfache_heilung_obj(wer, wen):
+def einfache_heilung_obj(wer, wen, team=None):
 
     HP_verändern(wen, 50)
 
-def einfache_heilung_erklaerung():
-    print("Einfache Heilung: Eine Heilung, die 50 HP wiederherstellt.")
 
 einfache_heilung = faehigkeit(
     "einfache_heilung",
     einfache_heilung_obj,
+    "Eine Heilung, die 50 HP wiederherstellt.",
     3,
     0,
     "verbündete"
 )
 
 
+def staerkende_heilung_obj(wer, wen, team=None):
 
-
-
-def staerkende_heilung_obj(wer, wen):
-
-    status_effekte.status_effekte_hinzufügen(wen, status_effekte.schaden_plus)
+    status_effekte.status_effekte_hinzufügen(
+        wen,
+        status_effekte.schaden_plus
+    )
 
     HP_verändern(wen, 50)
 
-def staerkende_heilung_erklaerung():
-    print("Stärkende Heilung: Eine Heilung, die 50 HP wiederherstellt und den anvisierten Verbündeten stärkt, sodass er mehr Schaden verursacht.")
 
 staerkende_heilung = faehigkeit(
     "staerkende_heilung",
     staerkende_heilung_obj,
+    "Eine Heilung, die 50 HP wiederherstellt und den anvisierten Verbündeten stärkt, sodass er mehr Schaden verursacht.",
     4,
     0,
     "verbündete"
 )
 
 
+def blutiger_schlag_obj(wer, wen, team=None):
 
-
-
-def starker_schlag_obj(wer, wen):
-
-    schaden =  entgültigen_schaden_berechnen(wer)
+    schaden = entgültigen_schaden_berechnen(wer)
 
     if charaktere.Charaktere[wer].seite == charaktere.Charaktere[wen].seite:
         schaden *= 0.8
 
-    status_effekte.status_effekte_hinzufügen(wen, status_effekte.betaeubt)
+    status_effekte.status_effekte_hinzufügen(
+        wen,
+        status_effekte.schaden_minus
+    )
 
     HP_verändern(wen, schaden)
 
-def starker_schlag_erklaerung():
-    print("Starker Schlag: Ein Angriff, der einfachen Schaden verursacht und den Gegner betäubt")
+
+blutiger_schlag = faehigkeit(
+    "blutiger_schlag",
+    blutiger_schlag_obj,
+    "Ein Angriff, der einfachen Schaden verursacht und den Gegner schwächt, sodass er weniger Schaden verursacht.",
+    3,
+    0,
+    "gegner"
+)
+
+
+def starker_schlag_obj(wer, wen, team=None):
+
+    schaden = entgültigen_schaden_berechnen(wer)
+
+    if charaktere.Charaktere[wer].seite == charaktere.Charaktere[wen].seite:
+        schaden *= 0.8
+
+    status_effekte.status_effekte_hinzufügen(
+        wen,
+        status_effekte.betaeubt
+    )
+
+    HP_verändern(wen, schaden)
+
 
 starker_schlag = faehigkeit(
     "starker_schlag",
     starker_schlag_obj,
+    "Ein Angriff, der einfachen Schaden verursacht und den Gegner betäubt.",
     4,
     0,
     "gegner"
 )
 
 
+def bleibender_schlag_obj(wer, wen, team=None):
 
-
-
-def bleibender_schlag_obj(wer, wen):
-
-    schaden =  entgültigen_schaden_berechnen(wer)
+    schaden = entgültigen_schaden_berechnen(wer)
 
     if charaktere.Charaktere[wer].seite == charaktere.Charaktere[wen].seite:
-        schaden *= 0.8
+        schaden *= 0.9
 
-    status_effekte.status_effekte_hinzufügen(wen, status_effekte.damage_over_time_1)
+    status_effekte.status_effekte_hinzufügen(
+        wen,
+        status_effekte.damage_over_time_1
+    )
 
     HP_verändern(wen, schaden)
 
-def bleibender_schlag_erklaerung():
-    print("Bleibender Schlag: Ein Angriff, der einfachen Schaden verursacht und den Gegner mit Schaden über Zeit belegt.")
 
 bleibender_schlag = faehigkeit(
     "bleibender_schlag",
     bleibender_schlag_obj,
-    2,
+    "Ein Angriff, der einfachen Schaden verursacht und den Gegner mit Schaden über Zeit belegt.",
+    3,
     0,
     "gegner"
 )
 
 
+# ══════════════════════════════════════════════════════════════
+# Fähigkeiten des Fünftklässlers
+# ══════════════════════════════════════════════════════════════
+
+
+def radiergummi_wefen_obj(wer, wen, team=None):
+
+    schaden = entgültigen_schaden_berechnen(wer)
+
+    HP_verändern(wen, schaden)
+
+
+radiergummi_wefen = faehigkeit(
+    "radiergummi_werfen",
+    radiergummi_wefen_obj,
+    "Der am meisten genutzte Angriff in der Schule. Verursacht einfachen Schaden.",
+    0,
+    0,
+    "gegner"
+)
+
+
+def er_hat_nichts_gemacht_obj(wer, wen, team=None):
+
+    charakter = charaktere.Charaktere[wen]
+
+    for status in charakter.status_effekte.copy():
+
+        if status.name != "schaden_plus" and status.name != "healing_over_time_1":
+            charakter.status_effekte.remove(status)
+
+    HP_verändern(wer, 20)
+
+
+er_hat_nichts_gemacht = faehigkeit(
+    "er_hat_nichts_gemacht",
+    er_hat_nichts_gemacht_obj,
+    "Er hat nichts gemacht! Entfernt negative Statuseffekte des Ziels und heilt den Angreifer um 20 HP.",
+    4,
+    0,
+    "verbündete"
+)
+
+
+def hordenangriff_obj(wer, wen, team):
+
+    gesamtschaden = 0
+
+    for charakter_name in team:
+
+        charakter = charaktere.Charaktere[charakter_name]
+        gesamtschaden += charakter.schaden
+
+    status_effekte.status_effekte_hinzufügen(
+        wen,
+        status_effekte.betaeubt
+    )
+
+    HP_verändern(wen, gesamtschaden)
+
+
+hordenangriff = faehigkeit(
+    "hordenangriff",
+    hordenangriff_obj,
+    "Die Fünftklässler sammeln sich und greifen zusammen an, sodass jeder einmal angreift. Außerdem wird das Ziel betäubt.",
+    5,
+    3,
+    "gegner"
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Fähigkeiten des coolen Fünftklässlers
+# ══════════════════════════════════════════════════════════════
+
+
+def ey_was_guckst_du_obj(wer, wen, team=None):
+
+    schaden = entgültigen_schaden_berechnen(wer)
+
+    HP_verändern(wen, schaden)
+
+    status_effekte.status_effekte_hinzufügen(
+        wer,
+        status_effekte.schaden_plus
+    )
+
+
+ey_was_guckst_du = faehigkeit(
+    "ey_was_guckst_du",
+    ey_was_guckst_du_obj,
+    "Ey, was guckst du?! Verursacht Schaden und erhöht den eigenen Schaden.",
+    0,
+    0,
+    "gegner"
+)
+
+
+def sonnenbrille_auf_obj(wer, wen, team=None):
+
+    status_effekte.status_effekte_hinzufügen(
+        wer,
+        status_effekte.schaden_plus
+    )
+
+    status_effekte.status_effekte_hinzufügen(
+        wer,
+        status_effekte.healing_over_time_1
+    )
+
+
+sonnenbrille_auf = faehigkeit(
+    "sonnenbrille_auf",
+    sonnenbrille_auf_obj,
+    "Der Fünftklässler setzt seine Sonnenbrille auf und fühlt sich sofort cooler. Er erhält mehr Schaden und Heilung über Zeit.",
+    4,
+    0,
+    "verbündete"
+)
+
+
+def ranzenwurf_obj(wer, wen, team=None):
+
+    charakter = charaktere.Charaktere[wer]
+
+    schaden = charakter.schaden * 2
+
+    HP_verändern(wen, schaden)
+
+
+ranzenwurf = faehigkeit(
+    "ranzenwurf",
+    ranzenwurf_obj,
+    "Der Fünftklässler wirft seinen Ranzen auf den Gegner. Verursacht doppelten Schaden.",
+    5,
+    0,
+    "gegner"
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Fähigkeiten des Strebers
+# ══════════════════════════════════════════════════════════════
+
+
+def das_ist_falsch_obj(wer, wen, team=None):
+
+    status_effekte.status_effekte_hinzufügen(
+        wen,
+        status_effekte.schaden_minus
+    )
+
+
+das_ist_falsch = faehigkeit(
+    "das_ist_falsch",
+    das_ist_falsch_obj,
+    "Das ist falsch! Der Streber kritisiert den Gegner und verringert dessen Schaden.",
+    0,
+    0,
+    "gegner"
+)
+
+
+def hausaufgaben_zeigen_obj(wer, wen, team=None):
+
+    HP_verändern(wen, 40)
+
+
+hausaufgaben_zeigen = faehigkeit(
+    "hausaufgaben_zeigen",
+    hausaufgaben_zeigen_obj,
+    "Der Streber zeigt seine Hausaufgaben und hilft dem Verbündeten. Heilt 40 HP.",
+    3,
+    0,
+    "verbündete"
+)
+
+
+def musterloesung_obj(wer, wen, team=None):
+
+    charakter = charaktere.Charaktere[wen]
+
+    for status in charakter.status_effekte.copy():
+
+        if status.name != "schaden_plus" and status.name != "healing_over_time_1":
+            charakter.status_effekte.remove(status)
+
+
+musterloesung = faehigkeit(
+    "musterloesung",
+    musterloesung_obj,
+    "Der Streber zeigt die Musterlösung. Entfernt negative Statuseffekte des Ziels.",
+    4,
+    0,
+    "verbündete"
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Alle Fähigkeiten
+# ══════════════════════════════════════════════════════════════
 
 
 alle_fähigkeiten = [
+
+    # Allgemein
     einfacher_angriff,
     einfache_heilung,
-    blutiger_schlag,
     staerkende_heilung,
+    blutiger_schlag,
     starker_schlag,
-    bleibender_schlag
-    
+    bleibender_schlag,
+
+    # Fünftklässler
+    radiergummi_wefen,
+    er_hat_nichts_gemacht,
+    hordenangriff,
+
+    # Cooler Fünftklässler
+    ey_was_guckst_du,
+    sonnenbrille_auf,
+    ranzenwurf,
+
+    # Streber
+    das_ist_falsch,
+    hausaufgaben_zeigen,
+    musterloesung
 ]

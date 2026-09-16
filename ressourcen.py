@@ -4,14 +4,14 @@ import os
 import confic
 
 ressourcen = {
-    "Credits   " : 1000,
+    "Credits" : 1000,
     "Material 1" : 50,
-    "Energie   " : 100
+    "Energie" : 100
 }
 
 def ressourcen_anzeigen():
     for schlüssel, wert in ressourcen.items():
-        print(f"{schlüssel} : {wert}")
+        print(f"{schlüssel :10} : {wert}")
 
 
 def ressourcen_verändern(welche, wie_viel):
