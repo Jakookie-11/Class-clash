@@ -21,10 +21,13 @@ spieler = begin.begin()
 if spieler == "break":
 
     subprocess.run([sys.executable, "updater.py"])
-    print("update wird durchgefuert...")
+
+    print("update wird durchgefuehrt...")
     time.sleep(2)
+
     os.system(confic.terminal_clear)
-    os.execv(sys.executable, [sys.executable, "main.py"])
+
+    subprocess.run([sys.executable, "main.py"])
 
     spieler = begin.begin()
 
