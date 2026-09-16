@@ -9,6 +9,7 @@ import confic
 import menues
 import funktions
 import credits
+import speichern
 
 def einstellungen(spieler_name):
 
@@ -41,6 +42,7 @@ def einstellungen(spieler_name):
             
 
         else:
+            speichern.spiel_speichern()
             return 1
 
 

@@ -1,6 +1,6 @@
 import os
 
-import funktions
+import speichern
 import menues
 import ressourcen
 import confic
@@ -35,4 +35,5 @@ def shop():
             ressourcen.ressourcen_verändern("Energie", 20)
 
         else:
+            speichern.spiel_speichern()
             return 1 

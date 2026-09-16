@@ -687,7 +687,7 @@ def kampf(
             if is_win_team_1 == True:
                 os.system(confic.terminal_clear)
                 print("Team 1 hat gewonnen!")
-                time.sleep(5)
+                time.sleep(2)
                 os.system(confic.terminal_clear)
 
                 #---Status Effekte / HP / Abklingzeiten zurücksetzen---#
@@ -702,7 +702,7 @@ def kampf(
                 os.system(confic.terminal_clear)
                 print()
                 print("Team 2 hat gewonnen!")
-                time.sleep(5)
+                time.sleep(2)
                 os.system(confic.terminal_clear)
 
                 #---Status Effekte / HP / Abklingzeiten zurücksetzen---#

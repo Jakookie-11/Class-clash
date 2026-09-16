@@ -1,9 +1,17 @@
 import os
 import time
 import confic
-import funktions
 import neues_spiel
 import ressourcen
+import speichern
+
+
+fortschritt = {
+    "kampagne": {
+        "_01": 0
+    }
+}
+   
 
 
 #-----Classes-----#
@@ -92,7 +100,7 @@ Kampange_1 = kampange(
     "leicht",
     3,
     kaempfe_kampange_1,
-    fortschritt=2
+    fortschritt=0
 )
 
 
@@ -215,6 +223,7 @@ def kampangen():
 
                     ressourcen.ressourcen["Credits"] += ausgewaehlter_kampf.belohnung
                     kampange.fortschritt += 1
+                    speichern.spiel_speichern()
                     continue
 
 

@@ -6,6 +6,8 @@ import confic
 
 import charaktere
 import ressourcen
+import kampange
+from kampange import alle_kampangen
 
 
 
@@ -22,6 +24,11 @@ def spiel_speichern(spieler):
             "schaden" : charakter.schaden,
             "level" : charakter.level
         }
+
+    gespeicherter_fortschritt = {}
+
+    for kampange in alle_kampangen:
+        gespeicherter_fortschritt[kampange.nummer] = kampange.fortschritt
 
     datei = f"saves/{spieler}.json"
 
@@ -42,7 +49,8 @@ def spiel_speichern(spieler):
         "Erstellungsdatum" : erstellungsdatum,
         "Letztes_Speichern" : datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "ressourcen"      : ressourcen.ressourcen,
-        "charaktere"      : gespeicherte_charaktere
+        "charaktere"      : gespeicherte_charaktere,
+        "kampangen_fortschritt" : gespeicherter_fortschritt
     }
 
     json.dump(daten, datei)
@@ -99,3 +107,5 @@ def spiel_laden(spieler):
         charakter.max_max_hp = gespeicherte_charaktere["max_max_hp"]
         charakter.schaden = gespeicherte_charaktere["schaden"]
         charakter.level = gespeicherte_charaktere["level"]
+        for kampange in alle_kampangen:
+            kampange.fortschritt = daten["kampangen_fortschritt"][kampange.nummer]
