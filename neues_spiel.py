@@ -9,6 +9,7 @@ import funktions
 import confic
 import faehigkeiten
 import ki
+import kampange
 
 
 GRUEN = "\033[32m"
@@ -34,8 +35,10 @@ def neues_spiel(spieler_name):
                 continue
 
         elif wahl == 2:
-            print("Kampangen in arbeit...")
-            funktions.bestaetigung_menue("Kampangen in arbeit...")
+            is_break_kampangen = kampange.kampangen()
+
+            if is_break_kampangen == 1:
+                continue
 
         else:
             return 1
@@ -63,9 +66,9 @@ def charaktere_auswaelen(nur_eigenes_team=False,team_groesse=2):
 
     print("Verfügbare Charaktere:")
     print()
-    for schlüssel, wert in charaktere.Charaktere.items():
-        print(schlüssel)
-
+    for schlüssel, charakter in charaktere.Charaktere.items():
+        if charakter.klasse != "npc":
+            print(schlüssel)
     print()
     print("Team 1:")
     print()
@@ -86,23 +89,23 @@ def charaktere_auswaelen(nur_eigenes_team=False,team_groesse=2):
         funktions.zeilen_loeschen(2)
         spieler_2_team_1 = input("Spieler_2: ")
 
-    if team_groesse > 2:
+    if team_groesse >= 3:
         spieler_3_team_1 = input("Spieler_3: ")
 
         if not spieler_3_team_1 in charaktere.Charaktere:
             print("---Dieser Charakter existiert nicht!---")
             time.sleep(2)
             funktions.zeilen_loeschen(2)
-            spieler_2_team_1 = input("Spieler_2: ")
+            spieler_3_team_1 = input("Spieler_3: ")
 
-    if team_groesse > 3:
-        spieler_4_team_1 = input("Spieler_3: ")
+    if team_groesse >= 4:
+        spieler_4_team_1 = input("Spieler_4: ")
 
         if not spieler_4_team_1 in charaktere.Charaktere:
             print("---Dieser Charakter existiert nicht!---")
             time.sleep(2)
             funktions.zeilen_loeschen(2)
-            spieler_2_team_1 = input("Spieler_2: ")
+            spieler_4_team_1 = input("Spieler_4: ")
 
     #---falls auch gegner---#
 
@@ -129,23 +132,23 @@ def charaktere_auswaelen(nur_eigenes_team=False,team_groesse=2):
             spieler_2_team_2 = input("Spieler_2: ")
 
 
-    if team_groesse > 2:
-        spieler_3_team_2 = input("Spieler_3: ")
+        if team_groesse >= 3:
+            spieler_3_team_2 = input("Spieler_3: ")
 
-        if not spieler_3_team_2 in charaktere.Charaktere:
-            print("---Dieser Charakter existiert nicht!---")
-            time.sleep(2)
-            funktions.zeilen_loeschen(2)
-            spieler_2_team_1 = input("Spieler_2: ")
+            if not spieler_3_team_2 in charaktere.Charaktere:
+                print("---Dieser Charakter existiert nicht!---")
+                time.sleep(2)
+                funktions.zeilen_loeschen(2)
+                spieler_3_team_1 = input("Spieler_3: ")
 
-    if team_groesse > 3:
-        spieler_4_team_2 = input("Spieler_3: ")
+        if team_groesse >= 4:
+            spieler_4_team_2 = input("Spieler_4: ")
 
-        if not spieler_4_team_2 in charaktere.Charaktere:
-            print("---Dieser Charakter existiert nicht!---")
-            time.sleep(2)
-            funktions.zeilen_loeschen(2)
-            spieler_2_team_1 = input("Spieler_2: ")
+            if not spieler_4_team_2 in charaktere.Charaktere:
+                print("---Dieser Charakter existiert nicht!---")
+                time.sleep(2)
+                funktions.zeilen_loeschen(2)
+                spieler_4_team_1 = input("Spieler_4: ")
 
     time.sleep(1)
     os.system(confic.terminal_clear)
@@ -153,28 +156,31 @@ def charaktere_auswaelen(nur_eigenes_team=False,team_groesse=2):
     while True:
 
         print("-----Team_1-----")
-
         charakter_anzeigen(Leader_team_1)
-
         print()
-
         charakter_anzeigen(spieler_2_team_1)
-
         print()
+        if team_groesse >= 3:
+            charakter_anzeigen(spieler_3_team_1)
+            print()
+        if team_groesse >= 4:
+            charakter_anzeigen(spieler_4_team_1)
+            print()
 
         #---falls auch gegner---#
         if nur_eigenes_team == False:
             print()
-
             print("-----Team_2-----")
-
             charakter_anzeigen(Leader_team_2)
-
             print()
-
             charakter_anzeigen(spieler_2_team_2)
-
             print()
+            if team_groesse >= 3:
+                charakter_anzeigen(spieler_3_team_2)
+                print()
+            if team_groesse >= 4:
+                charakter_anzeigen(spieler_4_team_2)
+                print()
 
         ready = input("Fertig? ")
 
