@@ -53,6 +53,8 @@ for datei in os.listdir("."):
 if os.path.exists("__pycache__"):
     shutil.rmtree("__pycache__")
 
+if os.path.exists("update/Class-clash-main/.gitignore"):
+    os.remove("update/Class-clash-main/.gitignore")
 
 for datei in os.listdir("update/Class-clash-main"):
 
