@@ -2,7 +2,6 @@ import os
 import shutil
 from urllib.request import urlopen
 import zipfile
-import confic
 import sys
 import time
 import json
@@ -29,8 +28,11 @@ datei.close()
 if os.path.exists("update/Class-clash-main/updater.py"):
     os.remove("update/Class-clash-main/updater.py")
 
-shutil.rmtree("update/Class-clash-main/saves")
-shutil.rmtree("update/Class-clash-main/.vscode")
+if os.path.exists("update/Class-clash-main/saves"):
+    shutil.rmtree("update/Class-clash-main/saves")
+
+if os.path.exists("update/Class-clash-main/.vscode"):
+    shutil.rmtree("update/Class-clash-main/.vscode")
 
 
 for datei in os.listdir("."):
@@ -103,6 +105,14 @@ for spieler in os.listdir("saves"):
 
         datei.close()
 
+import confic
+
+with open("saves/confic_setup.json", "r") as datei:
+    daten = json.load(datei)
+
+confic.terminal_clear = daten["terminal_clear"]
+
+os.system(confic.terminal_clear)
 
 os.system(confic.terminal_clear)
 
