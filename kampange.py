@@ -213,7 +213,7 @@ def kampangen():
                     print()
                     input("                [Enter] Weiter")
 
-                    ressourcen.ressourcen["Credits   "] += ausgewaehlter_kampf.belohnung
+                    ressourcen.ressourcen["Credits"] += ausgewaehlter_kampf.belohnung
                     kampange.fortschritt += 1
                     continue
 
