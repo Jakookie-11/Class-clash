@@ -79,36 +79,42 @@ def zeilen_loeschen(anzahl):
 
 
 def online_version_abrufen():
-    url = "https://api.github.com/repos/Jakookie-11/Class-clash/releases/latest"
-    github_antwort = urlopen(url)
+    try:
+        url = "https://api.github.com/repos/Jakookie-11/Class-clash/releases/latest"
+        with urlopen(url, timeout=5) as github_antwort:
+            daten = json.loads(github_antwort.read().decode("utf-8"))
 
-    daten = json.loads(github_antwort.read())
+        if "tag_name" in daten:
+            return daten["tag_name"]
+    except Exception:
+        pass
 
-    return daten["tag_name"]
-
+    return lokale_version_abrufen()
 
 
 
 def lokale_version_abrufen():
-    with open("version.txt", "r") as datei:
-        return datei.read().strip()
-
+    try:
+        with open("version.txt", "r", encoding="utf-8") as datei:
+            return datei.read().strip()
+    except FileNotFoundError:
+        return "0.0.0"
 
 
 
 def versionen_vergleichen():
+    try:
+        online_version = online_version_abrufen()
 
-    online_version = online_version_abrufen()
+        with open("version.txt", "r", encoding="utf-8") as datei:
+            aktuelle_version = datei.read().strip()
 
-    with open("version.txt", "r") as datei:
-        aktuelle_version = datei.read().strip()
+        return online_version == aktuelle_version
 
-    if online_version == aktuelle_version:
-
+    except FileNotFoundError:
         return True
-
-    else:
-        return False
+    except Exception:
+        return True
 
 
 

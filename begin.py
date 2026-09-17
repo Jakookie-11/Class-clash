@@ -16,6 +16,13 @@ def begin():
 
     speichern.confic_setup_laden()
 
+    os.makedirs("saves", exist_ok=True)
+    passwoerter_datei = "saves/passwoerter.json"
+
+    if not os.path.exists(passwoerter_datei):
+        with open(passwoerter_datei, "w", encoding="utf-8") as datei:
+            json.dump({"passwoerter": {}}, datei)
+
     pass_update = False
 
     if confic.first_start_configurator == True:
@@ -54,14 +61,15 @@ def begin():
     speichern.confic_setup_speichern()
 
     datei = f"saves/passwoerter.json"
-    datei = open(datei, "r")
+    confic.passwoerter.clear()
 
-    daten = json.load(datei)
+    if os.path.exists(datei):
+        with open(datei, "r", encoding="utf-8") as datei_lesen:
+            daten = json.load(datei_lesen)
 
-    datei.close()
-
-    for spieler, passwort in daten["passwoerter"].items():
-        confic.passwoerter[spieler] = passwort
+        passwoerter = daten.get("passwoerter", {})
+        for spieler, passwort in passwoerter.items():
+            confic.passwoerter[spieler] = passwort
 
 
     os.system(confic.terminal_clear)
@@ -119,17 +127,31 @@ def begin():
                     #---Begrüsung_Spieler/Anmeldung---#
                     os.system(confic.terminal_clear)
                     while True:
-                        spieler = input("Wie heisst du? ")
-                        passwort = input("Passwort? ")
+                        spieler = input("Wie heisst du? ").strip()
+                        passwort = input("Passwort? ").strip()
                         print()
 
-                        if bcrypt.checkpw(
-                            passwort.encode("utf-8"),
-                            confic.passwoerter[spieler].encode("utf-8")
-                            ):
+                        if spieler == "" or spieler not in confic.passwoerter:
+                            print("Benutzername unbekannt")
+                            time.sleep(2)
+                            os.system(confic.terminal_clear)
+                            funktions.zeilen_loeschen(4)
+                            continue
+
+                        gespeichertes_passwort = str(confic.passwoerter[spieler])
+
+                        if gespeichertes_passwort.startswith("$2"):
+                            passwort_ok = bcrypt.checkpw(
+                                passwort.encode("utf-8"),
+                                gespeichertes_passwort.encode("utf-8")
+                            )
+                        else:
+                            passwort_ok = gespeichertes_passwort == passwort
+
+                        if passwort_ok:
                             print("Passwort korrekt")
                             break
-                            
+
                         else:
                             print("Passwort falsch")
                             time.sleep(2)
