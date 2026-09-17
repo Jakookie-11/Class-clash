@@ -52,7 +52,7 @@ def charakter_anzeigen(name):
     print(f"Name    : {charakter.name}")
     print(f"Level   : {charakter.level}")
     print(f"Klasse  : {charakter.klasse}")
-    print(f"HP      : {charakter.hp}")
+    print(f"HP      : {charakter.hp:.2f}")
     print(f"Schaden : {charakter.schaden}")
     print(f"Seite   : {charakter.seite}")
     print(f"Speed   : {charakter.speed}")
@@ -336,7 +336,7 @@ def kampf_charakter_anzeigen(name):
     text.append(f"{CYAN}{name}{RESET}")
     text.append(
         f"{GRUEN}{balken} "
-        f"{charakter.hp}/{charakter.max_hp} HP{RESET}"
+        f"{charakter.hp:.2f}/{charakter.max_hp:.2f} HP{RESET}"
     )
 
     text.append(f"Level {charakter.level} | {charakter.klasse}")
@@ -553,7 +553,7 @@ def kampf(
                 while True:       
                     print(f"{wer} ist am zug!")
                     print("----Status----")
-                    print(f"HP        : {charaktere.Charaktere[wer].hp}")
+                    print(f"HP        : {charaktere.Charaktere[wer].hp:.2f}")
                     print(f"Schaden   : {charaktere.Charaktere[wer].schaden}")
                     print()
                     print(f"[1] {charaktere.Charaktere[wer].faehigkeit_1.name :20}Cooldown: {charaktere.Charaktere[wer].faehigkeit_1.abklingzeit}")

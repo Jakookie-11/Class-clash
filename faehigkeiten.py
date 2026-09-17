@@ -11,7 +11,7 @@ def HP_verändern(wem, wie_viel):
 
     charakter = charaktere.Charaktere[wem]
 
-    charakter.hp += wie_viel
+    charakter.hp = round(charakter.hp + wie_viel, 2)
 
     if charakter.hp > charakter.max_hp:
         charakter.hp = charakter.max_hp
