@@ -514,6 +514,36 @@ besenstreich = faehigkeit(
 )
 
 
+def streich_obj(wer, wen, team=None):
+    HP_verändern(wen, entgültigen_schaden_berechnen(wer))
+    status_effekte.status_effekte_hinzufügen(wen, status_effekte.schaden_minus)
+
+
+streich = faehigkeit(
+    "streich",
+    streich_obj,
+    "Ein fieser Klassenstreich verursacht Schaden und lenkt den Gegner ab.",
+    3,
+    0,
+    "gegner"
+)
+
+
+def lachanfall_obj(wer, wen, team=None):
+    HP_verändern(wen, entgültigen_schaden_berechnen(wer) * 2)
+    status_effekte.status_effekte_hinzufügen(wen, status_effekte.betaeubt)
+
+
+lachanfall = faehigkeit(
+    "lachanfall",
+    lachanfall_obj,
+    "Der Klassenclown bringt den Gegner zum Lachen und verursacht doppelten Schaden.",
+    5,
+    0,
+    "gegner"
+)
+
+
 # ══════════════════════════════════════════════════════════════
 # Alle Fähigkeiten
 # ══════════════════════════════════════════════════════════════
@@ -549,5 +579,7 @@ alle_fähigkeiten = [
     pausenbrot,
     glockenschlag,
     autoritaet,
-    besenstreich
+    besenstreich,
+    streich,
+    lachanfall
 ]

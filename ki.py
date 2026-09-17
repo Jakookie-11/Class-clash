@@ -2,6 +2,7 @@ import time
 import random
 import charaktere
 import status_effekte
+import faehigkeiten
 
 
 # ══════════════════════════════════════════════════════════════
@@ -719,6 +720,9 @@ def ki_zug(wer, team_1, team_2, Stufe_der_KI=1):
             and faehigkeit.abklingzeit == 0
         ]
 
+        if not verfuegbare_faehigkeiten:
+            verfuegbare_faehigkeiten = [faehigkeiten.einfacher_angriff]
+
         faehigkeit = random.choice(
             verfuegbare_faehigkeiten
         )
@@ -861,18 +865,20 @@ def ki_zug(wer, team_1, team_2, Stufe_der_KI=1):
 
             return faehigkeit, ziel
 
-        faehigkeit = random.choice(
-            [
-                f
-                for f in [
-                    charakter.faehigkeit_1,
-                    charakter.faehigkeit_2,
-                    charakter.faehigkeit_3
-                ]
-                if f is not None
-                and f.abklingzeit == 0
+        verfuegbare_faehigkeiten = [
+            f
+            for f in [
+                charakter.faehigkeit_1,
+                charakter.faehigkeit_2,
+                charakter.faehigkeit_3
             ]
-        )
+            if f is not None and f.abklingzeit == 0
+        ]
+
+        if not verfuegbare_faehigkeiten:
+            verfuegbare_faehigkeiten = [faehigkeiten.einfacher_angriff]
+
+        faehigkeit = random.choice(verfuegbare_faehigkeiten)
 
         ziele = moegliche_ziele(
             faehigkeit,
@@ -915,6 +921,10 @@ def ki_zug(wer, team_1, team_2, Stufe_der_KI=1):
             team_2
         )
 
+        if faehigkeit is None:
+            faehigkeit = faehigkeiten.einfacher_angriff
+            ziel = random.choice(moegliche_ziele(faehigkeit, team_1, team_2))
+
         print()
         print("═════════════════════════")
         print("       KI-ANALYSE")
@@ -946,6 +956,10 @@ def ki_zug(wer, team_1, team_2, Stufe_der_KI=1):
             team_1,
             team_2
         )
+
+        if faehigkeit is None:
+            faehigkeit = faehigkeiten.einfacher_angriff
+            ziel = random.choice(moegliche_ziele(faehigkeit, team_1, team_2))
 
         print()
         print("═════════════════════════")
