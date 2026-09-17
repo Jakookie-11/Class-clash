@@ -176,6 +176,35 @@ streber = charakter(
 )
 
 
+aufsicht = charakter(
+    "aufsicht", "npc", 95, 95, 95, -9, "dark_side", 75, 1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.strafarbeit,
+    faehigkeit_3=faehigkeiten.ordnungsruf
+)
+
+hausmeister = charakter(
+    "hausmeister", "npc", 150, 150, 150, -12, "dark_side", 55, 1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.pausenbrot,
+    faehigkeit_3=faehigkeiten.glockenschlag
+)
+
+direktor = charakter(
+    "direktor", "npc", 230, 230, 230, -15, "dark_side", 65, 1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.autoritaet,
+    faehigkeit_3=faehigkeiten.glockenschlag
+)
+
+klassenclown = charakter(
+    "klassenclown", "npc", 115, 115, 115, -11, "dark_side", 95, 1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.streich,
+    faehigkeit_3=faehigkeiten.lachanfall
+)
+
+
 
 
 #----Charaktere----#
@@ -188,5 +217,9 @@ Charaktere = {
 
     "fuenftklaessler": fuenftklaessler,
     "cooler_fuenftklaessler": cooler_fuenftklaessler,
-    "streber": streber
+    "streber": streber,
+    "aufsicht": aufsicht,
+    "hausmeister": hausmeister,
+    "direktor": direktor,
+    "klassenclown": klassenclown
 }

@@ -42,7 +42,7 @@ def einstellungen(spieler_name):
             
 
         else:
-            speichern.spiel_speichern()
+            speichern.spiel_speichern(spieler_name)
             return 1
 
 

@@ -6,13 +6,17 @@ import confic
 
 import charaktere
 import ressourcen
-import kampange
-from kampange import alle_kampangen
+
+
+def alle_kampangen_laden():
+    from kampange import alle_kampangen
+    return alle_kampangen
 
 
 
 
 def spiel_speichern(spieler):
+    os.makedirs("saves", exist_ok=True)
 
     gespeicherte_charaktere = {}
 
@@ -27,22 +31,19 @@ def spiel_speichern(spieler):
 
     gespeicherter_fortschritt = {}
 
-    for kampange in alle_kampangen:
+    for kampange in alle_kampangen_laden():
         gespeicherter_fortschritt[kampange.nummer] = kampange.fortschritt
 
     datei = f"saves/{spieler}.json"
 
     #---Erstellungsdatum holen---#
     if os.path.exists(datei):
-        alte_datei = open(datei, "r")
-        alte_daten = json.load(alte_datei)
-        alte_datei.close()
+        with open(datei, "r", encoding="utf-8") as alte_datei:
+            alte_daten = json.load(alte_datei)
 
-        erstellungsdatum = alte_daten["Erstellungsdatum"]
+        erstellungsdatum = alte_daten.get("Erstellungsdatum", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     else:
         erstellungsdatum = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-    datei = open(datei, "w")
 
     daten = {
         "spieler_name"    : spieler,
@@ -53,59 +54,66 @@ def spiel_speichern(spieler):
         "kampangen_fortschritt" : gespeicherter_fortschritt
     }
 
-    json.dump(daten, datei)
-
-    datei.close()
+    with open(datei, "w", encoding="utf-8") as datei_ausgabe:
+        json.dump(daten, datei_ausgabe)
 
 
 
 def confic_setup_laden():
+    os.makedirs("saves", exist_ok=True)
     datei = "saves/confic_setup.json"
-    datei = open(datei, "r")
 
-    daten = json.load(datei)
+    if not os.path.exists(datei):
+        confic.first_start_configurator = True
+        confic.terminal_clear = "clear"
+        confic_setup_speichern()
+        return
 
-    datei.close()
+    with open(datei, "r", encoding="utf-8") as datei_lesen:
+        daten = json.load(datei_lesen)
 
-    confic.first_start_configurator = daten["starter_menue"]
-    confic.terminal_clear = daten["terminal_clear"]
+    confic.first_start_configurator = daten.get("starter_menue", True)
+    confic.terminal_clear = daten.get("terminal_clear", "clear")
 
 
 
 def confic_setup_speichern():
+    os.makedirs("saves", exist_ok=True)
     datei = "saves/confic_setup.json"
-    datei = open(datei, "w")
 
     daten = {
         "starter_menue"  : confic.first_start_configurator,
         "terminal_clear" : confic.terminal_clear
     }
 
-    json.dump(daten, datei)
-    datei.close()
+    with open(datei, "w", encoding="utf-8") as datei_ausgabe:
+        json.dump(daten, datei_ausgabe)
 
 
 
 def spiel_laden(spieler):
-
     datei = f"saves/{spieler}.json"
 
-    datei = open(datei, "r")
+    if not os.path.exists(datei):
+        return
 
-    daten = json.load(datei)
+    with open(datei, "r", encoding="utf-8") as datei_lesen:
+        daten = json.load(datei_lesen)
 
-    datei.close()
+    ressourcen.ressourcen = daten.get("ressourcen", ressourcen.ressourcen)
 
-    ressourcen.ressourcen = daten["ressourcen"]
-
-    for name, gespeicherte_charaktere in daten["charaktere"].items():
+    for name, gespeicherte_charaktere in daten.get("charaktere", {}).items():
+        if name not in charaktere.Charaktere:
+            continue
 
         charakter = charaktere.Charaktere[name]
 
-        charakter.hp = gespeicherte_charaktere["hp"]
-        charakter.max_hp = gespeicherte_charaktere["max_hp"]
-        charakter.max_max_hp = gespeicherte_charaktere["max_max_hp"]
-        charakter.schaden = gespeicherte_charaktere["schaden"]
-        charakter.level = gespeicherte_charaktere["level"]
-        for kampange in alle_kampangen:
-            kampange.fortschritt = daten["kampangen_fortschritt"][kampange.nummer]
+        charakter.hp = gespeicherte_charaktere.get("hp", charakter.hp)
+        charakter.max_hp = gespeicherte_charaktere.get("max_hp", charakter.max_hp)
+        charakter.max_max_hp = gespeicherte_charaktere.get("max_max_hp", charakter.max_max_hp)
+        charakter.schaden = gespeicherte_charaktere.get("schaden", charakter.schaden)
+        charakter.level = gespeicherte_charaktere.get("level", charakter.level)
+
+    for kampange in alle_kampangen_laden():
+        kampangen_daten = daten.get("kampangen_fortschritt", {})
+        kampange.fortschritt = kampangen_daten.get(kampange.nummer, kampange.fortschritt)

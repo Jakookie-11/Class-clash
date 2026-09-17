@@ -106,7 +106,51 @@ Kampange_1 = kampange(
 
 
 
-alle_kampangen = [Kampange_1]
+kampf_1_2 = kampangen_kampf(
+    "Aufsicht im Flur",
+    gegner_1="aufsicht",
+    gegner_2="klassenclown",
+    belohnung=150,
+    ki=1,
+    team_groesse=2
+)
+kampf_2_2 = kampangen_kampf(
+    "Der lange Schultag",
+    gegner_1="hausmeister",
+    gegner_2="aufsicht",
+    belohnung=200,
+    ki=3,
+    team_groesse=2
+)
+kampf_3_2 = kampangen_kampf(
+    "Schulhof-Aufruhr",
+    gegner_1="hausmeister",
+    gegner_2="klassenclown",
+    gegner_3="aufsicht",
+    belohnung=250,
+    ki=3,
+    team_groesse=3
+)
+kampf_4_2 = kampangen_kampf(
+    "Der Direktor greift ein",
+    gegner_1="direktor",
+    gegner_2="hausmeister",
+    gegner_3="aufsicht",
+    belohnung=400,
+    ki=3,
+    team_groesse=3
+)
+
+Kampange_2 = kampange(
+    "_02",
+    "Chaos im Schulhaus",
+    "mittel",
+    4,
+    [kampf_1_2, kampf_2_2, kampf_3_2, kampf_4_2],
+    fortschritt=0
+)
+
+alle_kampangen = [Kampange_1, Kampange_2]
 
 
 def kampange_anzeigen():
@@ -129,7 +173,7 @@ def kampange_anzeigen():
 
 
 
-def kampangen():
+def kampangen(spieler_name):
 
     while True:
 
@@ -223,7 +267,7 @@ def kampangen():
 
                     ressourcen.ressourcen["Credits"] += ausgewaehlter_kampf.belohnung
                     kampange.fortschritt += 1
-                    speichern.spiel_speichern()
+                    speichern.spiel_speichern(spieler_name)
                     continue
 
 

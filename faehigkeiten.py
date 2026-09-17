@@ -11,7 +11,7 @@ def HP_verändern(wem, wie_viel):
 
     charakter = charaktere.Charaktere[wem]
 
-    charakter.hp += wie_viel
+    charakter.hp = round(charakter.hp + wie_viel, 2)
 
     if charakter.hp > charakter.max_hp:
         charakter.hp = charakter.max_hp
@@ -412,6 +412,138 @@ musterloesung = faehigkeit(
 )
 
 
+def kreidewurf_obj(wer, wen, team=None):
+    HP_verändern(wen, entgültigen_schaden_berechnen(wer))
+
+
+kreidewurf = faehigkeit(
+    "kreidewurf",
+    kreidewurf_obj,
+    "Wirft Kreide und verursacht normalen Schaden.",
+    0,
+    0,
+    "gegner"
+)
+
+
+def strafarbeit_obj(wer, wen, team=None):
+    status_effekte.status_effekte_hinzufügen(wen, status_effekte.schaden_minus)
+    HP_verändern(wen, entgültigen_schaden_berechnen(wer))
+
+
+strafarbeit = faehigkeit(
+    "strafarbeit",
+    strafarbeit_obj,
+    "Verursacht Schaden und verringert den Schaden des Gegners.",
+    3,
+    0,
+    "gegner"
+)
+
+
+def ordnungsruf_obj(wer, wen, team=None):
+    status_effekte.status_effekte_hinzufügen(wen, status_effekte.betaeubt)
+
+
+ordnungsruf = faehigkeit(
+    "ordnungsruf",
+    ordnungsruf_obj,
+    "Ein strenger Ordnungsruf betäubt den Gegner.",
+    4,
+    0,
+    "gegner"
+)
+
+
+def pausenbrot_obj(wer, wen, team=None):
+    HP_verändern(wen, 55)
+    status_effekte.status_effekte_hinzufügen(wen, status_effekte.healing_over_time_1)
+
+
+pausenbrot = faehigkeit(
+    "pausenbrot",
+    pausenbrot_obj,
+    "Heilt einen Verbündeten und gibt ihm Heilung über Zeit.",
+    4,
+    0,
+    "verbündete"
+)
+
+
+def glockenschlag_obj(wer, wen, team=None):
+    HP_verändern(wen, entgültigen_schaden_berechnen(wer) * 2)
+
+
+glockenschlag = faehigkeit(
+    "glockenschlag",
+    glockenschlag_obj,
+    "Ein harter Schlag mit der Schulglocke verursacht doppelten Schaden.",
+    5,
+    0,
+    "gegner"
+)
+
+
+def autoritaet_obj(wer, wen, team=None):
+    status_effekte.status_effekte_hinzufügen(wer, status_effekte.schaden_plus)
+    status_effekte.status_effekte_hinzufügen(wer, status_effekte.healing_over_time_1)
+
+
+autoritaet = faehigkeit(
+    "autoritaet",
+    autoritaet_obj,
+    "Stärkt den Anwender mit mehr Schaden und Heilung über Zeit.",
+    4,
+    0,
+    "verbündete"
+)
+
+
+def besenstreich_obj(wer, wen, team=None):
+    HP_verändern(wen, entgültigen_schaden_berechnen(wer))
+    status_effekte.status_effekte_hinzufügen(wen, status_effekte.damage_over_time_1)
+
+
+besenstreich = faehigkeit(
+    "besenstreich",
+    besenstreich_obj,
+    "Verursacht Schaden und Schaden über Zeit.",
+    3,
+    0,
+    "gegner"
+)
+
+
+def streich_obj(wer, wen, team=None):
+    HP_verändern(wen, entgültigen_schaden_berechnen(wer))
+    status_effekte.status_effekte_hinzufügen(wen, status_effekte.schaden_minus)
+
+
+streich = faehigkeit(
+    "streich",
+    streich_obj,
+    "Ein fieser Klassenstreich verursacht Schaden und lenkt den Gegner ab.",
+    3,
+    0,
+    "gegner"
+)
+
+
+def lachanfall_obj(wer, wen, team=None):
+    HP_verändern(wen, entgültigen_schaden_berechnen(wer) * 2)
+    status_effekte.status_effekte_hinzufügen(wen, status_effekte.betaeubt)
+
+
+lachanfall = faehigkeit(
+    "lachanfall",
+    lachanfall_obj,
+    "Der Klassenclown bringt den Gegner zum Lachen und verursacht doppelten Schaden.",
+    5,
+    0,
+    "gegner"
+)
+
+
 # ══════════════════════════════════════════════════════════════
 # Alle Fähigkeiten
 # ══════════════════════════════════════════════════════════════
@@ -440,5 +572,14 @@ alle_fähigkeiten = [
     # Streber
     das_ist_falsch,
     hausaufgaben_zeigen,
-    musterloesung
+    musterloesung,
+    kreidewurf,
+    strafarbeit,
+    ordnungsruf,
+    pausenbrot,
+    glockenschlag,
+    autoritaet,
+    besenstreich,
+    streich,
+    lachanfall
 ]
