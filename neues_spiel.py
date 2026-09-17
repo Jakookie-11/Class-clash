@@ -35,7 +35,7 @@ def neues_spiel(spieler_name):
                 continue
 
         elif wahl == 2:
-            is_break_kampangen = kampange.kampangen()
+            is_break_kampangen = kampange.kampangen(spieler_name)
 
             if is_break_kampangen == 1:
                 continue

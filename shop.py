@@ -5,7 +5,7 @@ import menues
 import ressourcen
 import confic
 
-def shop():
+def shop(spieler_name):
 
     while  True:
         os.system(confic.terminal_clear)
@@ -35,5 +35,5 @@ def shop():
             ressourcen.ressourcen_verändern("Energie", 20)
 
         else:
-            speichern.spiel_speichern()
+            speichern.spiel_speichern(spieler_name)
             return 1 

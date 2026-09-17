@@ -6,8 +6,11 @@ import confic
 
 import charaktere
 import ressourcen
-import kampange
-from kampange import alle_kampangen
+
+
+def alle_kampangen_laden():
+    from kampange import alle_kampangen
+    return alle_kampangen
 
 
 
@@ -28,7 +31,7 @@ def spiel_speichern(spieler):
 
     gespeicherter_fortschritt = {}
 
-    for kampange in alle_kampangen:
+    for kampange in alle_kampangen_laden():
         gespeicherter_fortschritt[kampange.nummer] = kampange.fortschritt
 
     datei = f"saves/{spieler}.json"
@@ -111,6 +114,6 @@ def spiel_laden(spieler):
         charakter.schaden = gespeicherte_charaktere.get("schaden", charakter.schaden)
         charakter.level = gespeicherte_charaktere.get("level", charakter.level)
 
-    for kampange in alle_kampangen:
+    for kampange in alle_kampangen_laden():
         kampangen_daten = daten.get("kampangen_fortschritt", {})
         kampange.fortschritt = kampangen_daten.get(kampange.nummer, kampange.fortschritt)
