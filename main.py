@@ -24,16 +24,17 @@ try:
 
     if spieler == "break":
 
-        subprocess.run([sys.executable, "updater.py"])
+        updater = os.path.join(
+            os.path.dirname(os.path.abspath(__file__)),
+            "updater.py"
+        )
 
-        print("update wird durchgefuehrt...")
-        time.sleep(2)
+        subprocess.Popen(
+            [sys.executable, updater],
+            cwd=os.path.dirname(os.path.abspath(__file__))
+        )
 
-        os.system(confic.terminal_clear)
-
-        subprocess.run([sys.executable, "main.py"])
-
-        spieler = begin.begin()
+        sys.exit()
 
     #-----Hauptmenü-----#
 

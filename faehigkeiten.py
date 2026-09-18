@@ -1,6 +1,6 @@
 import charaktere
 import status_effekte
-import geheimes
+
 
 
 # ══════════════════════════════════════════════════════════════
@@ -285,6 +285,8 @@ bleibender_schlag = faehigkeit(
 # ══════════════════════════════════════════════════════════════
 
 def jakobs_basic_obj(wer, wen, team=None):
+
+    import geheimes
 
     schaden = geheimes.geheime_attake_jakob(wer, wen, team)
 
