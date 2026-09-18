@@ -1,5 +1,57 @@
 import charaktere
 import status_effekte
+import geheimes
+
+
+# ══════════════════════════════════════════════════════════════
+# Fähigkeiten-Übersicht
+# ══════════════════════════════════════════════════════════════
+
+# Allgemeine Fähigkeiten:
+# - einfacher_angriff
+# - einfache_heilung
+# - staerkende_heilung
+# - blutiger_schlag
+# - starker_schlag
+# - bleibender_schlag
+#
+# Aus der Klasse:
+#
+# - Jakob
+#   - Jakobs Basic
+#
+#
+#
+# Fünftklässler:
+# - radiergummi_wefen
+# - er_hat_nichts_gemacht
+# - hordenangriff
+#
+# Cooler Fünftklässler:
+# - ey_was_guckst_du
+# - sonnenbrille_auf
+# - ranzenwurf
+#
+# Streber:
+# - das_ist_falsch
+# - hausaufgaben_zeigen
+# - musterloesung
+#
+# Aufsicht:
+# - strafarbeit
+# - ordnungsruf
+#
+# Hausmeister:
+# - pausenbrot
+# - glockenschlag
+#
+# Direktor:
+# - autoritaet
+# - glockenschlag
+#
+# Klassenclown:
+# - streich
+# - lachanfall
 
 
 # ══════════════════════════════════════════════════════════════
@@ -25,12 +77,14 @@ def effekte_berügsichtigen(wer):
     to_return = 1
 
     if status_effekte.status_effekt_vorhanden(wer, "schaden_plus"):
+
         if status_effekte.status_effekt_vorhanden(wer, "schaden_minus"):
             to_return = 1
         else:
             to_return = 1.3
 
     if status_effekte.status_effekt_vorhanden(wer, "schaden_minus"):
+
         if status_effekte.status_effekt_vorhanden(wer, "schaden_plus"):
             to_return = 1
         else:
@@ -52,11 +106,6 @@ def entgültigen_schaden_berechnen(wer):
 # ══════════════════════════════════════════════════════════════
 # Fähigkeiten-Klasse
 # ══════════════════════════════════════════════════════════════
-
-# Eine Fähigkeit besteht immer aus:
-# - dem Objekt, also der Funktion, die etwas beeinflusst
-# - einer Erklärung
-# - der Fähigkeiten-Klasse, welche Sachen wie Abklingzeiten enthält
 
 
 class faehigkeit:
@@ -84,6 +133,8 @@ class faehigkeit:
 # ══════════════════════════════════════════════════════════════
 
 
+# --- Einfacher Angriff ---
+
 def einfacher_angriff_obj(wer, wen, team=None):
 
     schaden = entgültigen_schaden_berechnen(wer)
@@ -104,6 +155,8 @@ einfacher_angriff = faehigkeit(
 )
 
 
+# --- Einfache Heilung ---
+
 def einfache_heilung_obj(wer, wen, team=None):
 
     HP_verändern(wen, 50)
@@ -118,6 +171,8 @@ einfache_heilung = faehigkeit(
     "verbündete"
 )
 
+
+# --- Stärkende Heilung ---
 
 def staerkende_heilung_obj(wer, wen, team=None):
 
@@ -138,6 +193,8 @@ staerkende_heilung = faehigkeit(
     "verbündete"
 )
 
+
+# --- Blutiger Schlag ---
 
 def blutiger_schlag_obj(wer, wen, team=None):
 
@@ -164,6 +221,8 @@ blutiger_schlag = faehigkeit(
 )
 
 
+# --- Starker Schlag ---
+
 def starker_schlag_obj(wer, wen, team=None):
 
     schaden = entgültigen_schaden_berechnen(wer)
@@ -189,6 +248,8 @@ starker_schlag = faehigkeit(
 )
 
 
+# --- Bleibender Schlag ---
+
 def bleibender_schlag_obj(wer, wen, team=None):
 
     schaden = entgültigen_schaden_berechnen(wer)
@@ -213,11 +274,60 @@ bleibender_schlag = faehigkeit(
     "gegner"
 )
 
-
-# ══════════════════════════════════════════════════════════════
-# Fähigkeiten des Fünftklässlers
 # ══════════════════════════════════════════════════════════════
 
+# Aus der KLasse
+
+# ══════════════════════════════════════════════════════════════
+
+# ══════════════════════════════════════════════════════════════
+# Jakob
+# ══════════════════════════════════════════════════════════════
+
+def jakobs_basic_obj(wer, wen, team=None):
+
+    schaden = geheimes.geheime_attake_jakob(wer, wen, team)
+
+    HP_verändern(wen, schaden)
+
+jakobs_basic = faehigkeit(
+    "jakobs_basic",
+    jakobs_basic_obj,
+    "GEheim...",
+    0,
+    0,
+    "Gegner"
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ══════════════════════════════════════════════════════════════
+# Fünftklässler
+# ══════════════════════════════════════════════════════════════
+
+
+# --- Radiergummi werfen ---
 
 def radiergummi_wefen_obj(wer, wen, team=None):
 
@@ -235,6 +345,8 @@ radiergummi_wefen = faehigkeit(
     "gegner"
 )
 
+
+# --- Er hat nichts gemacht ---
 
 def er_hat_nichts_gemacht_obj(wer, wen, team=None):
 
@@ -257,6 +369,8 @@ er_hat_nichts_gemacht = faehigkeit(
     "verbündete"
 )
 
+
+# --- Hordenangriff ---
 
 def hordenangriff_obj(wer, wen, team):
 
@@ -286,9 +400,11 @@ hordenangriff = faehigkeit(
 
 
 # ══════════════════════════════════════════════════════════════
-# Fähigkeiten des coolen Fünftklässlers
+# Cooler Fünftklässler
 # ══════════════════════════════════════════════════════════════
 
+
+# --- Ey, was guckst du? ---
 
 def ey_was_guckst_du_obj(wer, wen, team=None):
 
@@ -311,6 +427,8 @@ ey_was_guckst_du = faehigkeit(
     "gegner"
 )
 
+
+# --- Sonnenbrille auf ---
 
 def sonnenbrille_auf_obj(wer, wen, team=None):
 
@@ -335,6 +453,8 @@ sonnenbrille_auf = faehigkeit(
 )
 
 
+# --- Ranzenwurf ---
+
 def ranzenwurf_obj(wer, wen, team=None):
 
     charakter = charaktere.Charaktere[wer]
@@ -355,9 +475,11 @@ ranzenwurf = faehigkeit(
 
 
 # ══════════════════════════════════════════════════════════════
-# Fähigkeiten des Strebers
+# Streber
 # ══════════════════════════════════════════════════════════════
 
+
+# --- Das ist falsch ---
 
 def das_ist_falsch_obj(wer, wen, team=None):
 
@@ -377,6 +499,8 @@ das_ist_falsch = faehigkeit(
 )
 
 
+# --- Hausaufgaben zeigen ---
+
 def hausaufgaben_zeigen_obj(wer, wen, team=None):
 
     HP_verändern(wen, 40)
@@ -391,6 +515,8 @@ hausaufgaben_zeigen = faehigkeit(
     "verbündete"
 )
 
+
+# --- Musterlösung ---
 
 def musterloesung_obj(wer, wen, team=None):
 
@@ -412,23 +538,24 @@ musterloesung = faehigkeit(
 )
 
 
-def kreidewurf_obj(wer, wen, team=None):
-    HP_verändern(wen, entgültigen_schaden_berechnen(wer))
+# ══════════════════════════════════════════════════════════════
+# Aufsicht
+# ══════════════════════════════════════════════════════════════
 
 
-kreidewurf = faehigkeit(
-    "kreidewurf",
-    kreidewurf_obj,
-    "Wirft Kreide und verursacht normalen Schaden.",
-    0,
-    0,
-    "gegner"
-)
-
+# --- Strafarbeit ---
 
 def strafarbeit_obj(wer, wen, team=None):
-    status_effekte.status_effekte_hinzufügen(wen, status_effekte.schaden_minus)
-    HP_verändern(wen, entgültigen_schaden_berechnen(wer))
+
+    status_effekte.status_effekte_hinzufügen(
+        wen,
+        status_effekte.schaden_minus
+    )
+
+    HP_verändern(
+        wen,
+        entgültigen_schaden_berechnen(wer)
+    )
 
 
 strafarbeit = faehigkeit(
@@ -441,8 +568,14 @@ strafarbeit = faehigkeit(
 )
 
 
+# --- Ordnungsruf ---
+
 def ordnungsruf_obj(wer, wen, team=None):
-    status_effekte.status_effekte_hinzufügen(wen, status_effekte.betaeubt)
+
+    status_effekte.status_effekte_hinzufügen(
+        wen,
+        status_effekte.betaeubt
+    )
 
 
 ordnungsruf = faehigkeit(
@@ -455,9 +588,21 @@ ordnungsruf = faehigkeit(
 )
 
 
+# ══════════════════════════════════════════════════════════════
+# Hausmeister
+# ══════════════════════════════════════════════════════════════
+
+
+# --- Pausenbrot ---
+
 def pausenbrot_obj(wer, wen, team=None):
+
     HP_verändern(wen, 55)
-    status_effekte.status_effekte_hinzufügen(wen, status_effekte.healing_over_time_1)
+
+    status_effekte.status_effekte_hinzufügen(
+        wen,
+        status_effekte.healing_over_time_1
+    )
 
 
 pausenbrot = faehigkeit(
@@ -470,8 +615,14 @@ pausenbrot = faehigkeit(
 )
 
 
+# --- Glockenschlag ---
+
 def glockenschlag_obj(wer, wen, team=None):
-    HP_verändern(wen, entgültigen_schaden_berechnen(wer) * 2)
+
+    HP_verändern(
+        wen,
+        entgültigen_schaden_berechnen(wer) * 2
+    )
 
 
 glockenschlag = faehigkeit(
@@ -484,9 +635,24 @@ glockenschlag = faehigkeit(
 )
 
 
+# ══════════════════════════════════════════════════════════════
+# Direktor
+# ══════════════════════════════════════════════════════════════
+
+
+# --- Autorität ---
+
 def autoritaet_obj(wer, wen, team=None):
-    status_effekte.status_effekte_hinzufügen(wer, status_effekte.schaden_plus)
-    status_effekte.status_effekte_hinzufügen(wer, status_effekte.healing_over_time_1)
+
+    status_effekte.status_effekte_hinzufügen(
+        wer,
+        status_effekte.schaden_plus
+    )
+
+    status_effekte.status_effekte_hinzufügen(
+        wer,
+        status_effekte.healing_over_time_1
+    )
 
 
 autoritaet = faehigkeit(
@@ -499,24 +665,24 @@ autoritaet = faehigkeit(
 )
 
 
-def besenstreich_obj(wer, wen, team=None):
-    HP_verändern(wen, entgültigen_schaden_berechnen(wer))
-    status_effekte.status_effekte_hinzufügen(wen, status_effekte.damage_over_time_1)
+# ══════════════════════════════════════════════════════════════
+# Klassenclown
+# ══════════════════════════════════════════════════════════════
 
 
-besenstreich = faehigkeit(
-    "besenstreich",
-    besenstreich_obj,
-    "Verursacht Schaden und Schaden über Zeit.",
-    3,
-    0,
-    "gegner"
-)
-
+# --- Klassenstreich ---
 
 def streich_obj(wer, wen, team=None):
-    HP_verändern(wen, entgültigen_schaden_berechnen(wer))
-    status_effekte.status_effekte_hinzufügen(wen, status_effekte.schaden_minus)
+
+    HP_verändern(
+        wen,
+        entgültigen_schaden_berechnen(wer)
+    )
+
+    status_effekte.status_effekte_hinzufügen(
+        wen,
+        status_effekte.schaden_minus
+    )
 
 
 streich = faehigkeit(
@@ -529,9 +695,19 @@ streich = faehigkeit(
 )
 
 
+# --- Lachanfall ---
+
 def lachanfall_obj(wer, wen, team=None):
-    HP_verändern(wen, entgültigen_schaden_berechnen(wer) * 2)
-    status_effekte.status_effekte_hinzufügen(wen, status_effekte.betaeubt)
+
+    HP_verändern(
+        wen,
+        entgültigen_schaden_berechnen(wer) * 2
+    )
+
+    status_effekte.status_effekte_hinzufügen(
+        wen,
+        status_effekte.betaeubt
+    )
 
 
 lachanfall = faehigkeit(
@@ -573,13 +749,19 @@ alle_fähigkeiten = [
     das_ist_falsch,
     hausaufgaben_zeigen,
     musterloesung,
-    kreidewurf,
+
+    # Aufsicht
     strafarbeit,
     ordnungsruf,
+
+    # Hausmeister
     pausenbrot,
     glockenschlag,
+
+    # Direktor
     autoritaet,
-    besenstreich,
+
+    # Klassenclown
     streich,
     lachanfall
 ]

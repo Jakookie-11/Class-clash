@@ -18,6 +18,8 @@ def alle_kampangen_laden():
 def spiel_speichern(spieler):
     os.makedirs("saves", exist_ok=True)
 
+    confic_setup_speichern()
+
     gespeicherte_charaktere = {}
 
     for name, charakter in charaktere.Charaktere.items():
@@ -66,6 +68,8 @@ def confic_setup_laden():
     if not os.path.exists(datei):
         confic.first_start_configurator = True
         confic.terminal_clear = "clear"
+        confic.passwort_sichtbarkeit = False
+        confic.passwort_sichtbarkeitshinweis_anzeigen = True
         confic_setup_speichern()
         return
 
@@ -73,7 +77,9 @@ def confic_setup_laden():
         daten = json.load(datei_lesen)
 
     confic.first_start_configurator = daten.get("starter_menue", True)
-    confic.terminal_clear = daten.get("terminal_clear", "clear")
+    confic.terminal_clear = daten.get("terminal_clear", "cls")
+    confic.passwort_sichtbarkeit = daten.get("passwort_sichtbarkeit", False)
+    confic.passwort_sichtbarkeitshinweis_anzeigen = daten.get("passwort_sichtbarkeitshinweis_anzeigen", True)
 
 
 
@@ -83,7 +89,9 @@ def confic_setup_speichern():
 
     daten = {
         "starter_menue"  : confic.first_start_configurator,
-        "terminal_clear" : confic.terminal_clear
+        "terminal_clear" : confic.terminal_clear,
+        "passwort_sichtbarkeit" : confic.passwort_sichtbarkeit,
+        "passwort_sichtbarkeitshinweis_anzeigen" : confic.passwort_sichtbarkeitshinweis_anzeigen
     }
 
     with open(datei, "w", encoding="utf-8") as datei_ausgabe:

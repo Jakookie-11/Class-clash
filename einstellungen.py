@@ -77,6 +77,19 @@ def profil_enstellungen(spieler_name):
             if is_breake_profil_loeschen == 1:
                 continue
 
+        elif wahl == 5:
+            if confic.passwort_sichtbarkeit == False:
+                confic.passwort_sichtbarkeit = True
+
+            elif confic.passwort_sichtbarkeit == True:
+                confic.passwort_sichtbarkeit = False
+
+            os.system(confic.terminal_clear)
+            print()
+            print(f"Passwort_sichtbarkeit wurde geändert zu: {confic.passwort_sichtbarkeit}")
+            print()
+            input("Enter...")
+
         else:
             return 1
 

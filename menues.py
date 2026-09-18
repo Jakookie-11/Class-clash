@@ -46,10 +46,12 @@ einstellungen_menue = {
     "[4] Zurueck"        : ""
 }
 #->Y
+import confic
 profil_menue = {
-    "[1] Passwort aendern"     : "",
-    "[2] Profil Daten zeigen"  : "",
-    "[3] Profil Zuruecksetzen" : "",
-    "[4] Profil Loeschen"      : "",
-    "[5] Zurueck"              : ""
+    "[1] Passwort aendern"              : "",
+    "[2] Profil Daten zeigen"           : "",
+    "[3] Profil Zuruecksetzen"          : "",
+    "[4] Profil Loeschen"               : "",
+    "[5] Passwort-sichtbarkeit aendern" : "",
+    "[6] Zurueck"                       : ""
 }
