@@ -4,8 +4,7 @@ import bcrypt
 import json
 
 import confic
-import subprocess
-import sys
+import getpass
 
 import funktions
 import speichern
@@ -128,7 +127,19 @@ def begin():
                     os.system(confic.terminal_clear)
                     while True:
                         spieler = input("Wie heisst du? ").strip()
-                        passwort = input("Passwort? ").strip()
+
+                        if confic.passwort_sichtbarkeitshinweis_anzeigen == True:
+                            print("-------------")
+                            print("! Das Passwort ist unsichtbar, das Kann in den Einstellungen unter Profil aber geaendert werden.")
+                            print("-------------")
+                            confic.passwort_sichtbarkeitshinweis_anzeigen = False
+
+                        if confic.passwort_sichtbarkeit == False:
+                            passwort = getpass.getpass("Passwort? ").strip()
+
+                        elif confic.passwort_sichtbarkeit == True:
+                            passwort = input("Passwort? ")
+                        
                         print()
 
                         if spieler == "" or spieler not in confic.passwoerter:

@@ -1,7 +1,5 @@
 import os
-import time
-import zipfile
-import shutil
+import menues
 import json
 
 import confic
@@ -16,6 +14,11 @@ def menue(bibliothek, spieler_name=None,):
         #---printen der Wahlen---#
         for schlüssel, wert in bibliothek.items():
             print(schlüssel)
+
+        if bibliothek == menues.profil_menue:
+            print()
+            print(f"Aktuelle Passwort_sichtbarkeit: {confic.passwort_sichtbarkeit}")
+            print()
 
         #---Wahl---#
         auswahl = input("Wahl? ")

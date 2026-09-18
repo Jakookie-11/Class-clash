@@ -52,9 +52,25 @@ Jakob = charakter(
     "light_side",
     100,
     1,
-    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_1=faehigkeiten.jakobs_basic,
     faehigkeit_2=faehigkeiten.starker_schlag,
     faehigkeit_3=faehigkeiten.bleibender_schlag
+)
+
+
+Hannah_d = charakter(
+    "Hannah_d",
+    "Unterstuetzer",
+    150,
+    150,
+    150,
+    -25,
+    "light_side",
+    110,
+    1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.einfache_heilung,
+    faehigkeit_3=faehigkeiten.staerkende_heilung
 )
 
 
@@ -128,77 +144,57 @@ Lovis = charakter(
 
 
 
-
-#----------npcs----------#
+#--------------------------------------------#
+#--------------------npcs--------------------#
+#--------------------------------------------#
 
 fuenftklaessler = charakter(
-    "fuenftklaessler",
-    "npc",
-    70,
-    70,
-    70,
-    -7,
-    50,
-    1,
-    faehigkeit_1=faehigkeiten.radiergummi_wefen,          # 0
-    faehigkeit_2=faehigkeiten.er_hat_nichts_gemacht,      # 4
-    faehigkeit_3=faehigkeiten.hordenangriff               # 5
+    "fuenftklaessler", "npc", 70, 70, 70, -7, "npc", 50, 1,
+    faehigkeit_1=faehigkeiten.radiergummi_wefen,
+    faehigkeit_2=faehigkeiten.er_hat_nichts_gemacht,
+    faehigkeit_3=faehigkeiten.hordenangriff
 )
 
 
 cooler_fuenftklaessler = charakter(
-    "cooler_fuenftklaessler",
-    "npc",
-    80,
-    80,
-    80,
-    -8,
-    60,
-    1,
-    faehigkeit_1=faehigkeiten.ey_was_guckst_du,            # 0
-    faehigkeit_2=faehigkeiten.sonnenbrille_auf,            # 4
-    faehigkeit_3=faehigkeiten.ranzenwurf                   # 5
+    "cooler_fuenftklaessler", "npc", 80, 80, 80, -8, "npc", 60, 1,
+    faehigkeit_1=faehigkeiten.ey_was_guckst_du,
+    faehigkeit_2=faehigkeiten.sonnenbrille_auf,
+    faehigkeit_3=faehigkeiten.ranzenwurf
 )
 
 
 streber = charakter(
-    "streber",
-    "npc",
-    60,
-    60,
-    60,
-    -6,
-    70,
-    1,
-    faehigkeit_1=faehigkeiten.das_ist_falsch,               # 0
-    faehigkeit_2=faehigkeiten.hausaufgaben_zeigen,          # 3
-    faehigkeit_3=faehigkeiten.musterloesung                 # 4
+    "streber", "npc", 60, 60, 60, -6, "npc", 70, 1,
+    faehigkeit_1=faehigkeiten.das_ist_falsch,
+    faehigkeit_2=faehigkeiten.hausaufgaben_zeigen,
+    faehigkeit_3=faehigkeiten.musterloesung
 )
 
 
 aufsicht = charakter(
-    "aufsicht", "npc", 95, 95, 95, -9, "dark_side", 75, 1,
+    "aufsicht", "npc", 95, 95, 95, -9, "npc", 75, 1,
     faehigkeit_1=faehigkeiten.einfacher_angriff,
     faehigkeit_2=faehigkeiten.strafarbeit,
     faehigkeit_3=faehigkeiten.ordnungsruf
 )
 
 hausmeister = charakter(
-    "hausmeister", "npc", 150, 150, 150, -12, "dark_side", 55, 1,
+    "hausmeister", "npc", 150, 150, 150, -12, "npc", 55, 1,
     faehigkeit_1=faehigkeiten.einfacher_angriff,
     faehigkeit_2=faehigkeiten.pausenbrot,
     faehigkeit_3=faehigkeiten.glockenschlag
 )
 
 direktor = charakter(
-    "direktor", "npc", 230, 230, 230, -15, "dark_side", 65, 1,
+    "direktor", "npc", 230, 230, 230, -15, "npc", 65, 1,
     faehigkeit_1=faehigkeiten.einfacher_angriff,
     faehigkeit_2=faehigkeiten.autoritaet,
     faehigkeit_3=faehigkeiten.glockenschlag
 )
 
 klassenclown = charakter(
-    "klassenclown", "npc", 115, 115, 115, -11, "dark_side", 95, 1,
+    "klassenclown", "npc", 115, 115, 115, -11, "npc", 95, 1,
     faehigkeit_1=faehigkeiten.einfacher_angriff,
     faehigkeit_2=faehigkeiten.streich,
     faehigkeit_3=faehigkeiten.lachanfall
@@ -214,6 +210,7 @@ Charaktere = {
     "Simon"   : Simon,
     "Max"     : Max,
     "Lovis"   : Lovis,
+    "Hannah_d": Hannah_d,
 
     "fuenftklaessler": fuenftklaessler,
     "cooler_fuenftklaessler": cooler_fuenftklaessler,

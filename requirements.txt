@@ -1,1 +1,3 @@
 bcrypt
+cython
+setuptools

@@ -10,6 +10,7 @@ import confic
 import faehigkeiten
 import ki
 import kampange
+import geheimes
 
 
 GRUEN = "\033[32m"
@@ -68,7 +69,8 @@ def charaktere_auswaelen(nur_eigenes_team=False,team_groesse=2):
     print()
     for schlüssel, charakter in charaktere.Charaktere.items():
         if charakter.klasse != "npc":
-            print(schlüssel)
+            if charakter.name != "Hannah_d":
+                print(schlüssel)
     print()
     print("Team 1:")
     print()
@@ -660,6 +662,9 @@ def kampf(
 
                         #---Eigentliche Fähigkeit---#
                         faehigkeit.funktion(wer, ziel, team_1)
+
+                        geheimes.wer_hat_wieviel_schaden_genommen(ziel, team_1, team_2)
+
                         abklingzeiten_aktualisieren(wer)
                         break
 
@@ -667,6 +672,9 @@ def kampf(
                 faehigkeit, ziel = ki.ki_zug(wer, team_1, team_2, Ki)
                 faehigkeit.abklingzeit = faehigkeit.max_abklingzeit
                 faehigkeit.funktion(wer, ziel, team_2)
+
+                geheimes.wer_hat_wieviel_schaden_genommen(ziel, team_1, team_2)
+
                 abklingzeiten_aktualisieren(wer)
 
 
