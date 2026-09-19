@@ -1,6 +1,1 @@
-{
-    "starter_menue": false,
-    "terminal_clear": "cls",
-    "passwort_sichtbarkeit": false,
-    "passwort_sichtbarkeitshinweis_anzeigen": true
-}
+{"starter_menue": true, "terminal_clear": "cls", "passwort_sichtbarkeit": false, "passwort_sichtbarkeitshinweis_anzeigen": true}

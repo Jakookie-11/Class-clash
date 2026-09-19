@@ -295,10 +295,10 @@ def jakobs_basic_obj(wer, wen, team=None):
 jakobs_basic = faehigkeit(
     "jakobs_basic",
     jakobs_basic_obj,
-    "GEheim...",
+    "Geheim...",
     0,
     0,
-    "Gegner"
+    "gegner"
 )
 
 
