@@ -23,13 +23,14 @@ def spiel_speichern(spieler):
     gespeicherte_charaktere = {}
 
     for name, charakter in charaktere.Charaktere.items():
-        gespeicherte_charaktere[name] = {
-            "hp" : charakter.hp,
-            "max_hp" : charakter.max_hp,
-            "max_max_hp" : charakter.max_max_hp,
-            "schaden" : charakter.schaden,
-            "level" : charakter.level
-        }
+        if charakter.klasse != "npc":
+            gespeicherte_charaktere[name] = {
+                "hp" : charakter.hp,
+                "max_hp" : charakter.max_hp,
+                "max_max_hp" : charakter.max_max_hp,
+                "schaden" : charakter.schaden,
+                "level" : charakter.level
+            }
 
     gespeicherter_fortschritt = {}
 

@@ -22,10 +22,31 @@ UPDATE_ZIP = "update.zip"
 # PROJEKTORDNER ERMITTELN
 # ============================================================
 
-PROJEKT_ORDNER = os.path.dirname(os.path.abspath(__file__))
+PROJEKT_ORDNER = os.path.dirname(
+    os.path.abspath(__file__)
+)
 
-UPDATE_PFAD = os.path.join(PROJEKT_ORDNER, UPDATE_ORDNER)
-ZIP_PFAD = os.path.join(PROJEKT_ORDNER, UPDATE_ZIP)
+UPDATE_PFAD = os.path.join(
+    PROJEKT_ORDNER,
+    UPDATE_ORDNER
+)
+
+ZIP_PFAD = os.path.join(
+    PROJEKT_ORDNER,
+    UPDATE_ZIP
+)
+
+
+# ============================================================
+# HILFSFUNKTIONEN
+# ============================================================
+
+def kurze_pause():
+    time.sleep(0.7)
+
+
+def laengere_pause():
+    time.sleep(1.2)
 
 
 # ============================================================
@@ -37,13 +58,18 @@ def datei_loeschen_warten(pfad):
     while True:
 
         try:
+
             if os.path.exists(pfad):
                 os.remove(pfad)
 
             break
 
         except PermissionError:
-            print(f"Warte auf Datei: {os.path.basename(pfad)}")
+
+            print(
+                f"Warte auf Datei: {os.path.basename(pfad)}"
+            )
+
             time.sleep(0.5)
 
 
@@ -57,10 +83,15 @@ def ordner_loeschen(pfad):
         return
 
     try:
+
         shutil.rmtree(pfad)
 
     except PermissionError:
-        print(f"Warte auf Ordner: {os.path.basename(pfad)}")
+
+        print(
+            f"Warte auf Ordner: {os.path.basename(pfad)}"
+        )
+
         time.sleep(0.5)
 
         ordner_loeschen(pfad)
@@ -72,10 +103,16 @@ def ordner_loeschen(pfad):
 
 def update_herunterladen():
 
+    print("[1/6] Update herunterladen")
+    print()
+
     print("Suche nach Update...")
     print()
 
-    github_antwort = urlopen(GITHUB_API, timeout=10)
+    github_antwort = urlopen(
+        GITHUB_API,
+        timeout=10
+    )
 
     daten = json.loads(
         github_antwort.read().decode("utf-8")
@@ -86,20 +123,32 @@ def update_herunterladen():
     for asset in daten["assets"]:
 
         if asset["name"] == "update.zip":
+
             download_url = asset["browser_download_url"]
+
             break
 
     if download_url is None:
+
         print("Keine update.zip gefunden.")
+        print()
+
         return False
 
     print("Update gefunden.")
+    print()
     print("Lade Update herunter...")
     print()
 
-    with urlopen(download_url, timeout=30) as antwort:
+    with urlopen(
+        download_url,
+        timeout=30
+    ) as antwort:
 
-        with open(ZIP_PFAD, "wb") as datei:
+        with open(
+            ZIP_PFAD,
+            "wb"
+        ) as datei:
 
             while True:
 
@@ -113,6 +162,8 @@ def update_herunterladen():
     print("Download abgeschlossen.")
     print()
 
+    laengere_pause()
+
     return True
 
 
@@ -122,29 +173,462 @@ def update_herunterladen():
 
 def update_entpacken():
 
-    print("Entpacke Update...")
+    print("[2/6] Update entpacken")
     print()
 
     if os.path.exists(UPDATE_PFAD):
-        ordner_loeschen(UPDATE_PFAD)
 
-    os.makedirs(UPDATE_PFAD)
+        ordner_loeschen(
+            UPDATE_PFAD
+        )
 
-    with zipfile.ZipFile(ZIP_PFAD, "r") as zip_datei:
+    os.makedirs(
+        UPDATE_PFAD
+    )
 
-        zip_datei.extractall(UPDATE_PFAD)
+    with zipfile.ZipFile(
+        ZIP_PFAD,
+        "r"
+    ) as zip_datei:
+
+        zip_datei.extractall(
+            UPDATE_PFAD
+        )
 
     print("Update entpackt.")
     print()
 
+    laengere_pause()
+
 
 # ============================================================
-# UNNÖTIGE DATEIEN AUS UPDATE ENTFERNEN
+# SPIELSTÄNDE MIGRIEREN
+# ============================================================
+
+def daten_ergänzen(
+    alte_daten,
+    standard_daten
+):
+
+    if not isinstance(
+        alte_daten,
+        dict
+    ):
+
+        return alte_daten
+
+    if not isinstance(
+        standard_daten,
+        dict
+    ):
+
+        return alte_daten
+
+    for schlüssel, standard_wert in standard_daten.items():
+
+        # ----------------------------------------------------
+        # SCHLÜSSEL EXISTIERT BEREITS
+        # ----------------------------------------------------
+
+        if schlüssel in alte_daten:
+
+            alter_wert = alte_daten[
+                schlüssel
+            ]
+
+            # Beide Werte sind Dictionaries
+            # → rekursiv überprüfen
+
+            if (
+                isinstance(
+                    alter_wert,
+                    dict
+                )
+                and
+                isinstance(
+                    standard_wert,
+                    dict
+                )
+            ):
+
+                daten_ergänzen(
+                    alter_wert,
+                    standard_wert
+                )
+
+        # ----------------------------------------------------
+        # SCHLÜSSEL FEHLT
+        # ----------------------------------------------------
+
+        else:
+
+            alte_daten[
+                schlüssel
+            ] = standard_wert
+
+    return alte_daten
+
+
+def spielstaende_migrieren():
+
+    print("[3/6] Spielerdaten überprüfen")
+    print()
+
+    # --------------------------------------------------------
+    # STANDARDDATEI DES UPDATES
+    # --------------------------------------------------------
+
+    standard_pfad = os.path.join(
+        UPDATE_PFAD,
+        "Class-clash-main",
+        "standard.json"
+    )
+
+    if not os.path.exists(
+        standard_pfad
+    ):
+
+        print(
+            "Keine standard.json im Update gefunden."
+        )
+
+        print(
+            "Spielstände werden nicht verändert."
+        )
+
+        print()
+
+        return
+
+    # --------------------------------------------------------
+    # STANDARDDATEN LADEN
+    # --------------------------------------------------------
+
+    with open(
+        standard_pfad,
+        "r",
+        encoding="utf-8"
+    ) as datei:
+
+        standard_daten = json.load(
+            datei
+        )
+
+    # --------------------------------------------------------
+    # SAVE-ORDNER
+    # --------------------------------------------------------
+
+    saves_pfad = os.path.join(
+        PROJEKT_ORDNER,
+        "saves"
+    )
+
+    if not os.path.exists(
+        saves_pfad
+    ):
+
+        print(
+            "Kein saves-Ordner gefunden."
+        )
+
+        print()
+
+        return
+
+    # --------------------------------------------------------
+    # SPIELSTÄNDE DURCHGEHEN
+    # --------------------------------------------------------
+
+    anzahl = 0
+
+    for dateiname in os.listdir(
+        saves_pfad
+    ):
+
+        # Nur JSON-Dateien
+        if not dateiname.endswith(
+            ".json"
+        ):
+
+            continue
+
+        # Diese Dateien sind KEINE Spielstände
+        if dateiname in [
+            "confic_setup.json",
+            "passwoerter.json"
+        ]:
+
+            continue
+
+        spielstand_pfad = os.path.join(
+            saves_pfad,
+            dateiname
+        )
+
+        # Nur Dateien
+        if not os.path.isfile(
+            spielstand_pfad
+        ):
+
+            continue
+
+        print(
+            f"  Überprüfe {dateiname}..."
+        )
+
+        # ----------------------------------------------------
+        # SPIELSTAND LADEN
+        # ----------------------------------------------------
+
+        with open(
+            spielstand_pfad,
+            "r",
+            encoding="utf-8"
+        ) as datei:
+
+            alte_daten = json.load(
+                datei
+            )
+
+        # ----------------------------------------------------
+        # DATEN ERGÄNZEN
+        # ----------------------------------------------------
+
+        daten_ergänzen(
+            alte_daten,
+            standard_daten
+        )
+
+        # ----------------------------------------------------
+        # SPIELSTAND SPEICHERN
+        # ----------------------------------------------------
+
+        with open(
+            spielstand_pfad,
+            "w",
+            encoding="utf-8"
+        ) as datei:
+
+            json.dump(
+                alte_daten,
+                datei,
+                ensure_ascii=False,
+                indent=4
+            )
+
+        print(
+            f"  ✓ {dateiname}"
+        )
+
+        anzahl += 1
+
+    print()
+
+    if anzahl == 0:
+
+        print(
+            "Keine Spielstände gefunden."
+        )
+
+    else:
+
+        print(
+            f"{anzahl} Spielstand/Spielstände überprüft."
+        )
+
+    print()
+
+    laengere_pause()
+
+
+# ============================================================
+# CONFIC MIGRATION
+# ============================================================
+
+def confic_daten_migrieren(
+    alte_daten,
+    neue_daten
+):
+
+    if not isinstance(
+        alte_daten,
+        dict
+    ):
+
+        return neue_daten
+
+    if not isinstance(
+        neue_daten,
+        dict
+    ):
+
+        return alte_daten
+
+    neue_config = {}
+
+    for schlüssel, neuer_wert in neue_daten.items():
+
+        # ----------------------------------------------------
+        # SCHLÜSSEL EXISTIERT BEREITS
+        # ----------------------------------------------------
+
+        if schlüssel in alte_daten:
+
+            alter_wert = alte_daten[
+                schlüssel
+            ]
+
+            # Beide sind Dictionaries
+            # → rekursiv migrieren
+
+            if (
+                isinstance(
+                    alter_wert,
+                    dict
+                )
+                and
+                isinstance(
+                    neuer_wert,
+                    dict
+                )
+            ):
+
+                neue_config[
+                    schlüssel
+                ] = confic_daten_migrieren(
+                    alter_wert,
+                    neuer_wert
+                )
+
+            # Alten Wert behalten
+            else:
+
+                neue_config[
+                    schlüssel
+                ] = alter_wert
+
+        # ----------------------------------------------------
+        # NEUER SCHLÜSSEL
+        # ----------------------------------------------------
+
+        else:
+
+            neue_config[
+                schlüssel
+            ] = neuer_wert
+
+    return neue_config
+
+
+def confic_migrieren():
+
+    print("  Konfiguration überprüfen...")
+
+    neue_confic_pfad = os.path.join(
+        UPDATE_PFAD,
+        "Class-clash-main",
+        "saves",
+        "confic_setup.json"
+    )
+
+    alte_confic_pfad = os.path.join(
+        PROJEKT_ORDNER,
+        "saves",
+        "confic_setup.json"
+    )
+
+    # --------------------------------------------------------
+    # NEUE CONFIG PRÜFEN
+    # --------------------------------------------------------
+
+    if not os.path.exists(
+        neue_confic_pfad
+    ):
+
+        print(
+            "  ⚠ Keine neue confic_setup.json gefunden."
+        )
+
+        return
+
+    # --------------------------------------------------------
+    # ALTE CONFIG PRÜFEN
+    # --------------------------------------------------------
+
+    if not os.path.exists(
+        alte_confic_pfad
+    ):
+
+        print(
+            "  ⚠ Keine alte confic_setup.json gefunden."
+        )
+
+        return
+
+    # --------------------------------------------------------
+    # DATEIEN LADEN
+    # --------------------------------------------------------
+
+    with open(
+        neue_confic_pfad,
+        "r",
+        encoding="utf-8"
+    ) as datei:
+
+        neue_daten = json.load(
+            datei
+        )
+
+    with open(
+        alte_confic_pfad,
+        "r",
+        encoding="utf-8"
+    ) as datei:
+
+        alte_daten = json.load(
+            datei
+        )
+
+    # --------------------------------------------------------
+    # MIGRIEREN
+    # --------------------------------------------------------
+
+    alte_daten = confic_daten_migrieren(
+        alte_daten,
+        neue_daten
+    )
+
+    # --------------------------------------------------------
+    # SPEICHERN
+    # --------------------------------------------------------
+
+    with open(
+        alte_confic_pfad,
+        "w",
+        encoding="utf-8"
+    ) as datei:
+
+        json.dump(
+            alte_daten,
+            datei,
+            ensure_ascii=False,
+            indent=4
+        )
+
+    print(
+        "  ✓ Konfiguration aktualisiert."
+    )
+
+    laengere_pause()
+
+
+# ============================================================
+# UPDATE VORBEREITEN
 # ============================================================
 
 def update_vorbereiten():
 
-    print("Bereite Update vor...")
+    print("[4/6] Alte Update-Dateien vorbereiten")
     print()
 
     hauptordner = os.path.join(
@@ -167,14 +651,29 @@ def update_vorbereiten():
             name
         )
 
-        if os.path.isdir(pfad):
-            ordner_loeschen(pfad)
+        if os.path.isdir(
+            pfad
+        ):
 
-        elif os.path.isfile(pfad):
-            datei_loeschen_warten(pfad)
+            ordner_loeschen(
+                pfad
+            )
 
-    print("Update vorbereitet.")
+        elif os.path.isfile(
+            pfad
+        ):
+
+            datei_loeschen_warten(
+                pfad
+            )
+
+    print(
+        "  ✓ Update vorbereitet."
+    )
+
     print()
+
+    laengere_pause()
 
 
 # ============================================================
@@ -183,7 +682,7 @@ def update_vorbereiten():
 
 def alte_dateien_loeschen():
 
-    print("Entferne alte Dateien...")
+    print("[5/6] Alte Programmdateien entfernen")
     print()
 
     geschuetzte_dateien = [
@@ -199,9 +698,14 @@ def alte_dateien_loeschen():
         "update"
     ]
 
-    for name in os.listdir(PROJEKT_ORDNER):
+    for name in os.listdir(
+        PROJEKT_ORDNER
+    ):
 
-        pfad = os.path.join(PROJEKT_ORDNER, name)
+        pfad = os.path.join(
+            PROJEKT_ORDNER,
+            name
+        )
 
         if name in geschuetzte_dateien:
             continue
@@ -209,52 +713,88 @@ def alte_dateien_loeschen():
         if name in geschuetzte_ordner:
             continue
 
-        # Ordner
-        if os.path.isdir(pfad):
+        # ----------------------------------------------------
+        # ORDNER
+        # ----------------------------------------------------
+
+        if os.path.isdir(
+            pfad
+        ):
 
             if name == "__pycache__":
-                ordner_loeschen(pfad)
+
+                ordner_loeschen(
+                    pfad
+                )
 
             continue
 
-        # Dateien
-        if os.path.isfile(pfad):
+        # ----------------------------------------------------
+        # DATEIEN
+        # ----------------------------------------------------
 
-            # Diese Dateitypen werden vom Update ersetzt
-            if name.endswith(".py"):
-                datei_loeschen_warten(pfad)
+        if os.path.isfile(
+            pfad
+        ):
 
-            elif name.endswith(".txt"):
-                datei_loeschen_warten(pfad)
+            if name.endswith(
+                ".py"
+            ):
 
-            elif name.endswith(".json"):
-                datei_loeschen_warten(pfad)
+                datei_loeschen_warten(
+                    pfad
+                )
 
-            elif name.endswith(".pyd"):
-                datei_loeschen_warten(pfad)
+            elif name.endswith(
+                ".txt"
+            ):
 
-    print("Alte Dateien entfernt.")
+                datei_loeschen_warten(
+                    pfad
+                )
+
+            elif name.endswith(
+                ".json"
+            ):
+
+                datei_loeschen_warten(
+                    pfad
+                )
+
+            elif name.endswith(
+                ".pyd"
+            ):
+
+                datei_loeschen_warten(
+                    pfad
+                )
+
+    print(
+        "  ✓ Alte Dateien entfernt."
+    )
+
     print()
+
+    laengere_pause()
 
 
 # ============================================================
-# UPDATE DATEIEN KOPIEREN
+# UPDATE INSTALLIEREN
 # ============================================================
 
 def update_installieren():
 
-    print("Installiere Update...")
+    print("Installiere neue Version...")
     print()
-
-    # Der eigentliche Inhalt befindet sich in
-    # "Class-clash-main"
 
     hauptordner = os.path.join(
         UPDATE_PFAD,
         "Class-clash-main"
     )
 
-    for name in os.listdir(hauptordner):
+    for name in os.listdir(
+        hauptordner
+    ):
 
         quelle = os.path.join(
             hauptordner,
@@ -266,15 +806,30 @@ def update_installieren():
             name
         )
 
-        if os.path.isdir(quelle):
+        # ----------------------------------------------------
+        # ORDNER
+        # ----------------------------------------------------
 
-            if os.path.exists(ziel):
-                ordner_loeschen(ziel)
+        if os.path.isdir(
+            quelle
+        ):
+
+            if os.path.exists(
+                ziel
+            ):
+
+                ordner_loeschen(
+                    ziel
+                )
 
             shutil.copytree(
                 quelle,
                 ziel
             )
+
+        # ----------------------------------------------------
+        # DATEIEN
+        # ----------------------------------------------------
 
         else:
 
@@ -283,29 +838,47 @@ def update_installieren():
                 ziel
             )
 
-    print("Update installiert.")
+    print(
+        "  ✓ Neue Version installiert."
+    )
+
     print()
+
+    laengere_pause()
 
 
 # ============================================================
-# UPDATE ORDNER AUFRÄUMEN
+# AUFRÄUMEN
 # ============================================================
 
 def aufraeumen():
 
-    print("Räume auf...")
+    print("[6/6] Aufräumen")
     print()
 
-    # update.zip löschen
-    if os.path.exists(ZIP_PFAD):
-        datei_loeschen_warten(ZIP_PFAD)
+    if os.path.exists(
+        ZIP_PFAD
+    ):
 
-    # update-Ordner löschen
-    if os.path.exists(UPDATE_PFAD):
-        ordner_loeschen(UPDATE_PFAD)
+        datei_loeschen_warten(
+            ZIP_PFAD
+        )
 
-    print("Aufräumen abgeschlossen.")
+    if os.path.exists(
+        UPDATE_PFAD
+    ):
+
+        ordner_loeschen(
+            UPDATE_PFAD
+        )
+
+    print(
+        "  ✓ Temporäre Dateien entfernt."
+    )
+
     print()
+
+    laengere_pause()
 
 
 # ============================================================
@@ -315,10 +888,23 @@ def aufraeumen():
 def main():
 
     print()
-    print("╔══════════════════════════════════════════════════╗")
-    print("║                 CLASS CLASH                      ║")
-    print("║                  UPDATER                         ║")
-    print("╚══════════════════════════════════════════════════╝")
+
+    print(
+        "╔══════════════════════════════════════════════════╗"
+    )
+
+    print(
+        "║                 CLASS CLASH                     ║"
+    )
+
+    print(
+        "║                  UPDATER                        ║"
+    )
+
+    print(
+        "╚══════════════════════════════════════════════════╝"
+    )
+
     print()
 
     try:
@@ -328,14 +914,29 @@ def main():
         # ----------------------------------------------------
 
         if not update_herunterladen():
-            input("ENTER zum Beenden...")
+
+            input(
+                "ENTER zum Beenden..."
+            )
+
             return
 
         # ----------------------------------------------------
-        # ENTPACKEN
+        # UPDATE ENTPACKEN
         # ----------------------------------------------------
 
         update_entpacken()
+
+        # ----------------------------------------------------
+        # SPIELERDATEN
+        # ----------------------------------------------------
+
+        print("[3/6] Spielerdaten")
+        print()
+
+        confic_migrieren()
+
+        spielstaende_migrieren()
 
         # ----------------------------------------------------
         # UPDATE VORBEREITEN
@@ -344,13 +945,13 @@ def main():
         update_vorbereiten()
 
         # ----------------------------------------------------
-        # ALTE DATEIEN LÖSCHEN
+        # ALTE DATEIEN
         # ----------------------------------------------------
 
         alte_dateien_loeschen()
 
         # ----------------------------------------------------
-        # NEUE DATEIEN INSTALLIEREN
+        # NEUE DATEIEN
         # ----------------------------------------------------
 
         update_installieren()
@@ -361,37 +962,76 @@ def main():
 
         aufraeumen()
 
+        # ----------------------------------------------------
+        # FERTIG
+        # ----------------------------------------------------
+
         print()
-        print("════════════════════════════════════════════════════")
-        print("Update erfolgreich installiert!")
-        print("════════════════════════════════════════════════════")
+
+        print(
+            "════════════════════════════════════════════════════"
+        )
+
+        print(
+            "              UPDATE ERFOLGREICH"
+        )
+
+        print(
+            "════════════════════════════════════════════════════"
+        )
+
+        print()
+
+        print(
+            "Class Clash wurde aktualisiert."
+        )
+
+        print(
+            "Du kannst Class Clash jetzt erneut starten."
+        )
+
         print()
 
         time.sleep(2)
-
-        print("Class Clash wurde beendet.")
-        print("Du kannst Class Clash jetzt manuell starten.")
-        print()
-
-        time.sleep(2)
-
 
     except Exception as fehler:
 
         print()
-        print("════════════════════════════════════════════════════")
-        print("FEHLER BEIM UPDATE")
-        print("════════════════════════════════════════════════════")
+
+        print(
+            "════════════════════════════════════════════════════"
+        )
+
+        print(
+            "                 UPDATE FEHLER"
+        )
+
+        print(
+            "════════════════════════════════════════════════════"
+        )
+
         print()
 
-        print(fehler)
+        print(
+            f"Fehler: {fehler}"
+        )
+
         print()
 
-        print("Das Update konnte nicht vollständig installiert werden.")
+        print(
+            "Das Update konnte nicht vollständig installiert werden."
+        )
+
         print()
 
-        input("ENTER zum Beenden...")
+        input(
+            "ENTER zum Beenden..."
+        )
 
+
+# ============================================================
+# START
+# ============================================================
 
 if __name__ == "__main__":
     main()

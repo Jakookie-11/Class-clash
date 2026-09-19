@@ -298,8 +298,11 @@ def abklingzeiten_aktualisieren(von_wem):
 
 def alle_faehigkeits_abklingzeiten_resetten():
 
-    for faehigkeit in faehigkeiten.alle_fähigkeiten:
-        faehigkeit.abklingzeit = 0
+    for charakter in charaktere.Charaktere.values():
+
+        charakter.faehigkeit_1.abklingzeit = 0
+        charakter.faehigkeit_2.abklingzeit = 0
+        charakter.faehigkeit_3.abklingzeit = 0
 
 
 
@@ -358,7 +361,7 @@ def kampf_charakter_anzeigen(name):
 
 def kampf_team_anzeigen(team_1, team_2):
         
-    TEAM_BREITE = 35
+    TEAM_BREITE = 40
 
     print(f"{'TEAM 1':<{TEAM_BREITE}}{'TEAM 2':<{TEAM_BREITE}}")
     print(f"{'────────────────────':<{TEAM_BREITE}}{'────────────────────':<{TEAM_BREITE}}")
@@ -395,6 +398,87 @@ def kampf_team_anzeigen(team_1, team_2):
 
 
 
+def ziel_auswaehlen(wer, team_1, team_2, zieltyp):
+
+    if zieltyp == "gegner":
+        if wer in team_1:
+            moegliche_ziele = team_2
+        else:
+            moegliche_ziele = team_1
+
+    elif zieltyp == "verbündete":
+        if wer in team_1:
+            moegliche_ziele = team_1
+        else:
+            moegliche_ziele = team_2
+
+    else:
+        return None
+
+    # Tote Charaktere entfernen
+    moegliche_ziele = [
+        name for name in moegliche_ziele
+        if charaktere.Charaktere[name].hp > 0
+    ]
+
+    print()
+    print("Ziele:")
+    print()
+
+    for nummer, name in enumerate(moegliche_ziele, start=1):
+        print(f"[{nummer}] {name}")
+
+    print()
+
+    while True:
+        wahl = input("Ziel? ")
+
+        if wahl.isdigit():
+            nummer = int(wahl)
+
+            if 1 <= nummer <= len(moegliche_ziele):
+                return moegliche_ziele[nummer - 1]
+
+        print("Ungültige Auswahl!")
+        funktions.zeilen_loeschen(2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def kampf(
     leader_1=None,
     spieler_2_1=None,
@@ -411,6 +495,7 @@ def kampf(
     os.system(confic.terminal_clear)
 
     zug = 0
+    runde = 1
 
     #---Charaktere bekommen---#
 
@@ -516,6 +601,7 @@ def kampf(
 
         print("═════════════════════════")
         print("          Kampf          ")
+        print(f"         Runde {runde}")
         print("═════════════════════════")
         print()
         #--Teams + HP anzeigen--#
@@ -570,6 +656,11 @@ def kampf(
 
                     #--Prüfen ob abbrechen--#
                     if wahl == "Abbrechen" or wahl == "abbrechen":
+
+                        alle_statuseffekte_resetten()
+                        alle_faehigkeits_abklingzeiten_resetten()
+                        HP_zuruecksetzen()
+
                         return 2
 
                     if wahl == "1":
@@ -625,16 +716,12 @@ def kampf(
                         continue
                     else:
 
-                        ziel = input("Mit wem soll diese Faehigkeit interagieren? ")
-
-                        #---Ziel existiert?---#
-                        if not ziel in ausgewaehlte_charaktere:
-                            funktions.zeilen_loeschen(14)
-                            print()
-                            print("Dieser Charakter existiert nicht")
-                            time.sleep(2)
-                            funktions.zeilen_loeschen(2)
-                            continue
+                        ziel = ziel_auswaehlen(
+                            wer,
+                            team_1,
+                            team_2,
+                            faehigkeit.zieltyp
+                        )
 
 
                         #---Zieltyp überprüfen---#
@@ -663,7 +750,7 @@ def kampf(
                         #---Eigentliche Fähigkeit---#
                         faehigkeit.funktion(wer, ziel, team_1)
 
-                        geheimes.wer_hat_wieviel_schaden_genommen(ziel, team_1, team_2)
+                        geheimes.wer_hat_wieviel_schaden_genommen(wer, ziel, team_1, team_2)
 
                         abklingzeiten_aktualisieren(wer)
                         break
@@ -673,7 +760,7 @@ def kampf(
                 faehigkeit.abklingzeit = faehigkeit.max_abklingzeit
                 faehigkeit.funktion(wer, ziel, team_2)
 
-                geheimes.wer_hat_wieviel_schaden_genommen(ziel, team_1, team_2)
+                geheimes.wer_hat_wieviel_schaden_genommen(wer, ziel, team_1, team_2)
 
                 abklingzeiten_aktualisieren(wer)
 
@@ -726,3 +813,4 @@ def kampf(
 
             if zug >= len(reinfolge):
                 zug = 0
+                runde += 1

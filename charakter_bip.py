@@ -45,18 +45,20 @@ def charaktere_anzeigen():
 
         print()
         for schlüssel, charakter in charaktere.Charaktere.items():
-            print(f"----{schlüssel}----")
+            if charakter.klasse != "npc":
+                if charakter.name != "Hannah_d":
+                    print(f"----{schlüssel}----")
 
-            print(f"Name         : {charakter.name}")
-            print(f"Level        : {charakter.level}")
-            print(f"Klasse       : {charakter.klasse}")
-            print(f"HP           : {charakter.hp:.2f}")
-            print(f"Schaden      : {charakter.schaden}")
-            print(f"Speed        : {charakter.speed}")
-            print(f"Faehigkeit 1 : {charakter.faehigkeit_1}")
-            print(f"Faehigkeit 2 : {charakter.faehigkeit_2}")
-            print(f"Faehigkeit 3 : {charakter.faehigkeit_3}")
-            print()
+                    print(f"Name         : {charakter.name}")
+                    print(f"Level        : {charakter.level}")
+                    print(f"Klasse       : {charakter.klasse}")
+                    print(f"HP           : {charakter.hp:.2f}")
+                    print(f"Schaden      : {charakter.schaden}")
+                    print(f"Speed        : {charakter.speed}")
+                    print(f"Faehigkeit 1 : {charakter.faehigkeit_1}")
+                    print(f"Faehigkeit 2 : {charakter.faehigkeit_2}")
+                    print(f"Faehigkeit 3 : {charakter.faehigkeit_3}")
+                    print()
 
         #---Ende---#
         ready = input("Fertig?" )
@@ -72,6 +74,8 @@ def charaktere_anzeigen():
 def level_up(wen):  
     charaktere.Charaktere[wen].level = charaktere.Charaktere[wen].level + 1
     charaktere.Charaktere[wen].hp = charaktere.Charaktere[wen].hp * 1.2
+    charaktere.Charaktere[wen].max_hp = charaktere.Charaktere[wen].max_hp * 1.2
+    charaktere.Charaktere[wen].max_max_hp = charaktere.Charaktere[wen].max_max_hp * 1.2
     charaktere.Charaktere[wen].schaden = charaktere.Charaktere[wen].schaden * 1.2 
 
 
@@ -140,7 +144,7 @@ def charaktere_aufleveln():
         #--credit Kosten berechnen--#
         kosten_für_level_up = level_kosten_credits(aktuelles_level_des_chrakters)
 
-        is_break = ressourcen.ressourcen_verändern("Credits   ", kosten_für_level_up)
+        is_break = ressourcen.ressourcen_verändern("Credits", kosten_für_level_up)
 
         if is_break == 1:
             return 1

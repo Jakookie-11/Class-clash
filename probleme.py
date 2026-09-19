@@ -51,5 +51,15 @@ probleme = {
             "beschreibung": "Ganzes Gegnerteam tot, aber kein Win_Bildschirm",
             "status": "behoben"
         },
+        {
+            "id": "CC-06",
+            "beschreibung": "Fehler beim Leveln in 1.03.01",
+            "status": "behoben"
+        },  
+        {
+            "id": "CC-07",
+            "beschreibung": "Kein resetten der Cooldowns in 1.03.01",
+            "status": "behoben"
+        }, 
     ]
 }
