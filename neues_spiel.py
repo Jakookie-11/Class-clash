@@ -358,7 +358,7 @@ def kampf_charakter_anzeigen(name):
 
 def kampf_team_anzeigen(team_1, team_2):
         
-    TEAM_BREITE = 35
+    TEAM_BREITE = 40
 
     print(f"{'TEAM 1':<{TEAM_BREITE}}{'TEAM 2':<{TEAM_BREITE}}")
     print(f"{'────────────────────':<{TEAM_BREITE}}{'────────────────────':<{TEAM_BREITE}}")

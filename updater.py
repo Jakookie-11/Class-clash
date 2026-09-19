@@ -178,6 +178,293 @@ def update_vorbereiten():
 
 
 # ============================================================
+# SPIELSTÄNDE MIGRIEREN
+# ============================================================
+
+def daten_ergänzen(alte_daten, standard_daten):
+    
+    if not isinstance(alte_daten, dict):
+        return alte_daten
+
+    if not isinstance(standard_daten, dict):
+        return alte_daten
+
+    for schlüssel, standard_wert in standard_daten.items():
+
+        # Wert existiert bereits → alten Wert behalten
+        if schlüssel in alte_daten:
+
+            alter_wert = alte_daten[schlüssel]
+
+            # Sind beide Werte Dictionaries?
+            # Dann auch deren Inhalt überprüfen.
+            if isinstance(alter_wert, dict) and isinstance(standard_wert, dict):
+
+                daten_ergänzen(
+                    alter_wert,
+                    standard_wert
+                )
+
+        # Wert existiert noch nicht → Standardwert übernehmen
+        else:
+
+            alte_daten[schlüssel] = standard_wert
+
+    return alte_daten
+
+
+def spielstaende_migrieren():
+
+    print("Überprüfe Spielstände...")
+    print()
+
+    # --------------------------------------------------------
+    # STANDARDDATEI DES UPDATES
+    # --------------------------------------------------------
+
+    standard_pfad = os.path.join(
+        UPDATE_PFAD,
+        "Class-clash-main",
+        "standard.json"
+    )
+
+    if not os.path.exists(standard_pfad):
+
+        print("Keine standard.json im Update gefunden.")
+        print("Spielstände werden nicht verändert.")
+        print()
+
+        return
+
+    # --------------------------------------------------------
+    # STANDARDDATEN LADEN
+    # --------------------------------------------------------
+
+    with open(
+        standard_pfad,
+        "r",
+        encoding="utf-8"
+    ) as datei:
+
+        standard_daten = json.load(datei)
+
+    # --------------------------------------------------------
+    # SAVE-ORDNER
+    # --------------------------------------------------------
+
+    saves_pfad = os.path.join(
+        PROJEKT_ORDNER,
+        "saves"
+    )
+
+    if not os.path.exists(saves_pfad):
+
+        print("Kein saves-Ordner gefunden.")
+        print()
+
+        return
+
+    # --------------------------------------------------------
+    # ALLE SPIELERDATEIEN DURCHGEHEN
+    # --------------------------------------------------------
+
+    for dateiname in os.listdir(saves_pfad):
+
+        # Nur JSON-Dateien
+        if not dateiname.endswith(".json"):
+            continue
+
+        # confic_setup wird separat behandelt
+        if dateiname == "confic_setup.json":
+            continue
+
+        spielstand_pfad = os.path.join(
+            saves_pfad,
+            dateiname
+        )
+
+        # Nur Dateien
+        if not os.path.isfile(spielstand_pfad):
+            continue
+
+        print(
+            f"Überprüfe Spielstand: {dateiname}"
+        )
+
+        # ----------------------------------------------------
+        # SPIELSTAND LADEN
+        # ----------------------------------------------------
+
+        with open(
+            spielstand_pfad,
+            "r",
+            encoding="utf-8"
+        ) as datei:
+
+            alte_daten = json.load(datei)
+
+        # ----------------------------------------------------
+        # DATEN ERGÄNZEN
+        # ----------------------------------------------------
+
+        daten_ergänzen(
+            alte_daten,
+            standard_daten
+        )
+
+        # ----------------------------------------------------
+        # SPIELSTAND SPEICHERN
+        # ----------------------------------------------------
+
+        with open(
+            spielstand_pfad,
+            "w",
+            encoding="utf-8"
+        ) as datei:
+
+            json.dump(
+                alte_daten,
+                datei,
+                ensure_ascii=False
+            )
+
+        print("  → überprüft")
+        print()
+
+    print("Spielstände wurden überprüft.")
+    print()
+
+
+# ============================================================
+# CONFIC MIGRIEREN
+# ============================================================
+
+
+def confic_daten_migrieren(alte_daten, neue_daten):
+
+    if not isinstance(alte_daten, dict):
+        return neue_daten
+
+    if not isinstance(neue_daten, dict):
+        return alte_daten
+
+    neue_config = {}
+
+    for schlüssel, neuer_wert in neue_daten.items():
+
+        if schlüssel in alte_daten:
+
+            alter_wert = alte_daten[schlüssel]
+
+            if isinstance(alter_wert, dict) and isinstance(neuer_wert, dict):
+
+                neue_config[schlüssel] = confic_daten_migrieren(
+                    alter_wert,
+                    neuer_wert
+                )
+
+            else:
+
+                neue_config[schlüssel] = alter_wert
+
+        else:
+
+            neue_config[schlüssel] = neuer_wert
+
+    return neue_config
+
+def confic_migrieren():
+
+    print("Überprüfe Konfiguration...")
+    print()
+
+    neue_confic_pfad = os.path.join(
+        UPDATE_PFAD,
+        "Class-clash-main",
+        "saves",
+        "confic_setup.json"
+    )
+
+    alte_confic_pfad = os.path.join(
+        PROJEKT_ORDNER,
+        "saves",
+        "confic_setup.json"
+    )
+
+    print("Neue Datei:")
+    print(neue_confic_pfad)
+    print()
+
+    print("Alte Datei:")
+    print(alte_confic_pfad)
+    print()
+
+    if not os.path.exists(neue_confic_pfad):
+
+        print("❌ Neue confic_setup.json NICHT gefunden!")
+        print()
+
+        return
+
+    if not os.path.exists(alte_confic_pfad):
+
+        print("❌ Alte confic_setup.json NICHT gefunden!")
+        print()
+
+        return
+
+    print("✅ Beide Dateien gefunden.")
+    print()
+
+    with open(
+        neue_confic_pfad,
+        "r",
+        encoding="utf-8"
+    ) as datei:
+
+        neue_daten = json.load(datei)
+
+    with open(
+        alte_confic_pfad,
+        "r",
+        encoding="utf-8"
+    ) as datei:
+
+        alte_daten = json.load(datei)
+
+    print("Alte Daten:")
+    print(alte_daten)
+    print()
+
+    print("Neue Daten:")
+    print(neue_daten)
+    print()
+
+    alte_daten = confic_daten_migrieren(
+        alte_daten,
+        neue_daten
+    )
+
+    print("Daten nach der Migration:")
+    print(alte_daten)
+    print()
+
+    with open(
+        alte_confic_pfad,
+        "w",
+        encoding="utf-8"
+    ) as datei:
+
+        json.dump(
+            alte_daten,
+            datei,
+            ensure_ascii=False,
+            indent=4
+        )
+
+    print("✅ Konfiguration wurde gespeichert.")
+
+# ============================================================
 # ALTE DATEIEN LÖSCHEN
 # ============================================================
 
@@ -343,6 +630,9 @@ def main():
 
         update_vorbereiten()
 
+
+        spielstaende_migrieren()
+
         # ----------------------------------------------------
         # ALTE DATEIEN LÖSCHEN
         # ----------------------------------------------------
@@ -394,4 +684,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    confic_migrieren()
