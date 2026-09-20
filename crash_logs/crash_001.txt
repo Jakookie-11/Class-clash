@@ -1,0 +1,24 @@
+========================================
+       CLASS CLASH CRASH REPORT
+========================================
+
+Spieler: Jakob
+Datum: 2026-09-19
+Uhrzeit: 16:06:42
+Fehler-ID: 1c47befb82c07966550bf45295c9e938d3650ec970e932532341c9a26476a1b6
+Status: gefixt
+
+----------------------------------------
+FEHLER / TRACEBACK
+----------------------------------------
+
+Traceback (most recent call last):
+  File "c:\Users\jakob\Desktop\Git\Class clash\main.py", line 49, in <module>
+    is_brake_neues_spiel = neues_spiel.neues_spiel(spieler)
+  File "c:\Users\jakob\Desktop\Git\Class clash\neues_spiel.py", line 33, in neues_spiel
+    is_break_kampf = kampf()
+  File "c:\Users\jakob\Desktop\Git\Class clash\neues_spiel.py", line 686, in kampf
+    geheimes.wer_hat_wieviel_schaden_genommen(ziel, team_1, team_2)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "geheimes.py", line 6, in geheimes.wer_hat_wieviel_schaden_genommen
+TypeError: wer_hat_wieviel_schaden_genommen() takes exactly 4 positional arguments (3 given)

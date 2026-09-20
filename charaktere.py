@@ -13,6 +13,7 @@ class charakter:
         max_hp: int,
         max_max_hp,
         schaden: int,
+        max_schaden: None,
         seite: str,
         speed: int,
         level: int = 1,
@@ -28,6 +29,7 @@ class charakter:
         self.max_hp = max_hp
         self.max_max_hp = max_max_hp
         self.schaden = schaden
+        self.max_schaden = max_schaden
         self.seite = seite
         self.speed = speed
         self.level = level
@@ -200,6 +202,48 @@ klassenclown = charakter(
     faehigkeit_3=faehigkeiten.lachanfall
 )
 
+normaler_6_klaessler = charakter(
+    "normaler_6_klaessler", "npc", 80, 80, 80, -8, -8, "npc", 45, 1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.schubser,
+    faehigkeit_3=faehigkeiten.rennen_gehen
+)
+
+aggressiver_6_klaessler = charakter(
+    "aggressiver_6_klaessler", "npc", 65, 65, 65, -12, -12, "npc", 50, 1,
+    faehigkeit_1=faehigkeiten.wütender_schlag,
+    faehigkeit_2=faehigkeiten.voll_drauf,
+    faehigkeit_3=faehigkeiten.noch_wuetender
+)
+
+starker_6_klaessler = charakter(
+    "starker_6_klaessler", "npc", 120, 120, 120, -6, -6, "npc", 30, 1,
+    faehigkeit_1=faehigkeiten.schlag,
+    faehigkeit_2=faehigkeiten.festhalten,
+    faehigkeit_3=faehigkeiten.nicht_weggehen
+)
+
+schlauer_6_klaessler = charakter(
+    "schlauer_6_klaessler", "npc", 70, 70, 70, -5, -5, "npc", 40, 1,
+    faehigkeit_1=faehigkeiten.klugscheissen,
+    faehigkeit_2=faehigkeiten.hausaufgaben_helfen,
+    faehigkeit_3=faehigkeiten.ich_hab_einen_plan
+)
+
+nerviger_6_klaessler = charakter(
+    "nerviger_6_klaessler", "npc", 75, 75, 75, -7, -7, "npc", 55, 1,
+    faehigkeit_1=faehigkeiten.nerven,
+    faehigkeit_2=faehigkeiten.ablenken,
+    faehigkeit_3=faehigkeiten.hoer_auf
+)
+
+cooler_6_klaessler = charakter(
+    "cooler_6_klaessler", "npc", 90, 90, 90, -9, -9, "npc", 60, 1,
+    faehigkeit_1=faehigkeiten.cooler_schlag,
+    faehigkeit_2=faehigkeiten.sonnenbrille_auf,
+    faehigkeit_3=faehigkeiten.ranzenwurf
+)
+
 
 
 
@@ -218,5 +262,12 @@ Charaktere = {
     "aufsicht": aufsicht,
     "hausmeister": hausmeister,
     "direktor": direktor,
-    "klassenclown": klassenclown
+    "klassenclown": klassenclown,
+
+    "normaler_6_klaessler" : normaler_6_klaessler,
+    "aggressiver_6_klaessler" : aggressiver_6_klaessler,
+    "starker_6_klaessler" : starker_6_klaessler,
+    "schlauer_6_klaessler" : schlauer_6_klaessler,
+    "nerviger_6_klaessler" : nerviger_6_klaessler,
+    "cooler_6_klaessler" : cooler_6_klaessler
 }

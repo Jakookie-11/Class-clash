@@ -7,7 +7,7 @@ import menues
 import status_effekte
 import funktions
 import confic
-import faehigkeiten
+import copy
 import ki
 import kampange
 import geheimes
@@ -395,6 +395,87 @@ def kampf_team_anzeigen(team_1, team_2):
 
 
 
+def ziel_auswaehlen(wer, team_1, team_2, zieltyp):
+
+    if zieltyp == "gegner":
+        if wer in team_1:
+            moegliche_ziele = team_2
+        else:
+            moegliche_ziele = team_1
+
+    elif zieltyp == "verbündete":
+        if wer in team_1:
+            moegliche_ziele = team_1
+        else:
+            moegliche_ziele = team_2
+
+    else:
+        return None
+
+    # Tote Charaktere entfernen
+    moegliche_ziele = [
+        name for name in moegliche_ziele
+        if charaktere.Charaktere[name].hp > 0
+    ]
+
+    print()
+    print("Ziele:")
+    print()
+
+    for nummer, name in enumerate(moegliche_ziele, start=1):
+        print(f"[{nummer}] {name}")
+
+    print()
+
+    while True:
+        wahl = input("Ziel? ")
+
+        if wahl.isdigit():
+            nummer = int(wahl)
+
+            if 1 <= nummer <= len(moegliche_ziele):
+                return moegliche_ziele[nummer - 1]
+
+        print("Ungültige Auswahl!")
+        funktions.zeilen_loeschen(2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def kampf(
     leader_1=None,
     spieler_2_1=None,
@@ -480,33 +561,18 @@ def kampf(
             ausgewaehlte_charaktere.append(spieler_4_2)
 
 
+    ausgewaehlte_charaktere = kampf_charaktere_kopieren(ausgewaehlte_charaktere)
+
+
     #---Teams---#
 
-    team_1 = [
-        leader_1,
-        spieler_2_1
-    ]
-
-    if team_groesse > 2:
-        team_1.append(spieler_3_1)
-
-    if team_groesse > 3:
-        team_1.append(spieler_4_1)
-
+    team_1 = ausgewaehlte_charaktere[:team_groesse]
 
     team_2 = []
 
     if leader_2 != None:
-        team_2 = [
-            leader_2,
-            spieler_2_2
-        ]
-
-        if team_groesse > 2:
-            team_2.append(spieler_3_2)
-
-        if team_groesse > 3:
-            team_2.append(spieler_4_2)
+        team_2 = ausgewaehlte_charaktere[team_groesse:]
+        
     #---reinfolge ermitteln---#
     reinfolge = schnellster_charakter_ermitteln(ausgewaehlte_charaktere)
 

@@ -52,6 +52,23 @@ import status_effekte
 # Klassenclown:
 # - streich
 # - lachanfall
+#
+# 6.-Klässler:
+# - schubser
+# - rennen_gehen
+# - wütender_schlag
+# - voll_drauf
+# - noch_wuetender
+# - schlag
+# - festhalten
+# - nicht_weggehen
+# - klugscheissen
+# - hausaufgaben_helfen
+# - ich_hab_einen_plan
+# - nerven
+# - ablenken
+# - hoer_auf
+# - cooler_schlag
 
 
 # ══════════════════════════════════════════════════════════════
@@ -394,7 +411,7 @@ def hordenangriff_obj(wer, wen, team):
 hordenangriff = faehigkeit(
     "hordenangriff",
     hordenangriff_obj,
-    "Die Fünftklässler sammeln sich und greifen zusammen an, sodass jeder einmal angreift. Außerdem wird das Ziel betäubt.",
+    "Die Gruppe versammelt sich und greifen zusammen an, sodass jeder einmal angreift. Außerdem wird das Ziel betäubt.",
     5,
     3,
     "gegner"
@@ -722,6 +739,327 @@ lachanfall = faehigkeit(
 )
 
 
+
+
+# --- 6.-Klässler ---
+
+# --- Schubser ---
+
+def schubser_obj(wer, wen, team=None):
+
+    schaden = entgültigen_schaden_berechnen(wer)
+
+    HP_verändern(wen, schaden)
+
+    status_effekte.status_effekte_hinzufügen(
+        wen,
+        status_effekte.schaden_minus
+    )
+
+
+schubser = faehigkeit(
+    "schubser",
+    schubser_obj,
+    "Schubst den Gegner und senkt dessen Schaden.",
+    2,
+    0,
+    "gegner"
+)
+
+
+# --- Rennen gehen ---
+
+def rennen_gehen_obj(wer, wen, team=None):
+
+    HP_verändern(wer, 10)
+
+    status_effekte.status_effekte_hinzufügen(
+        wer,
+        status_effekte.schaden_plus
+    )
+
+
+rennen_gehen = faehigkeit(
+    "rennen_gehen",
+    rennen_gehen_obj,
+    "Rennt kurz weg, heilt sich und bekommt einen Schadensbonus.",
+    3,
+    0,
+    "verbündete"
+)
+
+
+# --- Wütender Schlag ---
+
+def wütender_schlag_obj(wer, wen, team=None):
+
+    schaden = entgültigen_schaden_berechnen(wer)
+
+    HP_verändern(wen, schaden)
+
+
+wütender_schlag = faehigkeit(
+    "wütender_schlag",
+    wütender_schlag_obj,
+    "Ein einfacher, aber kräftiger Schlag.",
+    0,
+    0,
+    "gegner"
+)
+
+
+# --- Voll drauf ---
+
+def voll_drauf_obj(wer, wen, team=None):
+
+    schaden = entgültigen_schaden_berechnen(wer)
+
+    HP_verändern(wen, schaden * 1.5)
+
+    status_effekte.status_effekte_hinzufügen(
+        wer,
+        status_effekte.schaden_minus
+    )
+
+
+voll_drauf = faehigkeit(
+    "voll_drauf",
+    voll_drauf_obj,
+    "Verursacht hohen Schaden, schwächt danach aber den Angreifer.",
+    3,
+    0,
+    "gegner"
+)
+
+
+# --- Noch wütender ---
+
+def noch_wuetender_obj(wer, wen, team=None):
+
+    status_effekte.status_effekte_hinzufügen(
+        wer,
+        status_effekte.schaden_plus
+    )
+
+
+noch_wuetender = faehigkeit(
+    "noch_wuetender",
+    noch_wuetender_obj,
+    "Wird noch wütender und verursacht mehr Schaden.",
+    4,
+    0,
+    "verbündete"
+)
+
+
+# --- Schlag ---
+
+def schlag_obj(wer, wen, team=None):
+
+    schaden = entgültigen_schaden_berechnen(wer)
+
+    HP_verändern(wen, schaden)
+
+
+schlag = faehigkeit(
+    "schlag",
+    schlag_obj,
+    "Ein kräftiger Schlag.",
+    0,
+    0,
+    "gegner"
+)
+
+
+# --- Festhalten ---
+
+def festhalten_obj(wer, wen, team=None):
+
+    schaden = entgültigen_schaden_berechnen(wer)
+
+    HP_verändern(wen, schaden)
+
+    status_effekte.status_effekte_hinzufügen(
+        wen,
+        status_effekte.betaeubt
+    )
+
+
+festhalten = faehigkeit(
+    "festhalten",
+    festhalten_obj,
+    "Hält den Gegner fest und betäubt ihn.",
+    3,
+    0,
+    "gegner"
+)
+
+
+# --- Nicht weggehen ---
+
+def nicht_weggehen_obj(wer, wen, team=None):
+
+    HP_verändern(wer, 20)
+
+    status_effekte.status_effekte_hinzufügen(
+        wer,
+        status_effekte.schaden_plus
+    )
+
+
+nicht_weggehen = faehigkeit(
+    "nicht_weggehen",
+    nicht_weggehen_obj,
+    "Heilt sich und wird stärker.",
+    4,
+    0,
+    "verbündete"
+)
+
+
+# --- Klugscheißen ---
+
+def klugscheissen_obj(wer, wen, team=None):
+
+    schaden = entgültigen_schaden_berechnen(wer)
+
+    HP_verändern(wen, schaden)
+
+    status_effekte.status_effekte_hinzufügen(
+        wen,
+        status_effekte.schaden_minus
+    )
+
+
+klugscheissen = faehigkeit(
+    "klugscheissen",
+    klugscheissen_obj,
+    "Nervt den Gegner mit unnötigem Wissen und senkt dessen Schaden.",
+    0,
+    0,
+    "gegner"
+)
+
+
+# --- Hausaufgaben helfen ---
+
+def hausaufgaben_helfen_obj(wer, wen, team=None):
+
+    HP_verändern(wen, 40)
+
+
+hausaufgaben_helfen = faehigkeit(
+    "hausaufgaben_helfen",
+    hausaufgaben_helfen_obj,
+    "Hilft einem Verbündeten bei den Hausaufgaben und heilt ihn.",
+    3,
+    0,
+    "verbündete"
+)
+
+
+# --- Ich hab einen Plan ---
+
+def ich_hab_einen_plan_obj(wer, wen, team=None):
+
+    status_effekte.status_effekte_hinzufügen(
+        wen,
+        status_effekte.schaden_plus
+    )
+
+
+ich_hab_einen_plan = faehigkeit(
+    "ich_hab_einen_plan",
+    ich_hab_einen_plan_obj,
+    "Ein Verbündeter bekommt einen Schadensbonus.",
+    4,
+    0,
+    "verbündete"
+)
+
+
+# --- Nerven ---
+
+def nerven_obj(wer, wen, team=None):
+
+    schaden = entgültigen_schaden_berechnen(wer)
+
+    HP_verändern(wen, schaden)
+
+
+nerven = faehigkeit(
+    "nerven",
+    nerven_obj,
+    "Nervt den Gegner.",
+    0,
+    0,
+    "gegner"
+)
+
+
+# --- Ablenken ---
+
+def ablenken_obj(wer, wen, team=None):
+
+    schaden = entgültigen_schaden_berechnen(wer)
+
+    HP_verändern(wen, schaden)
+
+    status_effekte.status_effekstatus_effekte_hinzufügent_hinzufuegen(
+        wen,
+        status_effekte.schaden_minus
+    )
+
+
+ablenken = faehigkeit(
+    "ablenken",
+    ablenken_obj,
+    "Lenkt den Gegner ab und senkt dessen Schaden.",
+    2,
+    0,
+    "gegner"
+)
+
+
+# --- Hör auf ---
+
+def hoer_auf_obj(wer, wen, team=None):
+
+    status_effekte.status_effekte_hinzufügen(
+        wen,
+        status_effekte.betaeubt
+    )
+
+
+hoer_auf = faehigkeit(
+    "hoer_auf",
+    hoer_auf_obj,
+    "Schreit den Gegner an und betäubt ihn.",
+    4,
+    0,
+    "gegner"
+)
+
+
+# --- Cooler Schlag ---
+
+def cooler_schlag_obj(wer, wen, team=None):
+
+    schaden = entgültigen_schaden_berechnen(wer)
+
+    HP_verändern(wen, schaden)
+
+
+cooler_schlag = faehigkeit(
+    "cooler_schlag",
+    cooler_schlag_obj,
+    "Ein besonders cooler Schlag.",
+    0,
+    0,
+    "gegner"
+)
+
+
 # ══════════════════════════════════════════════════════════════
 # Alle Fähigkeiten
 # ══════════════════════════════════════════════════════════════
@@ -765,5 +1103,22 @@ alle_fähigkeiten = [
 
     # Klassenclown
     streich,
-    lachanfall
+    lachanfall,
+
+    # 6.-Klässler
+    schubser,
+    rennen_gehen,
+    wütender_schlag,
+    voll_drauf,
+    noch_wuetender,
+    schlag,
+    festhalten,
+    nicht_weggehen,
+    klugscheissen,
+    hausaufgaben_helfen,
+    ich_hab_einen_plan,
+    nerven,
+    ablenken,
+    hoer_auf,
+    cooler_schlag
 ]

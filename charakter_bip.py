@@ -72,7 +72,8 @@ def charaktere_anzeigen():
 def level_up(wen):  
     charaktere.Charaktere[wen].level = charaktere.Charaktere[wen].level + 1
     charaktere.Charaktere[wen].hp = charaktere.Charaktere[wen].hp * 1.2
-    charaktere.Charaktere[wen].schaden = charaktere.Charaktere[wen].schaden * 1.2 
+    charaktere.Charaktere[wen].max_hp = charaktere.Charaktere[wen].max_hp * 1.2
+    charaktere.Charaktere[wen].schaden = charaktere.Charaktere[wen].schaden * 1.2
 
 
 

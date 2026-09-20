@@ -12,7 +12,6 @@ import speichern
 import begin
 import einstellungen
 import subprocess
-import traceback
 import crash_handler
 
 
