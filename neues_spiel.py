@@ -7,10 +7,11 @@ import menues
 import status_effekte
 import funktions
 import confic
-import copy
+import faehigkeiten
 import ki
 import kampange
 import geheimes
+import copy
 
 
 GRUEN = "\033[32m"
@@ -71,6 +72,8 @@ def charaktere_auswaelen(nur_eigenes_team=False,team_groesse=2):
         if charakter.klasse != "npc":
             if charakter.name != "Hannah_d":
                 print(schlüssel)
+    print()
+    print(f"Waehle {team_groesse} aus:")
     print()
     print("Team 1:")
     print()
@@ -298,8 +301,11 @@ def abklingzeiten_aktualisieren(von_wem):
 
 def alle_faehigkeits_abklingzeiten_resetten():
 
-    for faehigkeit in faehigkeiten.alle_fähigkeiten:
-        faehigkeit.abklingzeit = 0
+    for charakter in charaktere.Charaktere.values():
+
+        charakter.faehigkeit_1.abklingzeit = 0
+        charakter.faehigkeit_2.abklingzeit = 0
+        charakter.faehigkeit_3.abklingzeit = 0
 
 
 
@@ -358,7 +364,7 @@ def kampf_charakter_anzeigen(name):
 
 def kampf_team_anzeigen(team_1, team_2):
         
-    TEAM_BREITE = 35
+    TEAM_BREITE = 40
 
     print(f"{'TEAM 1':<{TEAM_BREITE}}{'TEAM 2':<{TEAM_BREITE}}")
     print(f"{'────────────────────':<{TEAM_BREITE}}{'────────────────────':<{TEAM_BREITE}}")
@@ -438,6 +444,30 @@ def ziel_auswaehlen(wer, team_1, team_2, zieltyp):
 
         print("Ungültige Auswahl!")
         funktions.zeilen_loeschen(2)
+
+
+
+def kampf_charaktere_kopieren(ausgewaehlte_charaktere):
+    neue_charaktere = []
+    vorkommen = {}
+
+    for name in ausgewaehlte_charaktere:
+
+        if name not in vorkommen:
+            vorkommen[name] = 1
+            neue_charaktere.append(name)
+            continue
+
+        vorkommen[name] += 1
+        neuer_name = f"{name}_{vorkommen[name]}"
+
+        charaktere.Charaktere[neuer_name] = copy.deepcopy(
+            charaktere.Charaktere[name]
+        )
+
+        neue_charaktere.append(neuer_name)
+
+    return neue_charaktere
 
 
 
@@ -691,37 +721,13 @@ def kampf(
                         continue
                     else:
 
-                        ziel = input("Mit wem soll diese Faehigkeit interagieren? ")
-
-                        #---Ziel existiert?---#
-                        if not ziel in ausgewaehlte_charaktere:
-                            funktions.zeilen_loeschen(14)
-                            print()
-                            print("Dieser Charakter existiert nicht")
-                            time.sleep(2)
-                            funktions.zeilen_loeschen(2)
-                            continue
-
-
-                        #---Zieltyp überprüfen---#
-                        if faehigkeit.zieltyp == "gegner":
-                            if wer in team_1 and ziel in team_1 or wer in team_2 and ziel in team_2:
-                                funktions.zeilen_loeschen(14)
-                                print()
-                                print("Diese Fähigkeit kann nur auf Gegner angewendet werden")
-                                time.sleep(2)
-                                funktions.zeilen_loeschen(2)
-                                continue
-
-                        if faehigkeit.zieltyp == "verbündete":
-                            if wer in team_1 and ziel in team_2 or wer in team_2 and ziel in team_1:
-                                funktions.zeilen_loeschen(14)
-                                print()
-                                print("Diese Fähigkeit kann nur auf Verbündete angewendet werden")
-                                time.sleep(2)
-                                funktions.zeilen_loeschen(2)
-                                continue
-
+                        #---Ziel auswählen---#
+                        ziel = ziel_auswaehlen(
+                            wer,
+                            team_1,
+                            team_2,
+                            faehigkeit.zieltyp
+                        )
 
                         #---Abklingzeit auf max setzen---#
                         faehigkeit.abklingzeit = faehigkeit.max_abklingzeit
@@ -732,6 +738,7 @@ def kampf(
                         geheimes.wer_hat_wieviel_schaden_genommen(ziel, team_1, team_2)
 
                         abklingzeiten_aktualisieren(wer)
+                        
                         break
 
             else:

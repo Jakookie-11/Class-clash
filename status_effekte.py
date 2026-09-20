@@ -38,8 +38,15 @@ def status_effekte_ausgeben(von_wem):
 
 
 def status_effekte_hinzufügen(wem, was):
-    if was not in charaktere.Charaktere[wem].status_effekte:
-        charaktere.Charaktere[wem].status_effekte.append(copy.copy(was))
+
+    effekte = charaktere.Charaktere[wem].status_effekte
+
+    for i, effekt in enumerate(effekte):
+        if effekt.name == was.name:
+            effekte[i] = copy.copy(was)
+            return
+
+    effekte.append(copy.copy(was))
 
 
 def status_effekt_vorhanden(bei_wem, name):

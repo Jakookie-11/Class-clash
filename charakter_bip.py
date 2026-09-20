@@ -45,18 +45,20 @@ def charaktere_anzeigen():
 
         print()
         for schlüssel, charakter in charaktere.Charaktere.items():
-            print(f"----{schlüssel}----")
+            if charakter.klasse != "npc":
+                if charakter.name != "Hannah_d":
+                    print(f"----{schlüssel}----")
 
-            print(f"Name         : {charakter.name}")
-            print(f"Level        : {charakter.level}")
-            print(f"Klasse       : {charakter.klasse}")
-            print(f"HP           : {charakter.hp:.2f}")
-            print(f"Schaden      : {charakter.schaden}")
-            print(f"Speed        : {charakter.speed}")
-            print(f"Faehigkeit 1 : {charakter.faehigkeit_1}")
-            print(f"Faehigkeit 2 : {charakter.faehigkeit_2}")
-            print(f"Faehigkeit 3 : {charakter.faehigkeit_3}")
-            print()
+                    print(f"Name         : {charakter.name}")
+                    print(f"Level        : {charakter.level}")
+                    print(f"Klasse       : {charakter.klasse}")
+                    print(f"HP           : {charakter.hp:.2f}")
+                    print(f"Schaden      : {charakter.schaden}")
+                    print(f"Speed        : {charakter.speed}")
+                    print(f"Faehigkeit 1 : {charakter.faehigkeit_1}")
+                    print(f"Faehigkeit 2 : {charakter.faehigkeit_2}")
+                    print(f"Faehigkeit 3 : {charakter.faehigkeit_3}")
+                    print()
 
         #---Ende---#
         ready = input("Fertig?" )

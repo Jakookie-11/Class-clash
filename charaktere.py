@@ -151,7 +151,7 @@ Lovis = charakter(
 #--------------------------------------------#
 
 fuenftklaessler = charakter(
-    "fuenftklaessler", "npc", 70, 70, 70, -7, "npc", 50, 1,
+    "fuenftklaessler", "npc", 70, 70, 70, -7, -7, "npc", 50, 1,
     faehigkeit_1=faehigkeiten.radiergummi_wefen,
     faehigkeit_2=faehigkeiten.er_hat_nichts_gemacht,
     faehigkeit_3=faehigkeiten.hordenangriff
@@ -159,7 +159,7 @@ fuenftklaessler = charakter(
 
 
 cooler_fuenftklaessler = charakter(
-    "cooler_fuenftklaessler", "npc", 80, 80, 80, -8, "npc", 60, 1,
+    "cooler_fuenftklaessler", "npc", 80, 80, 80, -8, -8, "npc", 60, 1,
     faehigkeit_1=faehigkeiten.ey_was_guckst_du,
     faehigkeit_2=faehigkeiten.sonnenbrille_auf,
     faehigkeit_3=faehigkeiten.ranzenwurf
@@ -167,7 +167,7 @@ cooler_fuenftklaessler = charakter(
 
 
 streber = charakter(
-    "streber", "npc", 60, 60, 60, -6, "npc", 70, 1,
+    "streber", "npc", 60, 60, 60, -6, -6, "npc", 70, 1,
     faehigkeit_1=faehigkeiten.das_ist_falsch,
     faehigkeit_2=faehigkeiten.hausaufgaben_zeigen,
     faehigkeit_3=faehigkeiten.musterloesung
@@ -175,28 +175,28 @@ streber = charakter(
 
 
 aufsicht = charakter(
-    "aufsicht", "npc", 95, 95, 95, -9, "npc", 75, 1,
+    "aufsicht", "npc", 95, 95, 95, -9, -9, "npc", 75, 1,
     faehigkeit_1=faehigkeiten.einfacher_angriff,
     faehigkeit_2=faehigkeiten.strafarbeit,
     faehigkeit_3=faehigkeiten.ordnungsruf
 )
 
 hausmeister = charakter(
-    "hausmeister", "npc", 150, 150, 150, -12, "npc", 55, 1,
+    "hausmeister", "npc", 150, 150, 150, -12, -12, "npc", 55, 1,
     faehigkeit_1=faehigkeiten.einfacher_angriff,
     faehigkeit_2=faehigkeiten.pausenbrot,
     faehigkeit_3=faehigkeiten.glockenschlag
 )
 
 direktor = charakter(
-    "direktor", "npc", 230, 230, 230, -15, "npc", 65, 1,
+    "direktor", "npc", 230, 230, 230, -15, -15, "npc", 65, 1,
     faehigkeit_1=faehigkeiten.einfacher_angriff,
     faehigkeit_2=faehigkeiten.autoritaet,
     faehigkeit_3=faehigkeiten.glockenschlag
 )
 
 klassenclown = charakter(
-    "klassenclown", "npc", 115, 115, 115, -11, "npc", 95, 1,
+    "klassenclown", "npc", 115, 115, 115, -11, -11, "npc", 95, 1,
     faehigkeit_1=faehigkeiten.einfacher_angriff,
     faehigkeit_2=faehigkeiten.streich,
     faehigkeit_3=faehigkeiten.lachanfall

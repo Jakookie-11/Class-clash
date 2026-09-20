@@ -315,7 +315,7 @@ jakobs_basic = faehigkeit(
     "GEheim...",
     0,
     0,
-    "Gegner"
+    "gegner"
 )
 
 
@@ -1005,7 +1005,7 @@ def ablenken_obj(wer, wen, team=None):
 
     HP_verändern(wen, schaden)
 
-    status_effekte.status_effekstatus_effekte_hinzufügent_hinzufuegen(
+    status_effekte.status_effekte_hinzufügen(
         wen,
         status_effekte.schaden_minus
     )

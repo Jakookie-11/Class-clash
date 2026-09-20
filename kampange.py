@@ -78,7 +78,7 @@ def dialog_anzeigen(dialog):
 
     for sprecher, text in dialog:
 
-        print(f"{sprecher :13}: {text}")
+        print(f"{sprecher :20}: {text}")
         print()
         time.sleep(2)
 
@@ -421,7 +421,7 @@ kampf_1_3 = kampangen_kampf(
     gegner_2="normaler_6_klaessler",
     belohnung=100,
     ki=1,
-    npc_level=1,
+    npc_level=2,
     team_groesse=2,
 
     story_vorher=[
@@ -456,7 +456,7 @@ kampf_2_3 = kampangen_kampf(
     gegner_2="normaler_6_klaessler",
     belohnung=150,
     ki=2,
-    npc_level=1,
+    npc_level=2,
     team_groesse=2,
 
     story_vorher=[
@@ -492,7 +492,7 @@ kampf_3_3 = kampangen_kampf(
     gegner_3="nerviger_6_klaessler",
     belohnung=200,
     ki=2,
-    npc_level=1,
+    npc_level=2,
     team_groesse=3,
 
     story_vorher=[
@@ -526,7 +526,7 @@ kampf_4_3 = kampangen_kampf(
     gegner_3="normaler_6_klaessler",
     belohnung=250,
     ki=2,
-    npc_level=2,
+    npc_level=3,
     team_groesse=3,
 
     story_vorher=[
@@ -563,7 +563,7 @@ kampf_5_3 = kampangen_kampf(
     gegner_3="cooler_6_klaessler",
     belohnung=300,
     ki=2,
-    npc_level=2,
+    npc_level=3,
     team_groesse=3,
 
     story_vorher=[
@@ -598,7 +598,7 @@ kampf_6_3 = kampangen_kampf(
     gegner_2="cooler_6_klaessler",
     belohnung=350,
     ki=3,
-    npc_level=2,
+    npc_level=3,
     team_groesse=2,
 
     story_vorher=[
@@ -635,7 +635,7 @@ kampf_7_3 = kampangen_kampf(
     gegner_4="nerviger_6_klaessler",
     belohnung=450,
     ki=3,
-    npc_level=3,
+    npc_level=4,
     team_groesse=4,
 
     story_vorher=[
@@ -670,7 +670,7 @@ kampf_8_3 = kampangen_kampf(
     gegner_2="aufsicht",
     belohnung=500,
     ki=3,
-    npc_level=3,
+    npc_level=4,
     team_groesse=2,
 
     story_vorher=[
@@ -706,7 +706,7 @@ kampf_9_3 = kampangen_kampf(
     gegner_3="aufsicht",
     belohnung=600,
     ki=3,
-    npc_level=3,
+    npc_level=5,
     team_groesse=3,
 
     story_vorher=[
@@ -742,8 +742,8 @@ kampf_10_3 = kampangen_kampf(
     gegner_3="cooler_6_klaessler",
     gegner_4="starker_6_klaessler",
     belohnung=1000,
-    ki=3,
-    npc_level=4,
+    ki=4,
+    npc_level=6,
     team_groesse=4,
 
     story_vorher=[
@@ -799,8 +799,793 @@ Kampange_3 = kampange(
 )
 
 
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampange_4
+# Die Liste
+# ══════════════════════════════════════════════════════════════
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampf 1 – Die Liste
+# ══════════════════════════════════════════════════════════════
+
+kampf_1_4 = kampangen_kampf(
+    "Die Liste",
+    gegner_1="normaler_6_klaessler",
+    gegner_2="schlauer_6_klaessler",
+    belohnung=100,
+    ki=1,
+    npc_level=4,
+    team_groesse=2,
+
+    story_vorher=[
+        ("Jakob", "Also gut. Schauen wir uns diese Liste einmal genauer an."),
+        ("Direktor", "Was steht dort?"),
+        ("Jakob", "Mehrere Namen."),
+        ("Direktor", "Schüler?"),
+        ("Jakob", "Ja."),
+        ("Jakob", "Und neben jedem Namen stehen irgendwelche Angaben."),
+        ("Direktor", "Was steht neben deinem Namen?"),
+        ("Jakob", "Priorität 1."),
+        ("Direktor", "..."),
+        ("Jakob", "Das gefällt mir irgendwie nicht.")
+    ],
+
+    story_nachher=[
+        ("Jakob", "Ihr wisst also wirklich nicht, was das bedeutet?"),
+        ("6.-Klässler", "Nein."),
+        ("Jakob", "Dann finde ich es eben selbst heraus."),
+        ("Jakob", "Aber zuerst will ich wissen, wer noch auf dieser Liste steht.")
+    ]
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampf 2 – Weitere Namen
+# ══════════════════════════════════════════════════════════════
+
+kampf_2_4 = kampangen_kampf(
+    "Weitere Namen",
+    gegner_1="aggressiver_6_klaessler",
+    gegner_2="nerviger_6_klaessler",
+    belohnung=150,
+    ki=2,
+    npc_level=4,
+    team_groesse=2,
+
+    story_vorher=[
+        ("Jakob", "Ich habe mir die anderen Namen angesehen."),
+        ("Jakob", "Einige davon kenne ich."),
+        ("Jakob", "Andere habe ich noch nie gehört."),
+        ("Direktor", "Zeig mir die Liste."),
+        ("Jakob", "Hier."),
+        ("Direktor", "Moment."),
+        ("Direktor", "Dieser Name..."),
+        ("Jakob", "Was ist damit?"),
+        ("Direktor", "Das war einmal ein Schüler dieser Schule.")
+    ],
+
+    story_nachher=[
+        ("Jakob", "Und was ist aus ihm geworden?"),
+        ("Direktor", "Ich weiß es nicht."),
+        ("Jakob", "Er steht auf dieser Liste."),
+        ("Jakob", "Dann sollten wir herausfinden, warum.")
+    ]
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampf 3 – Der alte Raum
+# ══════════════════════════════════════════════════════════════
+
+kampf_3_4 = kampangen_kampf(
+    "Der alte Raum",
+    gegner_1="starker_6_klaessler",
+    gegner_2="normaler_6_klaessler",
+    gegner_3="nerviger_6_klaessler",
+    belohnung=200,
+    ki=2,
+    npc_level=5,
+    team_groesse=3,
+
+    story_vorher=[
+        ("Direktor", "Vielleicht gibt es noch alte Unterlagen im Keller."),
+        ("Jakob", "Im Keller?"),
+        ("Direktor", "Dort wurden früher die alten Schulakten gelagert."),
+        ("Jakob", "Na dann los."),
+        ("Jakob", "Hier ist ja alles voller Kartons."),
+        ("Direktor", "Die meisten davon wurden seit Jahren nicht angerührt."),
+        ("Jakob", "Und da hinten ist ein Schrank."),
+        ("Jakob", "Der ist abgeschlossen."),
+        ("Direktor", "Dann brauchen wir wohl einen Schlüssel.")
+    ],
+
+    story_nachher=[
+        ("Jakob", "Das war's."),
+        ("Jakob", "Und jetzt der Schrank."),
+        ("Direktor", "Du hast den Schlüssel?"),
+        ("Jakob", "Natürlich."),
+        ("Jakob", "Mal sehen, was da drin ist.")
+    ]
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampf 4 – Das Archiv
+# ══════════════════════════════════════════════════════════════
+
+kampf_4_4 = kampangen_kampf(
+    "Das Archiv",
+    gegner_1="cooler_6_klaessler",
+    gegner_2="schlauer_6_klaessler",
+    belohnung=250,
+    ki=2,
+    npc_level=5,
+    team_groesse=2,
+
+    story_vorher=[
+        ("Jakob", "Hier sind jede Menge alte Akten."),
+        ("Direktor", "Vielleicht finden wir etwas über die Liste."),
+        ("Jakob", "Moment."),
+        ("Jakob", "Da ist eine alte Version davon."),
+        ("Direktor", "Eine alte Liste?"),
+        ("Jakob", "Ja."),
+        ("Jakob", "Und sie ist ziemlich alt."),
+        ("Direktor", "Wie alt?"),
+        ("Jakob", "Mehr als zehn Jahre.")
+    ],
+
+    story_nachher=[
+        ("Jakob", "Das kann nicht sein."),
+        ("Direktor", "Was hast du gefunden?"),
+        ("Jakob", "Meinen Namen."),
+        ("Direktor", "..."),
+        ("Jakob", "Auf einer Liste, die älter ist als meine Zeit an dieser Schule.")
+    ]
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampf 5 – Das kann nicht sein
+# ══════════════════════════════════════════════════════════════
+
+kampf_5_4 = kampangen_kampf(
+    "Das kann nicht sein",
+    gegner_1="aggressiver_6_klaessler",
+    gegner_2="starker_6_klaessler",
+    gegner_3="nerviger_6_klaessler",
+    belohnung=300,
+    ki=2,
+    npc_level=6,
+    team_groesse=3,
+
+    story_vorher=[
+        ("Jakob", "Vielleicht ist das einfach nur ein anderer Jakob."),
+        ("Direktor", "Das könnte sein."),
+        ("Jakob", "Aber hier steht mein vollständiger Name."),
+        ("Direktor", "Zeig mal das Datum."),
+        ("Jakob", "Da."),
+        ("Direktor", "..."),
+        ("Jakob", "Was ist?"),
+        ("Direktor", "An diesem Datum warst du noch gar nicht hier."),
+        ("Jakob", "Das wird immer seltsamer.")
+    ],
+
+    story_nachher=[
+        ("Jakob", "Was weißt du über diese Liste?"),
+        ("Direktor", "Nicht viel."),
+        ("Jakob", "Du weißt doch irgendetwas."),
+        ("Direktor", "Es gab damals ein Projekt."),
+        ("Jakob", "Was für ein Projekt?")
+    ]
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampf 6 – Das Projekt
+# ══════════════════════════════════════════════════════════════
+
+kampf_6_4 = kampangen_kampf(
+    "Das Projekt",
+    gegner_1="aufsicht",
+    gegner_2="hausmeister",
+    belohnung=350,
+    ki=3,
+    npc_level=6,
+    team_groesse=2,
+
+    story_vorher=[
+        ("Direktor", "Offiziell ging es um die Förderung bestimmter Schüler."),
+        ("Jakob", "Und inoffiziell?"),
+        ("Direktor", "Das weiß ich nicht."),
+        ("Jakob", "Was wurde gemacht?"),
+        ("Direktor", "Es wurden Daten gesammelt."),
+        ("Jakob", "Welche Daten?"),
+        ("Direktor", "Leistungen. Verhalten. Kontakte."),
+        ("Jakob", "Also wurden Schüler beobachtet..."),
+        ("Direktor", "Offenbar.")
+    ],
+
+    story_nachher=[
+        ("Jakob", "Und wie hieß dieses Projekt?"),
+        ("Direktor", "Ich erinnere mich nur an einen Namen."),
+        ("Jakob", "Welchen?"),
+        ("Direktor", "Projekt K."),
+        ("Jakob", "Projekt K?")
+    ]
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampf 7 – Jemand weiß Bescheid
+# ══════════════════════════════════════════════════════════════
+
+kampf_7_4 = kampangen_kampf(
+    "Jemand weiß Bescheid",
+    gegner_1="hausmeister",
+    gegner_2="direktor",
+    gegner_3="klassenclown",
+    belohnung=450,
+    ki=3,
+    npc_level=7,
+    team_groesse=3,
+
+    story_vorher=[
+        ("Jakob", "Nach dem Stromausfall fehlt eine Akte."),
+        ("Direktor", "Jemand muss hier gewesen sein."),
+        ("Jakob", "Da liegt ein Zettel."),
+        ("Jakob", "Was steht da?"),
+        ("Jakob", "Ihr hättet die Liste nicht finden dürfen."),
+        ("Direktor", "Das ist nicht gut."),
+        ("Jakob", "Darunter steht eine Adresse."),
+        ("Direktor", "Das ist keine Adresse hier an der Schule."),
+        ("Jakob", "Dann weiß ich, wo wir als Nächstes hingehen.")
+    ],
+
+    story_nachher=[
+        ("Jakob", "Die Person wusste, dass wir die Liste gefunden haben."),
+        ("Direktor", "Dann weiß sie auch, dass wir ihr auf der Spur sind."),
+        ("Jakob", "Umso besser.")
+    ]
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampf 8 – Die Adresse
+# ══════════════════════════════════════════════════════════════
+
+kampf_8_4 = kampangen_kampf(
+    "Die Adresse",
+    gegner_1="starker_6_klaessler",
+    gegner_2="cooler_6_klaessler",
+    belohnung=500,
+    ki=3,
+    npc_level=8,
+    team_groesse=2,
+
+    story_vorher=[
+        ("Jakob", "Das soll also die Adresse sein."),
+        ("Direktor", "Sieht ziemlich verlassen aus."),
+        ("Jakob", "Da vorne ist eine Tür."),
+        ("Direktor", "Warte."),
+        ("Jakob", "Was?"),
+        ("Direktor", "Da sind Unterlagen."),
+        ("Jakob", "Und auf denen steht wieder Projekt K."),
+        ("Jakob", "Dann sind wir hier richtig.")
+    ],
+
+    story_nachher=[
+        ("Jakob", "Hier steht etwas über die Liste."),
+        ("Direktor", "Was?"),
+        ("Jakob", "Status: aktiv."),
+        ("Direktor", "Dann ist das Projekt noch nicht beendet.")
+    ]
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampf 9 – Priorität 1
+# ══════════════════════════════════════════════════════════════
+
+kampf_9_4 = kampangen_kampf(
+    "Priorität 1",
+    gegner_1="hausmeister",
+    gegner_2="klassenclown",
+    gegner_3="cooler_6_klaessler",
+    belohnung=600,
+    ki=3,
+    npc_level=9,
+    team_groesse=3,
+
+    story_vorher=[
+        ("Jakob", "Hier ist eine aktuelle Akte."),
+        ("Jakob", "Zielperson: Jakob."),
+        ("Jakob", "Priorität: 1."),
+        ("Direktor", "Was bedeutet das?"),
+        ("Jakob", "Keine Ahnung."),
+        ("Jakob", "Aber hier steht noch etwas."),
+        ("Jakob", "Phase 2 beginnt nach Kontakt mit der Zielperson."),
+        ("Direktor", "Phase 2?"),
+        ("???", "Du solltest diese Akte nicht lesen.")
+    ],
+
+    story_nachher=[
+        ("Jakob", "Wer bist du?"),
+        ("Unbekannter", "Jemand, der für andere arbeitet."),
+        ("Jakob", "Für wen?"),
+        ("Unbekannter", "Das wirst du noch früh genug herausfinden."),
+        ("Jakob", "Das glaube ich kaum.")
+    ]
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampf 10 – Phase 2
+# ══════════════════════════════════════════════════════════════
+
+kampf_10_4 = kampangen_kampf(
+    "Phase 2",
+    gegner_1="aufsicht",
+    gegner_2="hausmeister",
+    gegner_3="cooler_6_klaessler",
+    gegner_4="starker_6_klaessler",
+    belohnung=1000,
+    ki=4,
+    npc_level=10,
+    team_groesse=4,
+
+    story_vorher=[
+        ("Jakob", "Ihr wisst beide mehr, als ihr mir erzählt."),
+        ("Direktor", "Jakob..."),
+        ("Jakob", "Was ist Projekt K?"),
+        ("Hausmeister", "Das solltest du nicht wissen."),
+        ("Jakob", "Warum steht mein Name auf der Liste?"),
+        ("Direktor", "Das wissen wir selbst nicht vollständig."),
+        ("Jakob", "Dann werde ich es eben herausfinden."),
+        ("Hausmeister", "Du verstehst nicht, womit du dich anlegst.")
+    ],
+
+    story_nachher=[
+        ("Jakob", "Jetzt habe ich endlich Antworten."),
+        ("Direktor", "Nein."),
+        ("Jakob", "Was?"),
+        ("Direktor", "Du hast nur angefangen, die richtigen Fragen zu stellen."),
+        ("Jakob", "..."),
+        ("Jakob", "Was soll das heißen?"),
+        ("Direktor", "Das Projekt ist größer, als du denkst."),
+        ("Jakob", "Dann war das hier also nur der Anfang."),
+        ("Direktor", "Ja."),
+        ("Jakob", "Dann finde ich den Rest auch noch heraus.")
+    ]
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampagne erstellen
+# ══════════════════════════════════════════════════════════════
+
+Kampange_4 = kampange(
+    "_04",
+    "Die Liste",
+    "schwer",
+    10,
+    [
+        kampf_1_4,
+        kampf_2_4,
+        kampf_3_4,
+        kampf_4_4,
+        kampf_5_4,
+        kampf_6_4,
+        kampf_7_4,
+        kampf_8_4,
+        kampf_9_4,
+        kampf_10_4
+    ],
+    fortschritt=0
+)
+
+
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampange_5
+# Projekt K
+# ══════════════════════════════════════════════════════════════
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampf 1 – Die Akte
+# ══════════════════════════════════════════════════════════════
+
+kampf_1_5 = kampangen_kampf(
+    "Die Akte",
+    gegner_1="normaler_6_klaessler",
+    gegner_2="schlauer_6_klaessler",
+    belohnung=100,
+    ki=1,
+    npc_level=5,
+    team_groesse=2,
+
+    story_vorher=[
+        ("Jakob", "Also gut. Dann schauen wir uns diese Akte einmal genauer an."),
+        ("Direktor", "Was steht darin?"),
+        ("Jakob", "Eine Menge Informationen."),
+        ("Jakob", "Und hier ist wieder dieses K."),
+        ("Direktor", "Projekt K."),
+        ("Jakob", "Genau."),
+        ("Jakob", "Aber was bedeutet die Nummer daneben?"),
+        ("Direktor", "Welche Nummer?"),
+        ("Jakob", "K-001."),
+        ("Jakob", "Und hier gibt es K-002, K-003 und noch viele weitere.")
+    ],
+
+    story_nachher=[
+        ("Jakob", "Insgesamt gibt es siebzehn Akten."),
+        ("Direktor", "Siebzehn?"),
+        ("Jakob", "Ja."),
+        ("Jakob", "Und ich bin K-001."),
+        ("Jakob", "Ich will wissen, wer die anderen sind.")
+    ]
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampf 2 – K-002
+# ══════════════════════════════════════════════════════════════
+
+kampf_2_5 = kampangen_kampf(
+    "K-002",
+    gegner_1="aggressiver_6_klaessler",
+    gegner_2="normaler_6_klaessler",
+    belohnung=150,
+    ki=2,
+    npc_level=5,
+    team_groesse=2,
+
+    story_vorher=[
+        ("Jakob", "Eine der Akten ist noch nicht vollständig zerstört."),
+        ("Jakob", "Hier steht ein Name."),
+        ("Direktor", "Kennst du ihn?"),
+        ("Jakob", "Ich glaube schon."),
+        ("Jakob", "Das war ein ehemaliger Schüler."),
+        ("Direktor", "Ja."),
+        ("Jakob", "Was ist mit ihm passiert?"),
+        ("Direktor", "Er hat die Schule vor Jahren verlassen."),
+        ("Jakob", "Laut dieser Akte ist er verschwunden.")
+    ],
+
+    story_nachher=[
+        ("Jakob", "Was bedeutet 'Status: unbekannt'?"),
+        ("Direktor", "Ich weiß es nicht."),
+        ("Jakob", "Dann müssen wir herausfinden, was mit den anderen passiert ist.")
+    ]
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampf 3 – Die verschwundenen Schüler
+# ══════════════════════════════════════════════════════════════
+
+kampf_3_5 = kampangen_kampf(
+    "Die verschwundenen Schüler",
+    gegner_1="nerviger_6_klaessler",
+    gegner_2="cooler_6_klaessler",
+    gegner_3="normaler_6_klaessler",
+    belohnung=200,
+    ki=2,
+    npc_level=6,
+    team_groesse=3,
+
+    story_vorher=[
+        ("Jakob", "Wir sollten die Namen aus den Akten überprüfen."),
+        ("Direktor", "Ich habe einige alte Schülerlisten gefunden."),
+        ("Jakob", "Und?"),
+        ("Direktor", "Mehrere Namen stimmen überein."),
+        ("Jakob", "Was steht bei ihnen?"),
+        ("Direktor", "Bei einigen steht 'unbekannt'."),
+        ("Jakob", "Und bei den anderen?"),
+        ("Direktor", "Bei einigen steht 'abgeschlossen'."),
+        ("Jakob", "Abgeschlossen?")
+    ],
+
+    story_nachher=[
+        ("Jakob", "Was soll das bedeuten?"),
+        ("Direktor", "Das weiß ich nicht."),
+        ("Jakob", "Dann finden wir es eben heraus.")
+    ]
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampf 4 – Der erste Versuch
+# ══════════════════════════════════════════════════════════════
+
+kampf_4_5 = kampangen_kampf(
+    "Der erste Versuch",
+    gegner_1="starker_6_klaessler",
+    gegner_2="schlauer_6_klaessler",
+    belohnung=250,
+    ki=2,
+    npc_level=7,
+    team_groesse=2,
+
+    story_vorher=[
+        ("Jakob", "Hier ist eine weitere Akte."),
+        ("Jakob", "K-001."),
+        ("Direktor", "Deine Akte?"),
+        ("Jakob", "Ja."),
+        ("Jakob", "Hier stehen Dinge, an die ich mich überhaupt nicht erinnere."),
+        ("Direktor", "Was genau?"),
+        ("Jakob", "Ereignisse aus meiner Kindheit."),
+        ("Jakob", "Und hier steht: 'Subjekt zeigt erwartete Reaktion.'"),
+        ("Direktor", "Das ist ungewöhnlich.")
+    ],
+
+    story_nachher=[
+        ("Jakob", "Woher konnten die Leute hinter diesem Projekt das alles wissen?"),
+        ("Direktor", "Ich weiß es nicht."),
+        ("Jakob", "Du weißt mehr, als du sagst.")
+    ]
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampf 5 – Der Name
+# ══════════════════════════════════════════════════════════════
+
+kampf_5_5 = kampangen_kampf(
+    "Der Name",
+    gegner_1="aufsicht",
+    gegner_2="hausmeister",
+    belohnung=300,
+    ki=3,
+    npc_level=8,
+    team_groesse=2,
+
+    story_vorher=[
+        ("Jakob", "Wir müssen jemanden finden, der etwas über Projekt K weiß."),
+        ("Direktor", "Es gibt eine ehemalige Mitarbeiterin."),
+        ("Jakob", "Und sie weiß etwas?"),
+        ("Direktor", "Vielleicht."),
+        ("Jakob", "Dann sollten wir sie fragen."),
+        ("Direktor", "Sie wird wahrscheinlich nicht freiwillig reden."),
+        ("Jakob", "Dann überzeugen wir sie eben.")
+    ],
+
+    story_nachher=[
+        ("Jakob", "Also? Wer hat Projekt K gestartet?"),
+        ("Mitarbeiterin", "Nicht die Schule."),
+        ("Jakob", "Was?"),
+        ("Mitarbeiterin", "Die Schule wurde nur benutzt."),
+        ("Jakob", "Von wem?"),
+        ("Mitarbeiterin", "Kronos.")
+    ]
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampf 6 – Kronos
+# ══════════════════════════════════════════════════════════════
+
+kampf_6_5 = kampangen_kampf(
+    "Kronos",
+    gegner_1="hausmeister",
+    gegner_2="aufsicht",
+    gegner_3="klassenclown",
+    belohnung=350,
+    ki=3,
+    npc_level=9,
+    team_groesse=3,
+
+    story_vorher=[
+        ("Jakob", "Kronos."),
+        ("Direktor", "Ja."),
+        ("Jakob", "Was ist das?"),
+        ("Direktor", "Eine Organisation."),
+        ("Jakob", "Existiert sie noch?"),
+        ("Direktor", "Offiziell nicht."),
+        ("Jakob", "Und Projekt K?"),
+        ("Direktor", "Das ist die Frage."),
+        ("Jakob", "Dann suchen wir weiter.")
+    ],
+
+    story_nachher=[
+        ("Jakob", "Hier ist ein alter Computer."),
+        ("Direktor", "Vielleicht finden wir darauf etwas."),
+        ("Jakob", "Er ist passwortgeschützt."),
+        ("Jakob", "Aber die Dateien sind noch da.")
+    ]
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampf 7 – Eignung
+# ══════════════════════════════════════════════════════════════
+
+kampf_7_5 = kampangen_kampf(
+    "Eignung",
+    gegner_1="starker_6_klaessler",
+    gegner_2="cooler_6_klaessler",
+    gegner_3="aggressiver_6_klaessler",
+    belohnung=450,
+    ki=3,
+    npc_level=10,
+    team_groesse=3,
+
+    story_vorher=[
+        ("Jakob", "Ich habe die Dateien geöffnet."),
+        ("Direktor", "Was steht darin?"),
+        ("Jakob", "Informationen über die siebzehn Personen."),
+        ("Direktor", "Und bei jeder gibt es eine Kategorie."),
+        ("Jakob", "Eignung."),
+        ("Direktor", "Eignung wofür?"),
+        ("Jakob", "Keine Ahnung."),
+        ("Jakob", "Ich öffne meine Akte.")
+    ],
+
+    story_nachher=[
+        ("Jakob", "K-001."),
+        ("Jakob", "Eignung: AUSGEZEICHNET."),
+        ("Direktor", "Was bedeutet das?"),
+        ("Jakob", "Hier steht noch mehr."),
+        ("Jakob", "Phase 1: abgeschlossen."),
+        ("Jakob", "Phase 2: abgeschlossen."),
+        ("Jakob", "Phase 3: ausstehend.")
+    ]
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampf 8 – Phase 3
+# ══════════════════════════════════════════════════════════════
+
+kampf_8_5 = kampangen_kampf(
+    "Phase 3",
+    gegner_1="hausmeister",
+    gegner_2="direktor",
+    belohnung=500,
+    ki=3,
+    npc_level=11,
+    team_groesse=2,
+
+    story_vorher=[
+        ("Jakob", "Was ist Phase 3?"),
+        ("Direktor", "Das weiß ich nicht."),
+        ("Jakob", "Aber meine Akte sagt etwas anderes."),
+        ("Direktor", "Jakob..."),
+        ("Jakob", "Nur bestimmte Zielpersonen kommen in Phase 3."),
+        ("Jakob", "Und ich bin eine davon."),
+        ("Direktor", "Du solltest damit aufhören."),
+        ("Jakob", "Warum?")
+    ],
+
+    story_nachher=[
+        ("Jakob", "Ich habe eine Nachricht bekommen."),
+        ("Direktor", "Von wem?"),
+        ("Jakob", "Keine Ahnung."),
+        ("Jakob", "Darin steht eine Adresse."),
+        ("Direktor", "Dann wissen wir, wo wir als Nächstes suchen müssen.")
+    ]
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampf 9 – Die Wahrheit
+# ══════════════════════════════════════════════════════════════
+
+kampf_9_5 = kampangen_kampf(
+    "Die Wahrheit",
+    gegner_1="klassenclown",
+    gegner_2="cooler_6_klaessler",
+    gegner_3="starker_6_klaessler",
+    belohnung=600,
+    ki=4,
+    npc_level=12,
+    team_groesse=3,
+
+    story_vorher=[
+        ("Jakob", "Das ist also der Ort."),
+        ("Direktor", "Sieht verlassen aus."),
+        ("Jakob", "Hier unten ist ein Raum."),
+        ("Jakob", "Und dort sind die alten Unterlagen."),
+        ("Direktor", "Was steht in der Akte?"),
+        ("Jakob", "K-001."),
+        ("Jakob", "Hier steht, dass ich bereits vor meiner Einschulung aufgenommen wurde."),
+        ("Direktor", "..."),
+        ("Jakob", "Du wusstest davon.")
+    ],
+
+    story_nachher=[
+        ("Jakob", "Hier steht noch etwas."),
+        ("Jakob", "Verantwortlich: [GESCHWÄRZT]."),
+        ("Direktor", "Jakob..."),
+        ("Jakob", "Und darunter steht etwas handgeschrieben."),
+        ("Jakob", "Er darf niemals erfahren, wer ihn ausgewählt hat.")
+    ]
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampf 10 – K-001
+# ══════════════════════════════════════════════════════════════
+
+kampf_10_5 = kampangen_kampf(
+    "K-001",
+    gegner_1="direktor",
+    gegner_2="hausmeister",
+    gegner_3="cooler_6_klaessler",
+    gegner_4="starker_6_klaessler",
+    belohnung=1000,
+    ki=4,
+    npc_level=13,
+    team_groesse=4,
+
+    story_vorher=[
+        ("Jakob", "Also gut."),
+        ("Jakob", "Dann öffne ich die letzte Seite."),
+        ("Direktor", "Warte."),
+        ("Jakob", "Nein."),
+        ("Jakob", "Ich will endlich wissen, was hier passiert."),
+        ("Jakob", "PROJEKT K."),
+        ("Jakob", "SUBJEKT: K-001."),
+        ("Jakob", "NAME: JAKOB."),
+        ("Jakob", "STATUS: AKTIV."),
+        ("Jakob", "AUFNAHME: VOR SCHULEINTRITT."),
+        ("Jakob", "PHASE 3: FREIGEGEBEN.")
+    ],
+
+    story_nachher=[
+        ("Jakob", "Du wusstest davon?"),
+        ("Direktor", "Nicht alles."),
+        ("Jakob", "Aber du wusstest, dass mein Name schon einmal gefallen ist."),
+        ("Direktor", "Ja."),
+        ("Jakob", "Wer hat mich ausgewählt?"),
+        ("Direktor", "Das weiß ich nicht."),
+        ("Jakob", "Dann finde ich es heraus."),
+        ("Jakob", "Was ist das?"),
+        ("Direktor", "Was?"),
+        ("Jakob", "Der Bildschirm."),
+        ("Jakob", "PROJEKT K."),
+        ("Jakob", "PHASE 3: AKTIV."),
+        ("Jakob", "K-001: BESTÄTIGT."),
+        ("Jakob", "..."),
+        ("Jakob", "Das reicht für heute."),
+        ("Jakob", "Die Sache mit Projekt K ist hiermit beendet.")
+    ]
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Kampagne erstellen
+# ══════════════════════════════════════════════════════════════
+
+Kampange_5 = kampange(
+    "_05",
+    "Projekt K",
+    "sehr schwer",
+    10,
+    [
+        kampf_1_5,
+        kampf_2_5,
+        kampf_3_5,
+        kampf_4_5,
+        kampf_5_5,
+        kampf_6_5,
+        kampf_7_5,
+        kampf_8_5,
+        kampf_9_5,
+        kampf_10_5
+    ],
+    fortschritt=0
+)
+
+
 alle_kampangen = [
     Kampange_1,
     Kampange_2,
-    Kampange_3
+    Kampange_3,
+    Kampange_4,
+    Kampange_5
 ]
