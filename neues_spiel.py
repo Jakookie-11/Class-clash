@@ -864,30 +864,22 @@ def kampf(
             # ══════════════════════════════════════════════════════
 
             else:
-
-                faehigkeit, ziel = ki.ki_zug(
-                    wer,
-                    team_1,
-                    team_2,
-                    Ki
-                )
+                faehigkeit, ziel = ki.ki_zug(wer, team_1, team_2, Ki)
 
                 if faehigkeit is None or ziel is None:
                     print("Die KI konnte kein gültiges Ziel finden.")
                     time.sleep(2)
 
-                    continue
+                    if is_win(team_2):
+                        return 1
 
-                faehigkeit.abklingzeit = (
-                    faehigkeit.max_abklingzeit
-                )
+                    if is_win(team_1):
+                        return 3
 
-                faehigkeit.funktion(
-                    wer,
-                    ziel,
-                    team_2
-                )
+                    return 2
 
+                faehigkeit.abklingzeit = faehigkeit.max_abklingzeit
+                faehigkeit.funktion(wer, ziel, team_2)
 
                 geheimes.wer_hat_wieviel_schaden_genommen(
                     ziel,

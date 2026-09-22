@@ -111,6 +111,29 @@ def moegliche_ziele(faehigkeit, team_1, team_2):
     return []
 
 
+def zufaellige_aktion(faehigkeiten_liste, team_1, team_2):
+
+    aktionen = []
+
+    for faehigkeit in faehigkeiten_liste:
+
+        ziele = moegliche_ziele(
+            faehigkeit,
+            team_1,
+            team_2
+        )
+
+        if ziele:
+            aktionen.append((faehigkeit, ziele))
+
+    if not aktionen:
+        return None, None
+
+    faehigkeit, ziele = random.choice(aktionen)
+
+    return faehigkeit, random.choice(ziele)
+
+
 # ══════════════════════════════════════════════════════════════
 # Gefährlichkeit eines Charakters
 # ══════════════════════════════════════════════════════════════
@@ -723,17 +746,14 @@ def ki_zug(wer, team_1, team_2, Stufe_der_KI=1):
         if not verfuegbare_faehigkeiten:
             verfuegbare_faehigkeiten = [faehigkeiten.einfacher_angriff]
 
-        faehigkeit = random.choice(
-            verfuegbare_faehigkeiten
-        )
-
-        ziele = moegliche_ziele(
-            faehigkeit,
+        faehigkeit, ziel = zufaellige_aktion(
+            verfuegbare_faehigkeiten,
             team_1,
             team_2
         )
 
-        ziel = random.choice(ziele)
+        if faehigkeit is None:
+            return None, None
 
         print()
         print("═════════════════════════")
@@ -878,15 +898,14 @@ def ki_zug(wer, team_1, team_2, Stufe_der_KI=1):
         if not verfuegbare_faehigkeiten:
             verfuegbare_faehigkeiten = [faehigkeiten.einfacher_angriff]
 
-        faehigkeit = random.choice(verfuegbare_faehigkeiten)
-
-        ziele = moegliche_ziele(
-            faehigkeit,
+        faehigkeit, ziel = zufaellige_aktion(
+            verfuegbare_faehigkeiten,
             team_1,
             team_2
         )
 
-        ziel = random.choice(ziele)
+        if faehigkeit is None:
+            return None, None
 
         print()
         print("═════════════════════════")
@@ -922,8 +941,14 @@ def ki_zug(wer, team_1, team_2, Stufe_der_KI=1):
         )
 
         if faehigkeit is None:
-            faehigkeit = faehigkeiten.einfacher_angriff
-            ziel = random.choice(moegliche_ziele(faehigkeit, team_1, team_2))
+            faehigkeit, ziel = zufaellige_aktion(
+                [faehigkeiten.einfacher_angriff],
+                team_1,
+                team_2
+            )
+
+        if faehigkeit is None:
+            return None, None
 
         print()
         print("═════════════════════════")
@@ -958,8 +983,14 @@ def ki_zug(wer, team_1, team_2, Stufe_der_KI=1):
         )
 
         if faehigkeit is None:
-            faehigkeit = faehigkeiten.einfacher_angriff
-            ziel = random.choice(moegliche_ziele(faehigkeit, team_1, team_2))
+            faehigkeit, ziel = zufaellige_aktion(
+                [faehigkeiten.einfacher_angriff],
+                team_1,
+                team_2
+            )
+
+        if faehigkeit is None:
+            return None, None
 
         print()
         print("═════════════════════════")
