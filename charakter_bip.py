@@ -9,6 +9,16 @@ import confic
 
 
 
+GRUEN = "\033[32m"
+GELB = "\033[33m"
+CYAN = "\033[36m"
+RESET = "\033[0m"
+
+#{GRUEN}
+#{GELB}
+#{CYAN}
+#{RESET}
+
 
 
 def charakter_bip(spieler_name):
@@ -43,26 +53,55 @@ def charaktere_anzeigen():
 
     while charaktere_anzeigen == True:
 
+        print((f"{GELB}══════════════════════════════════════════════════{RESET}"))
+        print((f"{GELB}══════════════════════════════════════════════════{RESET}"))
+        print((f"{GELB}Alle normalen Charaktere:{RESET}"))
+        print((f"{GELB}══════════════════════════════════════════════════{RESET}"))
+        print((f"{GELB}══════════════════════════════════════════════════{RESET}"))
         print()
+
         for schlüssel, charakter in charaktere.Charaktere.items():
             if charakter.klasse != "npc":
-                if charakter.name != "Hannah_d":
-                    print(f"----{schlüssel}----")
+                if charakter.klasse != "down_in_mars":
+                    if charakter.klasse != "down_in_mars_gegener":
+                        if charakter.name != "Hannah_d":
+                            print((f"{CYAN}--------{schlüssel}--------{RESET}"))
 
-                    print(f"Name         : {charakter.name}")
-                    print(f"Level        : {charakter.level}")
-                    print(f"Klasse       : {charakter.klasse}")
-                    print(f"HP           : {charakter.hp:.2f}")
-                    print(f"Schaden      : {charakter.schaden}")
-                    print(f"Speed        : {charakter.speed}")
-                    print(f"Faehigkeit 1 : {charakter.faehigkeit_1}")
-                    print(f"Faehigkeit 2 : {charakter.faehigkeit_2}")
-                    print(f"Faehigkeit 3 : {charakter.faehigkeit_3}")
-                    print()
+                            print(f"Level        : {charakter.level}")
+                            print(f"Klasse       : {charakter.klasse}")
+                            print(f"{GRUEN}HP           : {charakter.hp:.2f}{RESET}")
+                            print(f"Schaden      : {charakter.schaden}")
+                            print(f"Speed        : {charakter.speed}")
+                            print(f"Faehigkeit 1 : {charakter.faehigkeit_1.name}")
+                            print(f"Faehigkeit 2 : {charakter.faehigkeit_2.name}")
+                            print(f"Faehigkeit 3 : {charakter.faehigkeit_3.name}")
+                            print()
+
+        print()
+        print((f"{GELB}══════════════════════════════════════════════════{RESET}"))
+        print((f"{GELB}══════════════════════════════════════════════════{RESET}"))
+        print((f"{GELB}Alle Down-in-Mars-Charaktere:{RESET}"))
+        print((f"{GELB}══════════════════════════════════════════════════{RESET}"))
+        print((f"{GELB}══════════════════════════════════════════════════{RESET}"))
+        print()
+
+        for schlüssel, charakter in charaktere.Charaktere.items():
+            if charakter.klasse == "down_in_mars":
+                print((f"{CYAN}--------{schlüssel}--------{RESET}"))
+
+                print(f"Level        : {charakter.level}")
+                print(f"Klasse       : {charakter.klasse}")
+                print(f"{GRUEN}HP           : {charakter.hp:.2f}{RESET}")
+                print(f"Schaden      : {charakter.schaden}")
+                print(f"Speed        : {charakter.speed}")
+                print(f"Faehigkeit 1 : {charakter.faehigkeit_1.name}")
+                print(f"Faehigkeit 2 : {charakter.faehigkeit_2.name}")
+                print(f"Faehigkeit 3 : {charakter.faehigkeit_3.name}")
+                print()
 
         #---Ende---#
         ready = input("Fertig?" )
-        if ready == "ja":
+        if ready == "ja" or ready == "":
             charaktere_anzeigen = False
             os.system(confic.terminal_clear)
         else:
@@ -117,6 +156,23 @@ def charaktere_aufleveln():
 
         os.system(confic.terminal_clear)
 
+        print("Zu verfuegung stehende Charaktere:")
+        print()
+
+        for schlüssel, charakter in charaktere.Charaktere.items():
+            if charakter.klasse != "npc":
+                if charakter.klasse != "down_in_mars":
+                    if charakter.name != "Hannah_d":
+                        print(f"Name: {schlüssel :10} Level: {charakter.level}")
+
+        print()
+
+        for schlüssel, charakter in charaktere.Charaktere.items():
+            if charakter.klasse == "down_in_mars":
+                print(f"Name: {schlüssel :10} Level: {charakter.level}")
+
+        print()
+
         while True:
             wen = input("Wen möchtest du leveln? (Name/Abbruch) ")
 
@@ -143,7 +199,7 @@ def charaktere_aufleveln():
         #--credit Kosten berechnen--#
         kosten_für_level_up = level_kosten_credits(aktuelles_level_des_chrakters)
 
-        is_break = ressourcen.ressourcen_verändern("Credits   ", kosten_für_level_up)
+        is_break = ressourcen.ressourcen_verändern("Credits", kosten_für_level_up)
 
         if is_break == 1:
             return 1

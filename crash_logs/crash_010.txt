@@ -1,0 +1,40 @@
+========================================
+       CLASS CLASH CRASH REPORT
+========================================
+
+Spieler: Jakob_1
+Datum: 2026-09-22
+Uhrzeit: 15:54:16
+Fehler-ID: 63a60704bafbe401285efc1251c6583a60e99e54cf8375e8cc4999118830134f
+Status: NICHT_GESENDET
+
+----------------------------------------
+FEHLER / TRACEBACK
+----------------------------------------
+
+Traceback (most recent call last):
+  File "c:\Users\jakob\Desktop\Git\Class clash\main.py", line 48, in <module>
+    is_brake_neues_spiel = neues_spiel.neues_spiel(spieler)
+  File "c:\Users\jakob\Desktop\Git\Class clash\neues_spiel.py", line 40, in neues_spiel
+    is_break_kampangen = kampange.kampangen(spieler_name)
+  File "c:\Users\jakob\Desktop\Git\Class clash\kampange.py", line 274, in kampangen
+    is_win = neues_spiel.kampf(
+        team_1=spieler_team if spieler_team else None,
+    ...<3 lines>...
+        team_groesse_2=ausgewaehlter_kampf.team_groesse_2
+    )
+  File "c:\Users\jakob\Desktop\Git\Class clash\neues_spiel.py", line 868, in kampf
+    faehigkeit, ziel = ki.ki_zug(
+                       ~~~~~~~~~^
+        wer,
+        ^^^^
+    ...<2 lines>...
+        Ki
+        ^^
+    )
+    ^
+  File "c:\Users\jakob\Desktop\Git\Class clash\ki.py", line 899, in ki_zug
+    ziel = random.choice(ziele)
+  File "C:\Users\jakob\AppData\Local\Python\pythoncore-3.14-64\Lib\random.py", line 353, in choice
+    raise IndexError('Cannot choose from an empty sequence')
+IndexError: Cannot choose from an empty sequence

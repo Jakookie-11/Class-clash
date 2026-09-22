@@ -27,8 +27,10 @@ class StatusEffekt:
 betaeubt = StatusEffekt("betaeubt", 1, 0)
 schaden_plus = StatusEffekt("schaden_plus", 2, 1.3)
 schaden_minus = StatusEffekt("schaden_minus", 2, 0.7)
-damage_over_time_1 = StatusEffekt("damage_over_time_1", 2, -10 )
-healing_over_time_1 = StatusEffekt("healing_over_time_1", 2, 10 )
+schaden_erhalten_minus = StatusEffekt("schaden_erhalten_minus", 5, 0.7)
+
+damage_over_time_1 = StatusEffekt("damage_over_time_1", 2, -10)
+healing_over_time_1 = StatusEffekt("healing_over_time_1", 2, 10)
 
 
 

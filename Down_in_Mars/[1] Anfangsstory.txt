@@ -1,0 +1,23 @@
+Erzähler : Frankfurt, Deutschland - Jahr 2025
+Erzähler : Es war ein gewöhnlicher Tag bei der Flugsicherung.
+Adam     : Noch ein ruhiger Tag...
+Erzähler : Zumindest dachte Adam das.
+Erzähler : Plötzlich begannen mehrere Radarsysteme gleichzeitig zu flackern.
+Adam     : Was ist das denn?
+Erzähler : Ein unbekanntes Objekt war auf dem Radar erschienen.
+Adam     : Das kann kein Flugzeug sein.
+Erzähler : Wenige Sekunden später wurde aus dem unbekannten Kontakt eine Katastrophe.
+Erzähler : Das Objekt raste auf den Flughafen zu.
+Adam     : Alle weg von den Landebahnen!
+Erzähler : Dann schlug es ein.
+
+Erzähler : Das Militär hatte das gesamte Gebiet abgesperrt.
+Erzähler : Niemand wusste genau, was auf einer der Start- und Landebahnen lag.
+
+John     : Also gut. Was wissen wir bisher?
+Sara     : Nicht viel. Es sieht aus wie ein Asteroid.
+Lara     : Ein Asteroid mit Triebwerken.
+Rico     : Das macht die Sache doch interessant.
+John     : Wir untersuchen es. Keine Alleingänge.
+Rico     : Ja, ja. Schon verstanden.
+Enter...

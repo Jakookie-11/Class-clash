@@ -1,0 +1,11 @@
+Erzähler : Das Team machte sich auf die Suche nach den vermissten Soldaten.
+Erzähler : Plötzlich ertönte hinter ihnen ein metallisches Geräusch.
+Rico     : Ähm ... Leute?
+Erzähler : Aus einem Seitengang bewegte sich eine mechanische Gestalt auf das Team zu.
+John     : Kontakt!
+Erzähler : Die Gestalt beschleunigte und stürmte direkt auf das Team zu.
+John     : Alle zurück!
+Enter...
+
+
+

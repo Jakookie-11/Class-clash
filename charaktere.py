@@ -146,6 +146,346 @@ Lovis = charakter(
 
 
 
+
+
+
+
+
+
+
+
+
+
+# ============================================================
+# Down in Mars – Storycharaktere
+# ============================================================
+
+John = charakter(
+    "John",
+    "down_in_mars",
+    180,
+    180,
+    180,
+    -18,
+    -18,
+    "down_in_mars",
+    70,
+    1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.john_geziehlter_schuss,
+    faehigkeit_3=faehigkeiten.john_taktischer_angriff
+)
+
+
+Sara = charakter(
+    "Sara",
+    "down_in_mars",
+    150,
+    150,
+    150,
+    -15,
+    -15,
+    "down_in_mars",
+    90,
+    1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.sara_geziehlter_schuss,
+    faehigkeit_3=faehigkeiten.sara_ausweichen
+)
+
+
+Lara = charakter(
+    "Lara",
+    "down_in_mars",
+    140,
+    140,
+    140,
+    -12,
+    -12,
+    "down_in_mars",
+    65,
+    1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.lara_erste_hilfe,
+    faehigkeit_3=faehigkeiten.lara_unterstuetzung
+)
+
+
+Rico = charakter(
+    "Rico",
+    "down_in_mars",
+    160,
+    160,
+    160,
+    -22,
+    -22,
+    "down_in_mars",
+    60,
+    1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.rico_starker_schuss,
+    faehigkeit_3=faehigkeiten.rico_feuerstoss
+)
+
+
+Chasker = charakter(
+    "Chasker",
+    "down_in_mars",
+    240,
+    240,
+    240,
+    -16,
+    -16,
+    "down_in_mars",
+    40,
+    1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.chasker_schutz,
+    faehigkeit_3=faehigkeiten.chasker_schwerer_angriff
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Down in Mars – Gegner
+# ══════════════════════════════════════════════════════════════
+
+
+mars_sicherheitsdrohne = charakter(
+    "mars_sicherheitsdrohne",
+    "down_in_mars_gegener",
+    60,
+    60,
+    60,
+    -7,
+    -7,
+    "down_in_mars_gegener",
+    80,
+    1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.mars_sicherheitsdrohne_stoerimpuls,
+    faehigkeit_3=faehigkeiten.mars_sicherheitsdrohne_scan
+)
+
+
+mars_wachroboter = charakter(
+    "mars_wachroboter",
+    "down_in_mars_gegener",
+    100,
+    100,
+    100,
+    -10,
+    -10,
+    "down_in_mars_gegener",
+    55,
+    1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.mars_wachroboter_stoss,
+    faehigkeit_3=faehigkeiten.mars_wachroboter_schild
+)
+
+
+marsianischer_waechter = charakter(
+    "marsianischer_waechter",
+    "down_in_mars_gegener",
+    130,
+    130,
+    130,
+    -9,
+    -9,
+    "down_in_mars_gegener",
+    45,
+    1,
+    faehigkeit_1= faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.marsianischer_waechter_schild,
+    faehigkeit_3=faehigkeiten.marsianischer_waechter_markieren
+)
+
+
+marsianischer_soldat = charakter(
+    "marsianischer_soldat",
+    "down_in_mars_gegener",
+    95,
+    95,
+    95,
+    -13,
+    -13,
+    "down_in_mars_gegener",
+    70,
+    1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.marsianischer_soldat_salvo,
+    faehigkeit_3=faehigkeiten.marsianischer_soldat_adrenalin
+)
+
+
+stationsdrohne = charakter(
+    "stationsdrohne",
+    "down_in_mars_gegener",
+    75,
+    75,
+    75,
+    -8,
+    -8,
+    "down_in_mars_gegener",
+    85,
+    1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.stationsdrohne_reparatur,
+    faehigkeit_3=faehigkeiten.stationsdrohne_stoerung
+)
+
+
+infizierter_roboter = charakter(
+    "infizierter_roboter",
+    "down_in_mars_gegener",
+    115,
+    115,
+    115,
+    -11,
+    -11,
+    "down_in_mars_gegener",
+    50,
+    1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.infizierter_roboter_aeon_energie,
+    faehigkeit_3=faehigkeiten.infizierter_roboter_selbstreparatur
+)
+
+
+neues_wir = charakter(
+    "neues_wir",
+    "down_in_mars_gegener",
+    125,
+    125,
+    125,
+    -12,
+    -12,
+    "down_in_mars_gegener",
+    65,
+    1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.neues_wir_uebernahme,
+    faehigkeit_3=faehigkeiten.neues_wir_anpassung
+)
+
+
+neues_wir_elite = charakter(
+    "neues_wir_elite",
+    "down_in_mars_gegener",
+    180,
+    180,
+    180,
+    -15,
+    -15,
+    "down_in_mars_gegener",
+    75,
+    1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.neues_wir_elite_strain,
+    faehigkeit_3=faehigkeiten.neues_wir_elite_regeneration
+)
+
+
+aeon_splitter = charakter(
+    "aeon_splitter",
+    "down_in_mars_gegener",
+    55,
+    55,
+    55,
+    -8,
+    -8,
+    "down_in_mars_gegener",
+    95,
+    1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.aeon_splitter_verfall,
+    faehigkeit_3=faehigkeiten.aeon_splitter_zerfall
+)
+
+
+aeon_jaeger = charakter(
+    "aeon_jaeger",
+    "down_in_mars_gegener",
+    110,
+    110,
+    110,
+    -14,
+    -14,
+    "down_in_mars_gegener",
+    105,
+    1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.aeon_jaeger_sprung,
+    faehigkeit_3=faehigkeiten.aeon_jaeger_blutrausch
+)
+
+
+aeon = charakter(
+    "aeon",
+    "down_in_mars_gegener",
+    300,
+    300,
+    300,
+    -18,
+    -18,
+    "down_in_mars_gegener",
+    60,
+    1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.aeon_energiebruch,
+    faehigkeit_3=faehigkeiten.aeon_anpassung
+)
+
+
+schattenwesen = charakter(
+    "Schattenwesen",
+    "down_in_mars_gegener",
+    350,
+    350,
+    350,
+    -40,
+    -40,
+    "down_in_mars_gegener",
+    95,
+    1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_2=faehigkeiten.schattenwesen_sprung_aus_der_dunkelheit,
+    faehigkeit_3=faehigkeiten.schattenwesen_schrecken
+)
+
+
+traum_sara = charakter(
+    "Traum-Sara",
+    "down_in_mars_gegener",
+    220,
+    220,
+    220,
+    -18,
+    -18,
+    "down_in_mars_gegener",
+    100,
+    1,
+    faehigkeit_1=faehigkeiten.traum_sara_schattenangriff,
+    faehigkeit_2=faehigkeiten.traum_sara_zerreissender_griff,
+    faehigkeit_3=faehigkeiten.traum_sara_es_beginnt
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #--------------------------------------------#
 #--------------------npcs--------------------#
 #--------------------------------------------#
@@ -256,6 +596,25 @@ Charaktere = {
     "Lovis"   : Lovis,
     "Hannah_d": Hannah_d,
 
+    "John": John,
+    "Sara": Sara,
+    "Lara": Lara,
+    "Rico": Rico,
+    "Chasker": Chasker,
+
+    "mars_sicherheitsdrohne": mars_sicherheitsdrohne,
+    "mars_wachroboter": mars_wachroboter,
+    "marsianischer_waechter": marsianischer_waechter,
+    "marsianischer_soldat": marsianischer_soldat,
+    "stationsdrohne": stationsdrohne,
+    "infizierter_roboter": infizierter_roboter,
+    "neues_wir": neues_wir,
+    "neues_wir_elite": neues_wir_elite,
+    "aeon_splitter": aeon_splitter,
+    "aeon_jaeger": aeon_jaeger,
+    "aeon": aeon,
+    "schattenwesen": schattenwesen,
+
     "fuenftklaessler": fuenftklaessler,
     "cooler_fuenftklaessler": cooler_fuenftklaessler,
     "streber": streber,
@@ -270,4 +629,5 @@ Charaktere = {
     "schlauer_6_klaessler" : schlauer_6_klaessler,
     "nerviger_6_klaessler" : nerviger_6_klaessler,
     "cooler_6_klaessler" : cooler_6_klaessler
+
 }

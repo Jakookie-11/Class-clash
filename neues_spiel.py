@@ -70,8 +70,9 @@ def charaktere_auswaelen(nur_eigenes_team=False,team_groesse=2):
     print()
     for schlüssel, charakter in charaktere.Charaktere.items():
         if charakter.klasse != "npc":
-            if charakter.name != "Hannah_d":
-                print(schlüssel)
+            if charakter.klasse != "down_in_mars":
+                if charakter.name != "Hannah_d":
+                    print(schlüssel)
     print()
     print(f"Waehle {team_groesse} aus:")
     print()
@@ -507,104 +508,95 @@ def kampf_charaktere_kopieren(ausgewaehlte_charaktere):
 
 
 def kampf(
-    leader_1=None,
-    spieler_2_1=None,
-    spieler_3_1=None,
-    spieler_4_1=None,
-    leader_2=None,
-    spieler_2_2=None,
-    spieler_3_2=None,
-    spieler_4_2=None,
-    Ki=1,
-    team_groesse=2
+    team_1=None,
+    team_2=None,
+    team_groesse_1=2,
+    team_groesse_2=2,
+    Ki=1
 ):
 
     os.system(confic.terminal_clear)
 
     zug = 0
+    runde = 1
 
-    #---Charaktere bekommen---#
+    # ══════════════════════════════════════════════════════════════
+    # Teams bestimmen
+    # ══════════════════════════════════════════════════════════════
 
-    if leader_1 == None and spieler_2_1 == None and leader_2 != None:
+    # Team 1 vom Spieler auswählen
+    if team_1 is None:
 
-        if team_groesse == 2:
-            leader_1, spieler_2_1 = charaktere_auswaelen(
+        team_1 = list(
+            charaktere_auswaelen(
                 nur_eigenes_team=True,
-                team_groesse=2
+                team_groesse=team_groesse_1
             )
-
-        elif team_groesse == 3:
-            leader_1, spieler_2_1, spieler_3_1 = charaktere_auswaelen(
-                nur_eigenes_team=True,
-                team_groesse=3
-            )
-
-        elif team_groesse == 4:
-            leader_1, spieler_2_1, spieler_3_1, spieler_4_1 = charaktere_auswaelen(
-                nur_eigenes_team=True,
-                team_groesse=4
-            )
+        )
 
     else:
+        team_1 = list(team_1)
 
-        if team_groesse == 2:
 
-            leader_1, spieler_2_1, leader_2, spieler_2_2 = charaktere_auswaelen(
-                team_groesse=2
+    # Team 2 auswählen, falls es nicht vorgegeben wurde
+    if team_2 is None:
+
+        team_2 = list(
+            charaktere_auswaelen(
+                nur_eigenes_team=True,
+                team_groesse=team_groesse_2
             )
+        )
 
-        elif team_groesse == 3:
-
-            leader_1, spieler_2_1, spieler_3_1, leader_2, spieler_2_2, spieler_3_2 = charaktere_auswaelen(
-                team_groesse=3
-            )
-
-        elif team_groesse == 4:
-
-            leader_1, spieler_2_1, spieler_3_1, spieler_4_1, leader_2, spieler_2_2, spieler_3_2, spieler_4_2 = charaktere_auswaelen(
-                team_groesse=4
-            )
+    else:
+        team_2 = list(team_2)
 
 
-    #---Charaktere als list speichern---#
+    # ══════════════════════════════════════════════════════════════
+    # Überprüfen, ob die Teams gültig sind
+    # ══════════════════════════════════════════════════════════════
 
-    ausgewaehlte_charaktere = [
-        leader_1,
-        spieler_2_1
-    ]
-
-    if team_groesse > 2:
-        ausgewaehlte_charaktere.append(spieler_3_1)
-
-    if team_groesse > 3:
-        ausgewaehlte_charaktere.append(spieler_4_1)
+    if len(team_1) == 0 or len(team_2) == 0:
+        print("Ein Team darf nicht leer sein.")
+        time.sleep(2)
+        return 2
 
 
-    if leader_2 != None:
-        ausgewaehlte_charaktere.append(leader_2)
-        ausgewaehlte_charaktere.append(spieler_2_2)
+    # ══════════════════════════════════════════════════════════════
+    # Alle Charaktere des Kampfes
+    # ══════════════════════════════════════════════════════════════
 
-        if team_groesse > 2:
-            ausgewaehlte_charaktere.append(spieler_3_2)
-
-        if team_groesse > 3:
-            ausgewaehlte_charaktere.append(spieler_4_2)
+    ausgewaehlte_charaktere = team_1 + team_2
 
 
-    ausgewaehlte_charaktere = kampf_charaktere_kopieren(ausgewaehlte_charaktere)
+    # ══════════════════════════════════════════════════════════════
+    # Doppelte Charaktere kopieren
+    # ══════════════════════════════════════════════════════════════
+
+    ausgewaehlte_charaktere = kampf_charaktere_kopieren(
+        ausgewaehlte_charaktere
+    )
 
 
-    #---Teams---#
+    # Durch das Kopieren müssen die Teams wieder
+    # aus der gemeinsamen Liste aufgebaut werden.
 
-    team_1 = ausgewaehlte_charaktere[:team_groesse]
+    team_1 = ausgewaehlte_charaktere[:len(team_1)]
+    team_2 = ausgewaehlte_charaktere[len(team_1):]
 
-    team_2 = []
 
-    if leader_2 != None:
-        team_2 = ausgewaehlte_charaktere[team_groesse:]
-        
-    #---reinfolge ermitteln---#
-    reinfolge = schnellster_charakter_ermitteln(ausgewaehlte_charaktere)
+    # ══════════════════════════════════════════════════════════════
+    # Zugreihenfolge
+    # ══════════════════════════════════════════════════════════════
+
+    reinfolge = schnellster_charakter_ermitteln(
+        ausgewaehlte_charaktere
+    )
+
+
+    # ══════════════════════════════════════════════════════════════
+    # Kampf
+    # ══════════════════════════════════════════════════════════════
 
     while True:
 
@@ -612,190 +604,369 @@ def kampf(
 
         print("═════════════════════════")
         print("          Kampf          ")
+        print(f"         Runde {runde}")
         print("═════════════════════════")
         print()
-        #--Teams + HP anzeigen--#
+
+        # Teams anzeigen
         kampf_team_anzeigen(team_1, team_2)
-        print("═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════")
+
+        print(
+            "═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════"
+        )
         print()
 
-        #--Wer ist am zug--#
+
+        # Falls durch einen vorherigen Zug Charaktere gestorben sind
+        # und die Reihenfolge leer geworden ist
+        if not reinfolge:
+            return 2
+
+
+        # ══════════════════════════════════════════════════════════
+        # Wer ist am Zug?
+        # ══════════════════════════════════════════════════════════
+
+        if zug >= len(reinfolge):
+            zug = 0
+
         wer = reinfolge[zug]
 
-        #--Betäubt?--#
-        if status_effekte.status_effekt_vorhanden(wer, "betaeubt") == True:
+
+        # ══════════════════════════════════════════════════════════
+        # Betäubt?
+        # ══════════════════════════════════════════════════════════
+
+        if status_effekte.status_effekt_vorhanden(
+            wer,
+            "betaeubt"
+        ):
 
             os.system(confic.terminal_clear)
+
             print(f"{wer} ist betaeubt und setzt aus!")
             time.sleep(2)
 
             status_effekte.status_effekte_aktualisieren(wer)
 
-            ausgewaehlte_charaktere = tote_charaktere_entvernen(ausgewaehlte_charaktere)
-            reinfolge = schnellster_charakter_ermitteln(ausgewaehlte_charaktere)
-
-            if wer not in reinfolge:
-                zug -= 1
-
-            zug += 1
-
-            if zug >= len(reinfolge):
-                zug = 0
-
         else:
+
+            # ══════════════════════════════════════════════════════
+            # Spielerzug
+            # ══════════════════════════════════════════════════════
 
             if wer in team_1:
 
-                #--Zugriff auf Fähigkeiten--#
+                while True:
 
-                while True:       
                     print(f"{wer} ist am zug!")
                     print("----Status----")
-                    print(f"HP        : {charaktere.Charaktere[wer].hp:.2f}")
-                    print(f"Schaden   : {charaktere.Charaktere[wer].schaden}")
+                    print(
+                        f"HP        : "
+                        f"{charaktere.Charaktere[wer].hp:.2f}"
+                    )
+                    print(
+                        f"Schaden   : "
+                        f"{charaktere.Charaktere[wer].schaden}"
+                    )
                     print()
-                    print(f"[1] {charaktere.Charaktere[wer].faehigkeit_1.name :20}Cooldown: {charaktere.Charaktere[wer].faehigkeit_1.abklingzeit}")
-                    print(f"[2] {charaktere.Charaktere[wer].faehigkeit_2.name :20}Cooldown: {charaktere.Charaktere[wer].faehigkeit_2.abklingzeit}")
-                    print(f"[3] {charaktere.Charaktere[wer].faehigkeit_3.name :20}Cooldown: {charaktere.Charaktere[wer].faehigkeit_3.abklingzeit}")
+
+                    print(
+                        f"[1] "
+                        f"{charaktere.Charaktere[wer].faehigkeit_1.name :20}"
+                        f"Cooldown: "
+                        f"{charaktere.Charaktere[wer].faehigkeit_1.abklingzeit}"
+                    )
+
+                    print(
+                        f"[2] "
+                        f"{charaktere.Charaktere[wer].faehigkeit_2.name :20}"
+                        f"Cooldown: "
+                        f"{charaktere.Charaktere[wer].faehigkeit_2.abklingzeit}"
+                    )
+
+                    print(
+                        f"[3] "
+                        f"{charaktere.Charaktere[wer].faehigkeit_3.name :20}"
+                        f"Cooldown: "
+                        f"{charaktere.Charaktere[wer].faehigkeit_3.abklingzeit}"
+                    )
+
                     print()
-                    print("Doppelte Zahl für die Erklärung der Fähigkeit")
+                    print(
+                        "Doppelte Zahl für die Erklärung der Fähigkeit"
+                    )
                     print("Abbrechen um den kampf abzubrechen")
                     print()
 
                     wahl = input("wahl? ")
 
-                    #--Prüfen ob abbrechen--#
-                    if wahl == "Abbrechen" or wahl == "abbrechen":
+
+                    # ──────────────────────────────────────────────
+                    # Kampf abbrechen
+                    # ──────────────────────────────────────────────
+
+                    if wahl.lower() == "abbrechen":
+
+                        alle_statuseffekte_resetten()
+                        alle_faehigkeits_abklingzeiten_resetten()
+                        HP_zuruecksetzen()
+
                         return 2
 
+
+                    # ──────────────────────────────────────────────
+                    # Fähigkeit auswählen
+                    # ──────────────────────────────────────────────
+
                     if wahl == "1":
-                        faehigkeit = charaktere.Charaktere[wer].faehigkeit_1
 
-                    elif wahl == "11":
-                        faehigkeit = charaktere.Charaktere[wer].faehigkeit_1
-                        print()
-                        print(faehigkeit.erklaerung)
-                        print()
-                        input("Fertig? ")
-                        funktions.zeilen_loeschen(17)
-                        continue
-
-                    elif wahl == "2":
-                        faehigkeit = charaktere.Charaktere[wer].faehigkeit_2
-
-                    elif wahl == "22":
-                        faehigkeit = charaktere.Charaktere[wer].faehigkeit_2
-                        print()
-                        print(faehigkeit.erklaerung)
-                        print()
-                        input("Fertig? ")
-                        funktions.zeilen_loeschen(17)
-                        continue
-
-                    elif wahl == "3":
-                        faehigkeit = charaktere.Charaktere[wer].faehigkeit_3
-
-                    elif wahl == "33":
-                        faehigkeit = charaktere.Charaktere[wer].faehigkeit_3
-                        print()
-                        print(faehigkeit.erklaerung)
-                        print()
-                        input("Fertig? ")
-                        funktions.zeilen_loeschen(17)
-                        continue
-
-                    else:
-                        funktions.zeilen_loeschen(13)
-                        print()
-                        print("Diese Fähigkeit existiert nicht")
-                        time.sleep(1)
-                        funktions.zeilen_loeschen(2)
-                        continue
-
-
-                    if faehigkeit.abklingzeit > 0:
-                        print()
-                        print("Diese Fähigkeit ist noch auf Abklingzeit")
-                        time.sleep(2)
-                        funktions.zeilen_loeschen(15)
-                        continue
-                    else:
-
-                        #---Ziel auswählen---#
-                        ziel = ziel_auswaehlen(
-                            wer,
-                            team_1,
-                            team_2,
-                            faehigkeit.zieltyp
+                        faehigkeit = (
+                            charaktere.Charaktere[wer].faehigkeit_1
                         )
 
-                        #---Abklingzeit auf max setzen---#
-                        faehigkeit.abklingzeit = faehigkeit.max_abklingzeit
+                    elif wahl == "11":
 
-                        #---Eigentliche Fähigkeit---#
-                        faehigkeit.funktion(wer, ziel, team_1)
+                        faehigkeit = (
+                            charaktere.Charaktere[wer].faehigkeit_1
+                        )
 
-                        geheimes.wer_hat_wieviel_schaden_genommen(ziel, team_1, team_2)
+                        print()
+                        print(faehigkeit.erklaerung)
+                        print()
 
-                        abklingzeiten_aktualisieren(wer)
-                        
-                        break
+                        input("Fertig? ")
+
+                        funktions.zeilen_loeschen(17)
+
+                        continue
+
+
+                    elif wahl == "2":
+
+                        faehigkeit = (
+                            charaktere.Charaktere[wer].faehigkeit_2
+                        )
+
+                    elif wahl == "22":
+
+                        faehigkeit = (
+                            charaktere.Charaktere[wer].faehigkeit_2
+                        )
+
+                        print()
+                        print(faehigkeit.erklaerung)
+                        print()
+
+                        input("Fertig? ")
+
+                        funktions.zeilen_loeschen(17)
+
+                        continue
+
+
+                    elif wahl == "3":
+
+                        faehigkeit = (
+                            charaktere.Charaktere[wer].faehigkeit_3
+                        )
+
+                    elif wahl == "33":
+
+                        faehigkeit = (
+                            charaktere.Charaktere[wer].faehigkeit_3
+                        )
+
+                        print()
+                        print(faehigkeit.erklaerung)
+                        print()
+
+                        input("Fertig? ")
+
+                        funktions.zeilen_loeschen(17)
+
+                        continue
+
+
+                    else:
+
+                        funktions.zeilen_loeschen(13)
+
+                        print()
+                        print("Diese Fähigkeit existiert nicht")
+
+                        time.sleep(1)
+
+                        funktions.zeilen_loeschen(2)
+
+                        continue
+
+
+                    # ──────────────────────────────────────────────
+                    # Cooldown überprüfen
+                    # ──────────────────────────────────────────────
+
+                    if faehigkeit.abklingzeit > 0:
+
+                        print()
+                        print(
+                            "Diese Fähigkeit ist noch auf Abklingzeit"
+                        )
+
+                        time.sleep(2)
+
+                        funktions.zeilen_loeschen(15)
+
+                        continue
+
+
+                    # ──────────────────────────────────────────────
+                    # Ziel auswählen
+                    # ──────────────────────────────────────────────
+
+                    ziel = ziel_auswaehlen(
+                        wer,
+                        team_1,
+                        team_2,
+                        faehigkeit.zieltyp
+                    )
+
+
+                    # ──────────────────────────────────────────────
+                    # Fähigkeit benutzen
+                    # ──────────────────────────────────────────────
+
+                    faehigkeit.abklingzeit = (
+                        faehigkeit.max_abklingzeit
+                    )
+
+                    faehigkeit.funktion(
+                        wer,
+                        ziel,
+                        team_1
+                    )
+
+
+                    geheimes.wer_hat_wieviel_schaden_genommen(
+                        ziel,
+                        team_1,
+                        team_2
+                    )
+
+
+                    abklingzeiten_aktualisieren(wer)
+
+                    break
+
+
+            # ══════════════════════════════════════════════════════
+            # KI-Zug
+            # ══════════════════════════════════════════════════════
 
             else:
-                faehigkeit, ziel = ki.ki_zug(wer, team_1, team_2, Ki)
-                faehigkeit.abklingzeit = faehigkeit.max_abklingzeit
-                faehigkeit.funktion(wer, ziel, team_2)
 
-                geheimes.wer_hat_wieviel_schaden_genommen(ziel, team_1, team_2)
+                faehigkeit, ziel = ki.ki_zug(
+                    wer,
+                    team_1,
+                    team_2,
+                    Ki
+                )
+
+                if faehigkeit is None or ziel is None:
+                    print("Die KI konnte kein gültiges Ziel finden.")
+                    time.sleep(2)
+
+                    continue
+
+                faehigkeit.abklingzeit = (
+                    faehigkeit.max_abklingzeit
+                )
+
+                faehigkeit.funktion(
+                    wer,
+                    ziel,
+                    team_2
+                )
+
+
+                geheimes.wer_hat_wieviel_schaden_genommen(
+                    ziel,
+                    team_1,
+                    team_2
+                )
+
 
                 abklingzeiten_aktualisieren(wer)
 
 
+            # ══════════════════════════════════════════════════════
+            # Status-Effekte aktualisieren
+            # ══════════════════════════════════════════════════════
 
-            #---Effekte aktuallisieren---#
             status_effekte.status_effekte_aktualisieren(wer)
 
-            #---tote charaktäre entvernen---#
 
-            ausgewaehlte_charaktere = tote_charaktere_entvernen(ausgewaehlte_charaktere)
-            reinfolge = schnellster_charakter_ermitteln(ausgewaehlte_charaktere)
+        # ══════════════════════════════════════════════════════════
+        # Tote Charaktere entfernen
+        # ══════════════════════════════════════════════════════════
 
-            if wer not in reinfolge:
-                zug -= 1
+        ausgewaehlte_charaktere = (
+            tote_charaktere_entvernen(
+                ausgewaehlte_charaktere
+            )
+        )
 
-            #---Sieg?---#
-            is_win_team_1 = is_win(team_2)
-            if is_win_team_1 == True:
-                os.system(confic.terminal_clear)
-                print("Team 1 hat gewonnen!")
-                time.sleep(2)
-                os.system(confic.terminal_clear)
-
-                #---Status Effekte / HP / Abklingzeiten zurücksetzen---#
-                alle_statuseffekte_resetten()
-                alle_faehigkeits_abklingzeiten_resetten()
-                HP_zuruecksetzen()
-
-                return 1
-
-            is_win_team_2 = is_win(team_1)
-            if is_win_team_2 == True:
-                os.system(confic.terminal_clear)
-                print()
-                print("Team 2 hat gewonnen!")
-                time.sleep(2)
-                os.system(confic.terminal_clear)
-
-                #---Status Effekte / HP / Abklingzeiten zurücksetzen---#
-                alle_statuseffekte_resetten()
-                alle_faehigkeits_abklingzeiten_resetten()
-                HP_zuruecksetzen()
-                    
-                return 3       
+        reinfolge = schnellster_charakter_ermitteln(
+            ausgewaehlte_charaktere
+        )
 
 
+        # ══════════════════════════════════════════════════════════
+        # Sieg überprüfen
+        # ══════════════════════════════════════════════════════════
 
-            zug += 1
+        if is_win(team_2):
 
-            if zug >= len(reinfolge):
-                zug = 0
+            os.system(confic.terminal_clear)
+
+            print("Team 1 hat gewonnen!")
+
+            time.sleep(2)
+
+            os.system(confic.terminal_clear)
+
+            alle_statuseffekte_resetten()
+            alle_faehigkeits_abklingzeiten_resetten()
+            HP_zuruecksetzen()
+
+            return 1
+
+
+        if is_win(team_1):
+
+            os.system(confic.terminal_clear)
+
+            print()
+            print("Team 2 hat gewonnen!")
+
+            time.sleep(2)
+
+            os.system(confic.terminal_clear)
+
+            alle_statuseffekte_resetten()
+            alle_faehigkeits_abklingzeiten_resetten()
+            HP_zuruecksetzen()
+
+            return 3
+
+
+        # ══════════════════════════════════════════════════════════
+        # Nächster Zug
+        # ══════════════════════════════════════════════════════════
+
+        zug += 1
+
+        if zug >= len(reinfolge):
+
+            zug = 0
+            runde += 1

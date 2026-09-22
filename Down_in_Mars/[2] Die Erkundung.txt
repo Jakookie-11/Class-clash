@@ -1,0 +1,25 @@
+Erzähler : Das Gebiet um die Absturzstelle war vollständig vom Militär abgeriegelt worden.
+Erzähler : Nur ein kleines Team durfte sich dem unbekannten Objekt nähern.
+Erzähler : John, Sara, Rico und Lara machten sich gemeinsam auf den Weg.
+
+John     : Bleibt zusammen. Wir wissen nicht, womit wir es hier zu tun haben.
+Rico     : Sieht wirklich aus wie ein riesiger Stein.
+Sara     : Ein riesiger Stein mit Triebwerken.
+Lara     : Und wir wissen immer noch nicht, warum er überhaupt hier gelandet ist.
+
+Erzähler : Das Team umrundete das Objekt und untersuchte seine Oberfläche.
+
+Rico     : Wartet mal.
+Erzähler : An der Seite des vermeintlichen Asteroiden befand sich eine kleine Einbuchtung.
+Rico     : Da ist etwas.
+John     : Nicht anfassen.
+Erzähler : Rico hatte bereits einen kleinen Knopf entdeckt.
+John     : Warte kurz. Öffne erst, wenn wir in Position sind.
+
+Erzähler : Das Team nahm vorsichtig Abstand und machte sich bereit.
+
+Rico     : Na dann...
+Erzähler : Rico betätigte den Knopf.
+Erzähler : Ein Zischen ertönte.
+Erzähler : Dann öffnete sich wie aus dem Nichts eine Tür im Gestein.
+Enter...

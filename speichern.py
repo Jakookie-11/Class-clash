@@ -24,13 +24,14 @@ def spiel_speichern(spieler):
 
     for name, charakter in charaktere.Charaktere.items():
         if charakter.klasse != "npc":
-            gespeicherte_charaktere[name] = {
-                "hp" : charakter.hp,
-                "max_hp" : charakter.max_hp,
-                "max_max_hp" : charakter.max_max_hp,
-                "schaden" : charakter.schaden,
-                "level" : charakter.level
-            }
+            if charakter.klasse != "down_in_mars_gegener":
+                gespeicherte_charaktere[name] = {
+                    "hp"         : charakter.hp,
+                    "max_hp"     : charakter.max_hp,
+                    "max_max_hp" : charakter.max_max_hp,
+                    "schaden"    : charakter.schaden,
+                    "level"      : charakter.level
+                }
 
     gespeicherter_fortschritt = {}
 
@@ -49,11 +50,11 @@ def spiel_speichern(spieler):
         erstellungsdatum = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     daten = {
-        "spieler_name"    : spieler,
-        "Erstellungsdatum" : erstellungsdatum,
-        "Letztes_Speichern" : datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "ressourcen"      : ressourcen.ressourcen,
-        "charaktere"      : gespeicherte_charaktere,
+        "spieler_name"          : spieler,
+        "Erstellungsdatum"      : erstellungsdatum,
+        "Letztes_Speichern"     : datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "ressourcen"            : ressourcen.ressourcen,
+        "charaktere"            : gespeicherte_charaktere,
         "kampangen_fortschritt" : gespeicherter_fortschritt
     }
 
@@ -121,6 +122,7 @@ def spiel_laden(spieler):
         charakter.max_hp = gespeicherte_charaktere.get("max_hp", charakter.max_hp)
         charakter.max_max_hp = gespeicherte_charaktere.get("max_max_hp", charakter.max_max_hp)
         charakter.schaden = gespeicherte_charaktere.get("schaden", charakter.schaden)
+        charakter.max_schaden = gespeicherte_charaktere.get("max_schaden", charakter.max_schaden)
         charakter.level = gespeicherte_charaktere.get("level", charakter.level)
 
     for kampange in alle_kampangen_laden():
