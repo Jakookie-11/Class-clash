@@ -136,7 +136,9 @@ def npc_level_setzen(level, Leader_2, spieler_2_2, spieler_3_2=None, spieler_4_2
         if spieler is None:
             continue
 
-        for i in range(level -1):
+        level_zuruecksetzen(spieler)
+
+        for i in range(max(0, level - 1)):
 
             charakter_bip.level_up(spieler)
 

@@ -259,6 +259,31 @@ def schnellster_charakter_ermitteln (ausgewählte_charaktere_list):
     return reinfolge
 
 
+def naechsten_zug_ermitteln(
+    alte_reihenfolge,
+    neue_reihenfolge,
+    aktueller_name,
+    aktueller_index
+):
+    if not neue_reihenfolge:
+        return 0
+
+    if aktueller_name in neue_reihenfolge:
+        return (
+            neue_reihenfolge.index(aktueller_name) + 1
+        ) % len(neue_reihenfolge)
+
+    for offset in range(1, len(alte_reihenfolge) + 1):
+        kandidat = alte_reihenfolge[
+            (aktueller_index + offset) % len(alte_reihenfolge)
+        ]
+
+        if kandidat in neue_reihenfolge:
+            return neue_reihenfolge.index(kandidat)
+
+    return 0
+
+
 
 
 def tote_charaktere_entvernen(ausgewaehlte_charaktere):
@@ -902,6 +927,8 @@ def kampf(
         # Tote Charaktere entfernen
         # ══════════════════════════════════════════════════════════
 
+        alte_reihenfolge = reinfolge
+
         ausgewaehlte_charaktere = (
             tote_charaktere_entvernen(
                 ausgewaehlte_charaktere
@@ -956,9 +983,12 @@ def kampf(
         # Nächster Zug
         # ══════════════════════════════════════════════════════════
 
-        zug += 1
+        zug = naechsten_zug_ermitteln(
+            alte_reihenfolge,
+            reinfolge,
+            wer,
+            zug
+        )
 
-        if zug >= len(reinfolge):
-
-            zug = 0
+        if alte_reihenfolge and wer == alte_reihenfolge[-1]:
             runde += 1
