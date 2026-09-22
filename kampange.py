@@ -2622,75 +2622,112 @@ Plan_B_6 = kampangen_kampf(
 
 Der_Traum_6 = kampangen_kampf(
     "Der Traum",
+
+    # ─────────────────────────────────────
+    # TEAM
+    # ─────────────────────────────────────
     spieler_1="John",
-    spieler_2="Sara",
-    spieler_3="Lara",
-    spieler_4="Rico",
+    spieler_2=None,
+    spieler_3=None,
+    spieler_4=None,
 
     gegner_1="traum_sara",
 
+    # ─────────────────────────────────────
+    # KAMPF
+    # ─────────────────────────────────────
     belohnung=0,
     ki=3,
     npc_level=1,
-    team_groesse_1=4,
+    team_groesse_1=1,
     team_groesse_2=1,
 
+    # ─────────────────────────────────────
+    # STORY VORHER
+    # ─────────────────────────────────────
     story_vorher=[
         ("Erzähler", "John stand in der Luftschleuse."),
         ("Erzähler", "Alles war still. Zu still."),
         ("Erzähler", "Kein Piepen. Kein Summen. Nur sein eigener Atem."),
+        ("", ""),
         ("Erzähler", "Vor ihm stand die Red Horizon im Dunst der Anlage."),
         ("Erzähler", "Doch etwas stimmte nicht."),
         ("Erzähler", "Das Metall wirkte spröde und war von leuchtenden Adern durchzogen."),
+        ("", ""),
         ("Erzähler", "John versuchte, einen Schritt zu machen."),
         ("Erzähler", "Seine Stiefel klebten am Boden fest."),
+        ("", ""),
         ("Erzähler", "Dann hörte er eine Stimme."),
+        ("", ""),
         ("Traum-Sara", "John."),
+        ("", ""),
         ("Erzähler", "John drehte sich ruckartig um."),
         ("Erzähler", "Sara stand dort."),
         ("Erzähler", "Zumindest dachte er das."),
-        ("Erzähler", "Ihre Haut wirkte dunkel und unnatürlich. Ihre Augen waren vollkommen schwarz."),
+        ("", ""),
+        ("Erzähler", "Ihre Haut wirkte dunkel und unnatürlich."),
+        ("Erzähler", "Ihre Augen waren vollkommen schwarz."),
+        ("", ""),
         ("Traum-Sara", "Wir wollten es nicht ..."),
+        ("", ""),
         ("John", "Was wolltet ihr nicht?"),
+        ("", ""),
         ("Erzähler", "Hinter Sara bewegte sich etwas."),
         ("Erzähler", "Schatten krochen lautlos über die Wände."),
         ("Erzähler", "Ihre Bewegungen waren langsam und fließend, doch ihre Körper wirkten gleichzeitig fest."),
+        ("", ""),
         ("Erzähler", "John erkannte die Gestalt aus der Krankenstation wieder."),
         ("Erzähler", "Zu viele Gelenke. Zu viele Hände."),
+        ("", ""),
         ("Erzähler", "Sara hob langsam ihre Hand und zeigte auf John."),
+        ("", ""),
         ("Traum-Sara", "Du bist schon einer von uns."),
+        ("", ""),
         ("Erzähler", "John stolperte zurück."),
         ("Erzähler", "Er wollte schreien, doch kein Laut kam aus seinem Mund."),
         ("Erzähler", "Seine Finger begannen zu zittern."),
+        ("", ""),
         ("Erzähler", "Dann sah er auf seine Hände."),
         ("Erzähler", "Dunkle Linien bewegten sich unter seiner Haut."),
         ("Erzähler", "Sie wanderten langsam seinen Arm hinauf und pulsierten im gleichen Rhythmus wie die Adern der Red Horizon."),
+        ("", ""),
         ("Erzähler", "Dann hörte John es wieder."),
         ("Erzähler", "Dieses tiefe, kratzende Atmen."),
         ("Erzähler", "Es kam direkt von hinten."),
+        ("", ""),
         ("Erzähler", "John wollte sich umdrehen, doch sein Körper bewegte sich nicht."),
         ("Erzähler", "Die Luft fühlte sich plötzlich schwer an."),
+        ("", ""),
         ("Traum-Sara", "Es beginnt ..."),
-        ("Erzähler", "John schreckte hoch.")
     ],
 
+    # ─────────────────────────────────────
+    # KAMPF
+    # ─────────────────────────────────────
     ist_kampf=True,
 
+    # ─────────────────────────────────────
+    # STORY NACHHER
+    # ─────────────────────────────────────
     story_nachher=[
         ("Erzähler", "John schreckte hoch."),
         ("Erzähler", "Schweiß stand auf seiner Stirn und sein Atem ging stoßweise."),
         ("Erzähler", "Sein Herz raste."),
+        ("", ""),
         ("Erzähler", "Für einen Moment wusste er nicht, wo er war."),
         ("Erzähler", "Dann sah er sich in seiner Kabine um."),
         ("Erzähler", "Alles war still."),
+        ("", ""),
         ("Erzähler", "John versuchte, sich zu beruhigen."),
         ("Erzähler", "Doch dann bemerkte er etwas."),
         ("Erzähler", "Im Halbdunkel glaubte er für einen kurzen Moment, den Nebel seines eigenen Atems zu sehen."),
         ("Erzähler", "Doch es sah nicht so aus, als würde er selbst ausatmen."),
         ("Erzähler", "Es wirkte, als würde jemand direkt vor seinem Gesicht stehen und ihm ins Gesicht hauchen."),
+        ("", ""),
         ("Erzähler", "John wich erschrocken zurück."),
         ("Erzähler", "Als er erneut hinsah, war dort nichts."),
         ("Erzähler", "Nur die Dunkelheit seiner Kabine."),
+        ("", ""),
         ("Erzähler", "John blieb noch einige Sekunden wach."),
         ("Erzähler", "Dann legte er sich wieder hin.")
     ]

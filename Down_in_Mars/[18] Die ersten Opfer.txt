@@ -1,0 +1,24 @@
+Erzähler : Sie machten sich sofort wieder auf die Suche nach dem verschollenen Team.
+Erzähler : Die leeren Flure der Station wurden immer unheimlicher.
+Erzähler : Während sie durch die Gänge gingen, hörten sie immer wieder ein Kratzen oder andere seltsame Geräusche.
+Erzähler : Bei jedem Geräusch zuckten sie zusammen und sahen sich um.
+Erzähler : Doch jedes Mal war nichts zu sehen.
+Rico     : Ich habe langsam das Gefühl, dass uns hier irgendetwas beobachtet.
+Sara     : Sag sowas nicht.
+Erzähler : Plötzlich bemerkte Lara einen schwachen Lichtschein weiter vorne im Gang.
+Lara     : Da vorne.
+Erzähler : Sie gingen vorsichtig näher.
+Erzähler : Der Lichtschein kam von einer Waffe, die offenbar fallen gelassen worden war.
+John     : Die gehört einem unserer Leute.
+Erzähler : Sie folgten dem Gang weiter.
+Erzähler : Nach wenigen Metern entdeckten sie schließlich einen Soldaten, der schwer verletzt in einer Ecke saß.
+John     : Da ist einer!
+Erzähler : Sie eilten sofort zu ihm.
+Sara     : Ganz ruhig. Wir bringen dich hier raus.
+Erzähler : Als sie ihm aufhelfen wollten, bemerkten sie die schwere Verletzung an seinem Hinterkopf.
+Lara     : Er braucht sofort medizinische Hilfe.
+John     : Wir bringen ihn zur Red Horizon.
+Erzähler : Gemeinsam brachten sie den verletzten Soldaten zurück zum Schiff.
+Erzähler : Dort wurde er sofort auf die Krankenstation gebracht.
+Erzähler : Die Gruppe wusste zu diesem Zeitpunkt noch nicht, was sie auf der Bodycam des Soldaten sehen würde.
+Enter...

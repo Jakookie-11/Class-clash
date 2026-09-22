@@ -1,0 +1,51 @@
+Erzähler : John stand auf und bereitete sich auf die bevorstehende Mission vor.
+Erzähler : Immer wieder fragte er sich, was sie in den Tiefen der Station finden würden.
+Erzähler : Vielleicht eine Horde dieser Kreaturen. Vielleicht weitere Roboter. Vielleicht nur Daten, die erklären konnten, was hier geschehen war.
+Erzähler : Doch ein Gedanke ließ ihn nicht los.
+Erzähler : Was wäre, wenn sie dem Tod direkt gegenüberstehen würden?
+Erzähler : Diesen Gedanken verdrängte John.
+Erzähler : Er nahm seine Waffe und ging zu den anderen.
+
+Erzähler : Chasker hatte die Gruppe inzwischen in zwei Teams aufgeteilt.
+Erzähler : John und Sara sollten gemeinsam mit fünf Marines einen Bereich der Station durchsuchen.
+Erzähler : Rico und Lara würden mit weiteren fünf Marines einen anderen Bereich übernehmen.
+
+Chasker  : Bleibt über Funk in Kontakt. Wenn ihr etwas findet, meldet euch sofort.
+John     : Verstanden.
+
+Erzähler : Johns Atem hallte dumpf in seinem Helm wider, während sein Team durch einen schmalen Gang ging.
+Erzähler : Die Helmlampen glitten über kalte Metallwände, die an einigen Stellen deutliche Spuren eines früheren Kampfes zeigten.
+
+Sara     : Kein Lebenszeichen.
+John     : Bleibt wachsam.
+
+Erzähler : Plötzlich ertönte in der Ferne ein metallisches Klirren.
+Erzähler : Alle blieben stehen.
+
+Marine   : Bewegung im Nordflügel.
+
+Erzähler : Dann meldete sich Rico über Funk.
+Rico     : Wir haben hier auch etwas. Wartet ...
+Rico     : Da ist ...
+
+Erzähler : Die Verbindung brach ab.
+
+Sara     : Sollen wir zu ihnen?
+John     : Wir gehen.
+
+Erzähler : Das Klirren ertönte erneut.
+Erzähler : Diesmal war es deutlich näher.
+Erzähler : Dann hörten sie ein leises, unregelmäßiges Geräusch aus dem Gang vor ihnen.
+
+Erzähler : Das Team erreichte schließlich eine große Wartungshalle.
+Erzähler : Zerrissene Kabel hingen von der Decke und dunkle Flüssigkeit tropfte auf den Boden.
+
+Erzähler : Hinter mehreren Metallcontainern entdeckten sie Rico und Lara mit ihrem Team.
+
+Rico     : Da seid ihr ja.
+John     : Was ist passiert?
+Lara     : Wir wissen es selbst nicht genau.
+
+Erzähler : Plötzlich bewegte sich etwas am anderen Ende der Halle.
+Sara     : Kontakt!
+Enter...

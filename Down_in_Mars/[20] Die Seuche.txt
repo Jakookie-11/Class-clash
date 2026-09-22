@@ -1,0 +1,24 @@
+Erzähler : Als sie in der Isolationszelle ankamen, erstarrten alle.
+Erzähler : Vor ihnen regte sich der verwundete Soldat, doch es war nicht mehr er.
+Erzähler : Aus seinem Körper zeichnete sich eine schattenhafte Gestalt ab.
+Erzähler : Schwarze Gliedmaßen, zu viele Gelenke und eine verzerrte Silhouette bewegten sich über den Boden.
+Lara     : Oh Gott ...
+Erzähler : Lara wich instinktiv zurück.
+Erzähler : Auch Rico war das Grinsen vergangen. Er starrte regungslos auf das Wesen.
+Erzähler : Das Wesen bewegte sich langsam, aber gezielt auf sie zu.
+Erzähler : Dort, wo sich Augen befinden könnten, flackerte ein dunkles Licht.
+Erzähler : Chasker trat einen Schritt nach vorne.
+Chasker  : Bleibt ruhig ... wir tun dir nichts.
+Erzähler : Das Wesen reagierte plötzlich.
+Erzähler : Mit einer schnellen Bewegung schoss es ein Stück nach vorne.
+Erzähler : Es griff jedoch nicht an.
+Erzähler : Stattdessen blieb es stehen und betrachtete die Gruppe.
+Erzähler : John spürte, wie seine Hände schwitzten.
+Erzähler : Sara versuchte ruhig zu bleiben, während Rico seinen Blick nicht von dem Wesen lösen konnte.
+Erzähler : Plötzlich zuckte das Wesen, als hätte es ein Geräusch wahrgenommen, das nur es hören konnte.
+Erzähler : Dann bewegte es sich zurück und verkroch sich in eine Ecke.
+Sara     : Es sieht so aus, als würde es kommunizieren.
+John     : Ich habe eine Theorie.
+Erzähler : Die Gruppe verließ die Krankenstation und ging zurück auf die Brücke.
+Erzähler : Das Wesen blieb hinter der Glasscheibe der Isolationszelle zurück.
+Enter...

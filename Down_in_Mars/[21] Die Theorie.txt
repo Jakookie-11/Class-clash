@@ -1,0 +1,25 @@
+Erzähler : Auf der Brücke erzählte John den anderen von seiner Beobachtung.
+John     : Als wir damals den Leichensack gesehen haben, hat er sich bewegt.
+John     : Damals dachte ich, ich hätte mir das nur eingebildet.
+John     : Aber dann gab es die leuchtenden Augen in der Kühlkammer.
+John     : Und wir haben diese Nachricht über das unbekannte Schiff gefunden.
+John     : Ich glaube, dass das alles zusammenhängt.
+Rico     : Und was genau glaubst du?
+John     : Ich glaube, dass diese Aliens eine Art Seuche sind.
+John     : Wenn jemand mit ihnen in Kontakt kommt, könnte er selbst zu einem von ihnen werden.
+Erzähler : Für einen Moment sagte niemand etwas.
+Chasker  : Aber wenn in dem Leichensack wirklich ein Alien war ...
+Chasker  : Dann könnte es entkommen sein und die Seuche verbreiten.
+Chasker  : Wenn es die Erde erreicht, könnte das die gesamte Erde betreffen.
+John     : Genau.
+Erzähler : Chasker traf sofort eine Entscheidung.
+Chasker  : Wir fliegen zurück zur Erde.
+Erzähler : Er wollte gerade die Rückkehr vorbereiten, als Sara auf die Instrumente sah.
+Sara     : Chasker ... wir können nicht zurück.
+Chasker  : Was?
+Sara     : Die Station hält uns fest.
+Erzähler : Chasker sah sie ungläubig an.
+Chasker  : Scheiße!
+Erzähler : Er blickte auf die Anzeigen.
+Chasker  : Wahrscheinlich Halteklammern!
+Enter...

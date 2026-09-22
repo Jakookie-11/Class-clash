@@ -1,0 +1,18 @@
+Erzähler : Das Team folgte den Spuren des vermissten Erkundungsteams.
+Erzähler : Je weiter sie in die Station vordrangen, desto dunkler wurden die Gänge.
+Erzähler : Plötzlich waren aus zwei verschiedenen Richtungen metallische Geräusche zu hören.
+Rico     : Das werden wohl nicht unsere vermissten Soldaten sein.
+John     : Waffen bereit.
+Erzähler : Zwei größere Sicherheitsdrohnen traten aus der Dunkelheit.
+Sara     : Die sehen stärker aus als die letzte.
+John     : Dann erledigen wir sie schnell.
+Enter...
+
+
+
+Erzähler : Beide Drohnen lagen regungslos auf dem Boden.
+Lara     : Die werden stärker.
+Sara     : Dann sollten wir uns langsam fragen, was hier unten noch auf uns wartet.
+John     : Wir finden zuerst das vermisste Team.
+Erzähler : Sie setzten ihren Weg durch die Station fort.
+Enter...
