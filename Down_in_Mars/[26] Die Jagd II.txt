@@ -1,0 +1,51 @@
+Erzähler : Sie rannten weiter, bis ihre Atemzüge in den Helmen deutlich zu hören waren.
+Erzähler : Erst in einem engen Wartungsschacht hielten sie an.
+Erzähler : Niemand sprach.
+
+Erzähler : John zählte die Helmlampen.
+John     : Alle da.
+
+Sara     : Es ist ruhig.
+
+Erzähler : John nickte, doch sein Blick blieb auf der Dunkelheit vor ihnen gerichtet.
+
+Erzähler : Dann vibrierte der Boden erneut.
+Erzähler : Ein dumpfer Schlag.
+Erzähler : Noch einer.
+Erzähler : Die Geräusche kamen näher.
+
+John     : Licht aus.
+
+Erzähler : Die Helmlampen erloschen.
+Erzähler : Nur das rote Notlicht der Station blieb eingeschaltet.
+
+Erzähler : Etwas bewegte sich im Gang.
+
+Rico     : Ich sehe nichts.
+
+Erzähler : Plötzlich schalteten sich mehrere rote Sensoren gleichzeitig ein.
+
+Lara     : Da!
+Enter...
+
+
+
+Erzähler : Das rote Licht flackerte noch einige Male, bevor wieder Ruhe einkehrte.
+
+Rico     : Wie viele von diesen Dingern gibt es hier eigentlich?
+Lara     : Keine Ahnung.
+Sara     : Aber offenbar genug.
+
+Erzähler : John ging zu einem Terminal an der Wand.
+
+John     : Vielleicht können wir hier herausfinden, wo wir sind.
+
+Erzähler : Das Terminal war jedoch beschädigt.
+
+John     : Verdammt.
+
+Erzähler : Plötzlich hörten sie wieder ein leises Geräusch aus dem Gang.
+
+Sara     : Das ist nicht die Türsteuerung.
+John     : Nein.
+Enter...

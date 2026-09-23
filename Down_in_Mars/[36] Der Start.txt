@@ -1,0 +1,67 @@
+Erzähler : Als alle in ihren Sitzen saßen, begann John die Startsequenz.
+
+Erzähler : Die Triebwerke der Red Horizon begannen zu vibrieren, erst leise, dann wuchs das Grollen zu einem Sturm,
+Erzähler : der durch die metallenen Rippen des Schiffes jagte.
+
+Lara     : Klammer 3 reagiert nicht!
+John     : Verdammt, wenn die sich nicht löst, können wir nicht starten!
+
+Rico     : Ich geh raus.
+Chasker  : Keine Diskussion. Das ist ein Befehl - ich übernehme.
+
+Erzähler : John wollte protestieren, doch Chasker hatte bereits die Schleuse betreten.
+
+Chasker  : Wenn ich die Klammer freischneide, habt ihr exakt zehn Sekunden. Danach - Start. Keine Verzögerung.
+Sara     : Aber ... du kommst dann nicht mehr rein.
+Chasker  : Ich weiß.
+
+Erzähler : Draußen war nur das matte Licht der Notbeleuchtung zu sehen.
+Erzähler : Chaskers Silhouette bewegte sich träge zwischen den Startklammern.
+Erzähler : Die Klammer war komplett verdreht.
+
+Erzähler : Der Plasmabrenner zischte auf. Gleißendes Licht erfüllte das Dock.
+Erzähler : Funken sprühten über den metallenen Boden, der bereits von den Vibrationen bebte.
+
+Erzähler : Plötzlich flackerte die Beleuchtung.
+Erzähler : Ein Schatten huschte über die Wand, wo keiner hätte sein dürfen.
+
+Chasker  : Sara, seht ihr das auch?
+Sara     : Negativ. Die Kameras zeigen nichts.
+
+Erzähler : Chasker senkte den Blick wieder auf die Klammer.
+
+Erzähler : Zwischen den Gitterplatten bewegte sich etwas.
+Erzähler : Zuerst hielt er es für austretenden schwarzen Schmierstoff.
+Erzähler : Dann bemerkte er, dass die Substanz gegen die Gravitation nach oben kroch und sich entlang des Metalls zog.
+
+Chasker  : Hier draußen ... ist irgendwas.
+John     : Wiederholen, Commander?
+Chasker  : Es ... beobachtet.
+
+Erzähler : Sein Atem beschlug das Visier.
+Erzähler : Er zwang sich, ruhig zu bleiben und setzte erneut den Brenner an.
+
+Erzähler : Der Schatten zuckte kurz zurück, als fürchtete er das Licht.
+
+Chasker  : Noch fünf Sekunden.
+
+Erzähler : Hinter ihm zischte es leise.
+Erzähler : Die schwarze Substanz bewegte sich wieder vorwärts.
+
+Chasker  : Vier ... drei ...
+
+Erzähler : Ein metallisches Kreischen ertönte.
+Erzähler : Dann folgte ein kurzer Aufschrei.
+
+Erzähler : Der Funk explodierte in Rauschen.
+
+John     : Commander! Antworten Sie!
+Erzähler : Nichts.
+
+Erzähler : Nur das tiefe Brummen der Triebwerke und ein fremdes, pulsierendes Geräusch waren zu hören.
+
+John     : Er hat es geschafft.
+Lara     : Aber ...
+John     : Alle Systeme grün.
+Lara     : Er wollte das so.
+Enter...

@@ -199,9 +199,9 @@ def kampangen(spieler_name):
             ):
 
                 if kampf.ist_kampf:
-                    print(f"[{nummer}] {kampf.name}")
+                    print(f"[{nummer:02d}] {kampf.name}")
                 else:
-                    print(f"[{nummer}] {kampf.name} [Story]")
+                    print(f"[{nummer:02d}] {kampf.name:<30} [Story]")
 
             print()
             print(f"[{nummer+1}] Zurueck")
@@ -1663,11 +1663,15 @@ Kampange_5 = kampange(
 
 
 # ══════════════════════════════════════════════════════════════
+
+
 # Kampagne 6
+
+
 # ══════════════════════════════════════════════════════════════
 
 
-anfangsstory_6 = kampangen_kampf(
+anfangsstory_6 = kampangen_kampf( #1
     "Anfangsstory",
 
     story_vorher=[
@@ -1699,7 +1703,7 @@ anfangsstory_6 = kampangen_kampf(
 )
 
 
-Die_Erkundung_6 = kampangen_kampf(
+Die_Erkundung_6 = kampangen_kampf( #2
     "Die Erkundung",
 
     story_vorher=[
@@ -1733,7 +1737,7 @@ Die_Erkundung_6 = kampangen_kampf(
 )
 
 
-Im_Inneren_6 = kampangen_kampf(
+Im_Inneren_6 = kampangen_kampf( #3
     "Im Inneren",
 
     story_vorher=[
@@ -1772,7 +1776,7 @@ Im_Inneren_6 = kampangen_kampf(
 )
 
 
-Die_Untersuchungen_6 = kampangen_kampf(
+Die_Untersuchungen_6 = kampangen_kampf( #4
     "Die Untersuchungen",
 
     story_vorher=[
@@ -1844,7 +1848,7 @@ Die_Untersuchungen_6 = kampangen_kampf(
 
     belohnung=100,
     ki=3,
-    npc_level=1,
+    npc_level=6,
 
     story_nachher=[
         ("Erzähler", "Die Drohne lag reglos auf dem Boden."),
@@ -1863,7 +1867,7 @@ Die_Untersuchungen_6 = kampangen_kampf(
 )
 
 
-Rueckkehr_6 = kampangen_kampf(
+Rueckkehr_6 = kampangen_kampf( #5
     "Die Rückkehr",
 
     story_vorher=[
@@ -1910,7 +1914,7 @@ Rueckkehr_6 = kampangen_kampf(
 )
 
 
-Die_Sitzung_6 = kampangen_kampf(
+Die_Sitzung_6 = kampangen_kampf( #6
     "Die Sitzung",
 
     story_vorher=[
@@ -2017,7 +2021,7 @@ Die_Sitzung_6 = kampangen_kampf(
 )
 
 
-Der_Traum_6_begin = kampangen_kampf(
+Der_Traum_6_begin = kampangen_kampf( #7
     "Der Traum",
 
     story_vorher=[
@@ -2042,7 +2046,7 @@ Der_Traum_6_begin = kampangen_kampf(
         ("Erzähler", "Rico stand einige Meter entfernt und beobachtete die Tür."),
         ("", ""),
         ("Erzähler", "Schließlich erschien auf dem Bildschirm eine Meldung."),
-        ("John", "Fertig."),
+        ("John", "----Fertig----"),
         ("", ""),
         ("Erzähler", "John nahm den Speicher an sich."),
         ("John", "Wir verschwinden hier. Wir wollen doch diesem Monster nicht begegnen, oder?"),
@@ -2077,7 +2081,7 @@ Der_Traum_6_begin = kampangen_kampf(
 )
 
 
-Der_Kampf_im_Traum_6 = kampangen_kampf(
+Der_Kampf_im_Traum_6 = kampangen_kampf( #8
     "Das Monster",
 
     spieler_1="John",
@@ -2092,7 +2096,7 @@ Der_Kampf_im_Traum_6 = kampangen_kampf(
 
     belohnung=400,
     ki=3,
-    npc_level=1,
+    npc_level=6,
 
     story_vorher=[
         ("Erzähler", "Das Wesen bewegte sich plötzlich auf das Team zu."),
@@ -2139,12 +2143,13 @@ Der_Kampf_im_Traum_6 = kampangen_kampf(
 )
 
 
-Der_Plan_6 = kampangen_kampf(
+Der_Plan_6 = kampangen_kampf( #9
     "Der Plan",
     story_vorher=[
         ("Erzähler", "Chasker eröffnete ihnen den Plan des Präsidenten und des Militärs."),
         ("Chasker", "Der Plan ist, mit dem momentan noch im Bau befindlichen Schiff eine Basis auf dem Mars zu errichten und anschließend zu untersuchen, was wir dort finden."),
-        ("Erzähler", "Das Schiff wurde extra für diesen Zweck entworfen. Es bot Platz für eine große Anzahl an Personen, verfügte über große Labore, einen geräumigen Hangar zur Versorgung und eine große Brücke, die später auch als Kontrollzentrale der zu errichtenden Basis dienen sollte."),
+        ("Erzähler", "Das Schiff wurde extra für diesen Zweck entworfen. Es bot Platz für eine große Anzahl an Personen, verfügte über große Labore,"),
+        ("Erzähler", "einen geräumigen Hangar zur Versorgung und eine große Brücke, die später auch als Kontrollzentrale der zu errichtenden Basis dienen sollte."),
         ("", ""),
         ("Rico", "Und wie lange soll das noch dauern? Ich dachte, wir reden hier von mehreren Monaten."),
         ("Chasker", "Eigentlich sollte es nur noch ein paar Wochen dauern."),
@@ -2188,29 +2193,57 @@ Der_Plan_6 = kampangen_kampf(
 )
 
 
-Die_Woche_6 = kampangen_kampf(
+Die_Woche_6 = kampangen_kampf( #10
+
     "Die Woche",
+
     story_vorher=[
-        ("Erzähler", "Die folgenden Tage verliefen größtenteils ruhig."),
-        ("Erzähler", "Sara untersuchte im Labor die gefundenen Proben. Einige der Bruchstücke wirkten unter dem Mikroskop wie Metall, schienen sich jedoch manchmal leicht zu bewegen."),
-        ("Erzähler", "Rico verbrachte viel Zeit mit den Soldaten und Forschern und machte sich über die langsamen Untersuchungen lustig."),
-        ("Erzähler", "Am dritten Tag kam es zu einem kurzen Stromausfall. Die Kühlkammern mit den Leichen waren für genau 30 Sekunden ohne Strom."),
-        ("Erzähler", "Ein Soldat behauptete später, im Dunkeln zwei leuchtende Augen gesehen zu haben. Niemand nahm ihn ernst."),
-        ("Erzähler", "Die nächsten Tage verliefen wieder ohne größere Zwischenfälle."),
-        ("Erzähler", "Allerdings bemerkten Lara und Sara, dass ihre Uhren nicht mehr ganz richtig liefen."),
-        ("Erzähler", "In der Nacht hörte John in seinem Zimmer wieder ein seltsames, kratzendes Atmen."),
-        ("Erzähler", "Als er zurückkam, entdeckte er frische Kratzer an der Wand neben seinem Bett."),
-        ("Erzähler", "John wollte dort nicht mehr schlafen und buchte sich für die Nacht ein Hotel."),
+        ("Erzähler", "Die folgenden sieben Tage verliefen größtenteils ruhig, doch die Ereignisse aus der Station ließen die Gruppe nicht los."),
+        ("", ""),
+        ("Erzähler", "Am ersten Tag untersuchte Sara die gefundenen Proben im Labor."),
+        ("Erzähler", "Unter dem Mikroskop wirkten einige Bruchstücke wie Metall, doch manchmal schien sich ihre Oberfläche leicht zu bewegen."),
+        ("Sara", "Vielleicht nur eine optische Täuschung."),
+        ("Erzähler", "Trotzdem schloss sie die Proben zur Sicherheit in einen Safe."),
+        ("", ""),
+        ("Erzähler", "Am zweiten Tag beschäftigte sich die Gruppe mit den Soldaten und Forschern mit der Auswertung des Fundes."),
+        ("Erzähler", "Rico langweilte sich und machte sich über die langsamen Untersuchungen lustig, während Lara ihn immer wieder zur Ordnung rief."),
+        ("Erzähler", "Abgesehen davon verlief der Tag völlig normal."),
+        ("", ""),
+        ("Erzähler", "Am dritten Tag fiel für genau dreißig Sekunden der Strom aus."),
+        ("Erzähler", "Auch die Kühlkammern mit den Leichen waren betroffen."),
+        ("Chasker", "Alles unter Kontrolle."),
+        ("Erzähler", "Ein Soldat behauptete später, im Dunkeln zwei leuchtende Augen gesehen zu haben."),
+        ("Erzähler", "Niemand nahm ihn ernst."),
+        ("Erzähler", "John allerdings behielt die Aussage im Hinterkopf."),
+        ("", ""),
+        ("Erzähler", "Am vierten Tag schien wieder alles normal zu sein."),
+        ("Erzähler", "Die Gruppe trainierte, erledigte Papierkram und besprach die Vorbereitungen für den Abflug."),
+        ("Erzähler", "Trotzdem blieb das ungute Gefühl bestehen, dass etwas nicht stimmte."),
+        ("", ""),
+        ("Erzähler", "Am fünften Tag bemerkte Lara beim Frühstück, dass ihre Uhr mehrere Minuten nachging."),
+        ("Lara", "Vielleicht ist einfach die Batterie leer."),
+        ("Erzähler", "Kurz darauf bemerkte auch Sara, dass ihre Uhr nicht mehr richtig lief."),
+        ("Sara", "Meine läuft auch nicht mehr ganz richtig."),
+        ("Erzähler", "Die Gruppe schob es zunächst auf defekte Uhren."),
+        ("", ""),
+        ("Erzähler", "In der folgenden Nacht konnte John nicht einschlafen."),
+        ("Erzähler", "Immer wieder hörte er dieses leise, kratzende Atmen."),
+        ("Erzähler", "Als er schließlich in die Küche ging und zurückkam, entdeckte er frische Kratzer an der Wand neben seinem Bett."),
+        ("Erzähler", "Sie sahen aus, als hätte jemand mit langen Fingern darübergefahren."),
+        ("Erzähler", "John wollte dort nicht mehr schlafen und buchte sich noch in derselben Nacht ein Hotel."),
+        ("", ""),
         ("Erzähler", "Am siebten Tag traf sich die Gruppe erneut bei Chasker."),
+        ("Erzähler", "Alle wirkten müde und überarbeitet, doch niemand sprach die seltsamen Ereignisse offen an."),
         ("Chasker", "Das Schiff ist fast fertig. Der Abflug kann bald stattfinden."),
         ("Erzähler", "John sah zu Sara, Lara und Rico."),
         ("Erzähler", "Keiner von ihnen glaubte noch daran, dass sie eine normale Mission erwartete.")
     ],
+
     ist_kampf=False
 )
 
 
-Der_Abflug_6 = kampangen_kampf(
+Der_Abflug_6 = kampangen_kampf( #11
     "Der Abflug",
     story_vorher=[
         ("Erzähler", "Der Hangar war still. Nur das leise Summen der Maschinen war zu hören."),
@@ -2226,7 +2259,7 @@ Der_Abflug_6 = kampangen_kampf(
         ("Sara", "Nein. Alle Systeme sind stabil."),
         ("Rico", "Also, Leute ... denkt dran. Wir fliegen zum Mars, nicht ins Gruselkabinett."),
         ("Erzähler", "Niemand lachte."),
-        ("Erzähler", "Als die Erde hinter ihnen verschwand, ruckte das Schiff plötzlich."),
+        ("Erzähler", "Als die Erde hinter ihnen verschwand, ruckelte das Schiff plötzlich."),
         ("Chasker", "Keine Panik. Nur ein Turbulenzstoß im Orbit."),
         ("Erzähler", "Doch niemand war wirklich entspannt."),
         ("Erzähler", "Für John fühlte es sich nicht wie der Beginn einer normalen Mission an.")
@@ -2235,7 +2268,7 @@ Der_Abflug_6 = kampangen_kampf(
 )
 
 
-Der_Flug_6 = kampangen_kampf(
+Der_Flug_6 = kampangen_kampf( #12
     "Der Flug",
     story_vorher=[
         ("Erzähler", "Die Reise zum Mars sollte knapp zwei Tage dauern. Die Crew wechselte sich deshalb bei der Steuerung ab."),
@@ -2268,7 +2301,7 @@ Der_Flug_6 = kampangen_kampf(
 )
 
 
-Gefangen_von_der_Marsstation_6 = kampangen_kampf(
+Gefangen_von_der_Marsstation_6 = kampangen_kampf( #13
     "Gefangen von der Marsstation",
     story_vorher=[
         ("Erzähler", "Gegen 15:00 Uhr näherte sich die Red Horizon der geplanten Landestelle auf dem Mars."),
@@ -2301,40 +2334,59 @@ Gefangen_von_der_Marsstation_6 = kampangen_kampf(
 )
 
 
-Ein_neues_Zuhause_6 = kampangen_kampf(
+Ein_neues_Zuhause_6 = kampangen_kampf( #14
+
     "Ein neues Zuhause",
+
     story_vorher=[
         ("Erzähler", "Nachdem die Red Horizon zum Stillstand gekommen war, wurde das Gebiet sofort von Soldaten gesichert."),
-        ("Chasker", "Durchsucht die Station. Wir müssen herausfinden, ob sich hier außerirdische Lebensformen befinden."),
+        ("", ""),
+        ("Chasker", "Durchsucht die Station. Wir müssen herausfinden, ob wir hier alleine sind."),
+        ("", ""),
         ("Erzähler", "John und sein Team wurden damit beauftragt, die erste Erkundung zu leiten."),
         ("Erzähler", "Vorsichtig bewegten sie sich durch die unbekannten Gänge."),
-        ("Erzähler", "Nach einigen Ecken huschte plötzlich ein Schatten über eine Wand."),
+        ("", ""),
+        ("Erzähler", "Nach einigen Ecken huschte plötzlich ein dunkler Schatten über eine Wand."),
         ("Rico", "Habt ihr das gesehen?"),
         ("John", "Ja."),
-        ("Erzähler", "Zunächst dachten sie, es wäre ein Mensch gewesen."),
-        ("Erzähler", "Als sie näher kamen, entdeckten sie jedoch einen metallischen Körper."),
+        ("Erzähler", "John blieb stehen und sah in den Gang zurück."),
+        ("Erzähler", "Für einen kurzen Moment glaubte er, eine Kreatur zu erkennen."),
+        ("Erzähler", "Doch der Gang war leer."),
+        ("", ""),
+        ("Erzähler", "Sie gingen vorsichtig weiter."),
+        ("Erzähler", "Wenig später entdeckten sie einen metallischen Körper auf dem Boden."),
         ("Erzähler", "Nur noch wenige Reste von Fleisch befanden sich an dem mechanischen Körper."),
+        ("", ""),
         ("Sara", "Das sieht genauso aus wie die Kreaturen, die wir in dem Asteroiden gefunden haben."),
         ("Sara", "Nur hatten die dort noch viel mehr Fleisch am Körper."),
+        ("", ""),
         ("Erzähler", "Es sah aus, als hätte etwas das Fleisch des Wesens gewaltsam von seinem Körper gerissen."),
+        ("", ""),
         ("Lara", "Hier ist etwas."),
+        ("", ""),
         ("Erzähler", "Lara entdeckte neben dem Körper einen kleinen Datenträger."),
         ("Lara", "Den nehme ich für weitere Untersuchungen mit."),
+        ("", ""),
         ("Erzähler", "John betrachtete den Körper genauer."),
+        ("", ""),
         ("John", "Das Ding sieht aus wie der Terminator."),
+        ("", ""),
         ("Rico", "Vielleicht war der Schatten dafür verantwortlich."),
         ("Rico", "Wir sollten zu Chasker zurück und ihm Bericht erstatten."),
+        ("", ""),
         ("Erzähler", "Bevor sie sich auf den Rückweg machen konnten, meldete sich Chasker über Funk."),
+        ("", ""),
         ("Chasker", "John, hört ihr mich?"),
         ("John", "Laut und deutlich."),
         ("Chasker", "Ein Erkundungsteam wird vermisst. Sucht nach ihnen und bringt sie zurück."),
         ("John", "Verstanden.")
     ],
+
     ist_kampf=False
 )
 
 
-Der_erste_Kontakt_6 = kampangen_kampf(
+Der_erste_Kontakt_6 = kampangen_kampf( #15
     "Der erste Kontakt",
     spieler_1="John",
     spieler_2="Sara",
@@ -2343,8 +2395,8 @@ Der_erste_Kontakt_6 = kampangen_kampf(
     gegner_1="mars_sicherheitsdrohne",
     belohnung=150,
     ki=2,
-    npc_level=2,
-    team_groesse_1=4,
+    npc_level=5,
+    team_groesse_1=8,
     team_groesse_2=1,
 
     story_vorher=[
@@ -2371,7 +2423,7 @@ Der_erste_Kontakt_6 = kampangen_kampf(
 )
 
 
-Weitere_Sicherheitsdrohnen_6 = kampangen_kampf(
+Weitere_Sicherheitsdrohnen_6 = kampangen_kampf( #16
     "Weitere Sicherheitsdrohnen",
     spieler_1="John",
     spieler_2="Sara",
@@ -2383,7 +2435,7 @@ Weitere_Sicherheitsdrohnen_6 = kampangen_kampf(
 
     belohnung=250,
     ki=2,
-    npc_level=3,
+    npc_level=6,
     team_groesse_1=4,
     team_groesse_2=2,
 
@@ -2410,7 +2462,7 @@ Weitere_Sicherheitsdrohnen_6 = kampangen_kampf(
 )
 
 
-Der_dritte_Kampf_6 = kampangen_kampf(
+Der_dritte_Kampf_6 = kampangen_kampf( #17
     "Der dritte Kampf",
     spieler_1="John",
     spieler_2="Sara",
@@ -2464,7 +2516,7 @@ Der_dritte_Kampf_6 = kampangen_kampf(
 )
 
 
-Die_ersten_Opfer_6 = kampangen_kampf(
+Die_ersten_Opfer_6 = kampangen_kampf( #18
     "Die ersten Opfer",
     story_vorher=[
         ("Erzähler", "Sie machten sich sofort wieder auf die Suche nach dem verschollenen Team."),
@@ -2495,7 +2547,7 @@ Die_ersten_Opfer_6 = kampangen_kampf(
 )
 
 
-Die_Bodycam_6 = kampangen_kampf(
+Die_Bodycam_6 = kampangen_kampf( #19
     "Die Bodycam",
     story_vorher=[
         ("Erzähler", "Zurück auf der Red Horizon wurde der verwundete Soldat in die Isolationszelle der Krankenstation gebracht."),
@@ -2536,7 +2588,7 @@ Die_Bodycam_6 = kampangen_kampf(
 )
 
 
-Die_Seuche_6 = kampangen_kampf(
+Die_Seuche_6 = kampangen_kampf( #20
     "Die Seuche",
     story_vorher=[
         ("Erzähler", "Als sie in der Isolationszelle ankamen, erstarrten alle."),
@@ -2567,7 +2619,7 @@ Die_Seuche_6 = kampangen_kampf(
 )
 
 
-Die_Theorie_6 = kampangen_kampf(
+Die_Theorie_6 = kampangen_kampf( #21
     "Die Theorie",
     story_vorher=[
         ("Erzähler", "Auf der Brücke erzählte John den anderen von seiner Beobachtung."),
@@ -2599,7 +2651,7 @@ Die_Theorie_6 = kampangen_kampf(
 )
 
 
-Plan_B_6 = kampangen_kampf(
+Plan_B_6 = kampangen_kampf( #22
     "Plan B",
     story_vorher=[
         ("Erzähler", "Die Nachricht, dass die Red Horizon von der Station festgehalten wurde, war äußerst beunruhigend."),
@@ -2622,7 +2674,7 @@ Plan_B_6 = kampangen_kampf(
 )
 
 
-Der_Traum_6 = kampangen_kampf(
+Der_Traum_6 = kampangen_kampf( #23
     "Der Traum",
 
     # ─────────────────────────────────────
@@ -2638,7 +2690,7 @@ Der_Traum_6 = kampangen_kampf(
     # ─────────────────────────────────────
     # KAMPF
     # ─────────────────────────────────────
-    belohnung=0,
+    belohnung=400,
     ki=3,
     npc_level=1,
     team_groesse_1=1,
@@ -2736,7 +2788,7 @@ Der_Traum_6 = kampangen_kampf(
 )
 
 
-In_der_Hoehle_des_Loewen_6 = kampangen_kampf(
+In_der_Hoehle_des_Loewen_6 = kampangen_kampf( #24
     "In der Höhle des Löwen",
 
     spieler_1="John",
@@ -2825,7 +2877,7 @@ In_der_Hoehle_des_Loewen_6 = kampangen_kampf(
 )
 
 
-Die_Jagd_6 = kampangen_kampf(
+Die_Jagd_6 = kampangen_kampf( #25
     "Die Jagd",
 
     spieler_1="John",
@@ -2835,12 +2887,13 @@ Die_Jagd_6 = kampangen_kampf(
 
     gegner_1="mars_wachroboter",
     gegner_2="stationsdrohne",
+    gegner_3="mars_wachroboter",
 
     belohnung=550,
     ki=3,
-    npc_level=6,
+    npc_level=9,
     team_groesse_1=4,
-    team_groesse_2=2,
+    team_groesse_2=3,
 
     story_vorher=[
         ("Erzähler", "Sie liefen durch einen schmalen Wartungsgang weiter."),
@@ -2885,7 +2938,7 @@ Die_Jagd_6 = kampangen_kampf(
 )
 
 
-Die_Jagd_2_6 = kampangen_kampf(
+Die_Jagd_2_6 = kampangen_kampf( #26
     "Die Jagd II",
 
     spieler_1="John",
@@ -2900,7 +2953,7 @@ Die_Jagd_2_6 = kampangen_kampf(
 
     belohnung=650,
     ki=3,
-    npc_level=7,
+    npc_level=8,
     team_groesse_1=4,
     team_groesse_2=4,
 
@@ -2960,7 +3013,7 @@ Die_Jagd_2_6 = kampangen_kampf(
 )
 
 
-Die_Jagd_3_6 = kampangen_kampf(
+Die_Jagd_3_6 = kampangen_kampf( #27
     "Die Jagd III",
 
     spieler_1="John",
@@ -2973,7 +3026,7 @@ Die_Jagd_3_6 = kampangen_kampf(
 
     belohnung=800,
     ki=3,
-    npc_level=8,
+    npc_level=9,
     team_groesse_1=4,
     team_groesse_2=2,
 
@@ -3019,7 +3072,7 @@ Die_Jagd_3_6 = kampangen_kampf(
 )
 
 
-Die_Jagd_4_6 = kampangen_kampf(
+Die_Jagd_4_6 = kampangen_kampf( #28
     "Die Jagd IV",
 
     spieler_1="John",
@@ -3034,7 +3087,7 @@ Die_Jagd_4_6 = kampangen_kampf(
 
     belohnung=950,
     ki=3,
-    npc_level=9,
+    npc_level=8,
     team_groesse_1=4,
     team_groesse_2=4,
 
@@ -3073,7 +3126,7 @@ Die_Jagd_4_6 = kampangen_kampf(
 )
 
 
-Die_Jagd_5_6 = kampangen_kampf(
+Die_Jagd_5_6 = kampangen_kampf( #29
     "Die Jagd V",
 
     spieler_1="John",
@@ -3087,7 +3140,7 @@ Die_Jagd_5_6 = kampangen_kampf(
 
     belohnung=1100,
     ki=3,
-    npc_level=10,
+    npc_level=9,
     team_groesse_1=4,
     team_groesse_2=3,
 
@@ -3138,20 +3191,20 @@ Die_Jagd_5_6 = kampangen_kampf(
 )
 
 
-Plan_C_6 = kampangen_kampf(
+Plan_C_6 = kampangen_kampf( #30
     "Plan C",
 
     spieler_1="John",
-    spieler_2="Sara",
-    spieler_3="Rico",
-    spieler_4="Lara",
+    spieler_2="Lara",
+    spieler_3=None,
+    spieler_4=None,
 
     gegner_1="schattenwesen",
 
     belohnung=0,
     ki=3,
     npc_level=1,
-    team_groesse_1=4,
+    team_groesse_1=2,
     team_groesse_2=1,
 
     story_vorher=[
@@ -3260,7 +3313,7 @@ Plan_C_6 = kampangen_kampf(
 )
 
 
-Eine_positive_Ueberraschung_6 = kampangen_kampf(
+Eine_positive_Ueberraschung_6 = kampangen_kampf( #31
     "Eine positive Überraschung",
 
     spieler_1="John",
@@ -3273,7 +3326,7 @@ Eine_positive_Ueberraschung_6 = kampangen_kampf(
 
     belohnung=1200,
     ki=3,
-    npc_level=11,
+    npc_level=12,
     team_groesse_1=4,
     team_groesse_2=2,
 
@@ -3283,51 +3336,68 @@ Eine_positive_Ueberraschung_6 = kampangen_kampf(
         ("Erzähler", "Der Raum sah deutlich anders aus als die Bereiche, die sie zuvor durchquert hatten."),
         ("Erzähler", "Die Wände waren hier noch nicht vollständig von den pulsierenden Adern überwuchert."),
         ("Erzähler", "Überall waren Bildschirme, Terminals und verschiedene Armaturen zu erkennen."),
+
         ("", ""),
-        ("Erzähler", "In der Mitte des Raumes befand sich eine besonders große Hauptarmatur mit unzähligen Knöpfen und Anzeigen."),
+
+        ("Erzähler", "In der Mitte des Raumes befand sich eine große Hauptarmatur mit unzähligen Knöpfen und Anzeigen."),
         ("Erzähler", "Als John und die anderen sich dem Gerät näherten, öffnete sich ein Terminal."),
+
         ("", ""),
+
         ("Erzähler", "Drei Bereiche waren besonders auffällig."),
         ("Erzähler", "Stations Logbuch."),
         ("Erzähler", "AEON STRAIN."),
         ("Erzähler", "Das neue Wir."),
+
         ("", ""),
+
         ("Rico", "Das sieht interessant aus."),
         ("John", "Wir lesen das nicht hier."),
         ("Sara", "Warum nicht?"),
         ("John", "Wir nehmen den Speicherkern mit und sehen uns alles auf der Red Horizon in Ruhe an."),
+
         ("", ""),
+
         ("Erzähler", "John und Rico begannen, den Speicherkern auszubauen."),
+        ("Erzähler", "Kaum hatte John die erste Verbindung gelöst, erloschen mehrere Anzeigen im Raum."),
+
         ("", ""),
-        ("Erzähler", "Währenddessen suchte Sara nach einer Möglichkeit, die Startklammern der Red Horizon zu lösen."),
+
+        ("Erzähler", "Ein tiefes Summen ging durch die Kommandozentrale."),
+        ("Lara", "Ähm ... ich glaube, wir haben gerade etwas ausgelöst."),
+
+        ("Erzähler", "Aus den Wänden lösten sich zwei Maschinen."),
+        ("Erzähler", "Eine Stationsdrohne schwebte langsam in den Raum."),
+        ("Erzähler", "Hinter ihr bewegte sich ein beschädigter, von den dunklen Adern überwucherter Roboter."),
+
+        ("Rico", "Na toll."),
+        ("John", "Lasst den Speicherkern nicht fallen."),
+
+        ("Erzähler", "Die beiden Maschinen richteten ihre Waffen auf die Gruppe."),
+
         ("", ""),
-        ("Sara", "Hier ist etwas."),
-        ("Erzähler", "Sara entdeckte einen Hebel, der aussah, als könnte er die Haltevorrichtung lösen."),
-        ("", ""),
-        ("Sara", "Hoffen wir, dass es funktioniert hat."),
-        ("Erzähler", "Sie betätigte den Hebel."),
-        ("", ""),
-        ("Erzähler", "Kurz darauf hatten John und Rico den Speicherkern ausgebaut."),
-        ("", ""),
-        ("John", "Dann zurück zum Schiff."),
-        ("Erzähler", "Sie machten sich auf den Rückweg.")
+
     ],
 
     ist_kampf=True,
 
     story_nachher=[
         ("Erzähler", "Die letzte Maschine fiel zu Boden."),
-        ("Erzähler", "Für einige Sekunden war nur das leise Summen der beschädigten Maschinen zu hören."),
+        ("Erzähler", "Für einige Sekunden war nur das leise Summen der beschädigten Systeme zu hören."),
         ("", ""),
         ("Rico", "Das war's hoffentlich."),
         ("Sara", "Hoffentlich."),
         ("", ""),
-        ("Erzähler", "Sie setzten ihren Weg zur Red Horizon fort."),
-        ("Erzähler", "Der Rückweg zog sich wie durch einen Nebel."),
+        ("Erzähler", "John überprüfte den Speicherkern."),
+        ("John", "Er ist noch intakt."),
+        ("", ""),
+        ("Erzähler", "Er nahm ihn an sich und sah sich noch einmal in der Kommandozentrale um."),
+        ("John", "Wir verschwinden hier."),
+        ("", ""),
+        ("Erzähler", "Sie machten sich auf den Rückweg zur Red Horizon."),
+        ("Erzähler", "Der Weg durch die Station zog sich wie durch einen Nebel."),
         ("Erzähler", "Niemand sprach."),
         ("Erzähler", "Nur das leise Echo ihrer Schritte begleitete sie."),
-        ("", ""),
-        ("Erzähler", "Die Luft war durchzogen von Rauch und die Lampen flackerten träge."),
         ("", ""),
         ("Erzähler", "Einmal blieb Sara stehen und horchte."),
         ("Erzähler", "Tief im Metall war ein leises Kratzen zu hören."),
@@ -3336,7 +3406,6 @@ Eine_positive_Ueberraschung_6 = kampangen_kampf(
         ("Erzähler", "Sara nickte und folgte ihm."),
         ("", ""),
         ("Erzähler", "Schließlich erreichten sie die Red Horizon."),
-        ("", ""),
         ("Erzähler", "Als sich die Luftschleuse hinter ihnen schloss, ertönte ein tiefes Zischen."),
         ("Erzähler", "Dann war es still."),
         ("", ""),
@@ -3352,43 +3421,57 @@ Eine_positive_Ueberraschung_6 = kampangen_kampf(
 )
 
 
-Die_Auswertung_6 = kampangen_kampf(
+Die_Auswertung_6 = kampangen_kampf( #32
     "Die Auswertung",
 
     story_vorher=[
         ("Erzähler", "Am nächsten Tag begann die Gruppe damit, die Daten des Speicherkerns auszuwerten."),
         ("Erzähler", "Als Erstes öffneten sie das Stations Logbuch."),
         ("", ""),
-        ("Erzähler", "Der erste Eintrag trug die Überschrift: Tag 456 nach Start der Projekte."),
-        ("Erzähler", "Die Marsianer forschen am AEON STRAIN Projekt jetzt schon fast eineinhalb Jahre und haben es bis jetzt noch nicht geschafft, einen Aeon herzustellen, doch sie machen langsam Fortschritte."),
-        ("Erzähler", "Mit dem Projekt Das neue Wir hingegen geht es gut voran und sie glauben, dass sie in gut zehn Tagen das erste Produkt fertigstellen können."),
-        ("Erzähler", "Geschrieben vom Marsianer Anführer."),
+        ("Stationslogbuch", "Tag 456 nach Start der Projekte."),
+        ("Stationslogbuch", "Die Forschungen am Projekt AEON STRAIN werden fortgesetzt."),
+        ("Stationslogbuch", "Seit Beginn des Projekts konnten noch keine zufriedenstellenden Ergebnisse erzielt werden."),
+        ("Stationslogbuch", "Es sind jedoch erste Fortschritte zu verzeichnen."),
+        ("Stationslogbuch", "Das Projekt Das neue Wir verläuft planmäßig."),
+        ("Stationslogbuch", "Die Fertigstellung des ersten Produkts wird in etwa zehn Tagen erwartet."),
+        ("Stationslogbuch", "Eintrag verfasst durch den marsianischen Anführer."),
         ("", ""),
-        ("Erzähler", "Der nächste Eintrag stammte von Tag 468 nach Start der Projekte."),
-        ("Erzähler", "Das AEON STRAIN Projekt hatte weiterhin nur sehr kleine Erfolge erzielt."),
-        ("Erzähler", "Dafür hatte Das neue Wir einen ersten Prototypen erschaffen, der bis dahin alle Erwartungen erfüllte."),
+        ("Stationslogbuch", "Tag 468 nach Start der Projekte."),
+        ("Stationslogbuch", "AEON STRAIN: weiterhin nur geringe Fortschritte."),
+        ("Stationslogbuch", "Das neue Wir: erster Prototyp fertiggestellt."),
+        ("Stationslogbuch", "Der Prototyp erfüllt bisher alle Erwartungen."),
+        ("Stationslogbuch", "Eintrag verfasst durch den marsianischen Anführer."),
         ("", ""),
-        ("Erzähler", "Der nächste Eintrag stammte von Tag 475."),
-        ("Erzähler", "Das Projekt Das neue Wir lief weiterhin wie geplant."),
-        ("Erzähler", "Doch das AEON STRAIN Projekt war aus dem Ruder gelaufen."),
-        ("Erzähler", "Sie hatten einen Aeon erschaffen, der auf keine Ansagen hörte."),
-        ("Erzähler", "Außerdem hatte er Hunger und konsumierte fast jeden, den er sah."),
-        ("Erzähler", "Bei manchen Personen tat er dies jedoch nicht."),
-        ("Erzähler", "Warum, konnten die Marsianer nicht herausfinden."),
+        ("Stationslogbuch", "Tag 475 nach Start der Projekte."),
+        ("Stationslogbuch", "Das Projekt Das neue Wir verläuft weiterhin planmäßig."),
+        ("Stationslogbuch", "AEON STRAIN: kritischer Zwischenfall."),
+        ("Stationslogbuch", "Ein Aeon wurde erfolgreich erschaffen."),
+        ("Stationslogbuch", "Das Subjekt reagiert nicht auf Befehle."),
+        ("Stationslogbuch", "Es zeigt ein stark ausgeprägtes Bedürfnis nach Nahrungsaufnahme."),
+        ("Stationslogbuch", "Mehrere Personen wurden vom Subjekt konsumiert."),
+        ("Stationslogbuch", "Einige Personen werden vom Subjekt nicht angegriffen."),
+        ("Stationslogbuch", "Der Grund dafür konnte bisher nicht festgestellt werden."),
+        ("Stationslogbuch", "Eintrag verfasst durch den marsianischen Anführer."),
         ("", ""),
-        ("Erzähler", "Der nächste Eintrag stammte von Tag 483."),
-        ("Erzähler", "Alle Marsianer, außer diejenigen, die der Aeon nicht konsumierte, waren verschwunden."),
-        ("Erzähler", "Für die Mitglieder von Das neue Wir schien sich der Aeon weiterhin nicht zu interessieren."),
-        ("Erzähler", "Als mögliche Erklärung wurde genannt, dass sie nicht zu einhundert Prozent aus Fleisch bestanden, sondern ein Metallskelett besaßen."),
+        ("Stationslogbuch", "Tag 483 nach Start der Projekte."),
+        ("Stationslogbuch", "Die Marsianer sind verschwunden."),
+        ("Stationslogbuch", "Ausgenommen sind ausschließlich Personen, die vom Aeon nicht angegriffen wurden."),
+        ("Stationslogbuch", "Das Subjekt zeigt weiterhin kein Interesse an den Mitgliedern von Das neue Wir."),
+        ("Stationslogbuch", "Mögliche Erklärung: Die Mitglieder von Das neue Wir bestehen nicht vollständig aus biologischem Gewebe."),
+        ("Stationslogbuch", "Bei Untersuchungen wurde ein Metallskelett festgestellt."),
+        ("Stationslogbuch", "Eintrag verfasst durch  Das neue Wir Anführer."),
         ("", ""),
-        ("Erzähler", "Der nächste Eintrag stammte von Tag 488."),
-        ("Erzähler", "Der Aeon hatte begonnen, auch Mitglieder von Das neue Wir zu konsumieren."),
-        ("Erzähler", "Daraufhin beschlossen sie, mit der Sanctuary von der Prometheus-Delta-Station nach Prometheus-Prime zu fliegen."),
+        ("Stationslogbuch", "Tag 488 nach Start der Projekte."),
+        ("Stationslogbuch", "Der Aeon greift nun auch Mitglieder von Das neue Wir an."),
+        ("Stationslogbuch", "Evakuierungsprotokoll eingeleitet."),
+        ("Stationslogbuch", "Das Schiff Sanctuary wird von der Prometheus-Delta-Station nach Prometheus-Prime verlegt."),
+        ("Stationslogbuch", "Eintrag verfasst durch  Das neue Wir Anführer."),
         ("", ""),
-        ("Erzähler", "Der letzte Eintrag war vollkommen anders als die vorherigen."),
-        ("Erzähler", "Tag 396025 nach Start der Projekte."),
-        ("Erzähler", "Ein Schiff hat die Verbotene Zone betreten und wird nach Protokoll in die Station gezogen."),
-        ("Erzähler", "Automatischer Eintrag."),
+        ("Stationslogbuch", "Tag 396025 nach Start der Projekte."),
+        ("Stationslogbuch", "Automatischer Eintrag."),
+        ("Stationslogbuch", "Ein unbekanntes Schiff hat die Verbotene Zone betreten."),
+        ("Stationslogbuch", "Protokoll zur Sicherung unbekannter Schiffe aktiviert."),
+        ("Stationslogbuch", "Schiff wird in die Station gezogen."),
         ("", ""),
         ("Rico", "Das ist ... ziemlich viel."),
         ("John", "Und es erklärt zumindest einiges.")
@@ -3398,7 +3481,7 @@ Die_Auswertung_6 = kampangen_kampf(
 )
 
 
-Die_Auswertung_AEON_STRAIN_6 = kampangen_kampf(
+Die_Auswertung_AEON_STRAIN_6 = kampangen_kampf( #33
     "AEON STRAIN",
 
     story_vorher=[
@@ -3408,8 +3491,9 @@ Die_Auswertung_AEON_STRAIN_6 = kampangen_kampf(
         ("Erzähler", "Ursprung: Herstellung aus —"),
         ("Erzähler", "Beschreibung: Aeon Strain zeigt keine feste Gestalt."),
         ("Erzähler", "Das Phänomen äußert sich als Störung in Raum und Wahrnehmung, begleitet von Flüstern auf allen Frequenzen."),
-        ("Erzähler", "Beobachtungshinweise: Kontakt mit exponierten Crewmitgliedern führt zu Identitätsfragmentierung, spontanen Bewegungsabläufen und dem Verlust des eigenen Zeitgefühls."),
         ("Erzähler", "Theoretischer Status: Nicht als Lebewesen zu klassifizieren."),
+        ("Erzähler", "Beobachtungshinweise: Kontakt mit exponierten Crewmitgliedern führt zu Identitätsfragmentierung,"),
+        ("Erzähler", "spontanen Bewegungsabläufen und dem Verlust des eigenen Zeitgefühls."),
         ("Erzähler", "Aufgabe: Taktische Kriegsführung."),
         ("", ""),
         ("Erzähler", "Für einige Sekunden sagte niemand etwas."),
@@ -3422,7 +3506,7 @@ Die_Auswertung_AEON_STRAIN_6 = kampangen_kampf(
 )
 
 
-Die_Auswertung_Das_neue_Wir_6 = kampangen_kampf(
+Die_Auswertung_Das_neue_Wir_6 = kampangen_kampf( #34
     "Das neue Wir",
 
     story_vorher=[
@@ -3455,11 +3539,12 @@ Die_Auswertung_Das_neue_Wir_6 = kampangen_kampf(
 )
 
 
-Die_Vorbereitungen_6 = kampangen_kampf(
+Die_Vorbereitungen_6 = kampangen_kampf( #35
     "Die Vorbereitungen",
 
     story_vorher=[
-        ("Erzähler", "Während die führenden Forscher daran arbeiteten, nach den Koordinaten zu suchen, waren John und Lara dabei, die Red Horizon auf den Start vorzubereiten."),
+        ("Erzähler", "Während die führenden Forscher daran arbeiteten, nach den Koordinaten zu suchen,"),
+        ("Erzähler", "waren John und Lara dabei, die Red Horizon auf den Start vorzubereiten."),
         ("Erzähler", "Sie überprüften alle Anzeigen und kalibrierten die Systeme neu, um sicherzugehen, dass auch wirklich alles glatt lief."),
         ("", ""),
         ("Erzähler", "Sara war unterdessen bei den Reaktoren des Schiffes und kontrollierte, ob sie noch richtig funktionierten und gleichmäßig Strom produzierten."),
@@ -3501,24 +3586,25 @@ Die_Vorbereitungen_6 = kampangen_kampf(
 )
 
 
-Der_Start_6 = kampangen_kampf(
+Der_Start_6 = kampangen_kampf( #36
     "Der Start",
 
     story_vorher=[
         ("Erzähler", "Als alle in ihren Sitzen saßen, begann John die Startsequenz."),
         ("", ""),
-        ("Erzähler", "Die Triebwerke der Red Horizon begannen zu vibrieren, erst leise, dann wuchs das Grollen zu einem Sturm, der durch die metallenen Rippen des Schiffes jagte."),
+        ("Erzähler", "Die Triebwerke der Red Horizon begannen zu vibrieren, erst leise, dann wuchs das Grollen zu einem Sturm,"),
+        ("Erzähler", "der durch die metallenen Rippen des Schiffes jagte."),
         ("", ""),
         ("Lara", "Klammer 3 reagiert nicht!"),
         ("John", "Verdammt, wenn die sich nicht löst, können wir nicht starten!"),
         ("", ""),
         ("Rico", "Ich geh raus."),
-        ("Chasker", "Keine Diskussion. Das ist ein Befehl – ich übernehme."),
+        ("Chasker", "Keine Diskussion. Das ist ein Befehl - ich übernehme."),
         ("", ""),
         ("Erzähler", "John wollte protestieren, doch Chasker hatte bereits die Schleuse betreten."),
         ("", ""),
-        ("Chasker", "Wenn ich die Klammer freischneide, habt ihr exakt zehn Sekunden. Danach – Start. Keine Verzögerung."),
-        ("Sara", "Aber ... er kommt dann nicht mehr rein."),
+        ("Chasker", "Wenn ich die Klammer freischneide, habt ihr exakt zehn Sekunden. Danach - Start. Keine Verzögerung."),
+        ("Sara", "Aber ... du kommst dann nicht mehr rein."),
         ("Chasker", "Ich weiß."),
         ("", ""),
         ("Erzähler", "Draußen war nur das matte Licht der Notbeleuchtung zu sehen."),
@@ -3576,7 +3662,7 @@ Der_Start_6 = kampangen_kampf(
 )
 
 
-Die_Flucht_6 = kampangen_kampf(
+Die_Flucht_6 = kampangen_kampf( #37
     "Die Flucht",
 
     story_vorher=[

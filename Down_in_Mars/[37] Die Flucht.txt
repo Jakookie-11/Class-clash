@@ -1,0 +1,29 @@
+Erzähler : Die Triebwerke heulten auf.
+Erzähler : Das gesamte Dock erzitterte.
+Erzähler : Die Startklammern gaben nach.
+
+Erzähler : Ein ohrenbetäubender Schlag hallte durch die Halle, als sich die Red Horizon löste.
+Erzähler : Feuer und Rauch peitschten durch die Gitterböden.
+Erzähler : Sirenen schrien auf.
+
+Erzähler : Dann brach das Schiff durch die Schleuse.
+Erzähler : Keiner sprach.
+
+Erzähler : Nur das metallische Atmen der Systeme füllte den Raum.
+
+Rico     : Er hat uns rausgebracht.
+
+Erzähler : John setzte still den Kurs auf die Koordinaten.
+Erzähler : Die Station wurde hinter ihnen immer kleiner.
+
+Sara     : Wir sollten überprüfen, ob das UAV bereit ist.
+Rico     : Ich kümmere mich darum.
+
+Erzähler : Rico überprüfte die Verbindung zum UAV.
+Rico     : Verbindung steht.
+
+Erzähler : Auf einem der Bildschirme erschien das Bild der Kamera.
+
+Lara     : Dann können wir es später auf der Marsoberfläche einsetzen.
+John     : Genau.
+Enter...

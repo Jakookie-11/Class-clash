@@ -1,0 +1,18 @@
+Erzähler : Der Hangar war still. Nur das leise Summen der Maschinen war zu hören.
+Erzähler : Das Schiff stand bereit unter den grellen Scheinwerfern.
+Chasker  : Bereit?
+Erzähler : John, Sara, Lara und Rico machten sich bereit.
+Erzähler : Als John im Cockpit Platz nahm, flackerte kurz ein rotes Warnlicht auf einem Monitor auf.
+John     : Nur ein Fehler ... hoffentlich.
+Erzähler : Kurz darauf hob das Schiff ab.
+Erzähler : Die Erde wurde unter ihnen immer kleiner, während das Schiff die Atmosphäre verließ.
+Erzähler : Plötzlich huschte ein Schatten über das Fenster.
+John     : Habt ihr das gesehen?
+Sara     : Nein. Alle Systeme sind stabil.
+Rico     : Also, Leute ... denkt dran. Wir fliegen zum Mars, nicht ins Gruselkabinett.
+Erzähler : Niemand lachte.
+Erzähler : Als die Erde hinter ihnen verschwand, ruckelte das Schiff plötzlich.
+Chasker  : Keine Panik. Nur ein Turbulenzstoß im Orbit.
+Erzähler : Doch niemand war wirklich entspannt.
+Erzähler : Für John fühlte es sich nicht wie der Beginn einer normalen Mission an.
+Enter...

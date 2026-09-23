@@ -1,0 +1,40 @@
+Erzähler : Die folgenden sieben Tage verliefen größtenteils ruhig, doch die Ereignisse aus der Station ließen die Gruppe nicht los.
+
+Erzähler : Am ersten Tag untersuchte Sara die gefundenen Proben im Labor.
+Erzähler : Unter dem Mikroskop wirkten einige Bruchstücke wie Metall, doch manchmal schien sich ihre Oberfläche leicht zu bewegen.
+Sara     : Vielleicht nur eine optische Täuschung.
+Erzähler : Trotzdem schloss sie die Proben zur Sicherheit in einen Safe.
+
+Erzähler : Am zweiten Tag beschäftigte sich die Gruppe mit den Soldaten und Forschern mit der Auswertung des Fundes.
+Erzähler : Rico langweilte sich und machte sich über die langsamen Untersuchungen lustig, während Lara ihn immer wieder zur Ordnung rief.
+Erzähler : Abgesehen davon verlief der Tag völlig normal.
+
+Erzähler : Am dritten Tag fiel für genau dreißig Sekunden der Strom aus.
+Erzähler : Auch die Kühlkammern mit den Leichen waren betroffen.
+Chasker  : Alles unter Kontrolle.
+Erzähler : Ein Soldat behauptete später, im Dunkeln zwei leuchtende Augen gesehen zu haben.
+Erzähler : Niemand nahm ihn ernst.
+Erzähler : John allerdings behielt die Aussage im Hinterkopf.
+
+Erzähler : Am vierten Tag schien wieder alles normal zu sein.
+Erzähler : Die Gruppe trainierte, erledigte Papierkram und besprach die Vorbereitungen für den Abflug.
+Erzähler : Trotzdem blieb das ungute Gefühl bestehen, dass etwas nicht stimmte.
+
+Erzähler : Am fünften Tag bemerkte Lara beim Frühstück, dass ihre Uhr mehrere Minuten nachging.
+Lara     : Vielleicht ist einfach die Batterie leer.
+Erzähler : Kurz darauf bemerkte auch Sara, dass ihre Uhr nicht mehr richtig lief.
+Sara     : Meine läuft auch nicht mehr ganz richtig.
+Erzähler : Die Gruppe schob es zunächst auf defekte Uhren.
+
+Erzähler : In der folgenden Nacht konnte John nicht einschlafen.
+Erzähler : Immer wieder hörte er dieses leise, kratzende Atmen.
+Erzähler : Als er schließlich in die Küche ging und zurückkam, entdeckte er frische Kratzer an der Wand neben seinem Bett.
+Erzähler : Sie sahen aus, als hätte jemand mit langen Fingern darübergefahren.
+Erzähler : John wollte dort nicht mehr schlafen und buchte sich noch in derselben Nacht ein Hotel.
+
+Erzähler : Am siebten Tag traf sich die Gruppe erneut bei Chasker.
+Erzähler : Alle wirkten müde und überarbeitet, doch niemand sprach die seltsamen Ereignisse offen an.
+Chasker  : Das Schiff ist fast fertig. Der Abflug kann bald stattfinden.
+Erzähler : John sah zu Sara, Lara und Rico.
+Erzähler : Keiner von ihnen glaubte noch daran, dass sie eine normale Mission erwartete.
+Enter...

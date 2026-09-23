@@ -1,0 +1,38 @@
+Erzähler : Während die führenden Forscher daran arbeiteten, nach den Koordinaten zu suchen,
+Erzähler : waren John und Lara dabei, die Red Horizon auf den Start vorzubereiten.
+Erzähler : Sie überprüften alle Anzeigen und kalibrierten die Systeme neu, um sicherzugehen, dass auch wirklich alles glatt lief.
+
+Erzähler : Sara war unterdessen bei den Reaktoren des Schiffes und kontrollierte, ob sie noch richtig funktionierten und gleichmäßig Strom produzierten.
+
+Erzähler : Rico war mit einigen Marines dabei, eines der UAVs für den Start vorzubereiten.
+Erzähler : Nach dem Start sollte das UAV die Marsoberfläche nach weiteren Gebäuden oder möglichen Stationen absuchen.
+Erzähler : Sie überprüften alle Systeme. Sie begannen bei der Batterie und arbeiteten sich bis zur Kamera vor.
+
+Erzähler : Als alle ihre Aufgaben erledigt hatten, kehrten sie in den Kommandoraum zurück.
+Erzähler : Chasker wartete dort bereits auf sie.
+
+Chasker  : Wir haben die Koordinaten.
+
+Erzähler : Für einen Moment herrschte Erleichterung.
+
+Chasker  : Das einzige Problem ist, dass ich mir nicht sicher bin, ob wir wirklich dorthin fliegen sollten.
+Chasker  : Wir könnten auch zur Erde fliegen und versuchen, den Aeon zu bekämpfen.
+
+Sara     : Ich glaube nicht, dass wir es ohne Hilfe schaffen würden.
+Sara     : Deshalb glaube ich, dass die Koordinaten die bessere Wahl sind.
+John     : Das glaube ich auch.
+
+Erzähler : Damit war die Entscheidung getroffen.
+Erzähler : Sie würden zu den Koordinaten fliegen.
+
+Lara     : Was machen wir eigentlich mit dem Aeon in der Isolationszelle?
+Chasker  : Wir werden ihn erstmal für einige Tests und Beobachtungen hier behalten.
+Chasker  : Irgendwann werden wir ihn allerdings aus der Luftschleuse der Isolationszelle werfen.
+
+Rico     : Ich werde da bestimmt nicht nochmal hineingehen, um ihn aus der Luftschleuse zu schieben!
+Sara     : Das wirst du auch nicht müssen.
+Sara     : Der Sog wird ihn automatisch hinausziehen.
+
+Erzähler : Sara grinste leicht.
+Erzähler : Damit begannen die letzten Vorbereitungen für den Start.
+Enter...

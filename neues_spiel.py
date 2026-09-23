@@ -71,8 +71,9 @@ def charaktere_auswaelen(nur_eigenes_team=False,team_groesse=2):
     for schlüssel, charakter in charaktere.Charaktere.items():
         if charakter.klasse != "npc":
             if charakter.klasse != "down_in_mars":
-                if charakter.name != "Hannah_d":
-                    print(schlüssel)
+                if charakter.klasse != "down_in_mars_gegner":
+                    if charakter.name != "Hannah_d":
+                        print(schlüssel)
     print()
     print(f"Waehle {team_groesse} aus:")
     print()
@@ -698,21 +699,21 @@ def kampf(
 
                     print(
                         f"[1] "
-                        f"{charaktere.Charaktere[wer].faehigkeit_1.name :20}"
+                        f"{charaktere.Charaktere[wer].faehigkeit_1.name :30}"
                         f"Cooldown: "
                         f"{charaktere.Charaktere[wer].faehigkeit_1.abklingzeit}"
                     )
 
                     print(
                         f"[2] "
-                        f"{charaktere.Charaktere[wer].faehigkeit_2.name :20}"
+                        f"{charaktere.Charaktere[wer].faehigkeit_2.name :30}"
                         f"Cooldown: "
                         f"{charaktere.Charaktere[wer].faehigkeit_2.abklingzeit}"
                     )
 
                     print(
                         f"[3] "
-                        f"{charaktere.Charaktere[wer].faehigkeit_3.name :20}"
+                        f"{charaktere.Charaktere[wer].faehigkeit_3.name :30}"
                         f"Cooldown: "
                         f"{charaktere.Charaktere[wer].faehigkeit_3.abklingzeit}"
                     )

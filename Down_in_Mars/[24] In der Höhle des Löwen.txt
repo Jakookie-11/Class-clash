@@ -49,3 +49,18 @@ Lara     : Wir wissen es selbst nicht genau.
 Erzähler : Plötzlich bewegte sich etwas am anderen Ende der Halle.
 Sara     : Kontakt!
 Enter...
+
+
+
+Erzähler : Die letzte Maschine fiel zu Boden.
+Rico     : Das waren definitiv keine normalen Wartungsdrohnen.
+Lara     : Sie haben uns offenbar registriert, sobald wir die Halle betreten haben.
+John     : Dann sollten wir hier nicht länger bleiben.
+
+Erzähler : John sah sich in der Halle um.
+Erzähler : In der gegenüberliegenden Wand befand sich eine große Öffnung.
+Erzähler : Aus dem Inneren kam kalte Luft.
+
+Rico     : Da hinten geht es weiter.
+John     : Dann los.
+Enter...

@@ -1,0 +1,43 @@
+Erzähler : Chasker eröffnete ihnen den Plan des Präsidenten und des Militärs.
+Chasker  : Der Plan ist, mit dem momentan noch im Bau befindlichen Schiff eine Basis auf dem Mars zu errichten und anschließend zu untersuchen, was wir dort finden.
+Erzähler : Das Schiff wurde extra für diesen Zweck entworfen. Es bot Platz für eine große Anzahl an Personen, verfügte über große Labore,
+Erzähler : einen geräumigen Hangar zur Versorgung und eine große Brücke, die später auch als Kontrollzentrale der zu errichtenden Basis dienen sollte.
+
+Rico     : Und wie lange soll das noch dauern? Ich dachte, wir reden hier von mehreren Monaten.
+Chasker  : Eigentlich sollte es nur noch ein paar Wochen dauern.
+Rico     : Ein paar Wochen?
+Erzähler : Alle waren überrascht. Niemand hatte damit gerechnet, dass das Schiff schon so bald fertig sein würde.
+Sara     : Warum geht das plötzlich so schnell?
+Chasker  : Ich weiß es selbst nicht. Man hat mir nur gesagt, dass es in einer Woche fertig sein wird.
+
+Erzähler : Nachdem das Thema beendet war, wechselte Chasker das Thema.
+Chasker  : Außerdem wurden die Leichen untersucht, die ihr in dem Objekt gefunden habt.
+John     : Und?
+Chasker  : Nach den bisherigen Untersuchungen handelt es sich offenbar um eine Art Roboter, der von einer KI gesteuert wurde.
+Chasker  : Dort, wo sie keine mechanischen Teile besaßen, bestanden sie allerdings aus Fleisch und Blut.
+
+Lara     : Aber warum sahen sie dann so alt aus?
+Erzähler : Darauf hatte niemand eine Antwort.
+
+Chasker  : Es gibt noch etwas. Ein paar Forscher konnten eine Datei retten.
+Erzähler : Chasker öffnete die Datei und begann vorzulesen.
+
+Chasker  : Wir sind unserem Ziel nähergekommen, doch wir werden langsam schwächer.
+Chasker  : Wir haben heute auch bemerkt, dass ein Schiff der —unbekannten Rasse— mit uns auf Kollisionskurs ist.
+Chasker  : Unsere erste Idee war es, den Kurs zu ändern, doch das lässt der Computer nicht zu.
+Chasker  : So müssen wir hoffen, dass sie ihren Kurs wechseln, denn sonst würden sie unser Schiff entern und uns töten und anschließend zum Planeten ‚Erde‘ reisen, um dort —
+
+Erzähler : Die Nachricht endete abrupt.
+Erzähler : Für einige Sekunden sagte niemand etwas.
+
+John     : Jetzt haben wir ja noch eine Frage mehr.
+Lara     : Ja. Nämlich, wer waren die, mit denen sie auf Kollisionskurs standen?
+
+Sara     : Dafür haben wir vielleicht eine Antwort auf eine andere Frage.
+John     : Welche?
+Sara     : Warum sie ermordet wurden.
+Sara     : Wahrscheinlich waren ihre Feinde oder Gegner in dem Schiff, mit dem sie auf Kollisionskurs standen. Sie könnten dann ihr Schiff betreten und sie getötet haben.
+
+Erzähler : Allen war aufgefallen, wie abrupt die Nachricht endete.
+Erzähler : Doch auch dafür hatten sie keine Erklärung.
+Enter...

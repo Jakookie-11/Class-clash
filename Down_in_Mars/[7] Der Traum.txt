@@ -1,0 +1,51 @@
+Erzähler : John stand plötzlich wieder im Inneren des unbekannten Objekts.
+Erzähler : Sara, Lara und Rico waren ebenfalls bei ihm.
+
+John     : Ich habe noch drei Dateien gefunden.
+John     : Ich lade sie noch schnell herunter und dann verschwinden wir hier.
+
+Rico     : Gute Idee. Ich habe keine Lust, diesem Ding noch länger Gesellschaft zu leisten.
+
+Erzähler : John ging zurück zur Konsole.
+Erzähler : Auf dem Bildschirm waren noch mehrere Dateien zu sehen.
+
+John     : Einen Moment...
+Erzähler : John begann, die Dateien auf den Speicher zu übertragen.
+
+Sara     : Wie lange dauert das noch?
+John     : Nicht mehr lange.
+
+Erzähler : Während die Dateien übertragen wurden, sah sich Lara noch einmal im Raum um.
+Erzähler : Rico stand einige Meter entfernt und beobachtete die Tür.
+
+Erzähler : Schließlich erschien auf dem Bildschirm eine Meldung.
+John     : ----Fertig----
+
+Erzähler : John nahm den Speicher an sich.
+John     : Wir verschwinden hier. Wir wollen doch diesem Monster nicht begegnen, oder?
+
+Erzähler : John blieb stehen.
+Erzähler : Hinter der Armatur war ein Geräusch zu hören.
+Erzähler : Kein Tropfen. Kein Knacken.
+Erzähler : Es klang eher wie ein tiefes, kratzendes Atmen.
+
+Rico     : Habt ihr das gehört?
+Sara     : Ja.
+
+Erzähler : Etwas bewegte sich im Schatten.
+Erzähler : Langsam und ruckartig.
+
+Erzähler : Dunkle Gliedmaßen lösten sich von der Wand, als wäre sie nur eine Hülle gewesen.
+Erzähler : Zu viele Gelenke.
+Erzähler : Zu lange Finger.
+Erzähler : Kein Gesicht.
+Erzähler : Nur ein flackerndes Glimmen dort, wo Augen hätten sein sollen.
+
+Erzähler : Das Atmen wurde lauter.
+
+John     : Was zur Hölle ist das...?
+
+Erzähler : Johns Beine fühlten sich schwer an, als wollten sie ihn nicht mehr tragen.
+
+Sara     : John ... lauf.
+Enter...

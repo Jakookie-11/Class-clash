@@ -1,0 +1,42 @@
+Erzähler : Sie rannten weiter, bis sie einen engen Wartungsschacht erreichten.
+Erzähler : Dort blieben sie kurz stehen.
+Erzähler : Niemand wagte es, laut zu sprechen.
+
+Erzähler : Dann schlug irgendwo in der Station Metall auf Metall.
+Erzähler : Ein Geräusch folgte dem nächsten.
+
+Rico     : Es kommt wieder.
+John     : Alle bereit.
+
+Erzähler : Am Ende des Schachtes bewegte sich eine Gestalt.
+
+Sara     : Kontakt.
+
+Erzähler : Zwei weitere Maschinen traten aus der Dunkelheit.
+
+John     : Feuer!
+Enter...
+
+
+
+Erzähler : Die letzten Maschinen gingen zu Boden.
+Erzähler : Für einen Moment war es vollkommen still.
+
+Erzähler : Dann hörten sie ein leises Kratzen.
+
+Sara     : Da.
+John     : Ich höre es.
+
+Erzähler : Das Geräusch kam nicht aus einem der Gänge.
+Erzähler : Es kam aus den Wänden.
+
+Rico     : Das ist nicht gut.
+
+Erzähler : Plötzlich schlug irgendwo eine Tür zu.
+
+Lara     : Die Türsteuerung.
+
+Erzähler : John sah zum Ende des Ganges.
+
+John     : Es schließt uns ein.
+Enter...

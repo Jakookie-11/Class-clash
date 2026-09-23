@@ -1,0 +1,30 @@
+Erzähler : Der Seitengang führte tatsächlich in einen größeren Bereich.
+
+Erzähler : Doch kaum hatten sie ihn betreten, schlossen sich mehrere Türen hinter ihnen.
+
+Rico     : Das gefällt mir überhaupt nicht.
+Sara     : Mir auch nicht.
+
+Erzähler : Mehrere Maschinen aktivierten sich gleichzeitig.
+
+Lara     : Wir sitzen fest.
+John     : Dann schaffen wir uns einen Weg frei.
+Enter...
+
+
+
+Erzähler : Die letzte Maschine fiel zu Boden.
+Erzähler : Eine der Türen öffnete sich wieder.
+
+Rico     : Endlich.
+
+Erzähler : John trat vorsichtig in den nächsten Gang.
+Erzähler : Für einige Sekunden war nichts zu hören.
+
+Erzähler : Dann erklang aus der Ferne ein metallisches Schaben.
+
+Sara     : Da ist es wieder.
+John     : Nicht stehen bleiben.
+
+Erzähler : Sie gingen weiter.
+Enter...

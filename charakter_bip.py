@@ -6,6 +6,7 @@ import funktions
 import charaktere
 import ressourcen
 import confic
+import speichern
 
 
 
@@ -34,7 +35,7 @@ def charakter_bip(spieler_name):
             charaktere_anzeigen()
 
         elif wahl == 2:
-            is_break = charaktere_aufleveln()
+            is_break = charaktere_aufleveln(spieler_name)
 
             if is_break == 1:
                 continue
@@ -63,7 +64,7 @@ def charaktere_anzeigen():
         for schlüssel, charakter in charaktere.Charaktere.items():
             if charakter.klasse != "npc":
                 if charakter.klasse != "down_in_mars":
-                    if charakter.klasse != "down_in_mars_gegener":
+                    if charakter.klasse != "down_in_mars_gegner":
                         if charakter.name != "Hannah_d":
                             print((f"{CYAN}--------{schlüssel}--------{RESET}"))
 
@@ -147,7 +148,7 @@ def level_kosten_credits(wievieltes_update):
 
 
 
-def charaktere_aufleveln():
+def charaktere_aufleveln(spieler):
     os.system(confic.terminal_clear)
     
     charaktere_aufleveln = True
@@ -162,8 +163,9 @@ def charaktere_aufleveln():
         for schlüssel, charakter in charaktere.Charaktere.items():
             if charakter.klasse != "npc":
                 if charakter.klasse != "down_in_mars":
-                    if charakter.name != "Hannah_d":
-                        print(f"Name: {schlüssel :10} Level: {charakter.level}")
+                    if charakter.klasse != "down_in_mars_gegner":
+                        if charakter.name != "Hannah_d":
+                            print(f"Name: {schlüssel :10} Level: {charakter.level}")
 
         print()
 
@@ -206,25 +208,26 @@ def charaktere_aufleveln():
 
         #--Eingentliches Level_up--#
         level_up(wen)
+        speichern.spiel_speichern(spieler)
 
         os.system(confic.terminal_clear)
 
         print(f"Gelevelt: {wen}")
-        print("---Status---")
+        print("------Status------")
 
         charakter = charaktere.Charaktere[wen]
 
         print()
-        print(f"----{wen}----")
+        print(f"------{wen}------")
         print(f"Name         : {charakter.name}")
         print(f"Level        : {charakter.level}")
         print(f"Klasse       : {charakter.klasse}")
         print(f"HP           : {charakter.hp:.2f}")
         print(f"Schaden      : {charakter.schaden}")
         print(f"Speed        : {charakter.speed}")
-        print(f"Faehigkeit 1 : {charakter.faehigkeit_1}")
-        print(f"Faehigkeit 2 : {charakter.faehigkeit_2}")
-        print(f"Faehigkeit 3 : {charakter.faehigkeit_3}")
+        print(f"Faehigkeit 1 : {charakter.faehigkeit_1.name}")
+        print(f"Faehigkeit 2 : {charakter.faehigkeit_2.name}")
+        print(f"Faehigkeit 3 : {charakter.faehigkeit_3.name}")
 
         print()
 

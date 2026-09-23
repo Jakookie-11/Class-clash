@@ -1,0 +1,32 @@
+Erzähler : Nach einer gefühlten Ewigkeit erreichte John schließlich das Ende der Leiter.
+Erzähler : Zu seiner Überraschung befand er sich direkt in der Kommandozentrale der Station.
+Erzähler : Der Raum sah deutlich anders aus als die Bereiche, die sie zuvor durchquert hatten.
+Erzähler : Die Wände waren hier noch nicht vollständig von den pulsierenden Adern überwuchert.
+Erzähler : Überall waren Bildschirme, Terminals und verschiedene Armaturen zu erkennen.
+
+Erzähler : In der Mitte des Raumes befand sich eine große Hauptarmatur mit unzähligen Knöpfen und Anzeigen.
+Erzähler : Als John und die anderen sich dem Gerät näherten, öffnete sich ein Terminal.
+
+Erzähler : Drei Bereiche waren besonders auffällig.
+Erzähler : Stations Logbuch.
+Erzähler : AEON STRAIN.
+Erzähler : Das neue Wir.
+
+Rico     : Das sieht interessant aus.
+John     : Wir lesen das nicht hier.
+Sara     : Warum nicht?
+John     : Wir nehmen den Speicherkern mit und sehen uns alles auf der Red Horizon in Ruhe an.
+
+Erzähler : John und Rico begannen, den Speicherkern auszubauen.
+Erzähler : Kaum hatte John die erste Verbindung gelöst, erloschen mehrere Anzeigen im Raum.
+
+Erzähler : Ein tiefes Summen ging durch die Kommandozentrale.
+Lara     : Ähm ... ich glaube, wir haben gerade etwas ausgelöst.
+Erzähler : Aus den Wänden lösten sich zwei Maschinen.
+Erzähler : Eine Stationsdrohne schwebte langsam in den Raum.
+Erzähler : Hinter ihr bewegte sich ein beschädigter, von den dunklen Adern überwucherter Roboter.
+Rico     : Na toll.
+John     : Lasst den Speicherkern nicht fallen.
+Erzähler : Die beiden Maschinen richteten ihre Waffen auf die Gruppe.
+
+Enter...
