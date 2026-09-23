@@ -1,7 +1,6 @@
 import os
 import time
 import re
-import random
 
 import charaktere
 import menues
@@ -65,13 +64,7 @@ def charakter_anzeigen(name):
 def verfuegbare_charaktere():
     return [
         name
-        for name, charakter in charaktere.Charaktere.items()
-        if charakter.klasse not in (
-            "npc",
-            "down_in_mars",
-            "down_in_mars_gegner"
-        )
-        and charakter.name != "Hannah_d"
+        for name in charaktere.Charaktere
     ]
 
 
@@ -131,8 +124,12 @@ def charaktere_auswaelen(nur_eigenes_team=False, team_groesse=2):
 
     print("Verfügbare Charaktere:")
     print()
-    verfuegbare = verfuegbare_charaktere()
-    for name in verfuegbare:
+    if nur_eigenes_team:
+        print("NPC-Charaktere sind im eigenen Team nicht erlaubt.")
+    else:
+        print("Jeder existierende Charakter kann ausgewählt werden.")
+    print()
+    for name in verfuegbare_charaktere():
         print(name)
     print()
     print(f"Wähle {team_groesse} Charakter(e) aus:")
@@ -141,10 +138,21 @@ def charaktere_auswaelen(nur_eigenes_team=False, team_groesse=2):
     for nummer in range(1, team_groesse + 1):
         while True:
             name = input(f"Charakter {nummer}: ").strip()
-            if name in verfuegbare:
+            ist_gueltig = name in charaktere.Charaktere
+            ist_npc = (
+                ist_gueltig
+                and charaktere.Charaktere[name].klasse == "npc"
+            )
+
+            if ist_gueltig and not (nur_eigenes_team and ist_npc):
                 team.append(name)
                 break
-            print("--- Dieser Charakter ist nicht verfügbar. ---")
+
+            if not ist_gueltig:
+                print("--- Dieser Charakter existiert nicht. ---")
+            else:
+                print("--- NPC-Charaktere sind im eigenen Team nicht erlaubt. ---")
+            funktions.zeilen_loeschen(2)
 
     print()
     print("Team:")
@@ -466,24 +474,14 @@ def kampf(
         team_1 = list(team_1)
 
 
-    # Team 2 auswählen oder für einen benutzerdefinierten Kampf erzeugen
+    # Team 2 auswählen, auch wenn es von der KI gesteuert wird
     if team_2 is None:
-
-        if gegner_ki:
-            team_2 = random.sample(
-                verfuegbare_charaktere(),
-                team_groesse_2
+        team_2 = list(
+            charaktere_auswaelen(
+                nur_eigenes_team=False,
+                team_groesse=team_groesse_2
             )
-            print("Das Gegnerteam wurde von der KI zusammengestellt:")
-            print(", ".join(team_2))
-            time.sleep(2)
-        else:
-            team_2 = list(
-                charaktere_auswaelen(
-                    nur_eigenes_team=True,
-                    team_groesse=team_groesse_2
-                )
-            )
+        )
 
     else:
         team_2 = list(team_2)
