@@ -61,10 +61,16 @@ def charakter_anzeigen(name):
 
 
 
-def verfuegbare_charaktere():
+def verfuegbare_charaktere(nur_eigenes_team=False, ki_aktiv=False):
+    if ki_aktiv:
+        return list(charaktere.Charaktere)
+
     return [
         name
-        for name in charaktere.Charaktere
+        for name, charakter in charaktere.Charaktere.items()
+        if charakter.klasse != "npc"
+        and charakter.klasse != "down_in_mars_gegner"
+        and charakter.name != "Hannah_d"
     ]
 
 
@@ -118,19 +124,63 @@ def benutzerdefinierten_kampf_starten():
     )
 
 
-def charaktere_auswaelen(nur_eigenes_team=False, team_groesse=2):
+def charaktere_auswaelen(
+    nur_eigenes_team=False,
+    team_groesse=2,
+    ki_aktiv=False
+):
 
     os.system(confic.terminal_clear)
 
     print("Verfügbare Charaktere:")
     print()
-    if nur_eigenes_team:
-        print("NPC-Charaktere sind im eigenen Team nicht erlaubt.")
+    if ki_aktiv:
+        print("Alle existierenden Charaktere können ausgewählt werden.")
     else:
-        print("Jeder existierende Charakter kann ausgewählt werden.")
+        print(
+            "NPCs und Gegner aus Down in Mars sind nicht verfügbar."
+        )
     print()
-    for name in verfuegbare_charaktere():
-        print(name)
+
+    verfuegbare = verfuegbare_charaktere(
+        nur_eigenes_team=nur_eigenes_team,
+        ki_aktiv=ki_aktiv
+    )
+    verfuegbare_anzeige = [
+        name
+        for name in verfuegbare
+        if charaktere.Charaktere[name].name != "Hannah_d"
+    ]
+
+    if ki_aktiv:
+        gruppen = {}
+        for name in verfuegbare_anzeige:
+            klasse = charaktere.Charaktere[name].klasse
+            gruppen.setdefault(klasse, []).append(name)
+
+        for nummer, gruppe in enumerate(gruppen.values()):
+            if nummer > 0:
+                print()
+            for name in gruppe:
+                print(name)
+    else:
+        normale_charaktere = [
+            name
+            for name in verfuegbare_anzeige
+            if charaktere.Charaktere[name].klasse != "down_in_mars"
+        ]
+        down_in_mars_charaktere = [
+            name
+            for name in verfuegbare_anzeige
+            if charaktere.Charaktere[name].klasse == "down_in_mars"
+        ]
+
+        for name in normale_charaktere:
+            print(name)
+        if normale_charaktere and down_in_mars_charaktere:
+            print()
+        for name in down_in_mars_charaktere:
+            print(name)
     print()
     print(f"Wähle {team_groesse} Charakter(e) aus:")
     print()
@@ -138,20 +188,19 @@ def charaktere_auswaelen(nur_eigenes_team=False, team_groesse=2):
     for nummer in range(1, team_groesse + 1):
         while True:
             name = input(f"Charakter {nummer}: ").strip()
-            ist_gueltig = name in charaktere.Charaktere
-            ist_npc = (
-                ist_gueltig
-                and charaktere.Charaktere[name].klasse == "npc"
+            ist_hannah = (
+                name in charaktere.Charaktere
+                and charaktere.Charaktere[name].name == "Hannah_d"
             )
 
-            if ist_gueltig and not (nur_eigenes_team and ist_npc):
+            if name in verfuegbare or ist_hannah:
                 team.append(name)
                 break
 
-            if not ist_gueltig:
+            if name not in charaktere.Charaktere:
                 print("--- Dieser Charakter existiert nicht. ---")
             else:
-                print("--- NPC-Charaktere sind im eigenen Team nicht erlaubt. ---")
+                print("--- Dieser Charakter ist hier nicht verfügbar. ---")
             funktions.zeilen_loeschen(2)
 
     print()
@@ -479,7 +528,8 @@ def kampf(
         team_2 = list(
             charaktere_auswaelen(
                 nur_eigenes_team=False,
-                team_groesse=team_groesse_2
+                team_groesse=team_groesse_2,
+                ki_aktiv=gegner_ki
             )
         )
 
