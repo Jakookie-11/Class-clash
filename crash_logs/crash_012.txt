@@ -1,0 +1,30 @@
+========================================
+       CLASS CLASH CRASH REPORT
+========================================
+
+Spieler: Jakob_1
+Datum: 2026-09-23
+Uhrzeit: 20:27:21
+Fehler-ID: 2691070115b831ee919940342a2c6d652d4e142faac549c4007653ef03b143af
+Status: gefixt
+
+----------------------------------------
+FEHLER / TRACEBACK
+----------------------------------------
+
+Traceback (most recent call last):
+  File "c:\Users\jakob\Desktop\Git\Class clash\main.py", line 48, in <module>
+    is_brake_neues_spiel = neues_spiel.neues_spiel(spieler)
+  File "c:\Users\jakob\Desktop\Git\Class clash\neues_spiel.py", line 34, in neues_spiel
+    is_break_kampf = kampf()
+  File "c:\Users\jakob\Desktop\Git\Class clash\neues_spiel.py", line 869, in kampf
+    faehigkeit.funktion(
+    ~~~~~~~~~~~~~~~~~~~^
+        wer,
+        ^^^^
+    ...<2 lines>...
+        team_2
+        ^^^^^^
+    )
+    ^
+TypeError: jakobs_basic_obj() takes from 2 to 3 positional arguments but 4 were given

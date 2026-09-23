@@ -168,9 +168,9 @@ def kampangen(spieler_name):
 
         kampangen_vorhanden = len(alle_kampangen)
 
-        wahl = input("Welche moechtest du Spielen (1,2,2 etc./abbrechen): ")
+        wahl = input("Welche moechtest du Spielen (1,2,2 etc./[0]abbrechen): ")
 
-        if wahl == "abbrechen" or wahl == "Abbrechen":
+        if wahl == "0" or wahl == "abbrechen":
             return 1
 
         if wahl == "":

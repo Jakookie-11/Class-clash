@@ -24,7 +24,7 @@ def spiel_speichern(spieler):
 
     for name, charakter in charaktere.Charaktere.items():
         if charakter.klasse != "npc":
-            if charakter.klasse != "down_in_mars_gegener":
+            if charakter.klasse != "down_in_mars_gegner":
                 gespeicherte_charaktere[name] = {
                     "hp"         : charakter.hp,
                     "max_hp"     : charakter.max_hp,

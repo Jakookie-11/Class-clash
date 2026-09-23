@@ -162,9 +162,6 @@ def einfacher_angriff_obj(wer, wen, team=None):
 
     schaden = entgültigen_schaden_berechnen(wer)
 
-    if charaktere.Charaktere[wer].seite == charaktere.Charaktere[wen].seite:
-        schaden *= 0.8
-
     HP_verändern(wen, schaden)
 
 
@@ -223,9 +220,6 @@ def blutiger_schlag_obj(wer, wen, team=None):
 
     schaden = entgültigen_schaden_berechnen(wer)
 
-    if charaktere.Charaktere[wer].seite == charaktere.Charaktere[wen].seite:
-        schaden *= 0.8
-
     status_effekte.status_effekte_hinzufügen(
         wen,
         status_effekte.schaden_minus
@@ -249,9 +243,6 @@ blutiger_schlag = faehigkeit(
 def starker_schlag_obj(wer, wen, team=None):
 
     schaden = entgültigen_schaden_berechnen(wer)
-
-    if charaktere.Charaktere[wer].seite == charaktere.Charaktere[wen].seite:
-        schaden *= 0.8
 
     status_effekte.status_effekte_hinzufügen(
         wen,
@@ -277,9 +268,6 @@ def bleibender_schlag_obj(wer, wen, team=None):
 
     schaden = entgültigen_schaden_berechnen(wer)
 
-    if charaktere.Charaktere[wer].seite == charaktere.Charaktere[wen].seite:
-        schaden *= 0.9
-
     status_effekte.status_effekte_hinzufügen(
         wen,
         status_effekte.damage_over_time_1
@@ -304,30 +292,98 @@ bleibender_schlag = faehigkeit(
 # ══════════════════════════════════════════════════════════════
 
 # ══════════════════════════════════════════════════════════════
-# Jakob
+# Generell
 # ══════════════════════════════════════════════════════════════
 
-def jakobs_basic_obj(wer, wen, team=None):
+def einfacher_angriff_b_obj(wer, wen, team=None):
 
     import geheimes
 
-    schaden = geheimes.geheime_attake_jakob(wer, wen, team)
+    schaden = geheimes.einfacher_angriff_b_obj(wer, wen, team)
 
     HP_verändern(wen, schaden)
 
-jakobs_basic = faehigkeit(
-    "jakobs_basic",
-    jakobs_basic_obj,
-    "GEheim...",
+einfacher_angriff_b = faehigkeit(
+    "einfacher_angriff_b",
+    einfacher_angriff_b_obj,
+    "Geheim...",
     0,
     0,
     "gegner"
 )
 
 
+def einfacher_angriff_g_obj(wer, wen, team=None):
 
+    import geheimes
 
+    schaden = geheimes.einfacher_angriff_g_obj(wer, wen, team)
 
+    HP_verändern(wen, schaden)
+
+einfacher_angriff_g = faehigkeit(
+    "einfacher_angriff_g",
+    einfacher_angriff_g_obj,
+    "Geheim...",
+    0,
+    0,
+    "gegner"
+)
+
+# ══════════════════════════════════════════════════════════════
+# Jakob
+# ══════════════════════════════════════════════════════════════
+
+def jakobs_basic_obj(wer, wen, team_1, team_2):
+
+    import geheimes
+
+    schaden = geheimes.geheime_attake_jakob(wer, wen, team_1, team_2)
+
+    HP_verändern(wen, schaden)
+
+jakobs_basic = faehigkeit(
+    "jakobs_basic",
+    jakobs_basic_obj,
+    "Geheim...",
+    0,
+    0,
+    "gegner"
+)
+
+# ══════════════════════════════════════════════════════════════
+# Max
+# ══════════════════════════════════════════════════════════════
+
+def knielauf_obj(wer, wen, team, team_2):
+
+    import geheimes
+
+    schaden = geheimes.einfacher_angriff_b_obj(wer, wen, team)
+
+    charakter = charaktere.Charaktere[wen]
+
+    if charakter.gender == "5":
+        schaden = schaden * 2
+    if charakter.gender == "6":
+        schaden = schaden * 1.5
+
+    for gegner in team_2:
+        ziel_charakter = charaktere.Charaktere[gegner]
+
+        if ziel_charakter.gender != "5" and ziel_charakter.gender != "6":
+            continue
+
+        HP_verändern(gegner, schaden)
+
+knielauf = faehigkeit(
+    "knielauf",
+    knielauf_obj,
+    "Max lauuft durch die Menge an Kindern. Er kickt jedem 5/6 Klaessler aus dem Gegnerteam ins Gesicht.",
+    5,
+    1,
+    "gegner"
+)
 
 
 

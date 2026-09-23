@@ -176,9 +176,9 @@ def charaktere_aufleveln(spieler):
         print()
 
         while True:
-            wen = input("Wen möchtest du leveln? (Name/Abbruch) ")
+            wen = input("Wen möchtest du leveln? (Name/[0]abbruch) ")
 
-            if wen == "Abbruch" or wen == "abbruch":
+            if wen == "0" or wen == "abbruch":
                 os.system(confic.terminal_clear)
                 return 1
             elif not wen in charaktere.Charaktere:

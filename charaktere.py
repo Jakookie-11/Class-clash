@@ -14,7 +14,7 @@ class charakter:
         max_max_hp,
         schaden: int,
         max_schaden: None,
-        seite: str,
+        gender: str,
         speed: int,
         level: int = 1,
         faehigkeit_1=None,
@@ -30,7 +30,7 @@ class charakter:
         self.max_max_hp = max_max_hp
         self.schaden = schaden
         self.max_schaden = max_schaden
-        self.seite = seite
+        self.gender = gender
         self.speed = speed
         self.level = level
 
@@ -51,7 +51,7 @@ Jakob = charakter(
     200,
     200,
     -20,
-    "light_side",
+    "boy",
     100,
     1,
     faehigkeit_1=faehigkeiten.jakobs_basic,
@@ -67,10 +67,10 @@ Hannah_d = charakter(
     150,
     150,
     -25,
-    "light_side",
+    "girl",
     110,
     1,
-    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_1=faehigkeiten.einfacher_angriff_g,
     faehigkeit_2=faehigkeiten.einfache_heilung,
     faehigkeit_3=faehigkeiten.staerkende_heilung
 )
@@ -84,10 +84,10 @@ Leo = charakter(
     70,
     70,
     -20,
-    "light_side",
+    "boy",
     80,
     1,
-    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_1=faehigkeiten.einfacher_angriff_b,
     faehigkeit_2=faehigkeiten.blutiger_schlag,
     faehigkeit_3=faehigkeiten.bleibender_schlag
 )
@@ -101,10 +101,10 @@ Simon = charakter(
     110,
     110,
     -10,
-    "dark_side",
+    "boy",
     70,
     1,
-    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_1=faehigkeiten.einfacher_angriff_b,
     faehigkeit_2=faehigkeiten.einfache_heilung,
     faehigkeit_3=faehigkeiten.staerkende_heilung
 )
@@ -118,12 +118,12 @@ Max = charakter(
     200,
     200,
     -10,
-    "dark_side",
+    "boy",
     90,
     1,
-    faehigkeit_1=faehigkeiten.einfacher_angriff,
-    faehigkeit_2=faehigkeiten.blutiger_schlag,
-    faehigkeit_3=faehigkeiten.staerkende_heilung
+    faehigkeit_1=faehigkeiten.einfacher_angriff_b,
+    faehigkeit_2=faehigkeiten.knielauf,
+    faehigkeit_3=faehigkeiten.blutiger_schlag
 )
 
 
@@ -135,10 +135,10 @@ Lovis = charakter(
     100,
     100,
     -10,
-    "dark_side",
+    "boy",
     85,
     1,
-    faehigkeit_1=faehigkeiten.einfacher_angriff,
+    faehigkeit_1=faehigkeiten.einfacher_angriff_b,
     faehigkeit_2=faehigkeiten.blutiger_schlag,
     faehigkeit_3=faehigkeiten.staerkende_heilung
 )
@@ -491,7 +491,7 @@ traum_sara = charakter(
 #--------------------------------------------#
 
 fuenftklaessler = charakter(
-    "fuenftklaessler", "npc", 70, 70, 70, -7, -7, "npc", 50, 1,
+    "fuenftklaessler", "npc", 70, 70, 70, -7, -7, "5", 50, 1,
     faehigkeit_1=faehigkeiten.radiergummi_wefen,
     faehigkeit_2=faehigkeiten.er_hat_nichts_gemacht,
     faehigkeit_3=faehigkeiten.hordenangriff
@@ -499,7 +499,7 @@ fuenftklaessler = charakter(
 
 
 cooler_fuenftklaessler = charakter(
-    "cooler_fuenftklaessler", "npc", 80, 80, 80, -8, -8, "npc", 60, 1,
+    "cooler_fuenftklaessler", "npc", 80, 80, 80, -8, -8, "5", 60, 1,
     faehigkeit_1=faehigkeiten.ey_was_guckst_du,
     faehigkeit_2=faehigkeiten.sonnenbrille_auf,
     faehigkeit_3=faehigkeiten.ranzenwurf
@@ -507,7 +507,7 @@ cooler_fuenftklaessler = charakter(
 
 
 streber = charakter(
-    "streber", "npc", 60, 60, 60, -6, -6, "npc", 70, 1,
+    "streber", "npc", 60, 60, 60, -6, -6, "5", 70, 1,
     faehigkeit_1=faehigkeiten.das_ist_falsch,
     faehigkeit_2=faehigkeiten.hausaufgaben_zeigen,
     faehigkeit_3=faehigkeiten.musterloesung
@@ -536,49 +536,49 @@ direktor = charakter(
 )
 
 klassenclown = charakter(
-    "klassenclown", "npc", 115, 115, 115, -11, -11, "npc", 95, 1,
+    "klassenclown", "npc", 115, 115, 115, -11, -11, "5", 95, 1,
     faehigkeit_1=faehigkeiten.einfacher_angriff,
     faehigkeit_2=faehigkeiten.streich,
     faehigkeit_3=faehigkeiten.lachanfall
 )
 
 normaler_6_klaessler = charakter(
-    "normaler_6_klaessler", "npc", 80, 80, 80, -8, -8, "npc", 45, 1,
+    "normaler_6_klaessler", "npc", 80, 80, 80, -8, -8, "6", 45, 1,
     faehigkeit_1=faehigkeiten.einfacher_angriff,
     faehigkeit_2=faehigkeiten.schubser,
     faehigkeit_3=faehigkeiten.rennen_gehen
 )
 
 aggressiver_6_klaessler = charakter(
-    "aggressiver_6_klaessler", "npc", 65, 65, 65, -12, -12, "npc", 50, 1,
+    "aggressiver_6_klaessler", "npc", 65, 65, 65, -12, -12, "6", 50, 1,
     faehigkeit_1=faehigkeiten.wütender_schlag,
     faehigkeit_2=faehigkeiten.voll_drauf,
     faehigkeit_3=faehigkeiten.noch_wuetender
 )
 
 starker_6_klaessler = charakter(
-    "starker_6_klaessler", "npc", 120, 120, 120, -6, -6, "npc", 30, 1,
+    "starker_6_klaessler", "npc", 120, 120, 120, -6, -6, "6", 30, 1,
     faehigkeit_1=faehigkeiten.schlag,
     faehigkeit_2=faehigkeiten.festhalten,
     faehigkeit_3=faehigkeiten.nicht_weggehen
 )
 
 schlauer_6_klaessler = charakter(
-    "schlauer_6_klaessler", "npc", 70, 70, 70, -5, -5, "npc", 40, 1,
+    "schlauer_6_klaessler", "npc", 70, 70, 70, -5, -5, "6", 40, 1,
     faehigkeit_1=faehigkeiten.klugscheissen,
     faehigkeit_2=faehigkeiten.hausaufgaben_helfen,
     faehigkeit_3=faehigkeiten.ich_hab_einen_plan
 )
 
 nerviger_6_klaessler = charakter(
-    "nerviger_6_klaessler", "npc", 75, 75, 75, -7, -7, "npc", 55, 1,
+    "nerviger_6_klaessler", "npc", 75, 75, 75, -7, -7, "6", 55, 1,
     faehigkeit_1=faehigkeiten.nerven,
     faehigkeit_2=faehigkeiten.ablenken,
     faehigkeit_3=faehigkeiten.hoer_auf
 )
 
 cooler_6_klaessler = charakter(
-    "cooler_6_klaessler", "npc", 90, 90, 90, -9, -9, "npc", 60, 1,
+    "cooler_6_klaessler", "npc", 90, 90, 90, -9, -9, "6", 60, 1,
     faehigkeit_1=faehigkeiten.cooler_schlag,
     faehigkeit_2=faehigkeiten.sonnenbrille_auf,
     faehigkeit_3=faehigkeiten.ranzenwurf

@@ -56,7 +56,6 @@ def charakter_anzeigen(name):
     print(f"Klasse  : {charakter.klasse}")
     print(f"HP      : {charakter.hp:.2f}")
     print(f"Schaden : {charakter.schaden}")
-    print(f"Seite   : {charakter.seite}")
     print(f"Speed   : {charakter.speed}")
 
 
@@ -866,14 +865,22 @@ def kampf(
                         faehigkeit.max_abklingzeit
                     )
 
-                    faehigkeit.funktion(
-                        wer,
-                        ziel,
-                        team_1
-                    )
-
+                    if faehigkeit.name == "knielauf" or faehigkeit.name == "jakobs_basic":
+                        faehigkeit.funktion(
+                            wer,
+                            ziel,
+                            team_1,
+                            team_2
+                        )
+                    else:
+                        faehigkeit.funktion(
+                            wer,
+                            ziel,
+                            team_1
+                        ) 
 
                     geheimes.wer_hat_wieviel_schaden_genommen(
+                        wer,
                         ziel,
                         team_1,
                         team_2
@@ -908,6 +915,7 @@ def kampf(
                 faehigkeit.funktion(wer, ziel, team_2)
 
                 geheimes.wer_hat_wieviel_schaden_genommen(
+                    wer,
                     ziel,
                     team_1,
                     team_2

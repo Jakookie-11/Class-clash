@@ -444,10 +444,6 @@ def virtuelle_schadens_bewertung(wer, wen, faehigkeit):
     if "ranzenwurf" in name:
         schaden *= 2
 
-    # Gleiche Seite bekommt weniger Schaden
-    if charakter.seite == ziel.seite:
-        schaden *= 0.8
-
     return schaden
 
 

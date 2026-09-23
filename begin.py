@@ -126,7 +126,10 @@ def begin():
                     #---Begrüsung_Spieler/Anmeldung---#
                     os.system(confic.terminal_clear)
                     while True:
-                        spieler = input("Wie heisst du? ").strip()
+                        spieler = input("Wie heisst du?/[0]abbrechen  ").strip()
+
+                        if spieler == "0":
+                            break
 
                         if confic.passwort_sichtbarkeitshinweis_anzeigen == True:
                             print("-------------")
@@ -168,6 +171,9 @@ def begin():
                             time.sleep(2)
                             os.system(confic.terminal_clear)
                             funktions.zeilen_loeschen(4)
+
+                    if spieler == "0":
+                        break
 
                     time.sleep(1)
                     os.system(confic.terminal_clear)
