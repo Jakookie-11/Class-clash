@@ -1,6 +1,7 @@
 import os
 import time
 import re
+import random
 
 import charaktere
 import menues
@@ -31,7 +32,7 @@ def neues_spiel(spieler_name):
         wahl = funktions.menue(menues.neues_spiel_menue, spieler_name)
 
         if wahl == 1:
-            is_break_kampf = kampf()
+            is_break_kampf = benutzerdefinierten_kampf_starten()
 
             if is_break_kampf == 1 or is_break_kampf == 2 or is_break_kampf == 3:
                 continue
@@ -61,195 +62,96 @@ def charakter_anzeigen(name):
 
 
 
-def charaktere_auswaelen(nur_eigenes_team=False,team_groesse=2):
+def verfuegbare_charaktere():
+    return [
+        name
+        for name, charakter in charaktere.Charaktere.items()
+        if charakter.klasse not in (
+            "npc",
+            "down_in_mars",
+            "down_in_mars_gegner"
+        )
+        and charakter.name != "Hannah_d"
+    ]
+
+
+def ganzzahl_einlesen(prompt, minimum, maximum):
+    while True:
+        wahl = input(prompt).strip()
+
+        if wahl.isdigit() and minimum <= int(wahl) <= maximum:
+            return int(wahl)
+
+        print(f"Bitte eine Zahl zwischen {minimum} und {maximum} eingeben.")
+
+
+def benutzerdefinierten_kampf_starten():
+    os.system(confic.terminal_clear)
+
+    print("===== Benutzerdefinierter Kampf =====")
+    print()
+    print("Passe deinen Kampf an.")
+    print()
+
+    team_groesse_1 = ganzzahl_einlesen(
+        "Teamgröße deines Teams (1-4): ",
+        1,
+        4
+    )
+    team_groesse_2 = ganzzahl_einlesen(
+        "Teamgröße des gegnerischen Teams (1-4): ",
+        1,
+        4
+    )
+
+    print()
+    print("[1] Gegner wird von der KI gesteuert")
+    print("[2] Zweiter Spieler steuert das Gegnerteam")
+    gegner_typ = ganzzahl_einlesen("Auswahl: ", 1, 2)
+
+    ki_stufe = 1
+    if gegner_typ == 1:
+        print()
+        print("KI-Stufen: 1 Zufällig, 2 Taktisch, 3 Stark, 4 Meister")
+        ki_stufe = ganzzahl_einlesen("KI-Stufe (1-4): ", 1, 4)
+
+    input("\nEnter zum Starten...")
+
+    return kampf(
+        team_groesse_1=team_groesse_1,
+        team_groesse_2=team_groesse_2,
+        Ki=ki_stufe,
+        gegner_ki=gegner_typ == 1
+    )
+
+
+def charaktere_auswaelen(nur_eigenes_team=False, team_groesse=2):
 
     os.system(confic.terminal_clear)
 
     print("Verfügbare Charaktere:")
     print()
-    for schlüssel, charakter in charaktere.Charaktere.items():
-        if charakter.klasse != "npc":
-            if charakter.klasse != "down_in_mars":
-                if charakter.klasse != "down_in_mars_gegner":
-                    if charakter.name != "Hannah_d":
-                        print(schlüssel)
+    verfuegbare = verfuegbare_charaktere()
+    for name in verfuegbare:
+        print(name)
     print()
-    print(f"Waehle {team_groesse} aus:")
+    print(f"Wähle {team_groesse} Charakter(e) aus:")
     print()
-    print("Team 1:")
+    team = []
+    for nummer in range(1, team_groesse + 1):
+        while True:
+            name = input(f"Charakter {nummer}: ").strip()
+            if name in verfuegbare:
+                team.append(name)
+                break
+            print("--- Dieser Charakter ist nicht verfügbar. ---")
+
     print()
-
-    Leader_team_1    = input("Leader: ")
-
-    if not Leader_team_1 in charaktere.Charaktere:
-        print("---Dieser Charakter existiert nicht!---")
-        time.sleep(2)
-        funktions.zeilen_loeschen(2)
-        Leader_team_1    = input("Leader: ")
-
-    spieler_2_team_1 = input("Spieler_2: ")
-
-    if not spieler_2_team_1 in charaktere.Charaktere:
-        print("---Dieser Charakter existiert nicht!---")
-        time.sleep(2)
-        funktions.zeilen_loeschen(2)
-        spieler_2_team_1 = input("Spieler_2: ")
-
-    if team_groesse >= 3:
-        spieler_3_team_1 = input("Spieler_3: ")
-
-        if not spieler_3_team_1 in charaktere.Charaktere:
-            print("---Dieser Charakter existiert nicht!---")
-            time.sleep(2)
-            funktions.zeilen_loeschen(2)
-            spieler_3_team_1 = input("Spieler_3: ")
-
-    if team_groesse >= 4:
-        spieler_4_team_1 = input("Spieler_4: ")
-
-        if not spieler_4_team_1 in charaktere.Charaktere:
-            print("---Dieser Charakter existiert nicht!---")
-            time.sleep(2)
-            funktions.zeilen_loeschen(2)
-            spieler_4_team_1 = input("Spieler_4: ")
-
-    #---falls auch gegner---#
-
-    if nur_eigenes_team == False:
-
-        print()
-        print("Team 2:")
-        print()
-
-        Leader_team_2    = input("Leader: ")
-
-        if not Leader_team_2 in charaktere.Charaktere:
-            print("---Dieser Charakter existiert nicht!---")
-            time.sleep(2)
-            funktions.zeilen_loeschen(2)
-            Leader_team_2    = input("Leader: ")
-
-        spieler_2_team_2 = input("Spieler_2: ")
-
-        if not spieler_2_team_2 in charaktere.Charaktere:
-            print("---Dieser Charakter existiert nicht!---")
-            time.sleep(2)
-            funktions.zeilen_loeschen(2)
-            spieler_2_team_2 = input("Spieler_2: ")
-
-
-        if team_groesse >= 3:
-            spieler_3_team_2 = input("Spieler_3: ")
-
-            if not spieler_3_team_2 in charaktere.Charaktere:
-                print("---Dieser Charakter existiert nicht!---")
-                time.sleep(2)
-                funktions.zeilen_loeschen(2)
-                spieler_3_team_1 = input("Spieler_3: ")
-
-        if team_groesse >= 4:
-            spieler_4_team_2 = input("Spieler_4: ")
-
-            if not spieler_4_team_2 in charaktere.Charaktere:
-                print("---Dieser Charakter existiert nicht!---")
-                time.sleep(2)
-                funktions.zeilen_loeschen(2)
-                spieler_4_team_1 = input("Spieler_4: ")
-
-    time.sleep(1)
-    os.system(confic.terminal_clear)
-
-    while True:
-
-        print("-----Team_1-----")
-        charakter_anzeigen(Leader_team_1)
-        print()
-        charakter_anzeigen(spieler_2_team_1)
-        print()
-        if team_groesse >= 3:
-            charakter_anzeigen(spieler_3_team_1)
-            print()
-        if team_groesse >= 4:
-            charakter_anzeigen(spieler_4_team_1)
-            print()
-
-        #---falls auch gegner---#
-        if nur_eigenes_team == False:
-            print()
-            print("-----Team_2-----")
-            charakter_anzeigen(Leader_team_2)
-            print()
-            charakter_anzeigen(spieler_2_team_2)
-            print()
-            if team_groesse >= 3:
-                charakter_anzeigen(spieler_3_team_2)
-                print()
-            if team_groesse >= 4:
-                charakter_anzeigen(spieler_4_team_2)
-                print()
-
-        ready = input("Fertig? ")
-
-        if ready == "ja" or ready == "":
-
-            if nur_eigenes_team == False:
-
-                if team_groesse == 2:
-                    return (
-                        Leader_team_1,
-                        spieler_2_team_1,
-                        Leader_team_2,
-                        spieler_2_team_2
-                    )
-
-                elif team_groesse == 3:
-                    return (
-                        Leader_team_1,
-                        spieler_2_team_1,
-                        spieler_3_team_1,
-                        Leader_team_2,
-                        spieler_2_team_2,
-                        spieler_3_team_2
-                    )
-
-                elif team_groesse == 4:
-                    return (
-                        Leader_team_1,
-                        spieler_2_team_1,
-                        spieler_3_team_1,
-                        spieler_4_team_1,
-                        Leader_team_2,
-                        spieler_2_team_2,
-                        spieler_3_team_2,
-                        spieler_4_team_2
-                    )
-
-
-            elif nur_eigenes_team == True:
-
-                if team_groesse == 2:
-                    return (
-                        Leader_team_1,
-                        spieler_2_team_1
-                    )
-
-                elif team_groesse == 3:
-                    return (
-                        Leader_team_1,
-                        spieler_2_team_1,
-                        spieler_3_team_1
-                    )
-
-                elif team_groesse == 4:
-                    return (
-                        Leader_team_1,
-                        spieler_2_team_1,
-                        spieler_3_team_1,
-                        spieler_4_team_1
-                    )
-
-        else:
-            os.system(confic.terminal_clear)
+    print("Team:")
+    for name in team:
+        print(f"- {name}")
+    input("\nEnter zum Bestätigen...")
+    return team
 
 
     
@@ -537,7 +439,8 @@ def kampf(
     team_2=None,
     team_groesse_1=2,
     team_groesse_2=2,
-    Ki=1
+    Ki=1,
+    gegner_ki=False
 ):
 
     os.system(confic.terminal_clear)
@@ -563,15 +466,24 @@ def kampf(
         team_1 = list(team_1)
 
 
-    # Team 2 auswählen, falls es nicht vorgegeben wurde
+    # Team 2 auswählen oder für einen benutzerdefinierten Kampf erzeugen
     if team_2 is None:
 
-        team_2 = list(
-            charaktere_auswaelen(
-                nur_eigenes_team=True,
-                team_groesse=team_groesse_2
+        if gegner_ki:
+            team_2 = random.sample(
+                verfuegbare_charaktere(),
+                team_groesse_2
             )
-        )
+            print("Das Gegnerteam wurde von der KI zusammengestellt:")
+            print(", ".join(team_2))
+            time.sleep(2)
+        else:
+            team_2 = list(
+                charaktere_auswaelen(
+                    nur_eigenes_team=True,
+                    team_groesse=team_groesse_2
+                )
+            )
 
     else:
         team_2 = list(team_2)

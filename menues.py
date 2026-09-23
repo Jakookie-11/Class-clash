@@ -26,9 +26,9 @@ shop_menue = {
 
 
 neues_spiel_menue = {
-    "[1] benutzer-definieter Kampf" : "",
-    "[2] Kampange(n)"               : "",
-    "[3] Zurueck"                   : ""
+    "[1] Benutzerdefinierter Kampf" : "",
+    "[2] Kampange(n)"                : "",
+    "[3] Zurueck"                    : ""
 }
 
 
