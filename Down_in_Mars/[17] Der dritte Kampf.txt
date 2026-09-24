@@ -1,0 +1,32 @@
+Erzähler : Das Team setzte seine Suche nach den vermissten Soldaten fort.
+Erzähler : Die Gänge wurden immer dunkler und die Abstände zwischen den einzelnen Lichtquellen immer größer.
+Erzähler : Immer wieder hörten sie ein leises Kratzen aus den Seitengängen.
+Rico     : Ich hasse diesen Ort.
+Lara     : Du hast das vor einer Stunde auch schon gesagt.
+Rico     : Und ich hatte da schon recht.
+Erzähler : Plötzlich ertönte hinter ihnen ein lautes metallisches Geräusch.
+John     : Alle stehen bleiben.
+Erzähler : John drehte sich langsam um.
+Erzähler : Eine Sicherheitsdrohne stand am anderen Ende des Ganges.
+Sara     : Da ist eine.
+Erzähler : Dann leuchteten zwei weitere Lichter aus den Seitengängen auf.
+Rico     : Drei.
+John     : Waffen bereit.
+Erzähler : Die erste Drohne bewegte sich langsam auf sie zu.
+Erzähler : Plötzlich beschleunigte sie.
+John     : Jetzt!
+Enter...
+
+
+
+Erzähler : Die letzte Drohne fiel zu Boden.
+Erzähler : Für einige Sekunden war nur das leise Summen der beschädigten Maschinen zu hören.
+Rico     : Das werden jedes Mal mehr.
+Sara     : Und stärker.
+Lara     : Wir sollten vorsichtiger werden.
+John     : Ja. Aber wir müssen die Vermissten finden.
+Erzähler : John sah den Gang entlang.
+Erzähler : Am Boden waren mehrere Kratzer zu sehen, die in dieselbe Richtung führten.
+Lara     : Vielleicht haben sie etwas damit zu tun.
+John     : Dann folgen wir ihnen.
+Enter...

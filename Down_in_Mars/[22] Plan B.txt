@@ -1,0 +1,16 @@
+Erzähler : Die Nachricht, dass die Red Horizon von der Station festgehalten wurde, war äußerst beunruhigend.
+Chasker  : Wenn wir jetzt nicht starten können, können wir es im Notfall ebenfalls nicht.
+Erzähler : Chasker überlegte kurz.
+Chasker  : Wir müssen weiter in die Station vordringen.
+Chasker  : Vielleicht finden wir eine Kommandozentrale oder etwas, mit dem wir die Halteklammern lösen können.
+John     : Wie wäre es, wenn wir uns erstmal ausruhen, bevor wir uns in die Hölle begeben?
+Erzähler : Für einen Moment sagte niemand etwas.
+Rico     : Ehrlich gesagt klingt das gar nicht schlecht.
+Sara     : Wir wissen nicht, was uns dort unten erwartet.
+Lara     : Und wir sollten nicht völlig erschöpft losgehen.
+Chasker  : In Ordnung.
+Chasker  : Wir ruhen uns aus und gehen anschließend weiter.
+Erzähler : Die Gruppe beschloss, sich abwechselnd auszuruhen.
+Erzähler : Während einige schliefen, blieben andere zusammen mit einigen Marines auf der Brücke und hielten Wache.
+Erzähler : Die Station blieb währenddessen vollkommen still.
+Enter...

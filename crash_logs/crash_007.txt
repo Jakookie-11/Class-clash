@@ -1,0 +1,29 @@
+========================================
+       CLASS CLASH CRASH REPORT
+========================================
+
+Spieler: Jakob
+Datum: 2026-09-20
+Uhrzeit: 18:19:32
+Fehler-ID: 48486a5337dd40353ec7dad274d7dc32c5c8266f61a3d1a9ab57af3c7e162529
+Status: gefixt
+
+----------------------------------------
+FEHLER / TRACEBACK
+----------------------------------------
+
+Traceback (most recent call last):
+  File "c:\Users\jakob\Desktop\Git\Class clash\main.py", line 48, in <module>
+    is_brake_neues_spiel = neues_spiel.neues_spiel(spieler)
+  File "c:\Users\jakob\Desktop\Git\Class clash\neues_spiel.py", line 40, in neues_spiel
+    is_break_kampangen = kampange.kampangen(spieler_name)
+  File "c:\Users\jakob\Desktop\Git\Class clash\kampange.py", line 191, in kampangen
+    npc_level_setzen(ausgewaehlter_kampf.npc_level, ausgewaehlter_kampf.gegner_1, ausgewaehlter_kampf.gegner_2, ausgewaehlter_kampf.gegner_3, ausgewaehlter_kampf.gegner_4)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\jakob\Desktop\Git\Class clash\kampange.py", line 110, in npc_level_setzen
+    charakter_bip.level_up(spieler)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\jakob\Desktop\Git\Class clash\charakter_bip.py", line 78, in level_up
+    charaktere.Charaktere[wen].schaden = charaktere.Charaktere[wen].schaden * 1.2
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+TypeError: can't multiply sequence by non-int of type 'float'

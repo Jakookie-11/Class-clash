@@ -1,0 +1,101 @@
+Erzähler      : Ihnen allen war klar, dass sie dort nicht bleiben konnten.
+Erzähler      : Sie durchsuchten den Gang nach irgendeinem Ausgang.
+
+Erzähler      : Erst nach einer gefühlten Stunde entdeckte einer der Marines eine Luke.
+Erzähler      : In der Luke befand sich ein kleines Loch, vermutlich durch einen Schuss oder einen früheren Schaden entstanden.
+Erzähler      : Dahinter war ein Schacht mit einer Leiter zu erkennen.
+
+Marine        : Die Verriegelung ist teilweise geschmolzen.
+John          : Kannst du sie öffnen?
+Marine        : Nein. Nicht von Hand.
+
+Erzähler      : Die geschmolzenen Stellen mussten entfernt werden.
+
+John          : Dann müssen wir darauf schießen.
+Sara          : Das wird es hören.
+John          : Ich weiß.
+
+Erzähler      : Doch es war ihre einzige Möglichkeit.
+
+John          : Sobald ich schieße, gehen Rico und vier Marines vor.
+John          : Ihr sichert das Gebiet am anderen Ende der Leiter.
+John          : Danach gehen Sara, Lara und die restlichen Marines.
+John          : Ich gehe zuletzt.
+John          : Wir werden es schaffen. Also los!
+
+Erzähler      : John hob seine Waffe.
+Erzähler      : Ein Schuss krachte durch den Gang.
+Erzähler      : Die geschmolzenen Teile der Verriegelung brachen auseinander.
+Erzähler      : Ein lautes Klirren hallte durch die Station.
+
+Erzähler      : Rico trat die Luke auf und stürmte mit den Marines in den kleinen Raum.
+Erzähler      : Sofort begann er, die Leiter hinaufzusteigen.
+Erzähler      : Sara und Lara wollten ihm folgen.
+
+Erzähler      : Dann hörten sie es.
+Erzähler      : Ein langgezogenes Quietschen.
+Erzähler      : Das Geräusch konnte nur von einer sich öffnenden Metalltür stammen.
+
+John          : Lauft!
+
+Erzähler      : John drehte sich um.
+Erzähler      : Etwas stand im Schatten.
+Erzähler      : Schwarz wie die Nacht.
+Erzähler      : Die Augen glühten schwach in einem undefinierbaren Farbton zwischen Bernstein und Rauch.
+Erzähler      : Das Wesen bewegte sich nicht.
+
+Erzähler      : Dann öffnete es den Mund.
+Erzähler      : Oder zumindest die Stelle, die wie ein Mund wirkte.
+
+Schattenwesen : Ihr hättet nicht wiederkommen sollen!
+
+Erzähler      : Die Stimme war kaum zu hören und schien gleichzeitig direkt in Johns Kopf zu entstehen.
+Erzähler      : Dann stieß das Wesen einen schrecklichen Schrei aus und stürzte auf John zu.
+
+John          : Lauft!
+Enter...
+
+
+
+Erzähler      : Das Wesen wurde zurückgedrängt.
+Erzähler      : John wollte gerade zur Leiter laufen, als die Gestalt plötzlich wieder vor ihm stand.
+
+Erzähler      : Es packte ihn und drückte ihn gegen die Wand.
+Erzähler      : Der Druck auf seiner Brust war so stark, dass John kaum noch atmen konnte.
+
+Erzähler      : Er versuchte sich zu befreien, doch seine Kräfte ließen nach.
+
+Erzähler      : Das Wesen beugte sich näher zu ihm.
+Erzähler      : Seine Augen glühten stärker.
+
+Erzähler      : John hatte das Gefühl, dass es direkt durch ihn hindurchblickte.
+
+Erzähler      : In seinem Kopf rauschte es.
+Erzähler      : Fetzen von Worten waren zu hören.
+
+Schattenwesen : Nicht ... du ...
+
+Erzähler      : Das Wesen hielt plötzlich inne.
+Erzähler      : Für einige Sekunden bewegte sich nichts.
+
+Erzähler      : Dann ließ es John brutal zu Boden fallen.
+Erzähler      : John blieb benommen liegen.
+
+Erzähler      : Als er wieder aufsah, war das Wesen verschwunden.
+Erzähler      : Es war lautlos in den Schatten zurückgekehrt.
+
+John          : Warum ...?
+
+Erzähler      : John verstand nicht, warum das Wesen ihn nicht getötet hatte.
+
+Erzähler      : Seine Hände zitterten, als er sich langsam an der Leiter hochzog.
+Erzähler      : Jeder Muskel brannte und sein Herz raste.
+
+Erzähler      : Unter ihm lag nur noch Dunkelheit.
+
+Erzähler      : John stieg weiter nach oben.
+
+Erzähler      : Doch die Worte des Wesens gingen ihm nicht aus dem Kopf.
+
+Schattenwesen : Nicht ... du ...
+Enter...

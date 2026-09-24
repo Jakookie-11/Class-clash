@@ -1,0 +1,38 @@
+Erzähler : Das Team machte sich gemeinsam auf den Weg zurück zum Ausgang.
+Erzähler : Nach einigen Minuten erreichten sie wieder die Oberfläche.
+Erzähler : Vor dem Objekt warteten bereits Chasker und mehrere bewaffnete Soldaten.
+
+Chasker  : Da seid ihr ja endlich.
+John     : Wir haben ein paar Dateien gefunden.
+Chasker  : Ein paar Dateien?
+John     : Ja. Wir erklären alles, sobald wir zurück sind.
+
+Chasker  : Wie lange wart ihr da drin?
+John     : Keine Ahnung. Vielleicht eine Stunde?
+Chasker  : Eine Stunde?
+John     : Ungefähr.
+Chasker  : Ihr wart fast vier Stunden dort drin.
+
+Rico     : Was?
+Sara     : Das kann nicht sein.
+Chasker  : Meine Uhr sagt etwas anderes.
+
+Erzähler : Die Gruppe sah Chasker verwirrt an.
+Erzähler : Niemand sagte etwas.
+
+Chasker  : Dann sollten wir das später klären.
+
+John     : Wir hatten dort drin noch ein anderes Problem.
+Chasker  : Was für ein Problem?
+John     : Eine Drohne.
+Chasker  : Eine Drohne?
+Rico     : Ja. Kam einfach aus einer Wand.
+Lara     : Sie hat uns angegriffen.
+John     : Wir haben sie ausgeschaltet.
+Chasker  : Gut. Wir kümmern uns später darum.
+
+Erzähler : Chasker deutete auf den schnell errichteten Stützpunkt.
+Chasker  : Kommt. Wir müssen uns ansehen, was ihr gefunden habt.
+
+Erzähler : Das Team folgte Chasker zurück zum provisorischen Stützpunkt.
+Enter...

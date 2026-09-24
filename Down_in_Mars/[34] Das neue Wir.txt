@@ -1,0 +1,24 @@
+Erzähler : Zum Schluss öffneten sie die Datei über das Projekt Das neue Wir.
+
+Erzähler : Klassifikation: Robotermensch.
+Erzähler : Ursprung: Herstellung aus —
+Erzähler : Beschreibung: Sieht aus wie ein Marsianer.
+Erzähler : Theoretischer Status: KI gesteuerter Roboter.
+Erzähler : Aufgabe: Übernehmen von Aufgaben.
+
+Rico     : Diese Daten lösen zur Abwechslung mal ein paar Fragen.
+John     : Das stimmt.
+
+John     : Wir wissen jetzt, dass das oder die Aliens Aeons heißen.
+John     : Wir wissen aber auch, dass sie hier hergestellt wurden.
+John     : Und das ist nicht wirklich eine gute Nachricht.
+
+Sara     : Es gibt aber auch einen Hinweis darauf, dass einige Marsianer und Roboter überlebt haben.
+Sara     : Sie sind mit der Sanctuary nach Prometheus-Prime geflogen.
+Sara     : Vielleicht finden wir heraus, wo dieser Ort liegt und können auch dorthin fliegen.
+
+Chasker  : Ich werde sofort die besten Forscher darauf ansetzen, diese Dateien genauer zu untersuchen und den Ort zu finden.
+
+Erzähler : Damit beendete Chasker die Sitzung.
+Erzähler : Alle gingen wieder an die Arbeit.
+Enter...

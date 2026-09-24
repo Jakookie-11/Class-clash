@@ -1,0 +1,33 @@
+Erzähler : Zurück auf der Red Horizon wurde der verwundete Soldat in die Isolationszelle der Krankenstation gebracht.
+Erzähler : Sara begann sofort mit der Untersuchung, während John die Speicherkarte aus der Bodycam zog.
+John     : Vielleicht erfahren wir, was passiert ist.
+Erzähler : Rico und Lara stellten sich hinter ihn, während John die Aufnahme auf den Hauptschirm lud.
+
+Erzähler : Das Video begann ruhig.
+Erzähler : Zwei Soldaten patrouillierten durch die kalten, metallenen Gänge der Station.
+Erzähler : Die Wände waren teilweise von den pulsierenden Adern durchzogen.
+Erzähler : Plötzlich war ein Kratzen zu hören.
+Erzähler : Der vordere Soldat hob sein Gewehr und näherte sich vorsichtig einer schmalen Öffnung in der Wand.
+Erzähler : Dann schoss etwas Großes und Dunkles aus dem Schacht.
+Erzähler : Eine unnatürlich große Hand packte den Soldaten und zog ihn in die Öffnung.
+Erzähler : Sein Schrei hallte durch den Gang und verstummte plötzlich.
+Erzähler : Der zweite Soldat wich zurück und rief nach seinem Kameraden.
+Erzähler : Doch er bekam keine Antwort.
+Erzähler : Dann rannte er.
+Erzähler : Die Kamera zeigte nur noch hastige Bewegungen und den keuchenden Atem des Soldaten.
+Erzähler : Schließlich stolperte er und stürzte.
+Erzähler : Als er wieder aufstand, schleppte er sich in eine Ecke.
+Erzähler : Die letzten Sekunden der Aufnahme zeigten nur noch verschwommene Schatten.
+Erzähler : Dann war ein tiefes Knurren zu hören.
+Erzähler : Das Bild wurde schwarz.
+
+Erzähler : Niemand sagte etwas.
+John     : Was ... war das?
+Lara     : Das war definitiv kein Mensch.
+Rico     : Und ich dachte, die Drohnen wären schon schlimm.
+
+Erzähler : Plötzlich knackte das Funkgerät.
+Soldat   : Commander Chasker, bitte kommen Sie sofort in die Krankenstation! Es ist dringend!
+Erzähler : Chasker stand sofort auf.
+Chasker  : Ich bin unterwegs.
+Erzähler :

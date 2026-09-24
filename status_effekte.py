@@ -27,8 +27,10 @@ class StatusEffekt:
 betaeubt = StatusEffekt("betaeubt", 1, 0)
 schaden_plus = StatusEffekt("schaden_plus", 2, 1.3)
 schaden_minus = StatusEffekt("schaden_minus", 2, 0.7)
-damage_over_time_1 = StatusEffekt("damage_over_time_1", 2, -10 )
-healing_over_time_1 = StatusEffekt("healing_over_time_1", 2, 10 )
+schaden_erhalten_minus = StatusEffekt("schaden_erhalten_minus", 5, 0.7)
+
+damage_over_time_1 = StatusEffekt("damage_over_time_1", 2, -10)
+healing_over_time_1 = StatusEffekt("healing_over_time_1", 2, 10)
 
 
 
@@ -38,8 +40,15 @@ def status_effekte_ausgeben(von_wem):
 
 
 def status_effekte_hinzufügen(wem, was):
-    if was not in charaktere.Charaktere[wem].status_effekte:
-        charaktere.Charaktere[wem].status_effekte.append(copy.copy(was))
+
+    effekte = charaktere.Charaktere[wem].status_effekte
+
+    for i, effekt in enumerate(effekte):
+        if effekt.name == was.name:
+            effekte[i] = copy.copy(was)
+            return
+
+    effekte.append(copy.copy(was))
 
 
 def status_effekt_vorhanden(bei_wem, name):
@@ -59,10 +68,10 @@ def status_effekte_aktualisieren(wer):
 
         #---Über Zeit Effekte---#
         if effekt.name == "damage_over_time_1":
-           faehigkeiten.HP_verändern(charakter.name, effekt.wert)
+           faehigkeiten.HP_verändern(wer, effekt.wert)
 
         if effekt.name == "healing_over_time_1":
-           faehigkeiten.HP_verändern(charakter.name, effekt.wert) 
+           faehigkeiten.HP_verändern(wer, effekt.wert) 
 
         effekt.dauer -= 1
 

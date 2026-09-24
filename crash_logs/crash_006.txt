@@ -1,0 +1,32 @@
+========================================
+       CLASS CLASH CRASH REPORT
+========================================
+
+Spieler: Jakob
+Datum: 2026-09-20
+Uhrzeit: 18:03:41
+Fehler-ID: a9315a38497893dd263153fdb14587e7e7ab7efb1f992beadd68e70f51a77d49
+Status: gefixt
+
+----------------------------------------
+FEHLER / TRACEBACK
+----------------------------------------
+
+Traceback (most recent call last):
+  File "c:\Users\jakob\Desktop\Git\Class clash\main.py", line 48, in <module>
+    is_brake_neues_spiel = neues_spiel.neues_spiel(spieler)
+  File "c:\Users\jakob\Desktop\Git\Class clash\neues_spiel.py", line 40, in neues_spiel
+    is_break_kampangen = kampange.kampangen(spieler_name)
+  File "c:\Users\jakob\Desktop\Git\Class clash\kampange.py", line 201, in kampangen
+    is_win = neues_spiel.kampf(
+        leader_2=ausgewaehlter_kampf.gegner_1,
+    ...<4 lines>...
+        team_groesse=ausgewaehlter_kampf.team_groesse
+    )
+  File "c:\Users\jakob\Desktop\Git\Class clash\neues_spiel.py", line 753, in kampf
+    faehigkeit.funktion(wer, ziel, team_2)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\jakob\Desktop\Git\Class clash\faehigkeiten.py", line 1008, in ablenken_obj
+    status_effekte.status_effekstatus_effekte_hinzufügent_hinzufuegen(
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'status_effekte' has no attribute 'status_effekstatus_effekte_hinzufügent_hinzufuegen'

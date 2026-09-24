@@ -1,0 +1,26 @@
+========================================
+       CLASS CLASH CRASH REPORT
+========================================
+
+Spieler: Jakob
+Datum: 2026-09-20
+Uhrzeit: 20:05:43
+Fehler-ID: 4ae97fb99cf022be0bdea8fc4d4144277831e88aee105a395033bbefa1096a92
+Status: gefixt
+
+----------------------------------------
+FEHLER / TRACEBACK
+----------------------------------------
+
+Traceback (most recent call last):
+  File "c:\Users\jakob\Desktop\Git\Class clash\main.py", line 56, in <module>
+    is_brake_charakter_bib = charakter_bip.charakter_bip(spieler)
+  File "c:\Users\jakob\Desktop\Git\Class clash\charakter_bip.py", line 27, in charakter_bip
+    is_break = charaktere_aufleveln()
+  File "c:\Users\jakob\Desktop\Git\Class clash\charakter_bip.py", line 179, in charaktere_aufleveln
+    is_break = ressourcen.ressourcen_verändern("Credits   ", kosten_für_level_up)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\jakob\Desktop\Git\Class clash\ressourcen.py", line 24, in ressourcen_verändern
+    if abs(wie_viel) <= ressourcen[welche]:
+                        ~~~~~~~~~~^^^^^^^^
+KeyError: 'Credits   '

@@ -1,0 +1,29 @@
+========================================
+       CLASS CLASH CRASH REPORT
+========================================
+
+Spieler: Jakob
+Datum: 2026-09-19
+Uhrzeit: 16:21:27
+Fehler-ID: 9dafbd2a92bfe0188c95fc5c0318444d6264b6d5d944df7d34044068ce29c462
+Status: gefixt
+
+----------------------------------------
+FEHLER / TRACEBACK
+----------------------------------------
+
+Traceback (most recent call last):
+  File "c:\Users\jakob\Desktop\Git\Class clash\main.py", line 49, in <module>
+    is_brake_neues_spiel = neues_spiel.neues_spiel(spieler)
+  File "c:\Users\jakob\Desktop\Git\Class clash\neues_spiel.py", line 33, in neues_spiel
+    is_break_kampf = kampf()
+  File "c:\Users\jakob\Desktop\Git\Class clash\neues_spiel.py", line 749, in kampf
+    faehigkeit.funktion(wer, ziel, team_1)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\jakob\Desktop\Git\Class clash\faehigkeiten.py", line 293, in jakobs_basic_obj
+    HP_verändern(wen, schaden)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "c:\Users\jakob\Desktop\Git\Class clash\faehigkeiten.py", line 64, in HP_verändern
+    charakter = charaktere.Charaktere[wem]
+                ~~~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: None

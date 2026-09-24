@@ -1,0 +1,34 @@
+========================================
+       CLASS CLASH CRASH REPORT
+========================================
+
+Spieler: Jakob
+Datum: 2026-09-19
+Uhrzeit: 18:53:17
+Fehler-ID: a5ac6d35318a1dd354fbcd13198572d1cc741df3b7f940823d6d6e714d221f5f
+Status: gefixt
+
+----------------------------------------
+FEHLER / TRACEBACK
+----------------------------------------
+
+Traceback (most recent call last):
+  File "c:\Users\jakob\Desktop\Git\Class clash\main.py", line 48, in <module>
+    is_brake_neues_spiel = neues_spiel.neues_spiel(spieler)
+  File "c:\Users\jakob\Desktop\Git\Class clash\neues_spiel.py", line 39, in neues_spiel
+    is_break_kampangen = kampange.kampangen(spieler_name)
+  File "c:\Users\jakob\Desktop\Git\Class clash\kampange.py", line 206, in kampangen
+    is_win = neues_spiel.kampf(
+        leader_2=ausgewaehlter_kampf.gegner_1,
+    ...<4 lines>...
+        team_groesse=ausgewaehlter_kampf.team_groesse
+    )
+  File "c:\Users\jakob\Desktop\Git\Class clash\neues_spiel.py", line 596, in kampf
+    reinfolge = schnellster_charakter_ermitteln(ausgewaehlte_charaktere)
+  File "c:\Users\jakob\Desktop\Git\Class clash\neues_spiel.py", line 254, in schnellster_charakter_ermitteln
+    reinfolge = sorted(ausgewählte_charaktere_list, key=lambda name: charaktere.Charaktere[name].speed, reverse=True)
+                ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\jakob\Desktop\Git\Class clash\neues_spiel.py", line 254, in <lambda>
+    reinfolge = sorted(ausgewählte_charaktere_list, key=lambda name: charaktere.Charaktere[name].speed, reverse=True)
+                                                                     ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+KeyError: 'normaler_6_klaessler'

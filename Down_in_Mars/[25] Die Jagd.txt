@@ -1,0 +1,38 @@
+Erzähler : Sie liefen durch einen schmalen Wartungsgang weiter.
+Erzähler : Niemand sprach.
+Erzähler : Hinter ihnen war wieder ein Geräusch zu hören.
+
+Rico     : Das Ding ist noch da.
+Sara     : Woher willst du das wissen?
+Rico     : Weil es immer dann ruhig wird, wenn wir denken, dass wir sicher sind.
+
+Erzähler : John sah kurz zurück.
+Erzähler : Nichts.
+
+John     : Weiter.
+
+Erzähler : Dann vibrierte der Boden leicht.
+Erzähler : Ein dumpfer Schlag hallte durch die Station.
+Erzähler : Noch einer.
+
+Lara     : Das kommt näher.
+
+Erzähler : Plötzlich öffnete sich eine Tür neben ihnen.
+
+John     : Waffen bereit!
+Enter...
+
+
+
+Erzähler : Die Maschinen waren zerstört.
+Erzähler : John sah in den Gang zurück.
+
+John     : Alle da?
+Rico     : Ja.
+Lara     : Noch.
+
+Erzähler : Ein weiteres Geräusch ertönte irgendwo hinter ihnen.
+
+Sara     : Wir sollten weiter.
+John     : Schnell.
+Enter...

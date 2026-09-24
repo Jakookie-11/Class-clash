@@ -1,0 +1,42 @@
+Erzähler : Nachdem die Red Horizon zum Stillstand gekommen war, wurde das Gebiet sofort von Soldaten gesichert.
+
+Chasker  : Durchsucht die Station. Wir müssen herausfinden, ob wir hier alleine sind.
+
+Erzähler : John und sein Team wurden damit beauftragt, die erste Erkundung zu leiten.
+Erzähler : Vorsichtig bewegten sie sich durch die unbekannten Gänge.
+
+Erzähler : Nach einigen Ecken huschte plötzlich ein dunkler Schatten über eine Wand.
+Rico     : Habt ihr das gesehen?
+John     : Ja.
+Erzähler : John blieb stehen und sah in den Gang zurück.
+Erzähler : Für einen kurzen Moment glaubte er, eine Kreatur zu erkennen.
+Erzähler : Doch der Gang war leer.
+
+Erzähler : Sie gingen vorsichtig weiter.
+Erzähler : Wenig später entdeckten sie einen metallischen Körper auf dem Boden.
+Erzähler : Nur noch wenige Reste von Fleisch befanden sich an dem mechanischen Körper.
+
+Sara     : Das sieht genauso aus wie die Kreaturen, die wir in dem Asteroiden gefunden haben.
+Sara     : Nur hatten die dort noch viel mehr Fleisch am Körper.
+
+Erzähler : Es sah aus, als hätte etwas das Fleisch des Wesens gewaltsam von seinem Körper gerissen.
+
+Lara     : Hier ist etwas.
+
+Erzähler : Lara entdeckte neben dem Körper einen kleinen Datenträger.
+Lara     : Den nehme ich für weitere Untersuchungen mit.
+
+Erzähler : John betrachtete den Körper genauer.
+
+John     : Das Ding sieht aus wie der Terminator.
+
+Rico     : Vielleicht war der Schatten dafür verantwortlich.
+Rico     : Wir sollten zu Chasker zurück und ihm Bericht erstatten.
+
+Erzähler : Bevor sie sich auf den Rückweg machen konnten, meldete sich Chasker über Funk.
+
+Chasker  : John, hört ihr mich?
+John     : Laut und deutlich.
+Chasker  : Ein Erkundungsteam wird vermisst. Sucht nach ihnen und bringt sie zurück.
+John     : Verstanden.
+Enter...

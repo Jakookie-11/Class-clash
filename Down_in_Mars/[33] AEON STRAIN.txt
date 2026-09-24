@@ -1,0 +1,16 @@
+Erzähler : Als Nächstes öffneten sie die Datei über das Projekt AEON STRAIN.
+
+Erzähler : Klassifikation: Unbekannt / nicht-biologisch bestätigt.
+Erzähler : Ursprung: Herstellung aus —
+Erzähler : Beschreibung: Aeon Strain zeigt keine feste Gestalt.
+Erzähler : Das Phänomen äußert sich als Störung in Raum und Wahrnehmung, begleitet von Flüstern auf allen Frequenzen.
+Erzähler : Theoretischer Status: Nicht als Lebewesen zu klassifizieren.
+Erzähler : Beobachtungshinweise: Kontakt mit exponierten Crewmitgliedern führt zu Identitätsfragmentierung,
+Erzähler : spontanen Bewegungsabläufen und dem Verlust des eigenen Zeitgefühls.
+Erzähler : Aufgabe: Taktische Kriegsführung.
+
+Erzähler : Für einige Sekunden sagte niemand etwas.
+
+Sara     : Das erklärt zumindest einige der Dinge, die wir erlebt haben.
+John     : Und es bestätigt, dass diese Wesen nicht einfach normale Lebewesen sind.
+Enter...

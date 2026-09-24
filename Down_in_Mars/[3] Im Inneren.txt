@@ -1,0 +1,30 @@
+Erzähler : Hinter der Tür befand sich kein gewöhnlicher Raum.
+Erzähler : Ein schmaler Gang führte tief in das unbekannte Objekt hinein.
+
+Sara     : Das ist definitiv kein Asteroid.
+Lara     : Die Wände sehen aus, als wären sie aus Metall.
+Rico     : Und trotzdem ist das Ding mitten auf der Landebahn eingeschlagen.
+John     : Konzentriert bleiben. Wir wissen immer noch nicht, was das hier ist.
+
+Erzähler : Das Team bewegte sich langsam durch den Gang.
+Erzähler : Nach einigen Metern öffnete sich der Gang zu einem größeren Raum.
+
+Sara     : Was zum...?
+Erzähler : Überall an den Wänden befanden sich unbekannte technische Anlagen.
+Lara     : Das sieht aus wie eine Art Kontrollraum.
+Rico     : Dann sollten wir vielleicht herausfinden, was damit passiert ist.
+John     : Vorsichtig.
+
+Erzähler : In der Mitte des Raumes befand sich eine große Konsole.
+Erzähler : Mehrere Anzeigen waren noch aktiv.
+
+John     : Ich sehe mir die Konsole an.
+Erzähler : Während John die Anzeigen untersuchte, bemerkte Sara etwas an der gegenüberliegenden Wand.
+
+Sara     : Leute... kommt mal her.
+Erzähler : Auf dem Boden lagen mehrere verweste menschliche Körper.
+Lara     : Die sind schon länger hier.
+Rico     : Was ist hier passiert?
+Erzähler : Niemand antwortete.
+Erzähler : An einer der Wände waren tiefe Kratzspuren zu sehen.
+Enter...

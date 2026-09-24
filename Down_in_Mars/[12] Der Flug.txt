@@ -1,0 +1,26 @@
+Erzähler : Die Reise zum Mars sollte knapp zwei Tage dauern. Die Crew wechselte sich deshalb bei der Steuerung ab.
+
+Erzähler : Während Rico seine Schicht hatte, sah sich Sara im Labor um.
+Erzähler : Das Labor war mit modernster Ausrüstung ausgestattet und wirkte deutlich fortschrittlicher als alles, was Sara bisher gesehen hatte.
+Erzähler : Nachdem sie sich umgesehen hatte, kehrte sie auf die Brücke zurück.
+
+Erzähler : Als Rico abgelöst wurde, sah er sich noch kurz im Lager um.
+Erzähler : Dort fand er Lebensmittel, Getränke, Waffen und verschiedene UAVs.
+Erzähler : Sogar mehrere Militärhubschrauber waren dort untergebracht.
+Rico     : Ob die Dinger auf dem Mars überhaupt fliegen können?
+Erzähler : Er nahm sich vor, später einen Forscher danach zu fragen.
+
+Erzähler : Am nächsten Tag übernahm John die Steuerung.
+Erzähler : Zunächst überprüfte er die Flugdaten. Der Kurs war stabil und alle Systeme funktionierten normal.
+Erzähler : Dann flackerte plötzlich ein Signal auf dem Navigationsschirm auf.
+John     : Hm ...
+Erzähler : Die Koordinaten stimmten nicht mehr mit seiner ursprünglichen Eingabe überein.
+Erzähler : John korrigierte den Kurs manuell.
+Erzähler : Für einen kurzen Moment erschien dabei ein fremdes Symbol auf dem Bildschirm.
+Erzähler : Dann war es wieder verschwunden.
+John     : Muss ein Glitch gewesen sein.
+
+Erzähler : Währenddessen dokumentierte Lara die ungewöhnlichen Ereignisse auf ihrem Tablet.
+Lara     : Tag 2: leichte Abweichung der Kurskoordinaten. John hat korrigiert. Sensorwerte stabil.
+Erzähler : Sie wusste nicht, was sie erwartete. Aber sie wollte sicherstellen, dass nichts vergessen wurde.
+Enter...

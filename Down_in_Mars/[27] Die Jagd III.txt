@@ -1,0 +1,36 @@
+Erzähler : Das Geräusch kam näher.
+Erzähler : John hob seine Waffe.
+
+John     : Alle bereit.
+
+Erzähler : Aus einem Seitengang trat langsam eine mechanische Gestalt.
+
+Rico     : Das ist einer von denen.
+Lara     : Aber der sieht anders aus.
+
+Erzähler : Die Maschine bewegte sich ruckartig.
+
+Sara     : Da kommt noch einer.
+
+Erzähler : Hinter der ersten Gestalt tauchte ein weiterer Wachroboter auf.
+
+John     : Nicht auseinanderziehen lassen.
+
+Erzähler : Die beiden Maschinen richteten ihre Waffen auf das Team.
+Enter...
+
+
+
+Erzähler : Die beiden Maschinen lagen regungslos auf dem Boden.
+Erzähler : John überprüfte kurz seine Ausrüstung.
+
+John     : Alle noch einsatzfähig?
+Sara     : Ja.
+Rico     : Noch.
+
+Lara     : Wir sollten einen Weg zurück zur Hauptstrecke finden.
+
+Erzähler : Lara deutete auf einen Seitengang.
+Lara     : Dort vorne müsste ein größerer Bereich kommen.
+John     : Dann gehen wir dort hin.
+Enter...

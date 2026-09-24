@@ -1,0 +1,51 @@
+Erzähler        : Am nächsten Tag begann die Gruppe damit, die Daten des Speicherkerns auszuwerten.
+Erzähler        : Als Erstes öffneten sie das Stations Logbuch.
+
+Stationslogbuch : Tag 456 nach Start der Projekte.
+Stationslogbuch : Die Forschungen am Projekt AEON STRAIN werden fortgesetzt.
+Stationslogbuch : Seit Beginn des Projekts konnten noch keine zufriedenstellenden Ergebnisse erzielt werden.
+Stationslogbuch : Es sind jedoch erste Fortschritte zu verzeichnen.
+Stationslogbuch : Das Projekt Das neue Wir verläuft planmäßig.
+Stationslogbuch : Die Fertigstellung des ersten Produkts wird in etwa zehn Tagen erwartet.
+Stationslogbuch : Eintrag verfasst durch den marsianischen Anführer.
+
+Stationslogbuch : Tag 468 nach Start der Projekte.
+Stationslogbuch : AEON STRAIN: weiterhin nur geringe Fortschritte.
+Stationslogbuch : Das neue Wir: erster Prototyp fertiggestellt.
+Stationslogbuch : Der Prototyp erfüllt bisher alle Erwartungen.
+Stationslogbuch : Eintrag verfasst durch den marsianischen Anführer.
+
+Stationslogbuch : Tag 475 nach Start der Projekte.
+Stationslogbuch : Das Projekt Das neue Wir verläuft weiterhin planmäßig.
+Stationslogbuch : AEON STRAIN: kritischer Zwischenfall.
+Stationslogbuch : Ein Aeon wurde erfolgreich erschaffen.
+Stationslogbuch : Das Subjekt reagiert nicht auf Befehle.
+Stationslogbuch : Es zeigt ein stark ausgeprägtes Bedürfnis nach Nahrungsaufnahme.
+Stationslogbuch : Mehrere Personen wurden vom Subjekt konsumiert.
+Stationslogbuch : Einige Personen werden vom Subjekt nicht angegriffen.
+Stationslogbuch : Der Grund dafür konnte bisher nicht festgestellt werden.
+Stationslogbuch : Eintrag verfasst durch den marsianischen Anführer.
+
+Stationslogbuch : Tag 483 nach Start der Projekte.
+Stationslogbuch : Die Marsianer sind verschwunden.
+Stationslogbuch : Ausgenommen sind ausschließlich Personen, die vom Aeon nicht angegriffen wurden.
+Stationslogbuch : Das Subjekt zeigt weiterhin kein Interesse an den Mitgliedern von Das neue Wir.
+Stationslogbuch : Mögliche Erklärung: Die Mitglieder von Das neue Wir bestehen nicht vollständig aus biologischem Gewebe.
+Stationslogbuch : Bei Untersuchungen wurde ein Metallskelett festgestellt.
+Stationslogbuch : Eintrag verfasst durch  Das neue Wir Anführer.
+
+Stationslogbuch : Tag 488 nach Start der Projekte.
+Stationslogbuch : Der Aeon greift nun auch Mitglieder von Das neue Wir an.
+Stationslogbuch : Evakuierungsprotokoll eingeleitet.
+Stationslogbuch : Das Schiff Sanctuary wird von der Prometheus-Delta-Station nach Prometheus-Prime verlegt.
+Stationslogbuch : Eintrag verfasst durch  Das neue Wir Anführer.
+
+Stationslogbuch : Tag 396025 nach Start der Projekte.
+Stationslogbuch : Automatischer Eintrag.
+Stationslogbuch : Ein unbekanntes Schiff hat die Verbotene Zone betreten.
+Stationslogbuch : Protokoll zur Sicherung unbekannter Schiffe aktiviert.
+Stationslogbuch : Schiff wird in die Station gezogen.
+
+Rico            : Das ist ... ziemlich viel.
+John            : Und es erklärt zumindest einiges.
+Enter...

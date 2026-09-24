@@ -1,0 +1,31 @@
+========================================
+       CLASS CLASH CRASH REPORT
+========================================
+
+Spieler: Jakob_1
+Datum: 2026-09-23
+Uhrzeit: 20:41:13
+Fehler-ID: 1de25f3e30aa7aa5b31f1560d4fb8d57309a1f3b72179287863843f335a1e447
+Status: gefixt
+
+----------------------------------------
+FEHLER / TRACEBACK
+----------------------------------------
+
+Traceback (most recent call last):
+  File "c:\Users\jakob\Desktop\Git\Class clash\main.py", line 48, in <module>
+    is_brake_neues_spiel = neues_spiel.neues_spiel(spieler)
+  File "c:\Users\jakob\Desktop\Git\Class clash\neues_spiel.py", line 34, in neues_spiel
+    is_break_kampf = kampf()
+  File "c:\Users\jakob\Desktop\Git\Class clash\neues_spiel.py", line 876, in kampf
+    faehigkeit.funktion(
+    ~~~~~~~~~~~~~~~~~~~^
+        wer,
+        ^^^^
+        ziel,
+        ^^^^^
+        team_1
+        ^^^^^^
+    )
+    ^
+TypeError: jakobs_basic_obj() missing 1 required positional argument: 'team_2'

@@ -1,0 +1,40 @@
+Erzähler : Das Wesen bewegte sich plötzlich auf das Team zu.
+
+John     : Alle zurück!
+Erzähler : John zog seine Waffe und richtete sie auf die Gestalt.
+
+Sara     : Was ist das für ein Ding?
+Rico     : Keine Ahnung. Aber es sieht nicht freundlich aus.
+Lara     : Dann finden wir es wohl gleich heraus.
+Enter...
+
+
+
+Erzähler : Das Wesen wich einige Schritte zurück.
+Erzähler : Für einen Moment bewegte es sich nicht.
+
+Rico     : Ist es ... tot?
+
+Erzähler : Niemand antwortete.
+Erzähler : Das Wesen stand regungslos im Schatten.
+
+Sara     : John...
+
+Erzähler : John sah zu der Gestalt.
+Erzähler : Dann begann die Umgebung um ihn herum zu verschwimmen.
+
+John     : Was passiert hier?
+
+Erzähler : Die Wände schienen sich zu verformen.
+Erzähler : Das Licht flackerte immer schneller.
+
+Sara     : John!
+
+Erzähler : Dann wurde alles schwarz.
+
+Erzähler : John schreckte sofort aus seinem Schlaf auf.
+Erzähler : Er konnte kaum atmen und bekam nur schwer Luft.
+
+Erzähler : Irgendwie schaffte er es schließlich wieder einzuschlafen.
+Erzähler : Dieses Mal blieb der Albtraum aus.
+Enter...

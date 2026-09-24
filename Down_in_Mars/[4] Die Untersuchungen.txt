@@ -1,0 +1,70 @@
+Erzähler : Das Team begann damit, den unbekannten Raum genauer zu untersuchen.
+
+Erzähler : John ging zur großen Konsole in der Mitte des Raumes.
+John     : Ich sehe mal, ob ich hier irgendwelche Daten finde.
+
+Erzähler : Während John die Anzeigen untersuchte, teilten sich Sara, Lara und Rico auf.
+
+Erzähler : Sara und Lara untersuchten die Leichen.
+Lara     : Die Verletzungen sehen merkwürdig aus.
+Sara     : Das sind keine normalen Schussverletzungen.
+Lara     : Und auch keine Verletzungen, wie man sie von einem einfachen Aufprall erwarten würde.
+Sara     : Ich kann nicht sagen, was das verursacht hat.
+
+Erzähler : Rico untersuchte währenddessen die Kratzspuren an den Wänden.
+Rico     : Die Spuren sind ziemlich tief.
+Erzähler : Neben den Kratzern waren dunkle Blutspuren an der Wand zu erkennen.
+Rico     : Hier ist definitiv etwas passiert.
+
+Erzähler : John arbeitete weiter an der Konsole.
+John     : Ich glaube, ich kann einige Dateien retten.
+Erzähler : Nach einigen Minuten gelang es ihm, mehrere Dateien auf einen Speicher zu kopieren.
+John     : Ich hab ein paar Dateien.
+Rico     : Und? Steht da irgendwas Brauchbares drin?
+John     : Keine Ahnung. Das sehen wir uns später an.
+
+Erzähler : Das Team untersuchte den Raum noch einige Minuten.
+Erzähler : Doch außer den Leichen, den Kratzspuren und den Dateien fanden sie zunächst nichts weiter.
+
+Erzähler : Plötzlich ertönte ein leises Geräusch.
+Sara     : Habt ihr das gehört?
+John     : Alle stehen bleiben.
+
+Erzähler : Das Team hielt inne.
+Erzähler : Für einige Sekunden war nichts zu hören.
+
+Rico     : Vielleicht war es nur irgendwas von der Konsole.
+Lara     : Ich glaube nicht.
+
+Erzähler : Dann ertönte das Geräusch erneut.
+Erzähler : Diesmal deutlich näher.
+
+John     : Zurück zur Tür.
+Erzähler : Das Team bewegte sich langsam zurück.
+
+Erzähler : Plötzlich flackerte eine der Anzeigen an der Wand auf.
+Erzähler : Ein mechanisches Geräusch ertönte.
+
+Rico     : Was zum...?
+Erzähler : Aus einer Wandöffnung bewegte sich eine kleine metallische Drohne.
+
+Sara     : Kontakt!
+John     : Zurück!
+Erzähler : Die Drohne richtete sich auf das Team aus.
+Enter...
+
+
+
+Erzähler : Die Drohne lag reglos auf dem Boden.
+
+Rico     : Was war das denn bitte?
+Sara     : Keine Ahnung. Aber sie wollte uns offensichtlich nicht gehen lassen.
+Lara     : Vielleicht war das einfach eine Art Sicherheitssystem.
+John     : Möglich. Ist jetzt auch egal.
+
+Erzähler : John nahm den Speicher mit den geretteten Dateien an sich.
+John     : Wir haben, was wir brauchen. Raus hier.
+
+Erzähler : Das Team machte sich gemeinsam auf den Weg zurück zum Ausgang.
+Erzähler : Niemand sprach mehr über die Drohne.
+Enter...

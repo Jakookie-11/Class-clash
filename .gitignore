@@ -1,5 +1,5 @@
 .venv/
 __pycache__/
 geheim/
-crash_logs/
+**/test.py
 *.pyc

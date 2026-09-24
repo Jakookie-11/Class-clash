@@ -1,0 +1,26 @@
+Erzähler : Gegen 15:00 Uhr näherte sich die Red Horizon der geplanten Landestelle auf dem Mars.
+Erzähler : Unter der dünnen Atmosphäre waren nur rote Felsen und endlose Ebenen zu erkennen.
+John     : Ich überprüfe noch einmal den Kurs.
+Erzähler : John überprüfte den Kurs, während Lara die Instrumente überwachte.
+Erzähler : Plötzlich registrierten die Sensoren eine Energiespitze unterhalb des Schiffes.
+John     : Was ist das?
+Erzähler : Ein schwaches, bläuliches Licht begann unter dem Schiff zu pulsieren.
+Erzähler : Ohne Vorwarnung erfasste ein Lichtstrahl die Red Horizon.
+Erzähler : Das Schiff wurde mit großer Kraft in Richtung Boden gezogen.
+John     : Ich verliere die Kontrolle!
+Erzähler : John kämpfte mit den Steuerhebeln, doch das Schiff reagierte kaum.
+Erzähler : Unter ihnen begann der Boden metallisch zu glühen.
+Erzähler : Eine gigantische Struktur schob sich aus dem Marsboden.
+Erzähler : Eine fremde Station, die teilweise tief in den roten Felsen eingebettet war.
+Erzähler : Dünne, pulsierende Adern zogen sich über ihre Oberfläche.
+Rico     : Was zum ...?
+Erzähler : Die Red Horizon wurde langsam auf die Station zugezogen.
+Erzähler : Die Instrumente spielten verrückt und mehrere Navigationssysteme fielen aus.
+Erzähler : Dann öffnete sich eine gigantische Schleuse.
+Erzähler : Die Red Horizon wurde in die Station hineingezogen.
+Erzähler : Im Inneren schimmerte alles metallisch und organisch zugleich.
+Erzähler : Adern zogen sich über Wände und Boden.
+Erzähler : Es war vollkommen still.
+John     : Wir ... sind nicht gelandet.
+John     : Wir wurden in diese Station gezogen.
+Enter...
