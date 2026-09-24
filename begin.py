@@ -9,6 +9,7 @@ import getpass
 import funktions
 import speichern
 import menues
+import speichern
 
 
 def begin():
@@ -157,6 +158,7 @@ def begin():
                             print("! Das Passwort ist unsichtbar, das Kann in den Einstellungen unter Profil aber geaendert werden.")
                             print("-------------")
                             confic.passwort_sichtbarkeitshinweis_anzeigen = False
+                            speichern.confic_setup_speichern()
 
                         if confic.passwort_sichtbarkeit == False:
                             passwort = getpass.getpass("Passwort? ").strip()
