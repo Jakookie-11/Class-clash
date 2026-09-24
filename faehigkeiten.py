@@ -385,16 +385,52 @@ knielauf = faehigkeit(
     "gegner"
 )
 
+# ══════════════════════════════════════════════════════════════
+# Noah
+# ══════════════════════════════════════════════════════════════
+
+def gib_mir_die_roehre_obj(wer, wen, team_1):
+
+    import geheimes
+
+    schaden = geheimes.einfacher_angriff_b_obj(wer, wen, team_1)
+
+    if wen == "max":
+        schaden = schaden * 2
+        status_effekte.status_effekte_hinzufügen(wen, status_effekte.betaeubt)
+
+    else:
+        schaden = schaden * 1.5
+
+    return schaden
+
+gib_mir_die_roehre = faehigkeit(
+    "gib_mir_die_roehre",
+    gib_mir_die_roehre_obj,
+    "Noah klopft an die tür des gegners und laesst ihn nicht schlafen, sobald er rauskommt schnappt sich Noah die Roehre und schlaegt den Gegner.",
+    3,
+    0,
+    "gegner"
+)
 
 
+# ══════════════════════════════════════════════════════════════
+# Sascha
+# ══════════════════════════════════════════════════════════════
+
+def leberkaesbroetchen_essen_obj(wer, wen, team=None):
+
+    HP_verändern(wer, 70)
 
 
-
-
-
-
-
-
+leberkaesbroetchen_essen = faehigkeit(
+    "Leberkaesbroetchen_essen",
+    leberkaesbroetchen_essen_obj,
+    "Sascha isst ein Leberkaesbroetchen nud heilt sich dadurch um 70-HP.",
+    3,
+    0,
+    "selbst"
+)
 
 
 

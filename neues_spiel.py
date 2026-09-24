@@ -589,7 +589,7 @@ def kampf(
 
         print("═════════════════════════")
         print("          Kampf          ")
-        print(f"         Runde {runde}")
+        print(f"        Runde {runde}")
         print("═════════════════════════")
         print()
 

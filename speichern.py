@@ -6,6 +6,7 @@ import confic
 
 import charaktere
 import ressourcen
+import neues_spiel
 
 
 def alle_kampangen_laden():
@@ -19,6 +20,9 @@ def spiel_speichern(spieler):
     os.makedirs("saves", exist_ok=True)
 
     confic_setup_speichern()
+    neues_spiel.alle_statuseffekte_resetten()
+    neues_spiel.alle_faehigkeits_abklingzeiten_resetten()
+    neues_spiel.HP_zuruecksetzen()
 
     gespeicherte_charaktere = {}
 

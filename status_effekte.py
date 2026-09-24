@@ -68,10 +68,10 @@ def status_effekte_aktualisieren(wer):
 
         #---Über Zeit Effekte---#
         if effekt.name == "damage_over_time_1":
-           faehigkeiten.HP_verändern(charakter.name, effekt.wert)
+           faehigkeiten.HP_verändern(wer, effekt.wert)
 
         if effekt.name == "healing_over_time_1":
-           faehigkeiten.HP_verändern(charakter.name, effekt.wert) 
+           faehigkeiten.HP_verändern(wer, effekt.wert) 
 
         effekt.dauer -= 1
 

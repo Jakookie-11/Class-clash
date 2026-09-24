@@ -68,7 +68,7 @@ Hannah_d = charakter(
     150,
     -25,
     "girl",
-    110,
+    130,
     1,
     faehigkeit_1=faehigkeiten.einfacher_angriff_g,
     faehigkeit_2=faehigkeiten.einfache_heilung,
@@ -144,10 +144,38 @@ Lovis = charakter(
 )
 
 
+#---Noah---#
+Noah = charakter(
+    "Noah",
+    "unterstuetzer",
+    120,
+    120,
+    120,
+    -15,
+    "boy",
+    69,
+    1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff_b,
+    faehigkeit_2=faehigkeiten.gib_mir_die_roehre,
+    faehigkeit_3=faehigkeiten.starker_schlag
+)
 
 
-
-
+#---Sascha---#
+Sascha = charakter(
+    "Sascha",
+    "Angreifer",
+    80,
+    80,
+    80,
+    -10,
+    "boy",
+    74,
+    1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff_b,
+    faehigkeit_2=faehigkeiten.leberkaesbroetchen_essen,
+    faehigkeit_3=faehigkeiten.starker_schlag
+)
 
 
 

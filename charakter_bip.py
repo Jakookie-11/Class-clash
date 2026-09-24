@@ -156,7 +156,10 @@ def charaktere_aufleveln(spieler):
     while charaktere_aufleveln == True:
 
         os.system(confic.terminal_clear)
-
+        print("═══════════════════════════════════════")
+        print(f"Aktuelle Credits: {ressourcen.ressourcen["Credits"]}")
+        print("═══════════════════════════════════════")
+        print()
         print("Zu verfuegung stehende Charaktere:")
         print()
 
