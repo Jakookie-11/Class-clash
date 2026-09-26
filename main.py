@@ -15,6 +15,16 @@ import subprocess
 import crash_handler
 
 
+SCHWARZ  = "\033[30m"
+ROT      = "\033[31m"
+GRUEN    = "\033[32m"
+GELB     = "\033[33m"
+BLAU     = "\033[34m"
+MAGENTA  = "\033[35m"
+CYAN     = "\033[36m"
+WEISS    = "\033[37m"
+
+RESET    = "\033[0m"
 
 
 spieler = begin.begin()

@@ -14,10 +14,25 @@ import geheimes
 import copy
 
 
-GRUEN = "\033[32m"
-GELB = "\033[33m"
-CYAN = "\033[36m"
-RESET = "\033[0m"
+SCHWARZ  = "\033[30m"
+ROT      = "\033[31m"
+GRUEN    = "\033[32m"
+GELB     = "\033[33m"
+BLAU     = "\033[34m"
+MAGENTA  = "\033[35m"
+CYAN     = "\033[36m"
+WEISS    = "\033[37m"
+
+RESET    = "\033[0m"
+
+HELL_GRAU     = "\033[90m"
+HELL_ROT      = "\033[91m"
+HELL_GRUEN    = "\033[92m"
+HELL_GELB     = "\033[93m"
+HELL_BLAU     = "\033[94m"
+HELL_MAGENTA  = "\033[95m"
+HELL_CYAN     = "\033[96m"
+HELL_WEISS    = "\033[97m"
 
 
 def neues_spiel(spieler_name):
@@ -597,18 +612,16 @@ def kampf(
 
         os.system(confic.terminal_clear)
 
-        print("═════════════════════════")
+        print(f"{HELL_ROT}═════════════════════════")
         print("          Kampf          ")
         print(f"        Runde {runde}")
-        print("═════════════════════════")
+        print(f"═════════════════════════{RESET}")
         print()
 
         # Teams anzeigen
         kampf_team_anzeigen(team_1, team_2)
 
-        print(
-            "═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════"
-        )
+        print(f"{WEISS}═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════{RESET}")
         print()
 
 
@@ -657,12 +670,12 @@ def kampf(
                     print(f"{wer} ist am zug!")
                     print("----Status----")
                     print(
-                        f"HP        : "
-                        f"{charaktere.Charaktere[wer].hp:.2f}"
+                        f"{GRUEN}HP        : "
+                        f"{charaktere.Charaktere[wer].hp:.2f}{RESET}"
                     )
                     print(
-                        f"Schaden   : "
-                        f"{charaktere.Charaktere[wer].schaden}"
+                        f"{ROT}Schaden   : "
+                        f"{charaktere.Charaktere[wer].schaden}{RESET}"
                     )
                     print()
 
@@ -688,9 +701,7 @@ def kampf(
                     )
 
                     print()
-                    print(
-                        "Doppelte Zahl für die Erklärung der Fähigkeit"
-                    )
+                    print("Doppelte Zahl für die Erklärung der Fähigkeit")
                     print("Abbrechen um den kampf abzubrechen")
                     print()
 

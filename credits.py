@@ -7,15 +7,36 @@ import probleme
 import funktions
 
 
+SCHWARZ  = "\033[30m"
+ROT      = "\033[31m"
+GRUEN    = "\033[32m"
+GELB     = "\033[33m"
+BLAU     = "\033[34m"
+MAGENTA  = "\033[35m"
+CYAN     = "\033[36m"
+WEISS    = "\033[37m"
+
+RESET    = "\033[0m"
+
+HELL_GRAU     = "\033[90m"
+HELL_ROT      = "\033[91m"
+HELL_GRUEN    = "\033[92m"
+HELL_GELB     = "\033[93m"
+HELL_BLAU     = "\033[94m"
+HELL_MAGENTA  = "\033[95m"
+HELL_CYAN     = "\033[96m"
+HELL_WEISS    = "\033[97m"
+
+
 def credits():
 
     while True:
 
         os.system(confic.terminal_clear)
 
-        print("══════════════════════════════")
+        print(f"{MAGENTA}══════════════════════════════")
         print("            CREDITS")
-        print("══════════════════════════════")
+        print(f"══════════════════════════════{RESET}")
         print()
 
         print("---Coder---")
@@ -33,10 +54,10 @@ def credits():
         print("- Meine Klasse, die unfreiwillig an diesem Experiment teilnimmt")
         print()
 
-        print("══════════════════════════════")
+        print(f"{MAGENTA}══════════════════════════════")
         print("          CLASS CLASH")
         print("            © 2026")
-        print("══════════════════════════════")
+        print(f"══════════════════════════════{RESET}")
         print()
         print()
 
@@ -65,7 +86,7 @@ def credits():
 
             probleme_anzeigen(zu_wem)
 
-            fertig = input("fertig? ")
+            input("fertig? ")
 
         else:
             return 1
@@ -101,11 +122,14 @@ def probleme_finder_anzeigen(clear=True):
 def probleme_anzeigen(von_wem_gemeldet):
 
     os.system(confic.terminal_clear)
-    print(f"════{von_wem_gemeldet}════")
+    print(f"{CYAN}════ {von_wem_gemeldet} ════{RESET}")
     print()
 
     for problem in probleme.probleme[von_wem_gemeldet]:
-        print(f"----{problem['id']}----")
+        print(f"{HELL_MAGENTA}----{problem['id']}----{RESET}")
         print(f"Beschreibung: {problem['beschreibung']}")
-        print(f"Status      : {problem['status']}")
+        if problem['status'] == "behoben":
+            print(f"{GRUEN}Status      : {problem['status']}{RESET}")
+        else:
+            print(f"{HELL_ROT}Status      : {problem['status']}{RESET}")
         print()

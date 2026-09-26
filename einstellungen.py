@@ -11,6 +11,19 @@ import funktions
 import credits
 import speichern
 
+
+SCHWARZ  = "\033[30m"
+ROT      = "\033[31m"
+GRUEN    = "\033[32m"
+GELB     = "\033[33m"
+BLAU     = "\033[34m"
+MAGENTA  = "\033[35m"
+CYAN     = "\033[36m"
+WEISS    = "\033[37m"
+
+RESET    = "\033[0m"
+
+
 def einstellungen(spieler_name):
 
     while True:
@@ -230,11 +243,11 @@ def profil_zuruecksetzen(spieler_name):
     print("Profil Zuruecksetzen")
     print("===================")
     print()
-    print("Achtung: Dein Profil wird auf den Standard zurueckgesetzt!")
+    print(f"{ROT}Achtung: Dein Profil wird auf den Standard zurueckgesetzt!")
     print("Alle deine Fortschritte gehen verloren!")
     print("Dein Spielername, Erstellungsdatum bleiben erhalten!")
     print("Du kannst dies nicht rueckgaengig machen!")
-    print("Du kannst dich danach wieder mit deinem alten Spielername und Passwort anmelden!")
+    print(f"Du kannst dich danach wieder mit deinem alten Spielername und Passwort anmelden!{RESET}")
     print()
 
     bestätigung = input("Bist du sicher, dass du dein Profil zuruecksetzen willst? (ja/nein) ")
@@ -311,10 +324,10 @@ def profil_loeschen(spieler_name):
     print("Profil Loeschen")
     print("==============")
     print()
-    print("Achtung: Dein Profil wird komplett geloescht!")
+    print(f"{ROT}Achtung: Dein Profil wird komplett geloescht!")
     print("Alle deine Fortschritte gehen verloren!")
     print("Du kannst dies nicht rueckgaengig machen!")
-    print("Du kannst dich danach nicht mehr mit deinem alten Spielername und Passwort anmelden!")
+    print(f"Du kannst dich danach nicht mehr mit deinem alten Spielername und Passwort anmelden!{RESET}")
     print()
 
     bestätigung = input("Bist du sicher, dass du dein Profil loeschen willst? (ja/nein) ")

@@ -1,4 +1,9 @@
-
+GRUEN  = "\033[32m"
+GELB   = "\033[33m"
+CYAN   = "\033[36m"
+RESET  = "\033[0m"
+ROT    = "\033[31m"
+ORANGE = "\033[38;5;208m"
 
 hauptmenue = {
     "[1] Spiel Starten" : "",
@@ -50,8 +55,8 @@ einstellungen_menue = {
 profil_menue = {
     "[1] Passwort aendern"              : "",
     "[2] Profil Daten zeigen"           : "",
-    "[3] Profil Zuruecksetzen"          : "",
-    "[4] Profil Loeschen"               : "",
+    f"{ORANGE}[3] Profil Zuruecksetzen{RESET}"          : "",
+    f"{ROT}[4] Profil Loeschen{RESET}"               : "",
     "[5] Passwort-sichtbarkeit aendern" : "",
     "[6] Zurueck"                       : ""
 }
