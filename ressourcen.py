@@ -5,6 +5,7 @@ import confic
 
 ressourcen = {
     "Credits" : 1000,
+    "M_Credits" : 1000,
     "Material 1" : 50,
     "Energie" : 100
 }

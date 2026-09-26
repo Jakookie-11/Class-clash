@@ -62,7 +62,7 @@ def shop(spieler_name):
 
         wahl = input("Wahl? ")
 
-        if wahl in {"1", "2", "3"}:
+        if wahl in {"1", "2", "3", "4"}:
             passwort = getpass.getpass("Shop-Passwort: ")
 
             if not shop_passwort_pruefen(passwort):
@@ -74,12 +74,15 @@ def shop(spieler_name):
             ressourcen.ressourcen_verändern("Credits", 1000)
 
         elif wahl == "2":
-            ressourcen.ressourcen_verändern("Material 1", 20)
+            ressourcen.ressourcen_verändern("M_Credits", 1000)
 
         elif wahl == "3":
-            ressourcen.ressourcen_verändern("Energie", 20)
+            ressourcen.ressourcen_verändern("Material 1", 20)
 
         elif wahl == "4":
+            ressourcen.ressourcen_verändern("Energie", 20)
+
+        elif wahl == "5":
             speichern.spiel_speichern(spieler_name)
             return 1
 

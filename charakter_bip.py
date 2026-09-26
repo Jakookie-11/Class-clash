@@ -156,11 +156,14 @@ def charaktere_aufleveln(spieler):
     while charaktere_aufleveln == True:
 
         os.system(confic.terminal_clear)
-        print("═══════════════════════════════════════")
-        print(f"Aktuelle Credits: {ressourcen.ressourcen["Credits"]}")
-        print("═══════════════════════════════════════")
+        print(f"{GELB}═══════════════════════════════════════{RESET}")
+        print(f"Aktuelle   Credits: {ressourcen.ressourcen["Credits"]}")
+        print(f"Aktuelle M_Credits: {ressourcen.ressourcen["M_Credits"]}")
+        print(f"{GELB}═══════════════════════════════════════{RESET}")
         print()
         print("Zu verfuegung stehende Charaktere:")
+        print()
+        print(f"{CYAN}Normale:{RESET}")
         print()
 
         for schlüssel, charakter in charaktere.Charaktere.items():
@@ -170,6 +173,8 @@ def charaktere_aufleveln(spieler):
                         if charakter.name != "Hannah_d":
                             print(f"Name: {schlüssel :10} Level: {charakter.level}")
 
+        print()
+        print(f"{CYAN}Down in Mars:{RESET}")
         print()
 
         for schlüssel, charakter in charaktere.Charaktere.items():
@@ -204,10 +209,17 @@ def charaktere_aufleveln(spieler):
         #--credit Kosten berechnen--#
         kosten_für_level_up = level_kosten_credits(aktuelles_level_des_chrakters)
 
-        is_break = ressourcen.ressourcen_verändern("Credits", kosten_für_level_up)
+        charakter = charaktere.Charaktere[wen]
 
-        if is_break == 1:
-            return 1
+        if charakter.klasse != "down_in_mars":
+            is_break = ressourcen.ressourcen_verändern("Credits", kosten_für_level_up)
+            if is_break == 1:
+                return 1
+
+        else:
+            is_break = ressourcen.ressourcen_verändern("M_Credits", kosten_für_level_up)
+            if is_break == 1:
+                return 1
 
         #--Eingentliches Level_up--#
         level_up(wen)
@@ -234,11 +246,11 @@ def charaktere_aufleveln(spieler):
 
         print()
 
-        nochmal = input("Nochmal? ")
+        nochmal = input("Nochmal? (y/n) ")
 
         os.system(confic.terminal_clear)
 
-        if nochmal == "ja":
+        if nochmal == "y":
            charaktere_aufleveln = True 
 
         else:

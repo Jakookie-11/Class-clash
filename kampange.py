@@ -6,6 +6,7 @@ import ressourcen
 import speichern
 import charakter_bip
 import charaktere
+import msvcrt
 
 
 fortschritt = {}
@@ -30,6 +31,7 @@ class kampangen_kampf:
         gegner_2=None,
         gegner_3=None,
         gegner_4=None,
+        welche_art_belohnung="Credits",
         belohnung=0,
         ki=1,
         npc_level=1,
@@ -49,6 +51,7 @@ class kampangen_kampf:
         self.gegner_2 = gegner_2
         self.gegner_3 = gegner_3
         self.gegner_4 = gegner_4
+        self.welche_art_belohnung = welche_art_belohnung
         self.belohnung = belohnung
         self.ki = ki
         self.npc_level = npc_level
@@ -108,7 +111,13 @@ def dialog_anzeigen(dialog):
         print(f"{sprecher :{breite}}: ", end="", flush=True)
 
         for buchstabe in text:
+
             print(buchstabe, end="", flush=True)
+
+            if msvcrt.kbhit():
+                msvcrt.getch()
+                return
+
             time.sleep(0.05)
 
         print()
@@ -311,7 +320,7 @@ def kampangen(spieler_name):
                     level_zuruecksetzen(ausgewaehlter_kampf.gegner_3)
                     level_zuruecksetzen(ausgewaehlter_kampf.gegner_4)
 
-                    ressourcen.ressourcen["Credits"] += ausgewaehlter_kampf.belohnung
+                    ressourcen.ressourcen[ausgewaehlter_kampf.welche_art_belohnung] += ausgewaehlter_kampf.belohnung
                     if wahl == kampange.fortschritt + 1:
                         kampange.fortschritt += 1
                     speichern.spiel_speichern(spieler_name)

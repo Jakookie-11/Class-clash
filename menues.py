@@ -19,9 +19,10 @@ charakter_bip_menue = {
 
 shop_menue = {
     "[1] 1000 Credits   " : "",
-    "[2] 20   Material 1" : "",
-    "[3] 20   Energie   " : "",
-    "[4] Zurueck        " : ""
+    "[2] 1000 M_Credits"  : "",
+    "[3] 20   Material 1" : "",
+    "[4] 20   Energie   " : "",
+    "[5] Zurueck        " : ""
 }
 
 
@@ -46,7 +47,6 @@ einstellungen_menue = {
     "[4] Zurueck"        : ""
 }
 #->Y
-import confic
 profil_menue = {
     "[1] Passwort aendern"              : "",
     "[2] Profil Daten zeigen"           : "",

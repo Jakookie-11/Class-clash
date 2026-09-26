@@ -245,15 +245,25 @@ def naechsten_zug_ermitteln(
 
 
 
-def tote_charaktere_entvernen(ausgewaehlte_charaktere):
+def tote_charaktere_entvernen(ausgewaehlte_charaktere, team_1, team_2):
 
-    neue_liste = []
+    neue_team_1 = []
+    neue_team_2 = []
+    neue_ausgewaehlte_charaktere = []
+
+    for name in team_1:
+        if charaktere.Charaktere[name].hp >0:
+            neue_team_1.append(name)
+
+    for name in team_2:
+        if charaktere.Charaktere[name].hp >0:
+            neue_team_2.append(name)
 
     for name in ausgewaehlte_charaktere:
         if charaktere.Charaktere[name].hp >0:
-            neue_liste.append(name)
+            neue_ausgewaehlte_charaktere.append(name)
 
-    return neue_liste
+    return neue_ausgewaehlte_charaktere, neue_team_1, neue_team_2
 
     
 
@@ -898,15 +908,9 @@ def kampf(
 
         alte_reihenfolge = reinfolge
 
-        ausgewaehlte_charaktere = (
-            tote_charaktere_entvernen(
-                ausgewaehlte_charaktere
-            )
-        )
+        ausgewaehlte_charaktere, team_1, team_2 = (tote_charaktere_entvernen(ausgewaehlte_charaktere, team_1, team_2))
 
-        reinfolge = schnellster_charakter_ermitteln(
-            ausgewaehlte_charaktere
-        )
+        reinfolge = schnellster_charakter_ermitteln(ausgewaehlte_charaktere)
 
 
         # ══════════════════════════════════════════════════════════

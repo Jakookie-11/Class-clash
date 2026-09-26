@@ -45,7 +45,7 @@ def status_effekte_hinzufügen(wem, was):
 
     for i, effekt in enumerate(effekte):
         if effekt.name == was.name:
-            effekte[i] = copy.copy(was)
+            effekt.dauer += was.dauer
             return
 
     effekte.append(copy.copy(was))

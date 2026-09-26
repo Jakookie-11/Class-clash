@@ -1244,7 +1244,7 @@ def er_hat_nichts_gemacht_obj(wer, wen, team=None):
 er_hat_nichts_gemacht = faehigkeit(
     "er_hat_nichts_gemacht",
     er_hat_nichts_gemacht_obj,
-    "Er hat nichts gemacht! Entfernt negative Statuseffekte des Ziels und heilt den Angreifer um 20 HP.",
+    "Er hat nichts gemacht! Entfernt negative Statuseffekte des Ziels und heilt den ausführer der Faehigkeit um 20 HP.",
     4,
     0,
     "verbündete"
