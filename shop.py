@@ -82,7 +82,7 @@ def shop(spieler_name):
         elif wahl == "4":
             ressourcen.ressourcen_verändern("Energie", 20)
 
-        elif wahl == "5":
+        elif wahl == "0":
             speichern.spiel_speichern(spieler_name)
             return 1
 

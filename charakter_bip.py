@@ -7,6 +7,7 @@ import charaktere
 import ressourcen
 import confic
 import speichern
+import bilder
 
 
 
@@ -40,7 +41,7 @@ def charakter_bip(spieler_name):
             if is_break == 1:
                 continue
 
-        elif wahl == 3:
+        elif wahl == 0:
             return 1
 
 
@@ -244,9 +245,12 @@ def charaktere_aufleveln(spieler):
         print(f"Faehigkeit 2 : {charakter.faehigkeit_2.name}")
         print(f"Faehigkeit 3 : {charakter.faehigkeit_3.name}")
 
-        print()
+        bilder.bild_anzeigen(wen, 300, 0)
 
+        print()
         nochmal = input("Nochmal? (y/n) ")
+
+        bilder.bild_schliessen(wen)
 
         os.system(confic.terminal_clear)
 

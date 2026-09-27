@@ -614,7 +614,7 @@ def kampf(
 
         print(f"{HELL_ROT}═════════════════════════")
         print("          Kampf          ")
-        print(f"        Runde {runde}")
+        print(f"         Runde {runde}")
         print(f"═════════════════════════{RESET}")
         print()
 

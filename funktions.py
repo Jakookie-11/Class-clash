@@ -23,7 +23,9 @@ def menue(bibliothek, spieler_name=None,):
         #---Wahl---#
         auswahl = input("Wahl? ")
 
-        if auswahl == "1":
+        if auswahl == "0":
+            return(0)
+        elif auswahl == "1":
             return(1)
         elif auswahl == "2":
             return (2)

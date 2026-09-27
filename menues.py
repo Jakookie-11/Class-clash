@@ -10,7 +10,7 @@ hauptmenue = {
     "[2] Charaktere"    : "",
     "[3] Einstellungen" : "",
     "[4] Shop         " : "",
-    "[5] Beenden"       : ""
+    "[0] Beenden"       : ""
     
 }
 
@@ -18,7 +18,7 @@ hauptmenue = {
 charakter_bip_menue = {
     "[1] Anzeigen" : "",
     "[2] Leveln"   : "",
-    "[3] Zurueck"  : ""
+    "[0] Zurueck"  : ""
 }
 
 
@@ -27,14 +27,14 @@ shop_menue = {
     "[2] 1000 M_Credits"  : "",
     "[3] 20   Material 1" : "",
     "[4] 20   Energie   " : "",
-    "[5] Zurueck        " : ""
+    "[0] Zurueck        " : ""
 }
 
 
 neues_spiel_menue = {
     "[1] Benutzerdefinierter Kampf" : "",
     "[2] Kampange(n)"                : "",
-    "[3] Zurueck"                    : ""
+    "[0] Zurueck"                    : ""
 }
 
 
@@ -49,7 +49,7 @@ einstellungen_menue = {
     "[1] Profil"         : "",
     "[2] Credits"        : "",
     "[3] Wichtige Links" : "",
-    "[4] Zurueck"        : ""
+    "[0] Zurueck"        : ""
 }
 #->Y
 profil_menue = {
@@ -58,5 +58,5 @@ profil_menue = {
     f"{ORANGE}[3] Profil Zuruecksetzen{RESET}"          : "",
     f"{ROT}[4] Profil Loeschen{RESET}"               : "",
     "[5] Passwort-sichtbarkeit aendern" : "",
-    "[6] Zurueck"                       : ""
+    "[0] Zurueck"                       : ""
 }
