@@ -23,6 +23,10 @@ def fenster_system_starten():
 def bild_anzeigen(name, x, y):
     fenster_system_starten()
 
+    # Wenn der Bilderordner nicht existiert, nichts machen
+    if not BILDER_ORDNER.exists():
+        return
+
     if name in _fenster:
         _fenster[name].lift()
         return
