@@ -7,7 +7,6 @@ import menues
 import status_effekte
 import funktions
 import confic
-import faehigkeiten
 import ki
 import kampange
 import geheimes
@@ -35,15 +34,15 @@ HELL_CYAN     = "\033[96m"
 HELL_WEISS    = "\033[97m"
 
 
-def neues_spiel(spieler_name):
+def spiel_starten(spieler_name):
 
-    neues_spiel_menue = True
+    spiel_starten_menue = True
 
-    while neues_spiel_menue == True:
+    while spiel_starten_menue == True:
 
         os.system(confic.terminal_clear)
 
-        wahl = funktions.menue(menues.neues_spiel_menue, spieler_name)
+        wahl = funktions.menue(menues.spiel_starten_menue, spieler_name)
 
         if wahl == 1:
             is_break_kampf = benutzerdefinierten_kampf_starten()
@@ -135,7 +134,8 @@ def benutzerdefinierten_kampf_starten():
         team_groesse_1=team_groesse_1,
         team_groesse_2=team_groesse_2,
         Ki=ki_stufe,
-        gegner_ki=gegner_typ == 1
+        gegner_ki=gegner_typ == 1,
+        benutzerdefiniert=True,
     )
 
 
@@ -522,7 +522,8 @@ def kampf(
     team_groesse_1=2,
     team_groesse_2=2,
     Ki=1,
-    gegner_ki=False
+    gegner_ki=False,
+    benutzerdefiniert = False,
 ):
 
     os.system(confic.terminal_clear)
@@ -937,6 +938,9 @@ def kampf(
             time.sleep(2)
 
             os.system(confic.terminal_clear)
+
+            if benutzerdefiniert == False:
+                confic.gewonnene_kaempfe += 1
 
             alle_statuseffekte_resetten()
             alle_faehigkeits_abklingzeiten_resetten()

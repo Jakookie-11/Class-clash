@@ -6,7 +6,8 @@ import confic
 
 import charaktere
 import ressourcen
-import neues_spiel
+import spiel_starten
+import herausforderungen
 
 
 def alle_kampangen_laden():
@@ -20,9 +21,11 @@ def spiel_speichern(spieler):
     os.makedirs("saves", exist_ok=True)
 
     confic_setup_speichern()
-    neues_spiel.alle_statuseffekte_resetten()
-    neues_spiel.alle_faehigkeits_abklingzeiten_resetten()
-    neues_spiel.HP_zuruecksetzen()
+    gespeicherter_herausforderungs_fortschritt = (herausforderungen.Herausforderungs_fortschritt_speichern())
+
+    spiel_starten.alle_statuseffekte_resetten()
+    spiel_starten.alle_faehigkeits_abklingzeiten_resetten()
+    spiel_starten.HP_zuruecksetzen()
 
     gespeicherte_charaktere = {}
 
@@ -54,12 +57,14 @@ def spiel_speichern(spieler):
         erstellungsdatum = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     daten = {
-        "spieler_name"          : spieler,
-        "Erstellungsdatum"      : erstellungsdatum,
-        "Letztes_Speichern"     : datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "ressourcen"            : ressourcen.ressourcen,
-        "charaktere"            : gespeicherte_charaktere,
-        "kampangen_fortschritt" : gespeicherter_fortschritt
+        "spieler_name"                 : spieler,
+        "Erstellungsdatum"             : erstellungsdatum,
+        "Letztes_Speichern"            : datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "ressourcen"                   : ressourcen.ressourcen,
+        "charaktere"                   : gespeicherte_charaktere,
+        "kampangen_fortschritt"        : gespeicherter_fortschritt,
+        "Herausforderungs_Fortschritt" : gespeicherter_herausforderungs_fortschritt,
+        "gewonnene_kaempfe"            : confic.gewonnene_kaempfe,
     }
 
     with open(datei, "w", encoding="utf-8") as datei_ausgabe:
@@ -114,7 +119,9 @@ def spiel_laden(spieler):
     with open(datei, "r", encoding="utf-8") as datei_lesen:
         daten = json.load(datei_lesen)
 
-    ressourcen.ressourcen = daten.get("ressourcen", ressourcen.ressourcen)
+    ressourcen.ressourcen                          = daten.get("ressourcen", ressourcen.ressourcen)
+    herausforderungen.Herausforderungs_fortschritt_laden(daten.get("Herausforderungs_Fortschritt", []))
+    confic.gewonnene_kaempfe                       = daten.get("gewonnene_kaempfe", confic.gewonnene_kaempfe)
 
     for name, gespeicherte_charaktere in daten.get("charaktere", {}).items():
         if name not in charaktere.Charaktere:

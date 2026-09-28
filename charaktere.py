@@ -58,12 +58,40 @@ Jakob = charakter(
     faehigkeit_2=faehigkeiten.starker_schlag,
     faehigkeit_3=faehigkeiten.bleibender_schlag
 )
+Jakob_h = charakter(
+    "Jakob_h",
+    "npc",
+    200,
+    200,
+    200,
+    -20,
+    "boy",
+    100,
+    1,
+    faehigkeit_1=faehigkeiten.jakobs_basic,
+    faehigkeit_2=faehigkeiten.starker_schlag,
+    faehigkeit_3=faehigkeiten.bleibender_schlag
+)
 
 
 #---Hannah_d---#
 Hannah_d = charakter(
     "Hannah_d",
     "Unterstuetzer",
+    150,
+    150,
+    150,
+    -25,
+    "girl",
+    130,
+    1,
+    faehigkeit_1=faehigkeiten.einfacher_angriff_g,
+    faehigkeit_2=faehigkeiten.einfache_heilung,
+    faehigkeit_3=faehigkeiten.staerkende_heilung
+)
+Mx = charakter(
+    "Mx",
+    "npc",
     150,
     150,
     150,
@@ -618,19 +646,24 @@ cooler_6_klaessler = charakter(
 
 #----Charaktere----#
 Charaktere = {
+    #Normale
     "Jakob"   : Jakob,
     "Leo"     : Leo,
     "Simon"   : Simon,
     "Max"     : Max,
     "Lovis"   : Lovis,
     "Hannah_d": Hannah_d,
+    "Sascha" : Sascha,
+    "Noah" : Noah,
 
+    #Down in Mars
     "John": John,
     "Sara": Sara,
     "Lara": Lara,
     "Rico": Rico,
     "Chasker": Chasker,
 
+    #Down in Mars Gegner
     "mars_sicherheitsdrohne": mars_sicherheitsdrohne,
     "mars_wachroboter": mars_wachroboter,
     "marsianischer_waechter": marsianischer_waechter,
@@ -645,6 +678,7 @@ Charaktere = {
     "schattenwesen": schattenwesen,
     "traum_sara" : traum_sara,
 
+    #npcs
     "fuenftklaessler": fuenftklaessler,
     "cooler_fuenftklaessler": cooler_fuenftklaessler,
     "streber": streber,
@@ -652,12 +686,15 @@ Charaktere = {
     "hausmeister": hausmeister,
     "direktor": direktor,
     "klassenclown": klassenclown,
-
     "normaler_6_klaessler" : normaler_6_klaessler,
     "aggressiver_6_klaessler" : aggressiver_6_klaessler,
     "starker_6_klaessler" : starker_6_klaessler,
     "schlauer_6_klaessler" : schlauer_6_klaessler,
     "nerviger_6_klaessler" : nerviger_6_klaessler,
-    "cooler_6_klaessler" : cooler_6_klaessler
+    "cooler_6_klaessler" : cooler_6_klaessler,
+
+    #herausforderung
+    "Mx" : Mx,
+    "Jakob_h" : Jakob_h,
 
 }

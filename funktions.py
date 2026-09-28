@@ -5,17 +5,17 @@ import json
 import confic
 from urllib.request import urlopen
 
-def menue(bibliothek, spieler_name=None,):
+def menue(liste, spieler_name=None,):
 
     while True:
 
         os.system(confic.terminal_clear)
 
         #---printen der Wahlen---#
-        for schlüssel, wert in bibliothek.items():
+        for schlüssel in liste:
             print(schlüssel)
 
-        if bibliothek == menues.profil_menue:
+        if liste == menues.profil_menue:
             print()
             print(f"Aktuelle Passwort_sichtbarkeit: {confic.passwort_sichtbarkeit}")
             print()

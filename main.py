@@ -7,12 +7,13 @@ import funktions
 import menues
 import charakter_bip
 import shop
-import neues_spiel
+import spiel_starten
 import speichern
 import begin
 import einstellungen
 import subprocess
 import crash_handler
+import herausforderungen
 
 
 SCHWARZ  = "\033[30m"
@@ -55,9 +56,9 @@ try:
 
         if wahl == 1:
             while True:  
-                is_brake_neues_spiel = neues_spiel.neues_spiel(spieler)
+                is_brake_spiel_starten = spiel_starten.spiel_starten(spieler)
 
-                if is_brake_neues_spiel == 1:
+                if is_brake_spiel_starten == 1:
                     os.system(confic.terminal_clear)
                     break
 
@@ -85,6 +86,9 @@ try:
                 if is_brake_shop == 1:
                     os.system(confic.terminal_clear)
                     break
+
+        elif wahl == 5:
+            herausforderungen.herausforderungen(spieler)
 
         else:
             speichern.spiel_speichern(spieler)

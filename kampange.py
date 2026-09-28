@@ -1,7 +1,7 @@
 import os
 import time
 import confic
-import neues_spiel
+import spiel_starten
 import ressourcen
 import speichern
 import charakter_bip
@@ -282,7 +282,7 @@ def kampangen(spieler_name):
                     if name is not None
                 ]
 
-                is_win = neues_spiel.kampf(
+                is_win = spiel_starten.kampf(
                     team_1=spieler_team if spieler_team else None,
                     team_2=gegner_team,
                     Ki=ausgewaehlter_kampf.ki,

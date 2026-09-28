@@ -1,0 +1,19 @@
+========================================
+       CLASS CLASH CRASH REPORT
+========================================
+
+Spieler: Jakob
+Datum: 2026-09-28
+Uhrzeit: 15:06:19
+Fehler-ID: e4a5eafff4ebea5dbfc9c51d9e66df2c61c7f4643db39a82ba5816e7894ace6f
+Status: gefixt
+
+----------------------------------------
+FEHLER / TRACEBACK
+----------------------------------------
+
+Traceback (most recent call last):
+  File "c:\Users\jakob\Desktop\Git\Class clash\main.py", line 91, in <module>
+    herausforderungen.herausforderungen()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TypeError: herausforderungen() missing 1 required positional argument: 'spieler_name'

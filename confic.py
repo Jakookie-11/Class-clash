@@ -7,3 +7,5 @@ passwort_sichtbarkeit = False
 passwort_sichtbarkeitshinweis_anzeigen = True
 
 passwoerter = {}
+
+gewonnene_kaempfe = 0
