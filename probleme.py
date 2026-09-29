@@ -60,6 +60,11 @@ probleme = {
             "id": "CC-07",
             "beschreibung": "Kein resetten der Cooldowns in 1.03.01",
             "status": "behoben"
-        }, 
+        },
+        {
+            "id": "CC-08",
+            "beschreibung": "Mehrere Logigfehler in der Down in Mars Kampange + etwas mehr Charaktervielfalt",
+            "status": "behoben"
+        },  
     ]
 }

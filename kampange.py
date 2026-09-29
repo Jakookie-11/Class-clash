@@ -1751,15 +1751,16 @@ Im_Inneren_6 = kampangen_kampf( #3
 
     story_vorher=[
         ("Erzähler", "Hinter der Tür befand sich kein gewöhnlicher Raum."),
-        ("Erzähler", "Ein schmaler Gang führte tief in das unbekannte Objekt hinein."),
+        ("Erzähler", "Ein kurzer schmaler Gang führte zu einer weiteren Tür."),
         ("", ""),
         ("Sara", "Das ist definitiv kein Asteroid."),
         ("Lara", "Die Wände sehen aus, als wären sie aus Metall."),
         ("Rico", "Und trotzdem ist das Ding mitten auf der Landebahn eingeschlagen."),
         ("John", "Konzentriert bleiben. Wir wissen immer noch nicht, was das hier ist."),
         ("", ""),
-        ("Erzähler", "Das Team bewegte sich langsam durch den Gang."),
-        ("Erzähler", "Nach einigen Metern öffnete sich der Gang zu einem größeren Raum."),
+        ("Erzähler", "Das Team bewegte sich langsam zur Tür."),
+        ("Erzähler", "Vorsichtig öffneten sie diese."),
+        ("Erzähler", "Hinter der Tür befand sich ein großer Raum."),
         ("", ""),
         ("Sara", "Was zum...?"),
         ("Erzähler", "Überall an den Wänden befanden sich unbekannte technische Anlagen."),
@@ -1881,7 +1882,6 @@ Rueckkehr_6 = kampangen_kampf( #5
 
     story_vorher=[
         ("Erzähler", "Das Team machte sich gemeinsam auf den Weg zurück zum Ausgang."),
-        ("Erzähler", "Nach einigen Minuten erreichten sie wieder die Oberfläche."),
         ("Erzähler", "Vor dem Objekt warteten bereits Chasker und mehrere bewaffnete Soldaten."),
         ("", ""),
         ("Chasker", "Da seid ihr ja endlich."),
@@ -2058,11 +2058,11 @@ Der_Traum_6_begin = kampangen_kampf( #7
         ("John", "----Fertig----"),
         ("", ""),
         ("Erzähler", "John nahm den Speicher an sich."),
-        ("John", "Wir verschwinden hier. Wir wollen doch diesem Monster nicht begegnen, oder?"),
+        ("John", "Wir verschwinden hier. Das macht mir hier langsam Angst."),
         ("", ""),
         ("Erzähler", "John blieb stehen."),
         ("Erzähler", "Hinter der Armatur war ein Geräusch zu hören."),
-        ("Erzähler", "Kein Tropfen. Kein Knacken."),
+        ("Erzähler", "Kein Tropfen. Kein leises Rauschen."),
         ("Erzähler", "Es klang eher wie ein tiefes, kratzendes Atmen."),
         ("", ""),
         ("Rico", "Habt ihr das gehört?"),
@@ -2230,10 +2230,11 @@ Die_Woche_6 = kampangen_kampf( #10
         ("Erzähler", "Trotzdem blieb das ungute Gefühl bestehen, dass etwas nicht stimmte."),
         ("", ""),
         ("Erzähler", "Am fünften Tag bemerkte Lara beim Frühstück, dass ihre Uhr mehrere Minuten nachging."),
-        ("Lara", "Vielleicht ist einfach die Batterie leer."),
-        ("Erzähler", "Kurz darauf bemerkte auch Sara, dass ihre Uhr nicht mehr richtig lief."),
-        ("Sara", "Meine läuft auch nicht mehr ganz richtig."),
-        ("Erzähler", "Die Gruppe schob es zunächst auf defekte Uhren."),
+        ("Lara", "Vielleicht habe ich die Zeit gestern falsch eingestellt."),
+        ("Erzähler", "Kurz darauf sah Sara auf ihre eigene Uhr und runzelte die Stirn."),
+        ("Sara", "Wartet mal. Meine zeigt auch eine andere Zeit an."),
+        ("Erzähler", "Die beiden verglichen ihre Uhren. Beide waren unterschiedlich weit zurückgeblieben."),
+        ("Erzähler", "Für einen Moment herrschte Stille am Frühstückstisch."),
         ("", ""),
         ("Erzähler", "In der folgenden Nacht konnte John nicht einschlafen."),
         ("Erzähler", "Immer wieder hörte er dieses leise, kratzende Atmen."),
@@ -2310,10 +2311,10 @@ Der_Flug_6 = kampangen_kampf( #12
 )
 
 
-Gefangen_von_der_Marsstation_6 = kampangen_kampf( #13
+Unbekanntes_Gebiet_6 = kampangen_kampf( #13
     "Gefangen von der Marsstation",
     story_vorher=[
-        ("Erzähler", "Gegen 15:00 Uhr näherte sich die Red Horizon der geplanten Landestelle auf dem Mars."),
+        ("Erzähler", "Nach einer langen Reise durch die Marsatmosphäre näherte sich die Red Horizon schließlich der geplanten Landestelle."),
         ("Erzähler", "Unter der dünnen Atmosphäre waren nur rote Felsen und endlose Ebenen zu erkennen."),
         ("John", "Ich überprüfe noch einmal den Kurs."),
         ("Erzähler", "John überprüfte den Kurs, während Lara die Instrumente überwachte."),
@@ -2401,7 +2402,7 @@ Der_erste_Kontakt_6 = kampangen_kampf( #15
     spieler_2="Sara",
     spieler_3="Lara",
     spieler_4="Rico",
-    gegner_1="mars_sicherheitsdrohne",
+    gegner_1="marsianischer_waechterrobotter",
     belohnung=150,
     ki=2,
     npc_level=5,
@@ -2440,7 +2441,7 @@ Weitere_Sicherheitsdrohnen_6 = kampangen_kampf( #16
     spieler_4="Rico",
 
     gegner_1="mars_sicherheitsdrohne",
-    gegner_2="mars_sicherheitsdrohne",
+    gegner_2="marsianischer_waechterrobotter",
 
     belohnung=250,
     ki=2,
@@ -2479,8 +2480,8 @@ Der_dritte_Kampf_6 = kampangen_kampf( #17
     spieler_4="Rico",
 
     gegner_1="mars_sicherheitsdrohne",
-    gegner_2="mars_sicherheitsdrohne",
-    gegner_3="mars_sicherheitsdrohne",
+    gegner_2="mars_wachroboter",
+    gegner_3="marsianischer_waechterrobotter",
 
     belohnung=350,
     ki=3,
@@ -3729,7 +3730,7 @@ Kampange_6 = kampange(
         Die_Woche_6,
         Der_Abflug_6,
         Der_Flug_6,
-        Gefangen_von_der_Marsstation_6,
+        Unbekanntes_Gebiet_6,
         Ein_neues_Zuhause_6,
         Der_erste_Kontakt_6,
         Weitere_Sicherheitsdrohnen_6,

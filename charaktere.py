@@ -341,8 +341,8 @@ mars_wachroboter = charakter(
 )
 
 
-marsianischer_waechter = charakter(
-    "marsianischer_waechter",
+marsianischer_waechterrobotter = charakter(
+    "marsianischer_waechterrobotter",
     "down_in_mars_gegner",
     130,
     130,
@@ -666,7 +666,7 @@ Charaktere = {
     #Down in Mars Gegner
     "mars_sicherheitsdrohne": mars_sicherheitsdrohne,
     "mars_wachroboter": mars_wachroboter,
-    "marsianischer_waechter": marsianischer_waechter,
+    "marsianischer_waechterrobotter": marsianischer_waechterrobotter,
     "marsianischer_soldat": marsianischer_soldat,
     "stationsdrohne": stationsdrohne,
     "infizierter_roboter": infizierter_roboter,
