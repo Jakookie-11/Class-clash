@@ -1,0 +1,20 @@
+Erzähler : Die Red Horizon erreichte schließlich die Koordinaten, die sie aus den Aufzeichnungen der Station erhalten hatten.
+Erzähler : Vor ihnen erschien ein gewaltiger Planet, dessen Oberfläche von dunklen Wolken und ausgedehnten Gebirgszügen geprägt war.
+Lara     : Das soll Prometheus-Prime sein?
+Rico     : Sieht nicht gerade einladend aus.
+John     : Wir haben die Koordinaten. Das muss der richtige Ort sein.
+Erzähler : Auf dem Navigationsdisplay erschien ein schwaches Signal.
+John     : Da. Eine Energiequelle auf der Oberfläche.
+Lara     : Kannst du die Herkunft bestimmen?
+John     : Nein. Aber sie passt zu den Daten aus der Station.
+Erzähler : Die Red Horizon leitete den Sinkflug ein.
+Erzähler : Unter ihnen tauchten gewaltige Strukturen auf, die teilweise von Staub und Gestein bedeckt waren.
+Rico     : Das sieht aus, als wäre hier seit Ewigkeiten niemand mehr gewesen.
+John     : Vielleicht finden wir hier die Antworten.
+Erzähler : Das Schiff näherte sich einer großen Anlage am Rand eines Kraters.
+Lara     : Ich habe eine geeignete Landezone.
+John     : Dann bringen wir die Red Horizon runter.
+Erzähler : Die Triebwerke wurden gedrosselt. Langsam setzte das Schiff auf der fremden Oberfläche auf.
+Erzähler : Für einen Moment war es vollkommen still.
+John     : Willkommen auf Prometheus-Prime.
+Enter...

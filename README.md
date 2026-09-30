@@ -73,7 +73,7 @@ Lokale Spielstände und Profile werden im Ordner [`saves/`](./saves/) gespeicher
 | --- | --- |
 | [`main.py`](./main.py) | Einstiegspunkt und Hauptspielschleife |
 | [`begin.py`](./begin.py) | Ersteinrichtung, Registrierung und Anmeldung |
-| [`neues_spiel.py`](./neues_spiel.py) | Benutzerdefinierte Kämpfe und Kampagnenstart |
+| [`spiel_starten.py`](./spiel_starten.py) | Benutzerdefinierte Kämpfe und Kampagnenstart |
 | [`kampange.py`](./kampange.py) | Kampagnenlogik |
 | [`charaktere.py`](./charaktere.py) | Charakterdaten und -funktionen |
 | [`charakter_bip.py`](./charakter_bip.py) | Charakterbibliothek |

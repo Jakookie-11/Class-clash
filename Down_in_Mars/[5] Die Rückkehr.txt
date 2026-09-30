@@ -1,5 +1,4 @@
 Erzähler : Das Team machte sich gemeinsam auf den Weg zurück zum Ausgang.
-Erzähler : Nach einigen Minuten erreichten sie wieder die Oberfläche.
 Erzähler : Vor dem Objekt warteten bereits Chasker und mehrere bewaffnete Soldaten.
 
 Chasker  : Da seid ihr ja endlich.

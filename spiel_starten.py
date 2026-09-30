@@ -7,28 +7,42 @@ import menues
 import status_effekte
 import funktions
 import confic
-import faehigkeiten
 import ki
 import kampange
 import geheimes
 import copy
 
 
-GRUEN = "\033[32m"
-GELB = "\033[33m"
-CYAN = "\033[36m"
-RESET = "\033[0m"
+SCHWARZ  = "\033[30m"
+ROT      = "\033[31m"
+GRUEN    = "\033[32m"
+GELB     = "\033[33m"
+BLAU     = "\033[34m"
+MAGENTA  = "\033[35m"
+CYAN     = "\033[36m"
+WEISS    = "\033[37m"
+
+RESET    = "\033[0m"
+
+HELL_GRAU     = "\033[90m"
+HELL_ROT      = "\033[91m"
+HELL_GRUEN    = "\033[92m"
+HELL_GELB     = "\033[93m"
+HELL_BLAU     = "\033[94m"
+HELL_MAGENTA  = "\033[95m"
+HELL_CYAN     = "\033[96m"
+HELL_WEISS    = "\033[97m"
 
 
-def neues_spiel(spieler_name):
+def spiel_starten(spieler_name):
 
-    neues_spiel_menue = True
+    spiel_starten_menue = True
 
-    while neues_spiel_menue == True:
+    while spiel_starten_menue == True:
 
         os.system(confic.terminal_clear)
 
-        wahl = funktions.menue(menues.neues_spiel_menue, spieler_name)
+        wahl = funktions.menue(menues.spiel_starten_menue, spieler_name)
 
         if wahl == 1:
             is_break_kampf = benutzerdefinierten_kampf_starten()
@@ -120,7 +134,8 @@ def benutzerdefinierten_kampf_starten():
         team_groesse_1=team_groesse_1,
         team_groesse_2=team_groesse_2,
         Ki=ki_stufe,
-        gegner_ki=gegner_typ == 1
+        gegner_ki=gegner_typ == 1,
+        benutzerdefiniert=True,
     )
 
 
@@ -245,15 +260,25 @@ def naechsten_zug_ermitteln(
 
 
 
-def tote_charaktere_entvernen(ausgewaehlte_charaktere):
+def tote_charaktere_entvernen(ausgewaehlte_charaktere, team_1, team_2):
 
-    neue_liste = []
+    neue_team_1 = []
+    neue_team_2 = []
+    neue_ausgewaehlte_charaktere = []
+
+    for name in team_1:
+        if charaktere.Charaktere[name].hp >0:
+            neue_team_1.append(name)
+
+    for name in team_2:
+        if charaktere.Charaktere[name].hp >0:
+            neue_team_2.append(name)
 
     for name in ausgewaehlte_charaktere:
         if charaktere.Charaktere[name].hp >0:
-            neue_liste.append(name)
+            neue_ausgewaehlte_charaktere.append(name)
 
-    return neue_liste
+    return neue_ausgewaehlte_charaktere, neue_team_1, neue_team_2
 
     
 
@@ -497,7 +522,8 @@ def kampf(
     team_groesse_1=2,
     team_groesse_2=2,
     Ki=1,
-    gegner_ki=False
+    gegner_ki=False,
+    benutzerdefiniert = False,
 ):
 
     os.system(confic.terminal_clear)
@@ -587,18 +613,16 @@ def kampf(
 
         os.system(confic.terminal_clear)
 
-        print("═════════════════════════")
+        print(f"{HELL_ROT}═════════════════════════")
         print("          Kampf          ")
-        print(f"        Runde {runde}")
-        print("═════════════════════════")
+        print(f"         Runde {runde}")
+        print(f"═════════════════════════{RESET}")
         print()
 
         # Teams anzeigen
         kampf_team_anzeigen(team_1, team_2)
 
-        print(
-            "═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════"
-        )
+        print(f"{WEISS}═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════{RESET}")
         print()
 
 
@@ -647,12 +671,12 @@ def kampf(
                     print(f"{wer} ist am zug!")
                     print("----Status----")
                     print(
-                        f"HP        : "
-                        f"{charaktere.Charaktere[wer].hp:.2f}"
+                        f"{GRUEN}HP        : "
+                        f"{charaktere.Charaktere[wer].hp:.2f}{RESET}"
                     )
                     print(
-                        f"Schaden   : "
-                        f"{charaktere.Charaktere[wer].schaden}"
+                        f"{ROT}Schaden   : "
+                        f"{charaktere.Charaktere[wer].schaden}{RESET}"
                     )
                     print()
 
@@ -678,9 +702,7 @@ def kampf(
                     )
 
                     print()
-                    print(
-                        "Doppelte Zahl für die Erklärung der Fähigkeit"
-                    )
+                    print("Doppelte Zahl für die Erklärung der Fähigkeit")
                     print("Abbrechen um den kampf abzubrechen")
                     print()
 
@@ -898,15 +920,9 @@ def kampf(
 
         alte_reihenfolge = reinfolge
 
-        ausgewaehlte_charaktere = (
-            tote_charaktere_entvernen(
-                ausgewaehlte_charaktere
-            )
-        )
+        ausgewaehlte_charaktere, team_1, team_2 = (tote_charaktere_entvernen(ausgewaehlte_charaktere, team_1, team_2))
 
-        reinfolge = schnellster_charakter_ermitteln(
-            ausgewaehlte_charaktere
-        )
+        reinfolge = schnellster_charakter_ermitteln(ausgewaehlte_charaktere)
 
 
         # ══════════════════════════════════════════════════════════
@@ -922,6 +938,9 @@ def kampf(
             time.sleep(2)
 
             os.system(confic.terminal_clear)
+
+            if benutzerdefiniert == False:
+                confic.gewonnene_kaempfe += 1
 
             alle_statuseffekte_resetten()
             alle_faehigkeits_abklingzeiten_resetten()

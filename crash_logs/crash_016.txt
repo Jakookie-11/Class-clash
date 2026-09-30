@@ -1,0 +1,23 @@
+========================================
+       CLASS CLASH CRASH REPORT
+========================================
+
+Spieler: Jakob
+Datum: 2026-09-25
+Uhrzeit: 21:28:14
+Fehler-ID: 2c29e49613e648e2c297ab1496a9f963548a0f686e74a46afd07c08b53e30917
+Status: gefixt
+
+----------------------------------------
+FEHLER / TRACEBACK
+----------------------------------------
+
+Traceback (most recent call last):
+  File "c:\Users\jakob\Desktop\Git\Class clash\main.py", line 56, in <module>
+    is_brake_charakter_bib = charakter_bip.charakter_bip(spieler)
+  File "c:\Users\jakob\Desktop\Git\Class clash\charakter_bip.py", line 38, in charakter_bip
+    is_break = charaktere_aufleveln(spieler_name)
+  File "c:\Users\jakob\Desktop\Git\Class clash\charakter_bip.py", line 161, in charaktere_aufleveln
+    print(f"Aktuelle M_Credits: {ressourcen.ressourcen["M_Credits"]}")
+                                 ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'M_Credits'

@@ -1,4 +1,4 @@
-Erzähler : Gegen 15:00 Uhr näherte sich die Red Horizon der geplanten Landestelle auf dem Mars.
+Erzähler : Nach einer langen Reise durch die Marsatmosphäre näherte sich die Red Horizon schließlich der geplanten Landestelle.
 Erzähler : Unter der dünnen Atmosphäre waren nur rote Felsen und endlose Ebenen zu erkennen.
 John     : Ich überprüfe noch einmal den Kurs.
 Erzähler : John überprüfte den Kurs, während Lara die Instrumente überwachte.

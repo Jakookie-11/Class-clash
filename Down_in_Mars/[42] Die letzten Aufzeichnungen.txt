@@ -1,0 +1,42 @@
+Erzähler : Die Gruppe betrat das alte Militärgebäude durch einen teilweise eingestürzten Seiteneingang.
+Erzähler : Wurzeln hatten sich durch die Wände gearbeitet. An der Decke hingen rostige Kabel, und auf dem Boden lag eine dicke Schicht aus Staub und Laub.
+Sara     : Sucht nach einem Archiv oder einem Kontrollraum. Vielleicht sind noch Daten vorhanden.
+Erzähler : Nach einiger Zeit entdeckten sie hinter einer beschädigten Sicherheitstür einen kleinen Raum mit mehreren alten Terminals.
+Marine_1 : Die Geräte sehen uralt aus.
+Sara     : Vielleicht haben wir trotzdem Glück.
+Erzähler : Sara aktivierte das Hauptterminal. Der Bildschirm flackerte, bevor eine alte Benutzeroberfläche erschien.
+Terminal : MILITÄRISCHES ARCHIV - ZUGRIFF BESCHRÄNKT.
+Erzähler : Einige Dateien waren beschädigt. Andere ließen sich noch öffnen.
+Sara     : Zeig mir die letzten verfügbaren Berichte.
+Erzähler : Eine Liste mit mehreren Einträgen erschien auf dem Bildschirm.
+Terminal : BERICHT 01 - UNGEWÖHNLICHE VORKOMMNISSE.
+Terminal : BERICHT 02 - QUARANTÄNE UND SICHERHEITSMASSNAHMEN.
+Terminal : BERICHT 03 - AUSFALL MEHRERER EINRICHTUNGEN.
+Erzähler : Sara öffnete den ersten Bericht.
+Terminal : Mehrere Personen berichten von unerklärlichen Sichtungen und ungewöhnlichen biologischen Spuren. Die Ursache ist derzeit unbekannt.
+Marine_2 : Das könnte der Anfang gewesen sein.
+Sara     : Vielleicht. Öffne den zweiten Bericht.
+Erzähler : Der nächste Eintrag enthielt mehrere Warnungen und Hinweise auf eine zunehmende Zahl von Zwischenfällen.
+Terminal : Verdacht auf eine unbekannte biologische Bedrohung. Betroffene Einrichtungen werden vorläufig unter Quarantäne gestellt.
+Erzähler : Sara scrollte weiter.
+Terminal : Weitere Untersuchungen werden durch unerklärliche Abweichungen bei Zeitmessungen erschwert.
+Sara     : Zeitmessungen?
+Erzähler : Sie öffnete die zugehörigen Messdaten. Mehrere Zeitstempel widersprachen einander.
+Marine_1 : Vielleicht ist die interne Uhr kaputt.
+Sara     : Vielleicht. Aber die Abweichungen sind viel zu groß.
+Erzähler : Ein weiterer Bericht ließ sich nur teilweise öffnen.
+Terminal : Unterschiedliche Zeitraten innerhalb mehrerer betroffener Einrichtungen bestätigt. Ursache weiterhin ungeklärt.
+Erzähler : Sara betrachtete die Daten. Die Aufzeichnungen schienen Ereignisse in einer Reihenfolge zu zeigen, die nicht zusammenpasste.
+Sara     : Sichert alles. Wir brauchen die vollständigen Daten.
+Erzähler : Während die Übertragung lief, öffnete sich automatisch eine letzte Datei.
+Terminal : LETZTER BERICHT - NICHT ABGESCHLOSSEN.
+Erzähler : Der Bericht bestand nur aus wenigen lesbaren Zeilen.
+Terminal : Die Lage verschlechtert sich. Weitere Evakuierungen werden vorbereitet.
+Erzähler : Darunter folgte ein Zeitstempel, der deutlich älter war als der vorherige Bericht, obwohl er offenbar später erstellt worden war.
+Sara     : Das ergibt keinen Sinn.
+Erzähler : Bevor sie die Datei genauer untersuchen konnte, brach die Verbindung zum Archiv ab.
+Marine_2 : Das System ist tot.
+Sara     : Wir haben genug Daten. Wir sehen sie uns auf der Wayfarer genauer an.
+Erzähler : Sara speicherte die letzten verfügbaren Dateien und wandte sich zum Ausgang.
+Erzähler : Sie hatten noch keine Erklärung dafür, was auf der Erde geschehen war. Aber die Aufzeichnungen machten deutlich, dass die Ereignisse viel früher begonnen hatten, als sie angenommen hatten.
+Enter...

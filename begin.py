@@ -12,6 +12,12 @@ import menues
 import speichern
 
 
+GRUEN = "\033[32m"
+GELB = "\033[33m"
+CYAN = "\033[36m"
+RESET = "\033[0m"
+
+
 def begin():
 
     speichern.confic_setup_laden()
@@ -27,13 +33,13 @@ def begin():
 
     if confic.first_start_configurator == True:
 
-        print("════════════════════════════════")
+        print(f"{CYAN}════════════════════════════════")
         print("           CLASS CLASH")
-        print("════════════════════════════════")
+        print(f"════════════════════════════════{RESET}")
         print()
         print("Willkommen!")
         print()
-        print("Auf welchem System spielst du?")
+        print(f"{GELB}Auf welchem System spielst du?{RESET}")
         print()
         print("[1] Windows")
         print("[2] Linux")
@@ -75,9 +81,9 @@ def begin():
     os.system(confic.terminal_clear)
 
     print("╔══════════════════════════════════════════════════════════════════════════════════╗")
-    print("║                                   CLASS CLASH                                    ║")
+    print(f"║                                   {CYAN}CLASS CLASH{RESET}                                    ║")
     print("║                                                                                  ║")
-    print(f"║                                VERSION {funktions.lokale_version_abrufen()}                              ║")
+    print(f"║                                {CYAN}VERSION {funktions.lokale_version_abrufen()}{RESET}                              ║")
     print("║                                                                                  ║")
     print("║  Willkommen zur ersten Beta-Version, die mit mehreren Spielern geteilt wird!     ║")
     print("║                                                                                  ║")
@@ -107,7 +113,7 @@ def begin():
     print("║  sind drei einzigartige Fähigkeiten pro Charakter. Kreative Ideen sind           ║")
     print("║  willkommen (Mitarbeit)!                                                         ║")
     print("║                                                                                  ║")
-    print("║  WICHTIG                                                                         ║")
+    print(f"║  {GELB}WICHTIG{RESET}                                                                         ║")
     print("║  Sichere deine Spielstände regelmäßig. Während der Beta können Fehler auftreten  ║")
     print("║  und Inhalte verändert werden.                                                   ║")
     print("║  !!!Das Spiel niemals über Fensterschliessung schliessen, sondern über Beenden   ║")
@@ -116,7 +122,7 @@ def begin():
     print("║  Die Changelogs findest du auf GitHub unter Releases. Weitere Informationen      ║")
     print("║  zu Fehlerberichten, Mitarbeit und dem Beta-Test stehen in der More info.md.     ║")
     print("║                                                                                  ║")
-    print("║                           Viel Erfolg und Spaß!                                  ║")
+    print(f"║                           {GRUEN}Viel Erfolg und Spaß!{RESET}                                  ║")
     print("╚══════════════════════════════════════════════════════════════════════════════════╝")
 
     input("Enter...")
@@ -128,10 +134,10 @@ def begin():
         if funktions.versionen_vergleichen() or pass_update == True:
 
             #---Vorbild---#
-            print("══════════════════════════════")
+            print(f"{GRUEN}══════════════════════════════")
             print("        Willkommen bei ")
             print("          Class clash")
-            print("══════════════════════════════")
+            print(f"══════════════════════════════{RESET}")
             time.sleep(2)
 
             while True:
@@ -154,9 +160,9 @@ def begin():
                             break
 
                         if confic.passwort_sichtbarkeitshinweis_anzeigen == True:
-                            print("-------------")
+                            print(f"{GELB}-------------")
                             print("! Das Passwort ist unsichtbar, das Kann in den Einstellungen unter Profil aber geaendert werden.")
-                            print("-------------")
+                            print(f"-------------{RESET}")
                             confic.passwort_sichtbarkeitshinweis_anzeigen = False
                             speichern.confic_setup_speichern()
 

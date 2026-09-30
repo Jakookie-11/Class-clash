@@ -1,11 +1,12 @@
 import os
 import time
 import confic
-import neues_spiel
+import spiel_starten
 import ressourcen
 import speichern
 import charakter_bip
 import charaktere
+import msvcrt
 
 
 fortschritt = {}
@@ -30,6 +31,7 @@ class kampangen_kampf:
         gegner_2=None,
         gegner_3=None,
         gegner_4=None,
+        welche_art_belohnung="Credits",
         belohnung=0,
         ki=1,
         npc_level=1,
@@ -49,6 +51,7 @@ class kampangen_kampf:
         self.gegner_2 = gegner_2
         self.gegner_3 = gegner_3
         self.gegner_4 = gegner_4
+        self.welche_art_belohnung = welche_art_belohnung
         self.belohnung = belohnung
         self.ki = ki
         self.npc_level = npc_level
@@ -108,7 +111,13 @@ def dialog_anzeigen(dialog):
         print(f"{sprecher :{breite}}: ", end="", flush=True)
 
         for buchstabe in text:
+
             print(buchstabe, end="", flush=True)
+
+            if msvcrt.kbhit():
+                msvcrt.getch()
+                return
+
             time.sleep(0.05)
 
         print()
@@ -273,7 +282,7 @@ def kampangen(spieler_name):
                     if name is not None
                 ]
 
-                is_win = neues_spiel.kampf(
+                is_win = spiel_starten.kampf(
                     team_1=spieler_team if spieler_team else None,
                     team_2=gegner_team,
                     Ki=ausgewaehlter_kampf.ki,
@@ -311,7 +320,7 @@ def kampangen(spieler_name):
                     level_zuruecksetzen(ausgewaehlter_kampf.gegner_3)
                     level_zuruecksetzen(ausgewaehlter_kampf.gegner_4)
 
-                    ressourcen.ressourcen["Credits"] += ausgewaehlter_kampf.belohnung
+                    ressourcen.ressourcen[ausgewaehlter_kampf.welche_art_belohnung] += ausgewaehlter_kampf.belohnung
                     if wahl == kampange.fortschritt + 1:
                         kampange.fortschritt += 1
                     speichern.spiel_speichern(spieler_name)
@@ -1742,15 +1751,16 @@ Im_Inneren_6 = kampangen_kampf( #3
 
     story_vorher=[
         ("Erzähler", "Hinter der Tür befand sich kein gewöhnlicher Raum."),
-        ("Erzähler", "Ein schmaler Gang führte tief in das unbekannte Objekt hinein."),
+        ("Erzähler", "Ein kurzer schmaler Gang führte zu einer weiteren Tür."),
         ("", ""),
         ("Sara", "Das ist definitiv kein Asteroid."),
         ("Lara", "Die Wände sehen aus, als wären sie aus Metall."),
         ("Rico", "Und trotzdem ist das Ding mitten auf der Landebahn eingeschlagen."),
         ("John", "Konzentriert bleiben. Wir wissen immer noch nicht, was das hier ist."),
         ("", ""),
-        ("Erzähler", "Das Team bewegte sich langsam durch den Gang."),
-        ("Erzähler", "Nach einigen Metern öffnete sich der Gang zu einem größeren Raum."),
+        ("Erzähler", "Das Team bewegte sich langsam zur Tür."),
+        ("Erzähler", "Vorsichtig öffneten sie diese."),
+        ("Erzähler", "Hinter der Tür befand sich ein großer Raum."),
         ("", ""),
         ("Sara", "Was zum...?"),
         ("Erzähler", "Überall an den Wänden befanden sich unbekannte technische Anlagen."),
@@ -1872,7 +1882,6 @@ Rueckkehr_6 = kampangen_kampf( #5
 
     story_vorher=[
         ("Erzähler", "Das Team machte sich gemeinsam auf den Weg zurück zum Ausgang."),
-        ("Erzähler", "Nach einigen Minuten erreichten sie wieder die Oberfläche."),
         ("Erzähler", "Vor dem Objekt warteten bereits Chasker und mehrere bewaffnete Soldaten."),
         ("", ""),
         ("Chasker", "Da seid ihr ja endlich."),
@@ -2049,11 +2058,11 @@ Der_Traum_6_begin = kampangen_kampf( #7
         ("John", "----Fertig----"),
         ("", ""),
         ("Erzähler", "John nahm den Speicher an sich."),
-        ("John", "Wir verschwinden hier. Wir wollen doch diesem Monster nicht begegnen, oder?"),
+        ("John", "Wir verschwinden hier. Das macht mir hier langsam Angst."),
         ("", ""),
         ("Erzähler", "John blieb stehen."),
         ("Erzähler", "Hinter der Armatur war ein Geräusch zu hören."),
-        ("Erzähler", "Kein Tropfen. Kein Knacken."),
+        ("Erzähler", "Kein Tropfen. Kein leises Rauschen."),
         ("Erzähler", "Es klang eher wie ein tiefes, kratzendes Atmen."),
         ("", ""),
         ("Rico", "Habt ihr das gehört?"),
@@ -2221,10 +2230,11 @@ Die_Woche_6 = kampangen_kampf( #10
         ("Erzähler", "Trotzdem blieb das ungute Gefühl bestehen, dass etwas nicht stimmte."),
         ("", ""),
         ("Erzähler", "Am fünften Tag bemerkte Lara beim Frühstück, dass ihre Uhr mehrere Minuten nachging."),
-        ("Lara", "Vielleicht ist einfach die Batterie leer."),
-        ("Erzähler", "Kurz darauf bemerkte auch Sara, dass ihre Uhr nicht mehr richtig lief."),
-        ("Sara", "Meine läuft auch nicht mehr ganz richtig."),
-        ("Erzähler", "Die Gruppe schob es zunächst auf defekte Uhren."),
+        ("Lara", "Vielleicht habe ich die Zeit gestern falsch eingestellt."),
+        ("Erzähler", "Kurz darauf sah Sara auf ihre eigene Uhr und runzelte die Stirn."),
+        ("Sara", "Wartet mal. Meine zeigt auch eine andere Zeit an."),
+        ("Erzähler", "Die beiden verglichen ihre Uhren. Beide waren unterschiedlich weit zurückgeblieben."),
+        ("Erzähler", "Für einen Moment herrschte Stille am Frühstückstisch."),
         ("", ""),
         ("Erzähler", "In der folgenden Nacht konnte John nicht einschlafen."),
         ("Erzähler", "Immer wieder hörte er dieses leise, kratzende Atmen."),
@@ -2301,10 +2311,10 @@ Der_Flug_6 = kampangen_kampf( #12
 )
 
 
-Gefangen_von_der_Marsstation_6 = kampangen_kampf( #13
-    "Gefangen von der Marsstation",
+Unbekanntes_Gebiet_6 = kampangen_kampf( #13
+    "Unbekanntes Gebiet",
     story_vorher=[
-        ("Erzähler", "Gegen 15:00 Uhr näherte sich die Red Horizon der geplanten Landestelle auf dem Mars."),
+        ("Erzähler", "Nach einer langen Reise durch die Marsatmosphäre näherte sich die Red Horizon schließlich der geplanten Landestelle."),
         ("Erzähler", "Unter der dünnen Atmosphäre waren nur rote Felsen und endlose Ebenen zu erkennen."),
         ("John", "Ich überprüfe noch einmal den Kurs."),
         ("Erzähler", "John überprüfte den Kurs, während Lara die Instrumente überwachte."),
@@ -2392,7 +2402,7 @@ Der_erste_Kontakt_6 = kampangen_kampf( #15
     spieler_2="Sara",
     spieler_3="Lara",
     spieler_4="Rico",
-    gegner_1="mars_sicherheitsdrohne",
+    gegner_1="marsianischer_waechterrobotter",
     belohnung=150,
     ki=2,
     npc_level=5,
@@ -2431,7 +2441,7 @@ Weitere_Sicherheitsdrohnen_6 = kampangen_kampf( #16
     spieler_4="Rico",
 
     gegner_1="mars_sicherheitsdrohne",
-    gegner_2="mars_sicherheitsdrohne",
+    gegner_2="marsianischer_waechterrobotter",
 
     belohnung=250,
     ki=2,
@@ -2470,8 +2480,8 @@ Der_dritte_Kampf_6 = kampangen_kampf( #17
     spieler_4="Rico",
 
     gegner_1="mars_sicherheitsdrohne",
-    gegner_2="mars_sicherheitsdrohne",
-    gegner_3="mars_sicherheitsdrohne",
+    gegner_2="mars_wachroboter",
+    gegner_3="marsianischer_waechterrobotter",
 
     belohnung=350,
     ki=3,
@@ -3700,11 +3710,308 @@ Die_Flucht_6 = kampangen_kampf( #37
 )
 
 
+Zwei_Wege_6 = kampangen_kampf( #38
+
+    "Zwei Wege",
+
+    story_vorher=[
+        ("Erzähler", "Das gleichmäßige Brummen der Triebwerke erfüllte die Red Horizon."),
+        ("Erzähler", "John saß auf der Brücke und betrachtete die Flugbahn zu Prometheus-Prime."),
+        ("", ""),
+        ("Lara", "Wir haben eine Nachricht von der Erde."),
+        ("", ""),
+        ("Erzähler", "John öffnete die Übertragung. Das Oberkommando verlangte einen Statusbericht und wollte wissen, was mit Commander Chasker geschehen war."),
+        ("", ""),
+        ("Rico", "Die wissen nicht, was hier passiert ist. Und wir wissen nicht, was bei ihnen los ist."),
+        ("", ""),
+        ("Sara", "Wir sollten zurückfliegen."),
+        ("", ""),
+        ("John", "Wir haben die Koordinaten von Prometheus-Prime. Wenn wir dort ankommen, finden wir vielleicht heraus, wie die Aeons entstanden sind."),
+        ("", ""),
+        ("Sara", "Und wenn die Erde inzwischen ebenfalls betroffen ist? Wir können nicht einfach weiterfliegen und hoffen, dass alles in Ordnung ist."),
+        ("", ""),
+        ("Erzähler", "John schwieg einen Moment."),
+        ("", ""),
+        ("Rico", "Na schön. Und wie soll das funktionieren? Wir können die Red Horizon nicht einfach aufteilen."),
+        ("", ""),
+        ("Lara", "Müssen wir auch nicht. Im Hangar steht noch die Wayfarer. Ein eigenständiges Langstrecken-Shuttle."),
+        ("", ""),
+        ("John", "Die ist doch viel zu klein für eine solche Mission."),
+        ("", ""),
+        ("Lara", "Sie hat einen eigenen Antrieb, Lebenserhaltung und genügend Reichweite. Mit einer kleineren Besatzung sollte es funktionieren."),
+        ("", ""),
+        ("Sara", "Dann fliege ich zur Erde."),
+        ("", ""),
+        ("John", "Du willst wirklich allein zurück?"),
+        ("", ""),
+        ("Sara", "Nicht allein. Ich nehme einen Piloten und vier Marines mit. Wir untersuchen die Lage und versuchen, Kontakt zum Oberkommando aufzunehmen."),
+        ("", ""),
+        ("Lara", "Und wir fliegen weiter zu Prometheus-Prime."),
+        ("", ""),
+        ("Erzähler", "John gefiel die Idee nicht. Sie wussten kaum etwas über die Aeons, und nun wollten sie sich auch noch aufteilen."),
+        ("", ""),
+        ("John", "Gut. Aber ihr meldet euch regelmäßig. Sobald ihr etwas Ungewöhnliches entdeckt, zieht ihr euch zurück."),
+        ("", ""),
+        ("Sara", "Abgemacht."),
+        ("", ""),
+        ("Erzähler", "Die nächsten Stunden verbrachten sie mit den Vorbereitungen."),
+        ("Erzähler", "Die Wayfarer wurde mit Vorräten, medizinischer Ausrüstung und einer Aufklärungsdrohne beladen."),
+        ("Erzähler", "Lara übertrug die Navigationsdaten, während Rico die Kommunikationssysteme überprüfte."),
+        ("Erzähler", "Als das Shuttle startbereit war, versammelten sich alle im Hangar."),
+        ("Erzähler", "Die Triebwerke liefen bereits, und ein tiefes Brummen vibrierte durch den Boden."),
+        ("", ""),
+        ("John", "Du hast die Koordinaten und die Frequenzen?"),
+        ("Sara", "Alles dabei."),
+        ("", ""),
+        ("John", "Und wenn ihr keinen Kontakt zur Erde bekommt?"),
+        ("Sara", "Dann suchen wir nach einer Möglichkeit, ihn wiederherzustellen."),
+        ("", ""),
+        ("Erzähler", "Für einen Moment standen sie sich schweigend gegenüber."),
+        ("", ""),
+        ("Sara", "Pass auf dich auf."),
+        ("John", "Du auch."),
+        ("", ""),
+        ("Erzähler", "Dann stieg Sara in die Wayfarer. Die Einstiegsluke schloss sich, und wenig später glitt das Shuttle aus dem Hangar."),
+        ("", ""),
+        ("Erzähler", "Die Triebwerke zündeten, und das kleine Schiff entfernte sich von der Red Horizon."),
+        ("", ""),
+        ("Erzähler", "Auf der Brücke beobachteten John, Rico und Lara, wie die Wayfarer ihren Kurs änderte."),
+        ("Erzähler", "Auf der Navigationsanzeige erschienen zwei Flugbahnen: eine führte zur Erde, die andere zu Prometheus-Prime."),
+        ("", ""),
+        ("John", "Wayfarer, hier Red Horizon. Kurs bestätigt?"),
+        ("Sara", "Bestätigt. Alle Systeme nominal. Wir melden uns, sobald wir die Erde erreichen."),
+        ("", ""),
+        ("John", "Verstanden. Gute Reise."),
+        ("", ""),
+        ("Erzähler", "Der Lichtpunkt der Wayfarer wurde immer kleiner, bis er schließlich im Dunkel verschwand."),
+        ("", ""),
+        ("John", "Dann weiter."),
+        ("", ""),
+        ("Erzähler", "Die Red Horizon setzte ihren Kurs fort."),
+        ("", ""),
+        ("Erzähler", "John betrachtete die Koordinaten von Prometheus-Prime, als die Navigationsanzeige plötzlich flackerte."),
+        ("", ""),
+        ("Erzähler", "Für einen Augenblick verschwand die Flugbahn. Ein fremdes Symbol erschien auf dem Bildschirm."),
+        ("", ""),
+        ("Erzähler", "John kannte es. Es war dasselbe Zeichen, das er schon einmal während des Fluges zur Marsstation gesehen hatte."),
+        ("", ""),
+        ("Erzähler", "Dann war es verschwunden. Die Koordinaten kehrten zurück, als wäre nichts geschehen."),
+        ("", ""),
+        ("Erzähler", "John öffnete das Systemprotokoll."),
+        ("", ""),
+        ("Erzähler", "Keine Fehlermeldung. Keine Abweichung."),
+        ("", ""),
+        ("Erzähler", "Er schloss das Fenster und lehnte sich zurück.")
+    ],
+
+    ist_kampf=False
+)
+
+
+Die_stille_Erde_6 = kampangen_kampf( #39
+    
+    "Die stille Erde",
+
+    story_vorher=[
+        ("Erzähler", "Die Wayfarer näherte sich langsam der Erde."),
+        ("Erzähler", "Durch das Cockpitfenster war der blaue Planet zu erkennen, den Sara so lange nicht mehr gesehen hatte."),
+        ("Erzähler", "Doch die Oberfläche sah anders aus als in den Aufzeichnungen, die sie kannte."),
+        ("Erzähler", "Große Teile der Städte waren von dichten Wäldern überwuchert. Zwischen den Baumkronen ragten nur noch die Überreste einstiger Wolkenkratzer hervor."),
+        ("", ""),    
+        ("Pilot", "Das soll wirklich die Erde sein?"),
+        ("", ""),   
+        ("Sara", "Ja. Aber hier ist viel mehr Zeit vergangen, als wir gedacht haben."),
+        ("", ""),
+        ("Erzähler", "Die Wayfarer überflog eine verlassene Küstenstadt. Straßen waren unter Pflanzen verschwunden, Brücken teilweise eingestürzt und ganze Wohnviertel lagen in Trümmern."),
+        ("", ""),
+        ("Marine_1", "Ich sehe keine aktiven Signale."),
+        ("Sara", "Auch keine automatischen Notrufsender?"),
+        ("", ""),  
+        ("Marine_1", "Nichts. Die meisten Systeme sind wahrscheinlich seit Jahrzehnten ausgefallen."),
+        ("", ""),
+        ("Erzähler", "Sara blickte auf die Anzeigen. Die Erde wirkte nicht wie ein Planet, der erst vor Kurzem verlassen worden war."),
+        ("Pilot", "Ich habe eine alte Militäranlage gefunden. Die Landebahn ist teilweise überwuchert, aber vielleicht schaffen wir es."),
+        ("", ""),
+        ("Sara", "Dann landen wir dort."),
+        ("", ""),
+        ("Erzähler", "Die Wayfarer sank durch die Wolkendecke. Unter ihnen tauchten die Ruinen einer ehemaligen Militärbasis auf."),
+        ("Erzähler", "Die Landebahn war von Rissen durchzogen. Bäume und Sträucher hatten sich zwischen den Betonplatten ausgebreitet."),
+        ("Erzähler", "Mit einem dumpfen Rumpeln setzte die Wayfarer auf."),
+        ("Erzähler", "Als die Triebwerke verstummten, war nur noch das Rauschen des Windes zu hören."),
+        ("Sara", "Wir sehen uns draußen um. Vielleicht finden wir noch etwas Brauchbares."),
+        ("Erzähler", "Die Gruppe öffnete die Rampe und trat hinaus in eine Welt, die kaum noch etwas mit ihrer Erinnerung an die Erde gemeinsam hatte.")
+    ],
+    ist_kampf=False
+)
+
+
+Prometheus_Prime_6 = kampangen_kampf( #40
+    
+    "Prometheus-Prime",
+
+    story_vorher=[
+        ("Erzähler", "Die Red Horizon erreichte schließlich die Koordinaten, die sie aus den Aufzeichnungen der Station erhalten hatten."),
+        ("Erzähler", "Vor ihnen erschien ein gewaltiger Planet, dessen Oberfläche von dunklen Wolken und ausgedehnten Gebirgszügen geprägt war."),
+        ("Lara", "Das soll Prometheus-Prime sein?"),
+        ("Rico", "Sieht nicht gerade einladend aus."),
+        ("John", "Wir haben die Koordinaten. Das muss der richtige Ort sein."),
+        ("Erzähler", "Auf dem Navigationsdisplay erschien ein schwaches Signal."),
+        ("John", "Da. Eine Energiequelle auf der Oberfläche."),
+        ("Lara", "Kannst du die Herkunft bestimmen?"),
+        ("John", "Nein. Aber sie passt zu den Daten aus der Station."),
+        ("Erzähler", "Die Red Horizon leitete den Sinkflug ein."),
+        ("Erzähler", "Unter ihnen tauchten gewaltige Strukturen auf, die teilweise von Staub und Gestein bedeckt waren."),
+        ("Rico", "Das sieht aus, als wäre hier seit Ewigkeiten niemand mehr gewesen."),
+        ("John", "Vielleicht finden wir hier die Antworten."),
+        ("Erzähler", "Das Schiff näherte sich einer großen Anlage am Rand eines Kraters."),
+        ("Lara", "Ich habe eine geeignete Landezone."),
+        ("John", "Dann bringen wir die Red Horizon runter."),
+        ("Erzähler", "Die Triebwerke wurden gedrosselt. Langsam setzte das Schiff auf der fremden Oberfläche auf."),
+        ("Erzähler", "Für einen Moment war es vollkommen still."),
+        ("John", "Willkommen auf Prometheus-Prime.")
+    ],
+    ist_kampf=False
+)
+
+
+Die_Ueberwucherten_6 = kampangen_kampf( #41
+    "Die Überwucherten",
+    spieler_1="Sara",
+    spieler_2="marine_schuetze",
+    spieler_3="marine_schuetze",
+    spieler_4="marine_sanitaeter",
+    gegner_1="aeon_infizierter",
+    gegner_2="aeon_infizierter",
+    gegner_3="aeon_schleicher",
+    belohnung=2200,
+    ki=3,
+    npc_level=7,
+    team_groesse_1=4,
+    team_groesse_2=3,
+    story_vorher=[
+        ("Erzähler", "Sara und die Marines verließen die Wayfarer und begannen, das Gelände der verlassenen Militärbasis zu untersuchen."),
+        ("Erzähler", "Die Landebahn war von tiefen Rissen durchzogen. Zwischen den Betonplatten wuchsen Büsche und kleine Bäume. Die umliegenden Gebäude waren größtenteils eingestürzt oder von Pflanzen überwuchert."),
+        ("Marine_1", "Hier ist seit Ewigkeiten niemand mehr gewesen."),
+        ("Sara", "Wir überprüfen zuerst die unmittelbare Umgebung. Vielleicht finden wir einen Zugang zu den alten Kontrollräumen."),
+        ("Erzähler", "Die Gruppe bewegte sich entlang der Landebahn auf ein größeres Gebäude zu, dessen Fassade teilweise unter dichtem Efeu verschwunden war."),
+        ("Erzähler", "Plötzlich hörten sie ein leises Scharren aus einem überwucherten Gebäudeeingang."),
+        ("Marine_2", "Bewegung links."),
+        ("Erzähler", "Eine Gestalt trat aus dem Schatten. Ihre Kleidung war zerfetzt, ihre Haut von dunklen Adern durchzogen."),
+        ("Erzähler", "Die Gestalt bewegte sich zunächst langsam, als würde sie die Gruppe beobachten."),
+        ("Sara", "Nicht näher kommen!"),
+        ("Erzähler", "Hinter der ersten Gestalt erschien eine weitere."),
+        ("Erzähler", "Dann löste sich eine dritte Gestalt aus dem Schatten eines eingestürzten Gebäudes. Sie bewegte sich ungewöhnlich schnell und näherte sich geduckt über die Trümmer."),
+        ("Marine_1", "Das sind keine normalen Menschen mehr."),
+        ("Sara", "Abstand halten! Sie kommen auf uns zu!"),
+        ("Erzähler", "Dann stürmten Sie auf die Gruppe zu. Die Marines gingen in Stellung, während Sara hinter einem umgestürzten Fahrzeug Deckung suchte.")
+    ],
+    ist_kampf=True,
+    story_nachher=[
+        ("Erzähler", "Die letzten Infizierten gingen zu Boden."),
+        ("Erzähler", "Für einige Sekunden blieb die Gruppe regungslos stehen."),
+        ("Marine_2", "Was waren das für Dinger?"),
+        ("Sara", "Menschen. Zumindest waren sie es einmal."),
+        ("Erzähler", "Sara betrachtete die dunklen Adern, die sich über die Haut eines der Infizierten zogen."),
+        ("Sara", "Das ist dieselbe Art von Infektion, die wir auf dem Mars gesehen haben."),
+        ("Marine_1", "Dann ist das hier wirklich passiert."),
+        ("Sara", "Wir müssen herausfinden, wie es begonnen hat."),
+        ("Erzähler", "Die Gruppe setzte ihre Untersuchung auf dem Gelände fort."),
+        ("Erzähler", "Hinter einem überwucherten Vorplatz entdeckten sie ein größeres, teilweise eingestürztes Gebäude. Über dem Eingang war noch das verblasste Emblem der Militärbasis zu erkennen."),
+        ("Marine_2", "Sieht aus, als wäre das früher ein Kontrollgebäude gewesen."),
+        ("Sara", "Vielleicht finden wir dort noch funktionierende Systeme oder alte Aufzeichnungen."),
+        ("Erzähler", "Sie näherten sich dem Eingang und begannen, den Zugang freizulegen.")
+    ]
+)
+
+
+Die_letzten_Aufzeichnungen_6 = kampangen_kampf( #42
+    "Die letzten Aufzeichnungen",
+    story_vorher=[
+        ("Erzähler", "Die Gruppe betrat das alte Militärgebäude durch einen teilweise eingestürzten Seiteneingang."),
+        ("Erzähler", "Wurzeln hatten sich durch die Wände gearbeitet. An der Decke hingen rostige Kabel, und auf dem Boden lag eine dicke Schicht aus Staub und Laub."),
+        ("Sara", "Sucht nach einem Archiv oder einem Kontrollraum. Vielleicht sind noch Daten vorhanden."),
+        ("Erzähler", "Nach einiger Zeit entdeckten sie hinter einer beschädigten Sicherheitstür einen kleinen Raum mit mehreren alten Terminals."),
+        ("Marine_1", "Die Geräte sehen uralt aus."),
+        ("Sara", "Vielleicht haben wir trotzdem Glück."),
+        ("Erzähler", "Sara aktivierte das Hauptterminal. Der Bildschirm flackerte, bevor eine alte Benutzeroberfläche erschien."),
+        ("Terminal", "MILITÄRISCHES ARCHIV - ZUGRIFF BESCHRÄNKT."),
+        ("Erzähler", "Einige Dateien waren beschädigt. Andere ließen sich noch öffnen."),
+        ("Sara", "Zeig mir die letzten verfügbaren Berichte."),
+        ("Erzähler", "Eine Liste mit mehreren Einträgen erschien auf dem Bildschirm."),
+        ("Terminal", "BERICHT 01 - UNGEWÖHNLICHE VORKOMMNISSE."),
+        ("Terminal", "BERICHT 02 - QUARANTÄNE UND SICHERHEITSMASSNAHMEN."),
+        ("Terminal", "BERICHT 03 - AUSFALL MEHRERER EINRICHTUNGEN."),
+        ("Erzähler", "Sara öffnete den ersten Bericht."),
+        ("Terminal", "Mehrere Personen berichten von unerklärlichen Sichtungen und ungewöhnlichen biologischen Spuren. Die Ursache ist derzeit unbekannt."),
+        ("Marine_2", "Das könnte der Anfang gewesen sein."),
+        ("Sara", "Vielleicht. Öffne den zweiten Bericht."),
+        ("Erzähler", "Der nächste Eintrag enthielt mehrere Warnungen und Hinweise auf eine zunehmende Zahl von Zwischenfällen."),
+        ("Terminal", "Verdacht auf eine unbekannte biologische Bedrohung. Betroffene Einrichtungen werden vorläufig unter Quarantäne gestellt."),
+        ("Erzähler", "Sara scrollte weiter."),
+        ("Terminal", "Weitere Untersuchungen werden durch unerklärliche Abweichungen bei Zeitmessungen erschwert."),
+        ("Sara", "Zeitmessungen?"),
+        ("Erzähler", "Sie öffnete die zugehörigen Messdaten. Mehrere Zeitstempel widersprachen einander."),
+        ("Marine_1", "Vielleicht ist die interne Uhr kaputt."),
+        ("Sara", "Vielleicht. Aber die Abweichungen sind viel zu groß."),
+        ("Erzähler", "Ein weiterer Bericht ließ sich nur teilweise öffnen."),
+        ("Terminal", "Unterschiedliche Zeitraten innerhalb mehrerer betroffener Einrichtungen bestätigt. Ursache weiterhin ungeklärt."),
+        ("Erzähler", "Sara betrachtete die Daten. Die Aufzeichnungen schienen Ereignisse in einer Reihenfolge zu zeigen, die nicht zusammenpasste."),
+        ("Sara", "Sichert alles. Wir brauchen die vollständigen Daten."),
+        ("Erzähler", "Während die Übertragung lief, öffnete sich automatisch eine letzte Datei."),
+        ("Terminal", "LETZTER BERICHT - NICHT ABGESCHLOSSEN."),
+        ("Erzähler", "Der Bericht bestand nur aus wenigen lesbaren Zeilen."),
+        ("Terminal", "Die Lage verschlechtert sich. Weitere Evakuierungen werden vorbereitet."),
+        ("Erzähler", "Darunter folgte ein Zeitstempel, der deutlich älter war als der vorherige Bericht, obwohl er offenbar später erstellt worden war."),
+        ("Sara", "Das ergibt keinen Sinn."),
+        ("Erzähler", "Bevor sie die Datei genauer untersuchen konnte, brach die Verbindung zum Archiv ab."),
+        ("Marine_2", "Das System ist tot."),
+        ("Sara", "Wir haben genug Daten. Wir sehen sie uns auf der Wayfarer genauer an."),
+        ("Erzähler", "Sara speicherte die letzten verfügbaren Dateien und wandte sich zum Ausgang."),
+        ("Erzähler", "Sie hatten noch keine Erklärung dafür, was auf der Erde geschehen war. Aber die Aufzeichnungen machten deutlich, dass die Ereignisse viel früher begonnen hatten, als sie angenommen hatten.")
+    ],
+    ist_kampf=False
+)
+
+
+Die_vergessene_Anlage_6 = kampangen_kampf( #43
+    "Die vergessene Anlage",
+    story_vorher=[
+        ("Erzähler", "John, Rico und Lara verließen die Red Horizon und betraten die fremde Oberfläche von Prometheus-Prime."),
+        ("Erzähler", "Vor ihnen erhob sich eine gewaltige Anlage, deren dunkle Außenwände teilweise im Gestein verschwanden."),
+        ("Rico", "Ich hatte mir den Ort irgendwie anders vorgestellt."),
+        ("Lara", "Was hast du erwartet? Eine Willkommensparty?"),
+        ("Rico", "Wäre mir lieber als dieser Anblick."),
+        ("Erzähler", "John überprüfte sein Handgerät. Das schwache Signal, das sie aus dem Orbit empfangen hatten, kam eindeutig aus dem Inneren der Anlage."),
+        ("John", "Das Signal ist noch da. Wir müssen näher heran."),
+        ("Erzähler", "Sie erreichten einen breiten Eingang, dessen massive Türen teilweise geöffnet waren."),
+        ("Lara", "Die Türen sind beschädigt. Aber nicht erst seit gestern."),
+        ("Erzähler", "John leuchtete in den dunklen Eingangsbereich. Dahinter lag ein langer Korridor, dessen Wände von seltsamen Mustern überzogen waren."),
+        ("Rico", "Das sieht nicht nach menschlicher Architektur aus."),
+        ("John", "Ist es auch nicht."),
+        ("Erzähler", "Sie betraten die Anlage. Ihre Schritte hallten durch die verlassenen Gänge."),
+        ("Erzähler", "Nach einigen Minuten erreichten sie eine große Halle. In ihrer Mitte stand ein gewaltiger, zylinderförmiger Aufbau, der von mehreren metallischen Streben gehalten wurde."),
+        ("Lara", "Was ist das?"),
+        ("John", "Vielleicht ein Reaktor oder ein Teil des Energiesystems."),
+        ("Erzähler", "An der Wand entdeckte Rico eine Reihe von Symbolen, die denen aus der Marsstation ähnelten."),
+        ("Rico", "John, sieh dir das an."),
+        ("Erzähler", "John trat näher an die Wand heran. Zwischen den fremden Zeichen erkannte er das Symbol, das ihm bereits auf dem Navigationsdisplay der Red Horizon aufgefallen war."),
+        ("John", "Das ist dasselbe Zeichen."),
+        ("Lara", "Dann sind wir hier richtig."),
+        ("Erzähler", "John aktivierte sein Handgerät und versuchte, die Symbole zu scannen."),
+        ("John", "Ich bekomme nur Bruchstücke. Wir müssen ein funktionierendes Terminal finden."),
+        ("Erzähler", "Am anderen Ende der Halle entdeckten sie eine schmale Tür, hinter der ein schwaches Licht flackerte."),
+        ("Rico", "Ich würde sagen, wir sehen uns das an."),
+        ("Erzähler", "Die drei machten sich auf den Weg zur Tür.")
+    ],
+    ist_kampf=False
+)
+
+
 Kampange_6 = kampange(
     "_06",
     "Down in Mars",
     "sehr schwer",
-    37,
+    43,
     [
         anfangsstory_6,
         Die_Erkundung_6,
@@ -3720,7 +4027,7 @@ Kampange_6 = kampange(
         Die_Woche_6,
         Der_Abflug_6,
         Der_Flug_6,
-        Gefangen_von_der_Marsstation_6,
+        Unbekanntes_Gebiet_6,
         Ein_neues_Zuhause_6,
         Der_erste_Kontakt_6,
         Weitere_Sicherheitsdrohnen_6,
@@ -3752,6 +4059,15 @@ Kampange_6 = kampange(
         Die_Vorbereitungen_6,
         Der_Start_6,
         Die_Flucht_6,
+
+        Zwei_Wege_6,
+
+        Die_stille_Erde_6,
+        Prometheus_Prime_6,
+
+        Die_Ueberwucherten_6,
+        Die_letzten_Aufzeichnungen_6,
+        Die_vergessene_Anlage_6,
     ],
     fortschritt=0
 )

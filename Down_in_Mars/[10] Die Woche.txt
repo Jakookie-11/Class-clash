@@ -21,10 +21,11 @@ Erzähler : Die Gruppe trainierte, erledigte Papierkram und besprach die Vorbere
 Erzähler : Trotzdem blieb das ungute Gefühl bestehen, dass etwas nicht stimmte.
 
 Erzähler : Am fünften Tag bemerkte Lara beim Frühstück, dass ihre Uhr mehrere Minuten nachging.
-Lara     : Vielleicht ist einfach die Batterie leer.
-Erzähler : Kurz darauf bemerkte auch Sara, dass ihre Uhr nicht mehr richtig lief.
-Sara     : Meine läuft auch nicht mehr ganz richtig.
-Erzähler : Die Gruppe schob es zunächst auf defekte Uhren.
+Lara     : Vielleicht habe ich die Zeit gestern falsch eingestellt.
+Erzähler : Kurz darauf sah Sara auf ihre eigene Uhr und runzelte die Stirn.
+Sara     : Wartet mal. Meine zeigt auch eine andere Zeit an.
+Erzähler : Die beiden verglichen ihre Uhren. Beide waren unterschiedlich weit zurückgeblieben.
+Erzähler : Für einen Moment herrschte Stille am Frühstückstisch.
 
 Erzähler : In der folgenden Nacht konnte John nicht einschlafen.
 Erzähler : Immer wieder hörte er dieses leise, kratzende Atmen.

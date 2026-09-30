@@ -7,6 +7,7 @@ import charaktere
 import ressourcen
 import confic
 import speichern
+import bilder
 
 
 
@@ -40,7 +41,7 @@ def charakter_bip(spieler_name):
             if is_break == 1:
                 continue
 
-        elif wahl == 3:
+        elif wahl == 0:
             return 1
 
 
@@ -111,11 +112,14 @@ def charaktere_anzeigen():
 
 
 
-def level_up(wen):  
-    charaktere.Charaktere[wen].level = charaktere.Charaktere[wen].level + 1
-    charaktere.Charaktere[wen].hp = charaktere.Charaktere[wen].hp * 1.2
-    charaktere.Charaktere[wen].max_hp = charaktere.Charaktere[wen].max_hp * 1.2
-    charaktere.Charaktere[wen].schaden = charaktere.Charaktere[wen].schaden * 1.2
+def level_up(wen, max_hp_permanent_erhoehen=False):
+    charakter = charaktere.Charaktere[wen]
+    charakter.level += 1
+    charakter.hp *= 1.2
+    charakter.max_hp *= 1.2
+    if max_hp_permanent_erhoehen:
+        charakter.max_max_hp *= 1.2
+    charakter.schaden *= 1.2
 
 
 
@@ -156,11 +160,14 @@ def charaktere_aufleveln(spieler):
     while charaktere_aufleveln == True:
 
         os.system(confic.terminal_clear)
-        print("═══════════════════════════════════════")
-        print(f"Aktuelle Credits: {ressourcen.ressourcen["Credits"]}")
-        print("═══════════════════════════════════════")
+        print(f"{GELB}═══════════════════════════════════════{RESET}")
+        print(f"Aktuelle   Credits: {ressourcen.ressourcen["Credits"]}")
+        print(f"Aktuelle M_Credits: {ressourcen.ressourcen["M_Credits"]}")
+        print(f"{GELB}═══════════════════════════════════════{RESET}")
         print()
         print("Zu verfuegung stehende Charaktere:")
+        print()
+        print(f"{CYAN}Normale:{RESET}")
         print()
 
         for schlüssel, charakter in charaktere.Charaktere.items():
@@ -170,6 +177,8 @@ def charaktere_aufleveln(spieler):
                         if charakter.name != "Hannah_d":
                             print(f"Name: {schlüssel :10} Level: {charakter.level}")
 
+        print()
+        print(f"{CYAN}Down in Mars:{RESET}")
         print()
 
         for schlüssel, charakter in charaktere.Charaktere.items():
@@ -189,6 +198,11 @@ def charaktere_aufleveln(spieler):
                 print("---Dieser Charakter existiert nicht!---")
                 time.sleep(2)
                 funktions.zeilen_loeschen(3)
+            elif charaktere.Charaktere[wen].klasse == "npc":
+                print()
+                print("---NPCs können nicht gelevelt werden!---")
+                time.sleep(2)
+                funktions.zeilen_loeschen(3)
             else:
                 break
 
@@ -204,13 +218,20 @@ def charaktere_aufleveln(spieler):
         #--credit Kosten berechnen--#
         kosten_für_level_up = level_kosten_credits(aktuelles_level_des_chrakters)
 
-        is_break = ressourcen.ressourcen_verändern("Credits", kosten_für_level_up)
+        charakter = charaktere.Charaktere[wen]
 
-        if is_break == 1:
-            return 1
+        if charakter.klasse != "down_in_mars":
+            is_break = ressourcen.ressourcen_verändern("Credits", kosten_für_level_up)
+            if is_break == 1:
+                return 1
+
+        else:
+            is_break = ressourcen.ressourcen_verändern("M_Credits", kosten_für_level_up)
+            if is_break == 1:
+                return 1
 
         #--Eingentliches Level_up--#
-        level_up(wen)
+        level_up(wen, max_hp_permanent_erhoehen=True)
         speichern.spiel_speichern(spieler)
 
         os.system(confic.terminal_clear)
@@ -232,13 +253,16 @@ def charaktere_aufleveln(spieler):
         print(f"Faehigkeit 2 : {charakter.faehigkeit_2.name}")
         print(f"Faehigkeit 3 : {charakter.faehigkeit_3.name}")
 
-        print()
+        bilder.bild_anzeigen(wen, 300, 0)
 
-        nochmal = input("Nochmal? ")
+        print()
+        nochmal = input("Nochmal? (y/n) ")
+
+        bilder.bild_schliessen(wen)
 
         os.system(confic.terminal_clear)
 
-        if nochmal == "ja":
+        if nochmal == "y":
            charaktere_aufleveln = True 
 
         else:

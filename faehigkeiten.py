@@ -659,6 +659,106 @@ chasker_schwerer_angriff = faehigkeit(
 
 
 # ══════════════════════════════════════════════════════════════
+# Marines
+# ══════════════════════════════════════════════════════════════
+
+
+def marine_gewehrsalve_obj(wer, wen, team=None):
+
+    schaden = entgültigen_schaden_berechnen(wer) * 1.2
+    HP_verändern(wen, schaden)
+
+
+marine_gewehrsalve = faehigkeit(
+    "marine_gewehrsalve",
+    marine_gewehrsalve_obj,
+    "Ein gezielter Schuss aus der Marine-Formation, der erhöhten Schaden verursacht.",
+    0,
+    0,
+    "gegner"
+)
+
+
+def marine_verteidigung_obj(wer, wen, team=None):
+
+    status_effekte.status_effekte_hinzufügen(
+        wer,
+        status_effekte.schaden_erhalten_minus
+    )
+
+
+marine_verteidigung = faehigkeit(
+    "marine_verteidigung",
+    marine_verteidigung_obj,
+    "Die Marine nimmt eine Verteidigungsstellung ein und verringert den erlittenen Schaden.",
+    3,
+    0,
+    "selbst"
+)
+
+
+def marine_granate_obj(wer, wen, team=None):
+
+    schaden = entgültigen_schaden_berechnen(wer) * 1.6
+    HP_verändern(wen, schaden)
+
+    if random.random() < 0.45:
+        status_effekte.status_effekte_hinzufügen(
+            wen,
+            status_effekte.betaeubt
+        )
+
+
+marine_granate = faehigkeit(
+    "marine_granate",
+    marine_granate_obj,
+    "Eine Granate explodiert auf dem Ziel und kann es zudem kurz betäuben.",
+    4,
+    0,
+    "gegner"
+)
+
+
+def marine_verband_obj(wer, wen, team=None):
+
+    HP_verändern(wen, 60)
+
+    if random.random() < 0.5:
+        status_effekte.status_effekte_hinzufügen(
+            wen,
+            status_effekte.schaden_erhalten_minus
+        )
+
+
+marine_verband = faehigkeit(
+    "marine_verband",
+    marine_verband_obj,
+    "Ein Marine versorgt einen Verbündeten mit Verbandmaterial und heilt ihn leicht.",
+    3,
+    0,
+    "verbündete"
+)
+
+
+def marine_anweisung_obj(wer, wen, team=None):
+
+    status_effekte.status_effekte_hinzufügen(
+        wen,
+        status_effekte.schaden_plus
+    )
+
+
+marine_anweisung = faehigkeit(
+    "marine_anweisung",
+    marine_anweisung_obj,
+    "Ein Marine gibt eine klare Anweisung, wodurch ein Verbündeter vorübergehend mehr Schaden verursacht.",
+    3,
+    0,
+    "verbündete"
+)
+
+
+# ══════════════════════════════════════════════════════════════
 # ══════════════════════════════════════════════════════════════
 
 # Down in Mars Gegner
@@ -1186,6 +1286,231 @@ traum_sara_es_beginnt = faehigkeit(
 )
 
 
+# ══════════════════════════════════════════════════════════════
+# Aeon-Infizierter
+# ══════════════════════════════════════════════════════════════
+
+def aeon_infizierter_hieb_obj(wer, wen, team=None):
+
+    HP_verändern(wen, entgültigen_schaden_berechnen(wer))
+
+
+aeon_infizierter_hieb = faehigkeit(
+    "aeon_infizierter_hieb",
+    aeon_infizierter_hieb_obj,
+    "Der Infizierte greift mit einem unkoordinierten, aggressiven Hieb an.",
+    0,
+    0,
+    "gegner"
+)
+
+
+def aeon_infizierter_fremdgewebe_obj(wer, wen, team=None):
+
+    HP_verändern(wen, entgültigen_schaden_berechnen(wer) * 1.2)
+    status_effekte.status_effekte_hinzufügen(
+        wen,
+        status_effekte.damage_over_time_1
+    )
+
+
+aeon_infizierter_fremdgewebe = faehigkeit(
+    "aeon_infizierter_fremdgewebe",
+    aeon_infizierter_fremdgewebe_obj,
+    "Fremdes Gewebe überträgt Aeon-Energie auf das Ziel und verursacht zusätzlich Schaden über Zeit.",
+    3,
+    0,
+    "gegner"
+)
+
+
+def aeon_infizierter_hordenruf_obj(wer, wen, team=None):
+
+    status_effekte.status_effekte_hinzufügen(
+        wen,
+        status_effekte.schaden_plus
+    )
+
+
+aeon_infizierter_hordenruf = faehigkeit(
+    "aeon_infizierter_hordenruf",
+    aeon_infizierter_hordenruf_obj,
+    "Ein aggressiver Ruf spornt einen verbündeten Infizierten an und erhöht dessen Schaden.",
+    3,
+    0,
+    "verbündete"
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Aeon-Schleicher
+# ══════════════════════════════════════════════════════════════
+
+def aeon_schleicher_schattenhieb_obj(wer, wen, team=None):
+
+    HP_verändern(wen, entgültigen_schaden_berechnen(wer))
+
+
+aeon_schleicher_schattenhieb = faehigkeit(
+    "aeon_schleicher_schattenhieb",
+    aeon_schleicher_schattenhieb_obj,
+    "Der Schleicher schlägt blitzschnell aus dem Hinterhalt zu.",
+    0,
+    0,
+    "gegner"
+)
+
+
+def aeon_schleicher_schattensturz_obj(wer, wen, team=None):
+
+    HP_verändern(wen, entgültigen_schaden_berechnen(wer) * 1.5)
+
+    if random.random() < 0.5:
+        status_effekte.status_effekte_hinzufügen(
+            wen,
+            status_effekte.betaeubt
+        )
+
+
+aeon_schleicher_schattensturz = faehigkeit(
+    "aeon_schleicher_schattensturz",
+    aeon_schleicher_schattensturz_obj,
+    "Der Schleicher stürzt sich aus der Dunkelheit auf das Ziel. Mit 50 % Wahrscheinlichkeit wird es betäubt.",
+    3,
+    0,
+    "gegner"
+)
+
+
+def aeon_schleicher_verschwinden_obj(wer, wen, team=None):
+
+    status_effekte.status_effekte_hinzufügen(
+        wer,
+        status_effekte.schaden_erhalten_minus
+    )
+
+
+aeon_schleicher_verschwinden = faehigkeit(
+    "aeon_schleicher_verschwinden",
+    aeon_schleicher_verschwinden_obj,
+    "Der Schleicher taucht in den Schatten ab und erleidet vorübergehend weniger Schaden.",
+    4,
+    0,
+    "selbst"
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Aeon-Brecher
+# ══════════════════════════════════════════════════════════════
+
+def aeon_brecher_schlag_obj(wer, wen, team=None):
+
+    HP_verändern(wen, entgültigen_schaden_berechnen(wer))
+
+
+aeon_brecher_schlag = faehigkeit(
+    "aeon_brecher_schlag",
+    aeon_brecher_schlag_obj,
+    "Der Brecher schlägt mit seiner gewaltigen Kraft zu.",
+    0,
+    0,
+    "gegner"
+)
+
+
+def aeon_brecher_hindernisbruch_obj(wer, wen, team=None):
+
+    HP_verändern(wen, entgültigen_schaden_berechnen(wer) * 1.8)
+    status_effekte.status_effekte_hinzufügen(
+        wen,
+        status_effekte.schaden_minus
+    )
+
+
+aeon_brecher_hindernisbruch = faehigkeit(
+    "aeon_brecher_hindernisbruch",
+    aeon_brecher_hindernisbruch_obj,
+    "Der Brecher trifft das Ziel mit voller Wucht und schwächt dessen Angriff.",
+    4,
+    0,
+    "gegner"
+)
+
+
+def aeon_brecher_verhaertung_obj(wer, wen, team=None):
+
+    status_effekte.status_effekte_hinzufügen(
+        wer,
+        status_effekte.schaden_erhalten_minus
+    )
+
+
+aeon_brecher_verhaertung = faehigkeit(
+    "aeon_brecher_verhaertung",
+    aeon_brecher_verhaertung_obj,
+    "Verdicktes Gewebe schützt den Brecher und verringert vorübergehend den erlittenen Schaden.",
+    4,
+    0,
+    "selbst"
+)
+
+
+# ══════════════════════════════════════════════════════════════
+# Aeon-Hüter
+# ══════════════════════════════════════════════════════════════
+
+def aeon_hueter_klauenhieb_obj(wer, wen, team=None):
+
+    HP_verändern(wen, entgültigen_schaden_berechnen(wer))
+
+
+aeon_hueter_klauenhieb = faehigkeit(
+    "aeon_hueter_klauenhieb",
+    aeon_hueter_klauenhieb_obj,
+    "Der Hüter greift ruhig und gezielt mit einem Klauenhieb an.",
+    0,
+    0,
+    "gegner"
+)
+
+
+def aeon_hueter_resonanzruf_obj(wer, wen, team=None):
+
+    status_effekte.status_effekte_hinzufügen(
+        wen,
+        status_effekte.schaden_plus
+    )
+
+
+aeon_hueter_resonanzruf = faehigkeit(
+    "aeon_hueter_resonanzruf",
+    aeon_hueter_resonanzruf_obj,
+    "Ein fremdes Signal stärkt einen verbündeten Infizierten und erhöht dessen Schaden.",
+    3,
+    0,
+    "verbündete"
+)
+
+
+def aeon_hueter_fremdsignal_obj(wer, wen, team=None):
+
+    HP_verändern(wen, entgültigen_schaden_berechnen(wer) * 1.3)
+    status_effekte.status_effekte_hinzufügen(
+        wen,
+        status_effekte.schaden_minus
+    )
+
+
+aeon_hueter_fremdsignal = faehigkeit(
+    "aeon_hueter_fremdsignal",
+    aeon_hueter_fremdsignal_obj,
+    "Der Hüter reagiert auf ein fremdes Signal, fügt dem Ziel Schaden zu und schwächt es.",
+    4,
+    0,
+    "gegner"
+)
+
 
 
 
@@ -1244,7 +1569,7 @@ def er_hat_nichts_gemacht_obj(wer, wen, team=None):
 er_hat_nichts_gemacht = faehigkeit(
     "er_hat_nichts_gemacht",
     er_hat_nichts_gemacht_obj,
-    "Er hat nichts gemacht! Entfernt negative Statuseffekte des Ziels und heilt den Angreifer um 20 HP.",
+    "Er hat nichts gemacht! Entfernt negative Statuseffekte des Ziels und heilt den ausführer der Faehigkeit um 20 HP.",
     4,
     0,
     "verbündete"

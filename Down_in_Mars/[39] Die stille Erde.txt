@@ -1,0 +1,28 @@
+Erzähler : Die Wayfarer näherte sich langsam der Erde.
+Erzähler : Durch das Cockpitfenster war der blaue Planet zu erkennen, den Sara so lange nicht mehr gesehen hatte.
+Erzähler : Doch die Oberfläche sah anders aus als in den Aufzeichnungen, die sie kannte.
+Erzähler : Große Teile der Städte waren von dichten Wäldern überwuchert. Zwischen den Baumkronen ragten nur noch die Überreste einstiger Wolkenkratzer hervor.
+
+Pilot    : Das soll wirklich die Erde sein?
+
+Sara     : Ja. Aber hier ist viel mehr Zeit vergangen, als wir gedacht haben.
+
+Erzähler : Die Wayfarer überflog eine verlassene Küstenstadt. Straßen waren unter Pflanzen verschwunden, Brücken teilweise eingestürzt und ganze Wohnviertel lagen in Trümmern.
+
+Marine_1 : Ich sehe keine aktiven Signale.
+Sara     : Auch keine automatischen Notrufsender?
+
+Marine_1 : Nichts. Die meisten Systeme sind wahrscheinlich seit Jahrzehnten ausgefallen.
+
+Erzähler : Sara blickte auf die Anzeigen. Die Erde wirkte nicht wie ein Planet, der erst vor Kurzem verlassen worden war.
+Pilot    : Ich habe eine alte Militäranlage gefunden. Die Landebahn ist teilweise überwuchert, aber vielleicht schaffen wir es.
+
+Sara     : Dann landen wir dort.
+
+Erzähler : Die Wayfarer sank durch die Wolkendecke. Unter ihnen tauchten die Ruinen einer ehemaligen Militärbasis auf.
+Erzähler : Die Landebahn war von Rissen durchzogen. Bäume und Sträucher hatten sich zwischen den Betonplatten ausgebreitet.
+Erzähler : Mit einem dumpfen Rumpeln setzte die Wayfarer auf.
+Erzähler : Als die Triebwerke verstummten, war nur noch das Rauschen des Windes zu hören.
+Sara     : Wir sehen uns draußen um. Vielleicht finden wir noch etwas Brauchbares.
+Erzähler : Die Gruppe öffnete die Rampe und trat hinaus in eine Welt, die kaum noch etwas mit ihrer Erinnerung an die Erde gemeinsam hatte.
+Enter...
