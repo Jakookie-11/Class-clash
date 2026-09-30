@@ -57,7 +57,7 @@ def shop(spieler_name):
         print("Zu Kaufen:")
         print()
 
-        for schlüssel, wert in menues.shop_menue.items():
+        for schlüssel in menues.shop_menue:
             print(schlüssel)
 
         wahl = input("Wahl? ")
