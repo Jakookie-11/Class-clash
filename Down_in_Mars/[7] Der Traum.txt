@@ -22,11 +22,11 @@ Erzähler : Schließlich erschien auf dem Bildschirm eine Meldung.
 John     : ----Fertig----
 
 Erzähler : John nahm den Speicher an sich.
-John     : Wir verschwinden hier. Wir wollen doch diesem Monster nicht begegnen, oder?
+John     : Wir verschwinden hier. Das macht mir hier langsam Angst.
 
 Erzähler : John blieb stehen.
 Erzähler : Hinter der Armatur war ein Geräusch zu hören.
-Erzähler : Kein Tropfen. Kein Knacken.
+Erzähler : Kein Tropfen. Kein leises Rauschen.
 Erzähler : Es klang eher wie ein tiefes, kratzendes Atmen.
 
 Rico     : Habt ihr das gehört?

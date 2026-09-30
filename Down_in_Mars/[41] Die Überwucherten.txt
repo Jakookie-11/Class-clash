@@ -1,0 +1,33 @@
+Erzähler : Sara und die Marines verließen die Wayfarer und begannen, das Gelände der verlassenen Militärbasis zu untersuchen.
+Erzähler : Die Landebahn war von tiefen Rissen durchzogen. Zwischen den Betonplatten wuchsen Büsche und kleine Bäume. Die umliegenden Gebäude waren größtenteils eingestürzt oder von Pflanzen überwuchert.
+Marine_1 : Hier ist seit Ewigkeiten niemand mehr gewesen.
+Sara     : Wir überprüfen zuerst die unmittelbare Umgebung. Vielleicht finden wir einen Zugang zu den alten Kontrollräumen.
+Erzähler : Die Gruppe bewegte sich entlang der Landebahn auf ein größeres Gebäude zu, dessen Fassade teilweise unter dichtem Efeu verschwunden war.
+Erzähler : Plötzlich hörten sie ein leises Scharren aus einem überwucherten Gebäudeeingang.
+Marine_2 : Bewegung links.
+Erzähler : Eine Gestalt trat aus dem Schatten. Ihre Kleidung war zerfetzt, ihre Haut von dunklen Adern durchzogen.
+Erzähler : Die Gestalt bewegte sich zunächst langsam, als würde sie die Gruppe beobachten.
+Sara     : Nicht näher kommen!
+Erzähler : Hinter der ersten Gestalt erschien eine weitere.
+Erzähler : Dann löste sich eine dritte Gestalt aus dem Schatten eines eingestürzten Gebäudes. Sie bewegte sich ungewöhnlich schnell und näherte sich geduckt über die Trümmer.
+Marine_1 : Das sind keine normalen Menschen.
+Sara     : Abstand halten! Sie kommen auf uns zu!
+Erzähler : Dann stürmten Sie auf die Gruppe zu. Die Marines gingen in Stellung, während Sara hinter einem umgestürzten Fahrzeug Deckung suchte.
+Enter...
+
+
+
+Erzähler : Die letzten Infizierten gingen zu Boden.
+Erzähler : Für einige Sekunden blieb die Gruppe regungslos stehen.
+Marine_2 : Was waren das für Dinger?
+Sara     : Menschen. Zumindest waren sie es einmal.
+Erzähler : Sara betrachtete die dunklen Adern, die sich über die Haut eines der Infizierten zogen.
+Sara     : Das ist dieselbe Art von Infektion, die wir auf dem Mars gesehen haben.
+Marine_1 : Dann ist das hier wirklich passiert.
+Sara     : Wir müssen herausfinden, wie es begonnen hat.
+Erzähler : Die Gruppe setzte ihre Untersuchung auf dem Gelände fort.
+Erzähler : Hinter einem überwucherten Vorplatz entdeckten sie ein größeres, teilweise eingestürztes Gebäude. Über dem Eingang war noch das verblasste Emblem der Militärbasis zu erkennen.
+Marine_2 : Sieht aus, als wäre das früher ein Kontrollgebäude gewesen.
+Sara     : Vielleicht finden wir dort noch funktionierende Systeme oder alte Aufzeichnungen.
+Erzähler : Sie näherten sich dem Eingang und begannen, den Zugang freizulegen.
+Enter...

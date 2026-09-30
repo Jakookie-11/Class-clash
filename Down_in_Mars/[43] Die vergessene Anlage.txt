@@ -1,0 +1,27 @@
+Erzähler : John, Rico und Lara verließen die Red Horizon und betraten die fremde Oberfläche von Prometheus-Prime.
+Erzähler : Vor ihnen erhob sich eine gewaltige Anlage, deren dunkle Außenwände teilweise im Gestein verschwanden.
+Rico     : Ich hatte mir den Ort irgendwie anders vorgestellt.
+Lara     : Was hast du erwartet? Eine Willkommensparty?
+Rico     : Wäre mir lieber als dieser Anblick.
+Erzähler : John überprüfte sein Handgerät. Das schwache Signal, das sie aus dem Orbit empfangen hatten, kam eindeutig aus dem Inneren der Anlage.
+John     : Das Signal ist noch da. Wir müssen näher heran.
+Erzähler : Sie erreichten einen breiten Eingang, dessen massive Türen teilweise geöffnet waren.
+Lara     : Die Türen sind beschädigt. Aber nicht erst seit gestern.
+Erzähler : John leuchtete in den dunklen Eingangsbereich. Dahinter lag ein langer Korridor, dessen Wände von seltsamen Mustern überzogen waren.
+Rico     : Das sieht nicht nach menschlicher Architektur aus.
+John     : Ist es auch nicht.
+Erzähler : Sie betraten die Anlage. Ihre Schritte hallten durch die verlassenen Gänge.
+Erzähler : Nach einigen Minuten erreichten sie eine große Halle. In ihrer Mitte stand ein gewaltiger, zylinderförmiger Aufbau, der von mehreren metallischen Streben gehalten wurde.
+Lara     : Was ist das?
+John     : Vielleicht ein Reaktor oder ein Teil des Energiesystems.
+Erzähler : An der Wand entdeckte Rico eine Reihe von Symbolen, die denen aus der Marsstation ähnelten.
+Rico     : John, sieh dir das an.
+Erzähler : John trat näher an die Wand heran. Zwischen den fremden Zeichen erkannte er das Symbol, das ihm bereits auf dem Navigationsdisplay der Red Horizon aufgefallen war.
+John     : Das ist dasselbe Zeichen.
+Lara     : Dann sind wir hier richtig.
+Erzähler : John aktivierte sein Handgerät und versuchte, die Symbole zu scannen.
+John     : Ich bekomme nur Bruchstücke. Wir müssen ein funktionierendes Terminal finden.
+Erzähler : Am anderen Ende der Halle entdeckten sie eine schmale Tür, hinter der ein schwaches Licht flackerte.
+Rico     : Ich würde sagen, wir sehen uns das an.
+Erzähler : Die drei machten sich auf den Weg zur Tür.
+Enter...

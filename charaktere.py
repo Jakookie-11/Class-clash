@@ -302,6 +302,56 @@ Chasker = charakter(
 )
 
 
+marine_schuetze = charakter(
+    "marine_schuetze",
+    "down_in_mars",
+    130,
+    130,
+    130,
+    -14,
+    -14,
+    "down_in_mars",
+    85,
+    1,
+    faehigkeit_1=faehigkeiten.marine_gewehrsalve,
+    faehigkeit_2=faehigkeiten.marine_verteidigung,
+    faehigkeit_3=faehigkeiten.marine_anweisung
+)
+
+
+marine_sturmsoldat = charakter(
+    "marine_sturmsoldat",
+    "down_in_mars",
+    170,
+    170,
+    170,
+    -18,
+    -18,
+    "down_in_mars",
+    65,
+    1,
+    faehigkeit_1=faehigkeiten.marine_gewehrsalve,
+    faehigkeit_2=faehigkeiten.marine_granate,
+    faehigkeit_3=faehigkeiten.marine_verteidigung
+)
+
+
+marine_sanitaeter = charakter(
+    "marine_sanitaeter",
+    "down_in_mars",
+    115,
+    115,
+    115,
+    -9,
+    -9,
+    "down_in_mars",
+    75,
+    1,
+    faehigkeit_1=faehigkeiten.marine_gewehrsalve,
+    faehigkeit_2=faehigkeiten.marine_verband,
+    faehigkeit_3=faehigkeiten.marine_anweisung
+)
+
 # ══════════════════════════════════════════════════════════════
 # Down in Mars – Gegner
 # ══════════════════════════════════════════════════════════════
@@ -528,6 +578,73 @@ traum_sara = charakter(
 )
 
 
+aeon_infizierter = charakter(
+    "aeon_infizierter",
+    "down_in_mars_gegner",
+    130,
+    130,
+    130,
+    -12,
+    -12,
+    "down_in_mars_gegner",
+    65,
+    1,
+    faehigkeit_1=faehigkeiten.aeon_infizierter_hieb,
+    faehigkeit_2=faehigkeiten.aeon_infizierter_fremdgewebe,
+    faehigkeit_3=faehigkeiten.aeon_infizierter_hordenruf
+)
+
+
+aeon_schleicher = charakter(
+    "aeon_schleicher",
+    "down_in_mars_gegner",
+    90,
+    90,
+    90,
+    -16,
+    -16,
+    "down_in_mars_gegner",
+    115,
+    1,
+    faehigkeit_1=faehigkeiten.aeon_schleicher_schattenhieb,
+    faehigkeit_2=faehigkeiten.aeon_schleicher_schattensturz,
+    faehigkeit_3=faehigkeiten.aeon_schleicher_verschwinden
+)
+
+
+aeon_brecher = charakter(
+    "aeon_brecher",
+    "down_in_mars_gegner",
+    260,
+    260,
+    260,
+    -22,
+    -22,
+    "down_in_mars_gegner",
+    35,
+    1,
+    faehigkeit_1=faehigkeiten.aeon_brecher_schlag,
+    faehigkeit_2=faehigkeiten.aeon_brecher_hindernisbruch,
+    faehigkeit_3=faehigkeiten.aeon_brecher_verhaertung
+)
+
+
+aeon_hueter = charakter(
+    "aeon_hueter",
+    "down_in_mars_gegner",
+    170,
+    170,
+    170,
+    -13,
+    -13,
+    "down_in_mars_gegner",
+    75,
+    1,
+    faehigkeit_1=faehigkeiten.aeon_hueter_klauenhieb,
+    faehigkeit_2=faehigkeiten.aeon_hueter_resonanzruf,
+    faehigkeit_3=faehigkeiten.aeon_hueter_fremdsignal
+)
+
 
 
 
@@ -662,6 +779,9 @@ Charaktere = {
     "Lara": Lara,
     "Rico": Rico,
     "Chasker": Chasker,
+    "marine_schuetze": marine_schuetze,
+    "marine_sturmsoldat": marine_sturmsoldat,
+    "marine_sanitaeter": marine_sanitaeter,
 
     #Down in Mars Gegner
     "mars_sicherheitsdrohne": mars_sicherheitsdrohne,
@@ -677,6 +797,10 @@ Charaktere = {
     "aeon": aeon,
     "schattenwesen": schattenwesen,
     "traum_sara" : traum_sara,
+    "aeon_infizierter": aeon_infizierter,
+    "aeon_schleicher": aeon_schleicher,
+    "aeon_brecher": aeon_brecher,
+    "aeon_hueter": aeon_hueter,
 
     #npcs
     "fuenftklaessler": fuenftklaessler,
