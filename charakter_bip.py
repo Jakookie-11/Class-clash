@@ -112,11 +112,14 @@ def charaktere_anzeigen():
 
 
 
-def level_up(wen):  
-    charaktere.Charaktere[wen].level = charaktere.Charaktere[wen].level + 1
-    charaktere.Charaktere[wen].hp = charaktere.Charaktere[wen].hp * 1.2
-    charaktere.Charaktere[wen].max_hp = charaktere.Charaktere[wen].max_hp * 1.2
-    charaktere.Charaktere[wen].schaden = charaktere.Charaktere[wen].schaden * 1.2
+def level_up(wen, max_hp_permanent_erhoehen=False):
+    charakter = charaktere.Charaktere[wen]
+    charakter.level += 1
+    charakter.hp *= 1.2
+    charakter.max_hp *= 1.2
+    if max_hp_permanent_erhoehen:
+        charakter.max_max_hp *= 1.2
+    charakter.schaden *= 1.2
 
 
 
@@ -195,6 +198,11 @@ def charaktere_aufleveln(spieler):
                 print("---Dieser Charakter existiert nicht!---")
                 time.sleep(2)
                 funktions.zeilen_loeschen(3)
+            elif charaktere.Charaktere[wen].klasse == "npc":
+                print()
+                print("---NPCs können nicht gelevelt werden!---")
+                time.sleep(2)
+                funktions.zeilen_loeschen(3)
             else:
                 break
 
@@ -223,7 +231,7 @@ def charaktere_aufleveln(spieler):
                 return 1
 
         #--Eingentliches Level_up--#
-        level_up(wen)
+        level_up(wen, max_hp_permanent_erhoehen=True)
         speichern.spiel_speichern(spieler)
 
         os.system(confic.terminal_clear)
