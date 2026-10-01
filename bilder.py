@@ -6,6 +6,8 @@ BILDER_ORDNER = Path(__file__).parent / "bilder"
 
 BILD_BREITE = 250
 BILD_HOEHE = 333
+SEITENBILD_BREITE = BILD_BREITE*2
+SEITENBILD_HOEHE = BILD_HOEHE*2
 
 _root = None
 _fenster = {}
@@ -82,7 +84,7 @@ def bild_rechts_anzeigen(name):
 
     with Image.open(bild_pfad) as quellbild:
         bild = quellbild.resize(
-            (BILD_BREITE, BILD_HOEHE),
+            (SEITENBILD_BREITE, SEITENBILD_HOEHE),
             Image.Resampling.LANCZOS
         )
     bild_tk = ImageTk.PhotoImage(bild)
