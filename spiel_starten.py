@@ -11,6 +11,7 @@ import ki
 import kampange
 import geheimes
 import copy
+import bilder
 
 
 SCHWARZ  = "\033[30m"
@@ -210,6 +211,9 @@ def charaktere_auswaelen(
 
             if name in verfuegbare or ist_hannah:
                 team.append(name)
+                bilder.bild_rechts_anzeigen(
+                    charaktere.Charaktere[name].name
+                )
                 break
 
             if name not in charaktere.Charaktere:
@@ -223,6 +227,7 @@ def charaktere_auswaelen(
     for name in team:
         print(f"- {name}")
     input("\nEnter zum Bestätigen...")
+    bilder.bild_rechts_schliessen()
     return team
 
 
@@ -570,6 +575,7 @@ def kampf(
     if len(team_1) == 0 or len(team_2) == 0:
         print("Ein Team darf nicht leer sein.")
         time.sleep(2)
+        bilder.bild_rechts_schliessen()
         return 2
 
 
@@ -629,6 +635,7 @@ def kampf(
         # Falls durch einen vorherigen Zug Charaktere gestorben sind
         # und die Reihenfolge leer geworden ist
         if not reinfolge:
+            bilder.bild_rechts_schliessen()
             return 2
 
 
@@ -640,6 +647,9 @@ def kampf(
             zug = 0
 
         wer = reinfolge[zug]
+        bilder.bild_rechts_anzeigen(
+            charaktere.Charaktere[wer].name
+        )
 
 
         # ══════════════════════════════════════════════════════════
@@ -719,6 +729,7 @@ def kampf(
                         alle_faehigkeits_abklingzeiten_resetten()
                         HP_zuruecksetzen()
 
+                        bilder.bild_rechts_schliessen()
                         return 2
 
 
@@ -886,11 +897,14 @@ def kampf(
                     time.sleep(2)
 
                     if is_win(team_2):
+                        bilder.bild_rechts_schliessen()
                         return 1
 
                     if is_win(team_1):
+                        bilder.bild_rechts_schliessen()
                         return 3
 
+                    bilder.bild_rechts_schliessen()
                     return 2
 
                 faehigkeit.abklingzeit = faehigkeit.max_abklingzeit
@@ -946,6 +960,7 @@ def kampf(
             alle_faehigkeits_abklingzeiten_resetten()
             HP_zuruecksetzen()
 
+            bilder.bild_rechts_schliessen()
             return 1
 
 
@@ -964,6 +979,7 @@ def kampf(
             alle_faehigkeits_abklingzeiten_resetten()
             HP_zuruecksetzen()
 
+            bilder.bild_rechts_schliessen()
             return 3
 
 
