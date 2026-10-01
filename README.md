@@ -10,6 +10,7 @@
 - Benutzerdefinierte Kämpfe
 - Kampagne **Down in Mars**
 - Charakterbibliothek zum Anzeigen und Leveln der Charaktere
+- Charakterbilder bei der Charakterauswahl und während des Kampfes
 - Shop für Credits, Material und Energie
 - Profil- und Passworteinstellungen
 - Automatisches Speichern der Spielstände
@@ -67,6 +68,14 @@ Beim ersten Start wählst du das Betriebssystem aus, damit das Spiel den Bildsch
 
 Lokale Spielstände und Profile werden im Ordner [`saves/`](./saves/) gespeichert. Der Ordner wird beim ersten Start automatisch angelegt. Teile die darin enthaltenen Dateien nicht öffentlich, da sie zu deinem lokalen Spielprofil gehören.
 
+## Charakterbilder
+
+Lege Charakterbilder als PNG-Dateien in den Ordner `bilder/` neben `main.py`.
+Die Dateinamen folgen dem Muster `CC-<Charaktername>.png`, zum Beispiel
+`CC-Jakob.png`. Die Bilder werden für die rechte Vorschau auf 250 × 333 Pixel
+skaliert. Der Ordner `bilder/` ist lokal und wird nicht ins Git-Repository
+übernommen.
+
 ## Projektstruktur
 
 | Datei/Ordner | Beschreibung |
@@ -97,4 +106,3 @@ Wenn ein Fehler auftritt:
 ## Mitwirken
 
 Verbesserungsvorschläge, Fehlerberichte und Pull Requests sind willkommen. Beschreibe bei Änderungen möglichst klar, was angepasst wurde und wie die Änderung getestet wurde.
-

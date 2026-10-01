@@ -10,6 +10,9 @@ BILD_HOEHE = 333
 _root = None
 _fenster = {}
 _bilder = {}
+_seitenfenster = None
+_seitenlabel = None
+_seitenbild = None
 
 
 def fenster_system_starten():
@@ -64,6 +67,58 @@ def bild_anzeigen(name, x, y):
     )
 
     _root.update()
+
+
+def bild_rechts_anzeigen(name):
+    global _seitenfenster, _seitenlabel, _seitenbild
+
+    fenster_system_starten()
+
+    bild_pfad = BILDER_ORDNER / f"CC-{name}.png"
+    if not bild_pfad.exists():
+        bild_rechts_schliessen()
+        print(f"Bild nicht gefunden: {bild_pfad}")
+        return
+
+    with Image.open(bild_pfad) as quellbild:
+        bild = quellbild.resize(
+            (BILD_BREITE, BILD_HOEHE),
+            Image.Resampling.LANCZOS
+        )
+    bild_tk = ImageTk.PhotoImage(bild)
+
+    if _seitenfenster is None or not _seitenfenster.winfo_exists():
+        _seitenfenster = tk.Toplevel(_root)
+        _seitenfenster.overrideredirect(True)
+        _seitenfenster.attributes("-topmost", True)
+        _seitenlabel = tk.Label(_seitenfenster, image=bild_tk)
+        _seitenlabel.pack()
+        _seitenfenster.protocol(
+            "WM_DELETE_WINDOW",
+            bild_rechts_schliessen
+        )
+    else:
+        _seitenlabel.configure(image=bild_tk)
+
+    _seitenbild = bild_tk
+    _seitenfenster.title(name)
+    x = _seitenfenster.winfo_screenwidth() - BILD_BREITE - 12
+    _seitenfenster.geometry(
+        f"{BILD_BREITE}x{BILD_HOEHE}+{x}+20"
+    )
+    _seitenfenster.lift()
+    _root.update()
+
+
+def bild_rechts_schliessen():
+    global _seitenfenster, _seitenlabel, _seitenbild
+
+    if _seitenfenster is not None and _seitenfenster.winfo_exists():
+        _seitenfenster.destroy()
+
+    _seitenfenster = None
+    _seitenlabel = None
+    _seitenbild = None
 
 
 def bild_schliessen(name):
