@@ -3,6 +3,7 @@ import time
 import re
 
 import charaktere
+import herausforderungen
 import menues
 import status_effekte
 import funktions
@@ -55,6 +56,12 @@ def spiel_starten(spieler_name):
             is_break_kampangen = kampange.kampangen(spieler_name)
 
             if is_break_kampangen == 1:
+                continue
+
+        elif wahl == 3:
+            is_break_herausforderungskaempfe = herausforderungen.herausforderungskaempfe(spieler_name)
+
+            if is_break_herausforderungskaempfe == 1:
                 continue
 
         else:

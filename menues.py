@@ -24,6 +24,7 @@ hauptmenue = [
 spiel_starten_menue = [
     "[1] Benutzerdefinierter Kampf",
     "[2] Kampange(n)",
+    "[3] Herausforderungskaempfe",
     "[0] Zurueck"
 ]
 

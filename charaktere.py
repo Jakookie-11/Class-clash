@@ -66,7 +66,7 @@ Jakob_h = charakter(
     200,
     -20,
     "boy",
-    100,
+    101,
     1,
     faehigkeit_1=faehigkeiten.jakobs_basic,
     faehigkeit_2=faehigkeiten.starker_schlag,
@@ -89,15 +89,15 @@ Hannah_d = charakter(
     faehigkeit_2=faehigkeiten.einfache_heilung,
     faehigkeit_3=faehigkeiten.staerkende_heilung
 )
-Mx = charakter(
-    "Mx",
+Ha = charakter(
+    "Ha",
     "npc",
     150,
     150,
     150,
     -25,
     "girl",
-    130,
+    131,
     1,
     faehigkeit_1=faehigkeiten.einfacher_angriff_g,
     faehigkeit_2=faehigkeiten.einfache_heilung,
@@ -818,7 +818,7 @@ Charaktere = {
     "cooler_6_klaessler" : cooler_6_klaessler,
 
     #herausforderung
-    "Mx" : Mx,
+    "Ha" : Ha,
     "Jakob_h" : Jakob_h,
 
 }
