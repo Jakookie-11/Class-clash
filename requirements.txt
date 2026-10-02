@@ -2,3 +2,4 @@ bcrypt
 cython
 setuptools
 Pillow
+pygame-ce

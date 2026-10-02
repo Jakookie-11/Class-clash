@@ -14,6 +14,7 @@ import einstellungen
 import subprocess
 import crash_handler
 import herausforderungen
+import sound
 
 
 SCHWARZ  = "\033[30m"
@@ -51,10 +52,13 @@ try:
     hauptmenue = True
 
     while hauptmenue == True:
+        sound.musik_abspielen("test.mp3")
+        
         wahl = funktions.menue(menues.hauptmenue, spieler)
         os.system(confic.terminal_clear)
 
         if wahl == 1:
+            sound.musik_stoppen()
             while True:  
                 is_brake_spiel_starten = spiel_starten.spiel_starten(spieler)
 
@@ -63,6 +67,7 @@ try:
                     break
 
         elif wahl == 2:
+            sound.musik_stoppen()
             while True:
                 is_brake_charakter_bib = charakter_bip.charakter_bip(spieler)
 
@@ -72,6 +77,7 @@ try:
                     
 
         elif wahl == 3:
+            sound.musik_stoppen()
             while True:
                 is_brake_einstellungen = einstellungen.einstellungen(spieler)
 
@@ -80,6 +86,7 @@ try:
                     break
 
         elif wahl == 4:
+            sound.musik_stoppen()
             while True:
                 is_brake_shop = shop.shop(spieler)
 
@@ -88,9 +95,11 @@ try:
                     break
 
         elif wahl == 5:
+            sound.musik_stoppen()
             herausforderungen.herausforderungen(spieler)
 
         else:
+            sound.musik_stoppen()
             speichern.spiel_speichern(spieler)
             print("Spiel wird gespeichert...")
             time.sleep(1)
