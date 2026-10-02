@@ -4007,6 +4007,78 @@ Die_vergessene_Anlage_6 = kampangen_kampf( #43
 )
 
 
+Der_Waechter_6 = kampangen_kampf( #44
+
+    "Der Wächter",
+
+    spieler_1="John",
+    spieler_2="Rico",
+    spieler_3="Lara",
+
+    gegner_1="wachroboter",
+    gegner_2="wachroboter",
+    gegner_3="wachroboter",
+
+    belohnung=2400,
+    ki=3,
+    npc_level=9,
+    team_groesse_1=3,
+    team_groesse_2=3,
+
+    story_vorher=[
+
+        ("Erzähler", "Die drei erreichten die schmale Tür am Ende der Halle."),
+        ("Erzähler", "John drückte vorsichtig gegen die Tür. Sie öffnete sich mit einem leisen Zischen."),
+        ("Erzähler", "Dahinter lag ein kleiner Kontrollraum. Mehrere Bildschirme waren noch aktiv und warfen ein schwaches Licht auf die Wände."),
+        ("Rico", "Endlich mal etwas, das nicht komplett im Dunkeln liegt."),
+        ("Lara", "Warte."),
+        ("Erzähler", "Lara zeigte auf einen der Bildschirme."),
+        ("Erzähler", "Auf dem Display bewegten sich mehrere Symbole. Kurz darauf wechselten sie ihre Position."),
+        ("John", "Das System läuft noch."),
+        ("Rico", "Nach all der Zeit?"),
+        ("John", "Offensichtlich."),
+        ("Erzähler", "John ging auf die Konsole zu."),
+        ("Erzähler", "Noch bevor er sie erreichen konnte, ertönte ein lautes Signal."),
+        ("Rico", "Das war jetzt bestimmt nichts Gutes."),
+        ("Erzähler", "Eine schwere Tür auf der gegenüberliegenden Seite des Raumes öffnete sich."),
+        ("Erzähler", "Dahinter kam ein großer metallischer Wachroboter zum Vorschein."),
+        ("Lara", "Da ist unser Empfangskomitee."),
+        ("John", "Nicht schießen, wenn es sich vermeiden lässt."),
+        ("Rico", "Ich glaube nicht, dass er uns dieselbe Chance gibt."),
+        ("Erzähler", "Der Roboter richtete seine Waffen auf die drei."),
+        ("John", "In Deckung!"),
+
+    ],
+
+    ist_kampf=True,
+
+    story_nachher=[
+
+        ("Erzähler", "Der Wachroboter brach zusammen und blieb regungslos auf dem Boden liegen."),
+        ("Rico", "Jetzt wäre ein guter Zeitpunkt für eine Pause."),
+        ("Lara", "Später."),
+        ("Erzähler", "John ging zurück zur Konsole."),
+        ("John", "Der Roboter war direkt mit dem Sicherheitssystem verbunden."),
+        ("Rico", "Kannst du herausfinden, warum er uns angegriffen hat?"),
+        ("John", "Ich versuche es."),
+        ("Erzähler", "John öffnete mehrere Systemdateien."),
+        ("Erzähler", "Viele der Daten waren beschädigt. Nur einzelne Einträge konnten noch gelesen werden."),
+        ("John", "Hier steht etwas über die Anlage."),
+        ("Lara", "Was genau?"),
+        ("John", "Mehrere Bereiche wurden vor langer Zeit abgeschaltet."),
+        ("Rico", "Und der hier?"),
+        ("Erzähler", "Rico zeigte auf einen noch aktiven Bereich des Lageplans."),
+        ("John", "Der läuft noch."),
+        ("Lara", "Was ist dort?"),
+        ("John", "Keine Ahnung. Die Bezeichnung fehlt."),
+        ("Erzähler", "Unterhalb des Lageplans erschien plötzlich ein weiteres Symbol."),
+        ("John", "Das ist das gleiche Zeichen wie auf der Marsstation."),
+        ("Rico", "Dann sollten wir wohl herausfinden, wohin es führt."),
+
+    ]
+)
+
+
 Kampange_6 = kampange(
     "_06",
     "Down in Mars",
