@@ -5,6 +5,7 @@ import confic
 
 import probleme
 import funktions
+import sound
 
 
 SCHWARZ  = "\033[30m"
@@ -29,6 +30,8 @@ HELL_WEISS    = "\033[97m"
 
 
 def credits():
+
+    sound.musik_abspielen("Hugs and Kisses.mp3", lautstaerke=2)
 
     while True:
 
@@ -89,6 +92,7 @@ def credits():
             input("fertig? ")
 
         else:
+            sound.musik_stoppen()
             return 1
 
   

@@ -52,7 +52,6 @@ try:
     hauptmenue = True
 
     while hauptmenue == True:
-        sound.musik_abspielen("test.mp3")
         
         wahl = funktions.menue(menues.hauptmenue, spieler)
         os.system(confic.terminal_clear)
@@ -100,14 +99,16 @@ try:
 
         else:
             sound.musik_stoppen()
+            sound.musik_abspielen("shutdown.mp3")
             speichern.spiel_speichern(spieler)
             print("Spiel wird gespeichert...")
-            time.sleep(1)
+            time.sleep(5)
             os.system(confic.terminal_clear)
             print()
             print("BYE")
             print()
-            time.sleep(4)
+            time.sleep(10)
+            sound.musik_stoppen()
             os.system(confic.terminal_clear)
             hauptmenue = False 
 
