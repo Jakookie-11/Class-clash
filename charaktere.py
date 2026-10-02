@@ -13,15 +13,32 @@ class charakter:
         max_hp: int,
         max_max_hp,
         schaden: int,
-        max_schaden: None,
-        gender: str,
-        speed: int,
+        *args,
+        gender: str = None,
+        speed: int = 0,
         level: int = 1,
         faehigkeit_1=None,
         faehigkeit_2=None,
-        faehigkeit_3=None        
-
+        faehigkeit_3=None
     ):
+
+        max_schaden = schaden
+
+        if args:
+            if isinstance(args[0], str):
+                gender = args[0]
+                if len(args) > 1:
+                    speed = args[1]
+                if len(args) > 2:
+                    level = args[2]
+            elif isinstance(args[0], (int, float)):
+                max_schaden = args[0]
+                if len(args) > 1:
+                    gender = args[1]
+                if len(args) > 2:
+                    speed = args[2]
+                if len(args) > 3:
+                    level = args[3]
 
         self.name = name
         self.klasse = klasse
