@@ -104,9 +104,9 @@ def bild_rechts_anzeigen(name):
 
     _seitenbild = bild_tk
     _seitenfenster.title(name)
-    x = _seitenfenster.winfo_screenwidth() - BILD_BREITE - 12
+    x = _seitenfenster.winfo_screenwidth() - SEITENBILD_BREITE - 12
     _seitenfenster.geometry(
-        f"{BILD_BREITE}x{BILD_HOEHE}+{x}+20"
+        f"{SEITENBILD_BREITE}x{SEITENBILD_HOEHE}+{x}+20"
     )
     _seitenfenster.lift()
     _root.update()

@@ -71,6 +71,7 @@ class herausforderungskampf:
         level=1,
         name=str,
         nummer=int,
+        beschreibung=str,
         typ=str,
         ki= 4,
         belohnung_typ=str,
@@ -86,6 +87,7 @@ class herausforderungskampf:
         self.level = level
         self.name = name
         self.nummer = nummer
+        self.beschreibung = beschreibung
         self.typ = typ
         self.ki = ki
         self.belohnung_typ = belohnung_typ
@@ -123,10 +125,11 @@ Ja_Ha = herausforderungskampf(
     level=13,
     name="Ja_Ha",
     nummer=1,
+    beschreibung="Besiege Jakob und Ha (beide Level 13) in einem Kampf, um die Herausforderung abzuschließen.",
     typ="herausforderungskampf",
     ki=4,
     belohnung_typ="Credits",
-    belohnung_nummer=300
+    belohnung_nummer=5000
 )
 
 Gewonnene_Kaempfe = herausforderung(
@@ -509,6 +512,7 @@ def herausforderungskaempfe(spieler_name):
 
             print(f"{BLAU}[{Herausforderung.nummer}] {Herausforderung.name}{RESET}")
             print(f"Belohnung: {Herausforderung.belohnung_nummer} {Herausforderung.belohnung_typ}")
+            print(f"Beschreibung: {Herausforderung.beschreibung}")
 
             if Herausforderung.abgeschlossen:
                 print(f"{GRUEN}Belohnung bereits abgeholt{RESET}")
@@ -567,7 +571,7 @@ def herausforderungskaempfe(spieler_name):
 
         kampange.npc_level_setzen(level=ausgewaehlte_herausforderung.level, Leader_2=ausgewaehlte_herausforderung.gegner_1, spieler_2_2=ausgewaehlte_herausforderung.gegner_2, spieler_3_2=ausgewaehlte_herausforderung.gegner_3, spieler_4_2=ausgewaehlte_herausforderung.gegner_4)
 
-        is_win = spiel_starten.spiel_starten(team_1=None, team_2=team_2, team_groesse_1=team_groesse_1, team_groesse_2=team_groesse_2, ki=ki, gegner_ki=True)
+        is_win = spiel_starten.kampf(team_2=team_2, team_groesse_1=team_groesse_1,team_groesse_2=team_groesse_2, Ki=ki, gegner_ki=True)
 
         if is_win==1:
 

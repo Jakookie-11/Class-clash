@@ -352,6 +352,12 @@ jakobs_basic = faehigkeit(
 )
 
 # ══════════════════════════════════════════════════════════════
+# Hannah_d
+# ══════════════════════════════════════════════════════════════
+
+
+
+# ══════════════════════════════════════════════════════════════
 # Max
 # ══════════════════════════════════════════════════════════════
 
@@ -395,19 +401,22 @@ def gib_mir_die_roehre_obj(wer, wen, team_1):
 
     schaden = geheimes.einfacher_angriff_b_obj(wer, wen, team_1)
 
-    if wen == "max":
-        schaden = schaden * 2
-        status_effekte.status_effekte_hinzufügen(wen, status_effekte.betaeubt)
+    if status_effekte.status_effekt_vorhanden(wer, "die_Roehre"):
+        schaden = schaden * 1.5
+        if wen == "Max":
+            schaden = schaden * 1.5
+            return schaden
+        return schaden
 
     else:
-        schaden = schaden * 1.5
+        status_effekte.status_effekte_hinzufügen(wer, status_effekte.die_Roehre)
+        return schaden
 
-    return schaden
 
 gib_mir_die_roehre = faehigkeit(
     "gib_mir_die_roehre",
     gib_mir_die_roehre_obj,
-    "Noah klopft an die tür des gegners und laesst ihn nicht schlafen, sobald er rauskommt schnappt sich Noah die Roehre und schlaegt den Gegner.",
+    "Noah klopft an die tür des Gegners, wen er die Roehre hat verursacht er 50 % mehr Schaden, wen er die Roehre nicht hat verursacht er normalen Schaden und bekommt die Roehre.",
     3,
     0,
     "gegner"
@@ -420,7 +429,13 @@ gib_mir_die_roehre = faehigkeit(
 
 def leberkaesbroetchen_essen_obj(wer, wen, team=None):
 
-    HP_verändern(wer, 70)
+    charakter = charaktere.Charaktere[wer]
+
+    heilung = 60
+    heilung *= charakter.level
+    heilung *= 0.7
+
+    HP_verändern(wer, heilung)
 
 
 leberkaesbroetchen_essen = faehigkeit(

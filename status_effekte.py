@@ -32,6 +32,8 @@ schaden_erhalten_minus = StatusEffekt("schaden_erhalten_minus", 5, 0.7)
 damage_over_time_1 = StatusEffekt("damage_over_time_1", 2, -10)
 healing_over_time_1 = StatusEffekt("healing_over_time_1", 2, 10)
 
+die_Roehre = StatusEffekt("die_Roehre", 99, 0)
+
 
 
 def status_effekte_ausgeben(von_wem):
