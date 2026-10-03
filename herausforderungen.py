@@ -72,6 +72,7 @@ class herausforderungskampf:
         name=str,
         nummer=int,
         beschreibung=str,
+        musik=None,
         typ=str,
         ki= 4,
         belohnung_typ=str,
@@ -88,6 +89,7 @@ class herausforderungskampf:
         self.name = name
         self.nummer = nummer
         self.beschreibung = beschreibung
+        self.musik = musik
         self.typ = typ
         self.ki = ki
         self.belohnung_typ = belohnung_typ
@@ -126,6 +128,7 @@ Ja_Ha = herausforderungskampf(
     name="Ja_Ha",
     nummer=1,
     beschreibung="Besiege Jakob und Ha (beide Level 13) in einem Kampf, um die Herausforderung abzuschließen.",
+    musik="home.mp3",
     typ="herausforderungskampf",
     ki=4,
     belohnung_typ="Credits",
@@ -568,10 +571,11 @@ def herausforderungskaempfe(spieler_name):
         team_groesse_1 = ausgewaehlte_herausforderung.team_groesse_1
         team_groesse_2 = ausgewaehlte_herausforderung.team_groesse_2
         ki = ausgewaehlte_herausforderung.ki
+        musik = ausgewaehlte_herausforderung.musik
 
         kampange.npc_level_setzen(level=ausgewaehlte_herausforderung.level, Leader_2=ausgewaehlte_herausforderung.gegner_1, spieler_2_2=ausgewaehlte_herausforderung.gegner_2, spieler_3_2=ausgewaehlte_herausforderung.gegner_3, spieler_4_2=ausgewaehlte_herausforderung.gegner_4)
 
-        is_win = spiel_starten.kampf(team_2=team_2, team_groesse_1=team_groesse_1,team_groesse_2=team_groesse_2, Ki=ki, gegner_ki=True)
+        is_win = spiel_starten.kampf(team_2=team_2, team_groesse_1=team_groesse_1,team_groesse_2=team_groesse_2, Ki=ki, gegner_ki=True, musik=musik)
 
         if is_win==1:
 

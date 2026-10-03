@@ -5,6 +5,7 @@ import re
 import charaktere
 import herausforderungen
 import menues
+import sound
 import status_effekte
 import funktions
 import confic
@@ -536,12 +537,16 @@ def kampf(
     Ki=1,
     gegner_ki=False,
     benutzerdefiniert = False,
+    musik = None,
 ):
 
     os.system(confic.terminal_clear)
 
     zug = 0
     runde = 1
+
+    if musik is not None:
+        sound.musik_abspielen(musik, lautstaerke=1)
 
     # ══════════════════════════════════════════════════════════════
     # Teams bestimmen
@@ -737,6 +742,7 @@ def kampf(
                         HP_zuruecksetzen()
 
                         bilder.bild_rechts_schliessen()
+                        sound.musik_stoppen()
                         return 2
 
 
@@ -968,6 +974,7 @@ def kampf(
             HP_zuruecksetzen()
 
             bilder.bild_rechts_schliessen()
+            sound.musik_stoppen()
             return 1
 
 
@@ -987,6 +994,7 @@ def kampf(
             HP_zuruecksetzen()
 
             bilder.bild_rechts_schliessen()
+            sound.musik_stoppen()
             return 3
 
 

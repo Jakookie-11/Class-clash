@@ -10,6 +10,7 @@ import menues
 import funktions
 import credits
 import speichern
+import sound
 
 
 SCHWARZ  = "\033[30m"
@@ -226,9 +227,9 @@ def profil_daten_zeigen(spieler_name):
     print("============")
     print()
 
-    print(f"Spielername     : {spieler_name}")
-    print(f"Passwort        : {confic.passwoerter[spieler_name]}")
-    print(f"Erstellungsdatum: {erstellungsdatum}")
+    print(f"Spielername      : {spieler_name}")
+    print(f"Passwort         : {confic.passwoerter[spieler_name]}")
+    print(f"Erstellungsdatum : {erstellungsdatum}")
     print()
     input("fertig? ")
     os.system(confic.terminal_clear)
@@ -255,6 +256,7 @@ def profil_zuruecksetzen(spieler_name):
 
     if bestätigung == "ja":
 
+        sound.sound_abspielen("invalid-login-or-password.mp3", lautstaerke=2)
         bestätigung_2 = input("schreibe: ich bin mir sicher, dass ich mein Profil zuruecksetzen moechte :   ")
 
         if bestätigung_2 == "ich bin mir sicher, dass ich mein Profil zuruecksetzen moechte":
@@ -335,6 +337,7 @@ def profil_loeschen(spieler_name):
 
     if bestätigung == "ja":
 
+        sound.sound_abspielen("invalid-login-or-password.mp3", lautstaerke=2)
         bestätigung_2 = input("schreibe: ich bin mir sicher, dass ich mein Profil loeschen moechte :   ")
 
         if bestätigung_2 == "ich bin mir sicher, dass ich mein Profil loeschen moechte":
