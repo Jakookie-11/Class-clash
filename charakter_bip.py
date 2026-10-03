@@ -8,6 +8,7 @@ import ressourcen
 import confic
 import speichern
 import bilder
+import sound
 
 
 
@@ -254,6 +255,7 @@ def charaktere_aufleveln(spieler):
         print(f"Faehigkeit 3 : {charakter.faehigkeit_3.name}")
 
         bilder.bild_anzeigen(wen, 300, 0)
+        sound.sound_abspielen("army rank up.mp3", lautstaerke=1.5)
 
         print()
         nochmal = input("Nochmal? (y/n) ")

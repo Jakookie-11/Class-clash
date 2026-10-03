@@ -1,0 +1,22 @@
+========================================
+       CLASS CLASH CRASH REPORT
+========================================
+
+Spieler: Jakob
+Datum: 2026-10-02
+Uhrzeit: 13:34:18
+Fehler-ID: 4e6d964d6b3d0b83d00a6aa64abd9d339c4a3f4c0718dc5d22efb4a77e2893a4
+Status: gefixt
+
+----------------------------------------
+FEHLER / TRACEBACK
+----------------------------------------
+
+Traceback (most recent call last):
+  File "c:\Users\jakob\Desktop\Git\Class clash\main.py", line 59, in <module>
+    is_brake_spiel_starten = spiel_starten.spiel_starten(spieler)
+  File "c:\Users\jakob\Desktop\Git\Class clash\spiel_starten.py", line 62, in spiel_starten
+    is_break_herausforderungskaempfe = herausforderungen.herausforderungskaempfe(spieler_name)
+  File "c:\Users\jakob\Desktop\Git\Class clash\herausforderungen.py", line 570, in herausforderungskaempfe
+    is_win = spiel_starten.spiel_starten(team_2=team_2, team_groesse_1=team_groesse_1, team_groesse_2=team_groesse_2, ki=ki, gegner_ki=True)
+TypeError: spiel_starten() got an unexpected keyword argument 'team_2'

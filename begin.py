@@ -10,6 +10,7 @@ import funktions
 import speichern
 import menues
 import speichern
+import sound
 
 
 GRUEN = "\033[32m"
@@ -134,6 +135,7 @@ def begin():
         if funktions.versionen_vergleichen() or pass_update == True:
 
             #---Vorbild---#
+            sound.musik_abspielen("test.mp3",lautstaerke=0.4)
             print(f"{GRUEN}══════════════════════════════")
             print("        Willkommen bei ")
             print("          Class clash")
@@ -176,6 +178,7 @@ def begin():
 
                         if spieler == "" or spieler not in confic.passwoerter:
                             print("Benutzername unbekannt")
+                            sound.sound_abspielen("acces denied.mp3", lautstaerke=2.5)
                             time.sleep(2)
                             os.system(confic.terminal_clear)
                             funktions.zeilen_loeschen(4)
@@ -193,10 +196,12 @@ def begin():
 
                         if passwort_ok:
                             print("Passwort korrekt")
+                            sound.sound_abspielen("click.mp3", lautstaerke=3)
                             break
 
                         else:
                             print("Passwort falsch")
+                            sound.sound_abspielen("acces denied.mp3", lautstaerke=2.5)
                             time.sleep(2)
                             os.system(confic.terminal_clear)
                             funktions.zeilen_loeschen(4)
@@ -208,7 +213,8 @@ def begin():
                     os.system(confic.terminal_clear)
                     print()
                     print(f"Willkommen {spieler}")
-                    time.sleep(2)
+                    sound.sound_abspielen("good morning.mp3", lautstaerke=2)
+                    time.sleep(1)
 
                     os.system(confic.terminal_clear)
 

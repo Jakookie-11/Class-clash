@@ -1,0 +1,21 @@
+========================================
+       CLASS CLASH CRASH REPORT
+========================================
+
+Spieler: Jakob
+Datum: 2026-10-02
+Uhrzeit: 13:13:08
+Fehler-ID: 9ef2db838ee1505b085244252dc4c96175886765b5c14c1ed2f1e72c303fd307
+Status: gefixt
+
+----------------------------------------
+FEHLER / TRACEBACK
+----------------------------------------
+
+Traceback (most recent call last):
+  File "c:\Users\jakob\Desktop\Git\Class clash\main.py", line 59, in <module>
+    is_brake_spiel_starten = spiel_starten.spiel_starten(spieler)
+  File "c:\Users\jakob\Desktop\Git\Class clash\spiel_starten.py", line 61, in spiel_starten
+    is_break_herausforderungskaempfe = kampange.herausforderungskaempfe(spieler_name)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'kampange' has no attribute 'herausforderungskaempfe'

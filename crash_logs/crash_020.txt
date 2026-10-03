@@ -1,0 +1,29 @@
+========================================
+       CLASS CLASH CRASH REPORT
+========================================
+
+Spieler: Jakob
+Datum: 2026-10-02
+Uhrzeit: 13:17:59
+Fehler-ID: 833016bb2c48ba73c998f03d2c05243d17afa120176d78f85139e593545c4529
+Status: gefixt
+
+----------------------------------------
+FEHLER / TRACEBACK
+----------------------------------------
+
+Traceback (most recent call last):
+  File "c:\Users\jakob\Desktop\Git\Class clash\main.py", line 59, in <module>
+    is_brake_spiel_starten = spiel_starten.spiel_starten(spieler)
+  File "c:\Users\jakob\Desktop\Git\Class clash\spiel_starten.py", line 62, in spiel_starten
+    is_break_herausforderungskaempfe = herausforderungen.herausforderungskaempfe(spieler_name)
+  File "c:\Users\jakob\Desktop\Git\Class clash\herausforderungen.py", line 568, in herausforderungskaempfe
+    kampange.npc_level_setzen(level=ausgewaehlte_herausforderung.level, Leader_2=ausgewaehlte_herausforderung.gegner_1, spieler_2_2=ausgewaehlte_herausforderung.gegner_2, spieler_3_2=ausgewaehlte_herausforderung.gegner_3, spieler_4_2=ausgewaehlte_herausforderung.gegner_4)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\jakob\Desktop\Git\Class clash\kampange.py", line 148, in npc_level_setzen
+    level_zuruecksetzen(spieler)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\jakob\Desktop\Git\Class clash\kampange.py", line 161, in level_zuruecksetzen
+    charakter = charaktere.Charaktere[wen]
+                ~~~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: <charaktere.charakter object at 0x000002193CBB16D0>

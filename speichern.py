@@ -22,6 +22,7 @@ def spiel_speichern(spieler):
 
     confic_setup_speichern()
     gespeicherter_herausforderungs_fortschritt = (herausforderungen.Herausforderungs_fortschritt_speichern())
+    gespeicherter_herausforderungs_kaempf_fortschritt = (herausforderungen.Herausforderungs_kampf_fortschritt_speichern())
 
     spiel_starten.alle_statuseffekte_resetten()
     spiel_starten.alle_faehigkeits_abklingzeiten_resetten()
@@ -57,14 +58,15 @@ def spiel_speichern(spieler):
         erstellungsdatum = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     daten = {
-        "spieler_name"                 : spieler,
-        "Erstellungsdatum"             : erstellungsdatum,
-        "Letztes_Speichern"            : datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "ressourcen"                   : ressourcen.ressourcen,
-        "charaktere"                   : gespeicherte_charaktere,
-        "kampangen_fortschritt"        : gespeicherter_fortschritt,
-        "Herausforderungs_Fortschritt" : gespeicherter_herausforderungs_fortschritt,
-        "gewonnene_kaempfe"            : confic.gewonnene_kaempfe,
+        "spieler_name"                       : spieler,
+        "Erstellungsdatum"                   : erstellungsdatum,
+        "Letztes_Speichern"                  : datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "ressourcen"                         : ressourcen.ressourcen,
+        "charaktere"                         : gespeicherte_charaktere,
+        "kampangen_fortschritt"              : gespeicherter_fortschritt,
+        "Herausforderungs_Fortschritt"       : gespeicherter_herausforderungs_fortschritt,
+        "Herausforderungs_Kampf_Fortschritt" : gespeicherter_herausforderungs_kaempf_fortschritt,
+        "gewonnene_kaempfe"                  : confic.gewonnene_kaempfe,
     }
 
     with open(datei, "w", encoding="utf-8") as datei_ausgabe:

@@ -3,7 +3,9 @@ import time
 import re
 
 import charaktere
+import herausforderungen
 import menues
+import sound
 import status_effekte
 import funktions
 import confic
@@ -11,6 +13,7 @@ import ki
 import kampange
 import geheimes
 import copy
+import bilder
 
 
 SCHWARZ  = "\033[30m"
@@ -54,6 +57,12 @@ def spiel_starten(spieler_name):
             is_break_kampangen = kampange.kampangen(spieler_name)
 
             if is_break_kampangen == 1:
+                continue
+
+        elif wahl == 3:
+            is_break_herausforderungskaempfe = herausforderungen.herausforderungskaempfe(spieler_name)
+
+            if is_break_herausforderungskaempfe == 1:
                 continue
 
         else:
@@ -210,6 +219,9 @@ def charaktere_auswaelen(
 
             if name in verfuegbare or ist_hannah:
                 team.append(name)
+                bilder.bild_rechts_anzeigen(
+                    charaktere.Charaktere[name].name
+                )
                 break
 
             if name not in charaktere.Charaktere:
@@ -223,6 +235,7 @@ def charaktere_auswaelen(
     for name in team:
         print(f"- {name}")
     input("\nEnter zum Bestätigen...")
+    bilder.bild_rechts_schliessen()
     return team
 
 
@@ -524,12 +537,16 @@ def kampf(
     Ki=1,
     gegner_ki=False,
     benutzerdefiniert = False,
+    musik = None,
 ):
 
     os.system(confic.terminal_clear)
 
     zug = 0
     runde = 1
+
+    if musik is not None:
+        sound.musik_abspielen(musik, lautstaerke=1)
 
     # ══════════════════════════════════════════════════════════════
     # Teams bestimmen
@@ -570,6 +587,7 @@ def kampf(
     if len(team_1) == 0 or len(team_2) == 0:
         print("Ein Team darf nicht leer sein.")
         time.sleep(2)
+        bilder.bild_rechts_schliessen()
         return 2
 
 
@@ -629,6 +647,7 @@ def kampf(
         # Falls durch einen vorherigen Zug Charaktere gestorben sind
         # und die Reihenfolge leer geworden ist
         if not reinfolge:
+            bilder.bild_rechts_schliessen()
             return 2
 
 
@@ -640,6 +659,9 @@ def kampf(
             zug = 0
 
         wer = reinfolge[zug]
+        bilder.bild_rechts_anzeigen(
+            charaktere.Charaktere[wer].name
+        )
 
 
         # ══════════════════════════════════════════════════════════
@@ -719,6 +741,8 @@ def kampf(
                         alle_faehigkeits_abklingzeiten_resetten()
                         HP_zuruecksetzen()
 
+                        bilder.bild_rechts_schliessen()
+                        sound.musik_stoppen()
                         return 2
 
 
@@ -886,11 +910,14 @@ def kampf(
                     time.sleep(2)
 
                     if is_win(team_2):
+                        bilder.bild_rechts_schliessen()
                         return 1
 
                     if is_win(team_1):
+                        bilder.bild_rechts_schliessen()
                         return 3
 
+                    bilder.bild_rechts_schliessen()
                     return 2
 
                 faehigkeit.abklingzeit = faehigkeit.max_abklingzeit
@@ -946,6 +973,8 @@ def kampf(
             alle_faehigkeits_abklingzeiten_resetten()
             HP_zuruecksetzen()
 
+            bilder.bild_rechts_schliessen()
+            sound.musik_stoppen()
             return 1
 
 
@@ -964,6 +993,8 @@ def kampf(
             alle_faehigkeits_abklingzeiten_resetten()
             HP_zuruecksetzen()
 
+            bilder.bild_rechts_schliessen()
+            sound.musik_stoppen()
             return 3
 
 

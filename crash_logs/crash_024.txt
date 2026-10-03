@@ -1,0 +1,22 @@
+========================================
+       CLASS CLASH CRASH REPORT
+========================================
+
+Spieler: Jakob
+Datum: 2026-10-02
+Uhrzeit: 13:35:29
+Fehler-ID: 2e81d0b00bb401d6be73d5b17852aba677ac564d0aaf0ea388d8a78374e0322c
+Status: gefixt
+
+----------------------------------------
+FEHLER / TRACEBACK
+----------------------------------------
+
+Traceback (most recent call last):
+  File "c:\Users\jakob\Desktop\Git\Class clash\main.py", line 59, in <module>
+    is_brake_spiel_starten = spiel_starten.spiel_starten(spieler)
+  File "c:\Users\jakob\Desktop\Git\Class clash\spiel_starten.py", line 62, in spiel_starten
+    is_break_herausforderungskaempfe = herausforderungen.herausforderungskaempfe(spieler_name)
+  File "c:\Users\jakob\Desktop\Git\Class clash\herausforderungen.py", line 570, in herausforderungskaempfe
+    is_win = spiel_starten.kampf(team_2=team_2, team_groesse_1=team_groesse_1, team_groesse_2=team_groesse_2, ki=ki, gegner_ki=True)
+TypeError: kampf() got an unexpected keyword argument 'ki'. Did you mean 'Ki'?

@@ -13,15 +13,32 @@ class charakter:
         max_hp: int,
         max_max_hp,
         schaden: int,
-        max_schaden: None,
-        gender: str,
-        speed: int,
+        *args,
+        gender: str = None,
+        speed: int = 0,
         level: int = 1,
         faehigkeit_1=None,
         faehigkeit_2=None,
-        faehigkeit_3=None        
-
+        faehigkeit_3=None
     ):
+
+        max_schaden = schaden
+
+        if args:
+            if isinstance(args[0], str):
+                gender = args[0]
+                if len(args) > 1:
+                    speed = args[1]
+                if len(args) > 2:
+                    level = args[2]
+            elif isinstance(args[0], (int, float)):
+                max_schaden = args[0]
+                if len(args) > 1:
+                    gender = args[1]
+                if len(args) > 2:
+                    speed = args[2]
+                if len(args) > 3:
+                    level = args[3]
 
         self.name = name
         self.klasse = klasse
@@ -66,7 +83,7 @@ Jakob_h = charakter(
     200,
     -20,
     "boy",
-    100,
+    101,
     1,
     faehigkeit_1=faehigkeiten.jakobs_basic,
     faehigkeit_2=faehigkeiten.starker_schlag,
@@ -89,15 +106,15 @@ Hannah_d = charakter(
     faehigkeit_2=faehigkeiten.einfache_heilung,
     faehigkeit_3=faehigkeiten.staerkende_heilung
 )
-Mx = charakter(
-    "Mx",
+Ha = charakter(
+    "Ha",
     "npc",
     150,
     150,
     150,
     -25,
     "girl",
-    130,
+    131,
     1,
     faehigkeit_1=faehigkeiten.einfacher_angriff_g,
     faehigkeit_2=faehigkeiten.einfache_heilung,
@@ -818,7 +835,7 @@ Charaktere = {
     "cooler_6_klaessler" : cooler_6_klaessler,
 
     #herausforderung
-    "Mx" : Mx,
+    "Ha" : Ha,
     "Jakob_h" : Jakob_h,
 
 }

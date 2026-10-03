@@ -158,7 +158,14 @@ def level_zuruecksetzen(wen):
     if wen is None:
         return
 
-    charakter = charaktere.Charaktere[wen]
+    if isinstance(wen, charaktere.charakter):
+        charakter = wen
+    elif isinstance(wen, str):
+        charakter = charaktere.Charaktere.get(wen)
+        if charakter is None:
+            return
+    else:
+        return
 
     charakter.level = 1
     charakter.max_hp = charakter.max_max_hp
