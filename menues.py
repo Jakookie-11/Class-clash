@@ -1,9 +1,11 @@
 GRUEN  = "\033[32m"
 GELB   = "\033[33m"
 CYAN   = "\033[36m"
-RESET  = "\033[0m"
 ROT    = "\033[31m"
 ORANGE = "\033[38;5;208m"
+MAGENTA  = "\033[35m"
+
+RESET  = "\033[0m"
 
 
 anmelden_menue = [
@@ -36,7 +38,7 @@ charakter_bip_menue = [
 
 einstellungen_menue = [
     "[1] Profil",
-    "[2] Credits",
+    f"{MAGENTA}[2] Credits{RESET}",
     "[3] Wichtige Links",
     "[0] Zurueck"
 ]

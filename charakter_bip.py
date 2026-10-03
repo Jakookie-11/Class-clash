@@ -127,29 +127,35 @@ def level_up(wen, max_hp_permanent_erhoehen=False):
 def level_kosten_credits(wievieltes_update):
 
     if   wievieltes_update == 1:
-        return -100
+        return -100, "Credits"
     elif wievieltes_update == 2:
-        return -300
+        return -300, "Credits"
     elif wievieltes_update == 3:
-        return -500
+        return -500, "Credits"
     elif wievieltes_update == 4:
-        return -1000
+        return -1000, "Credits"
     elif wievieltes_update == 5:
-        return -1500
+        return -1500, "Credits"
     elif wievieltes_update == 6:
-        return -2000
+        return -2000, "Credits"
     elif wievieltes_update == 7:
-        return -2500
+        return -2500, "Credits"
     elif wievieltes_update == 8:
-        return -3000
+        return -3000, "Credits"
     elif wievieltes_update == 9:
-        return -4000
+        return -4000, "Credits"
     elif wievieltes_update == 10:
-        return -5000
+        return -5000, "Credits"
     elif wievieltes_update == 11:
-        return -6500
+        return -6500, "Credits"
     elif wievieltes_update == 12:
-        return -8000
+        return -8000, "Credits"
+    elif wievieltes_update == 13:
+        return -10000, "Credits", -100, "Material 1"
+    elif wievieltes_update == 14:
+        return -12000, "Credits", -500, "Material 1"
+    elif wievieltes_update == 15:
+        return -15000, "Credits", -1500, "Material 1" 
 
 
 
@@ -210,24 +216,42 @@ def charaktere_aufleveln(spieler):
         #--Level des zu upgraden gewünschten charakters--#
         aktuelles_level_des_chrakters = charaktere.Charaktere[wen].level
 
-        if aktuelles_level_des_chrakters == 13:
+        charakter = charaktere.Charaktere[wen]
+
+        if aktuelles_level_des_chrakters > 15:
             print("Charakter auf maximalem Level.")
             time.sleep(2)
             os.system(confic.terminal_clear)
             break
 
-        #--credit Kosten berechnen--#
-        kosten_für_level_up = level_kosten_credits(aktuelles_level_des_chrakters)
+        if charakter.klasse == "Down_in_Mars":
+            if aktuelles_level_des_chrakters >= 12:
+                print("Charakter auf maximalem Level.")
+                time.sleep(2)
+                os.system(confic.terminal_clear)
+                break
 
-        charakter = charaktere.Charaktere[wen]
+        #--credit Kosten berechnen--#
+        if aktuelles_level_des_chrakters <= 12:
+            wie_viel, welches = level_kosten_credits(aktuelles_level_des_chrakters)
+        elif aktuelles_level_des_chrakters > 12:
+            wie_viel, welches, wie_viel_1, welches_1 = level_kosten_credits(aktuelles_level_des_chrakters)
+
+
 
         if charakter.klasse != "down_in_mars":
-            is_break = ressourcen.ressourcen_verändern("Credits", kosten_für_level_up)
-            if is_break == 1:
-                return 1
+            if aktuelles_level_des_chrakters <= 12:
+                is_break = ressourcen.ressourcen_verändern(welches, wie_viel)
+                if is_break == 1:
+                    return 1
+
+            elif aktuelles_level_des_chrakters > 12:
+                is_break = ressourcen.ressourcen_verändern(welches, wie_viel, welches_1, wie_viel_1)
+                if is_break == 1:
+                    return 1      
 
         else:
-            is_break = ressourcen.ressourcen_verändern("M_Credits", kosten_für_level_up)
+            is_break = ressourcen.ressourcen_verändern("M_Credits", wie_viel)
             if is_break == 1:
                 return 1
 

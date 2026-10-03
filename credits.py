@@ -64,36 +64,29 @@ def credits():
         print()
         print()
 
-        genauere_informationen_zu_findern = input("möchtest du mehr über eine(n) Problemfinder(in) herausfinden? ")
+        zu_wem = input("möchtest du mehr über eine(n) Problemfinder(in) herausfinden? (Name/[0]abbrechen)")
 
-        if genauere_informationen_zu_findern == "ja":
-
-            funktions.zeilen_loeschen(1)
-
-            while True:
-
-                zu_wem = input("zu Wem? ")
-
-                if zu_wem not in probleme.probleme:
-                    print()
-                    print("Diese Person hat keine Fehler gefunden")
-                    time.sleep(2)
-                    funktions.zeilen_loeschen(3)
-                    continue
-
-                elif zu_wem == "":
-                    return 1
-
-                else:
-                    break
-
-            probleme_anzeigen(zu_wem)
-
-            input("fertig? ")
-
-        else:
+        if zu_wem == "0":
             sound.musik_stoppen()
-            return 1
+            break
+
+        if zu_wem == "":
+            sound.musik_stoppen()
+            break
+
+        funktions.zeilen_loeschen(1)
+
+        if zu_wem not in probleme.probleme:
+            print("Diese Person hat keine Fehler gefunden")
+            time.sleep(2)
+            funktions.zeilen_loeschen(1)
+            continue
+
+        probleme_anzeigen(zu_wem)
+
+        input("fertig? ")
+        
+        continue
 
   
 
