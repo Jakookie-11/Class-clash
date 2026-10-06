@@ -77,6 +77,9 @@ class herausforderungskampf:
         ki= 4,
         belohnung_typ=str,
         belohnung_nummer=int,
+        ist_belohnung_2=False,
+        belohnung_2_typ=None,
+        belohnung_2_nummer=None,
         abgeschlossen=False,
     ):
         self.gegner_1 = gegner_1
@@ -94,6 +97,9 @@ class herausforderungskampf:
         self.ki = ki
         self.belohnung_typ = belohnung_typ
         self.belohnung_nummer = belohnung_nummer
+        self.ist_belohnung_2 = ist_belohnung_2
+        self.belohnung_2_typ = belohnung_2_typ
+        self.belohnung_2_nummer = belohnung_2_nummer
         self.abgeschlossen = abgeschlossen
 
 
@@ -132,7 +138,28 @@ Ja_Ha = herausforderungskampf(
     typ="herausforderungskampf",
     ki=4,
     belohnung_typ="Credits",
-    belohnung_nummer=5000
+    belohnung_nummer=7500,
+    ist_belohnung_2=True,
+    belohnung_2_typ="Material 1",
+    belohnung_2_nummer=100
+)
+
+der_ultimative_kampf_gegen_die_Fuenftklaessler = herausforderungskampf(
+    gegner_1="cooler_fuenftklaessler",
+    gegner_2="streber",
+    gegner_3="fuenftklaessler",
+    gegner_4="fuenftklaessler",
+    team_groesse_1=4,
+    team_groesse_2=4,
+    level=10,
+    name="Der ultimative Kampf gegen die Fünftklässler",
+    nummer=2,
+    beschreibung="Besiege einen Trupp aus Fuenftklaesslern (alle Level 10) in einem Kampf, um die Herausforderung abzuschließen.",
+    musik=None,
+    typ="herausforderungskampf",
+    ki=4,
+    belohnung_typ="Credits",
+    belohnung_nummer=10000
 )
 
 Gewonnene_Kaempfe = herausforderung(
@@ -204,6 +231,7 @@ Alle_Herausforderungen = [
     Sara_Leveln,
     Lara_Leveln,
     Ja_Ha,
+    der_ultimative_kampf_gegen_die_Fuenftklaessler,
 ]
 
 
@@ -587,8 +615,9 @@ def herausforderungskaempfe(spieler_name):
             print(f"{GELB}{Herausforderung.name}{RESET}")
             print("erfolgreich abgeschlossen!")
             print()
-            print(f"Belohnung: {Herausforderung.belohnung_nummer} "f"{Herausforderung.belohnung_typ}")
-            print()
+            if not Herausforderung.abgeschlossen:
+                print(f"Belohnung: {Herausforderung.belohnung_nummer} "f"{Herausforderung.belohnung_typ}")
+                print()
             print("[1] Weiter")
             print("[0] Zurück")
 
@@ -596,6 +625,14 @@ def herausforderungskaempfe(spieler_name):
             kampange.level_zuruecksetzen(ausgewaehlte_herausforderung.gegner_2)
             kampange.level_zuruecksetzen(ausgewaehlte_herausforderung.gegner_3)
             kampange.level_zuruecksetzen(ausgewaehlte_herausforderung.gegner_4)
+
+            if not Herausforderung.abgeschlossen:
+                if not Herausforderung.ist_belohnung_2:
+                    belohnung_vergeben(Herausforderung, Herausforderung.belohnung_nummer)
+                    
+                elif Herausforderung.ist_belohnung_2:
+                    belohnung_vergeben(Herausforderung, Herausforderung.belohnung_nummer)
+                    belohnung_vergeben(Herausforderung, Herausforderung.belohnung_2_nummer)
 
             wahl = input("Auswahl: ")
 

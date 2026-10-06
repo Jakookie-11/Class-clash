@@ -63,49 +63,8 @@ PowerShell öffnet sich nun direkt in diesem Ordner.
 
 ---
 
-## 4. Virtuelle Python-Umgebung erstellen
 
-Eine virtuelle Umgebung sorgt dafür, dass die benötigten Pakete für Class Clash getrennt von anderen Python-Projekten installiert werden.
-
-Gib in PowerShell folgenden Befehl ein:
-
-```powershell
-py -3.14 -m venv .venv
-```
-
-Dadurch wird im Projektordner ein neuer Ordner namens `.venv` erstellt.
-
----
-
-## 5. Virtuelle Umgebung aktivieren
-
-Aktiviere die Umgebung mit:
-
-```powershell
-.\.venv\Scripts\Activate.ps1
-```
-
-Wenn die Aktivierung erfolgreich war, steht am Anfang der PowerShell-Zeile normalerweise:
-
-```text
-(.venv)
-```
-
-### Falls die Aktivierung blockiert wird
-
-Wenn PowerShell meldet, dass die Ausführung von Skripten nicht erlaubt ist, kannst du die Richtlinie für das aktuelle PowerShell-Fenster vorübergehend lockern:
-
-```powershell
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-```
-
-Bestätige die Eingabe, falls du dazu aufgefordert wirst, und führe anschließend den Aktivierungsbefehl erneut aus.
-
-Diese Einstellung gilt nur für das aktuelle PowerShell-Fenster.
-
----
-
-## 6. Benötigte Pakete installieren
+## 4. Benötigte Pakete installieren
 
 Class Clash benötigt verschiedene Python-Pakete, die in der Datei `requirements.txt` aufgelistet sind.
 
@@ -123,7 +82,7 @@ Warte, bis die Installation abgeschlossen ist.
 
 ---
 
-## 7. Class Clash starten
+## 5. Class Clash starten
 
 Wenn die Installation erfolgreich abgeschlossen ist, kannst du das Spiel starten:
 
@@ -135,7 +94,7 @@ Class Clash sollte nun im Terminal starten.
 
 ---
 
-## 8. Class Clash bei zukünftigen Starts öffnen
+## 6. Class Clash bei zukünftigen Starts öffnen
 
 Wenn du das Spiel später erneut starten möchtest, musst du die Pakete nicht noch einmal installieren.
 
@@ -155,7 +114,7 @@ python main.py
 
 ---
 
-## 9. Häufige Probleme
+## 7. Häufige Probleme
 
 ### Python wird nicht gefunden
 
