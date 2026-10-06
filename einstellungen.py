@@ -211,6 +211,14 @@ def passwort_aendern(spieler_name):
 
 def profil_daten_zeigen(spieler_name):
 
+    speichern.spiel_speichern(spieler_name)  # Speichern, um sicherzustellen, dass die Daten aktuell sind
+
+    sekunden = confic.time_played_in_seconds
+
+    stunden, rest = divmod(sekunden, 3600)
+    minuten, sekunden = divmod(rest, 60)
+
+
     datei = f"saves/{spieler_name}.json"
 
     #---Erstellungsdatum holen---#
@@ -227,9 +235,11 @@ def profil_daten_zeigen(spieler_name):
     print("============")
     print()
 
-    print(f"Spielername      : {spieler_name}")
-    print(f"Passwort         : {confic.passwoerter[spieler_name]}")
-    print(f"Erstellungsdatum : {erstellungsdatum}")
+    print(f"Spielername       : {spieler_name}")
+    print(f"Passwort          : {confic.passwoerter[spieler_name]}")
+    print(f"Erstellungsdatum  : {erstellungsdatum}")
+    print(f"Time played       : {stunden:02}:{minuten:02}:{sekunden:02}")
+    print(f"Gewonnene Kaempfe : {confic.gewonnene_kaempfe}")
     print()
     input("fertig? ")
     os.system(confic.terminal_clear)
@@ -245,7 +255,7 @@ def profil_zuruecksetzen(spieler_name):
     print("===================")
     print()
     print(f"{ROT}Achtung: Dein Profil wird auf den Standard zurueckgesetzt!")
-    print("Alle deine Fortschritte gehen verloren!")
+    print("Alle deine Fortschritte gehen verloren!(Gespielte Zeit bleibt erhalten)")
     print("Dein Spielername, Erstellungsdatum bleiben erhalten!")
     print("Du kannst dies nicht rueckgaengig machen!")
     print(f"Du kannst dich danach wieder mit deinem alten Spielername und Passwort anmelden!{RESET}")
@@ -269,6 +279,7 @@ def profil_zuruecksetzen(spieler_name):
             alte_daten_spielername = alte_daten_spieler["spieler_name"]
             altes_daten_erstellungsdatum = alte_daten_spieler["Erstellungsdatum"]
             altes_daten_letztes_speichern = alte_daten_spieler["Letztes_Speichern"]
+            altes_daten_time_played_in_seconds = alte_daten_spieler["time_played_in_seconds"]
 
             datei.close()
 
@@ -287,11 +298,12 @@ def profil_zuruecksetzen(spieler_name):
             datei = open(datei, "w")
 
             json_daten = {
-                "spieler_name"    : alte_daten_spielername,
-                "Erstellungsdatum" : altes_daten_erstellungsdatum,
-                "Letztes_Speichern" : altes_daten_letztes_speichern,
-                "ressourcen"      : generelle_daten_ressourcen,
-                "charaktere"      : generelle_daten_charaktere
+                "spieler_name"           : alte_daten_spielername,
+                "Erstellungsdatum"       : altes_daten_erstellungsdatum,
+                "Letztes_Speichern"      : altes_daten_letztes_speichern,
+                "ressourcen"             : generelle_daten_ressourcen,
+                "charaktere"             : generelle_daten_charaktere,
+                "time_played_in_seconds" : altes_daten_time_played_in_seconds
             }
 
             json.dump(json_daten, datei)

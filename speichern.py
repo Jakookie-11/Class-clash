@@ -1,5 +1,6 @@
 import json
 import os
+import time
 from datetime import datetime
 
 import confic
@@ -17,7 +18,7 @@ def alle_kampangen_laden():
 
 
 
-def spiel_speichern(spieler):
+def spiel_speichern(spieler, ist_erstellung = False):
     os.makedirs("saves", exist_ok=True)
 
     confic_setup_speichern()
@@ -27,6 +28,10 @@ def spiel_speichern(spieler):
     spiel_starten.alle_statuseffekte_resetten()
     spiel_starten.alle_faehigkeits_abklingzeiten_resetten()
     spiel_starten.HP_zuruecksetzen()
+
+    if not ist_erstellung:
+        confic.end_zeit = int(time.time())
+        confic.time_played_in_seconds += confic.end_zeit - confic.start_zeit
 
     gespeicherte_charaktere = {}
 
@@ -61,6 +66,7 @@ def spiel_speichern(spieler):
         "spieler_name"                       : spieler,
         "Erstellungsdatum"                   : erstellungsdatum,
         "Letztes_Speichern"                  : datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "time_played_in_seconds"             : confic.time_played_in_seconds,
         "ressourcen"                         : ressourcen.ressourcen,
         "charaktere"                         : gespeicherte_charaktere,
         "kampangen_fortschritt"              : gespeicherter_fortschritt,
@@ -124,6 +130,7 @@ def spiel_laden(spieler):
     ressourcen.ressourcen                          = daten.get("ressourcen", ressourcen.ressourcen)
     herausforderungen.Herausforderungs_fortschritt_laden(daten.get("Herausforderungs_Fortschritt", []))
     confic.gewonnene_kaempfe                       = daten.get("gewonnene_kaempfe", confic.gewonnene_kaempfe)
+    confic.time_played_in_seconds                   = daten.get("time_played_in_seconds", confic.time_played_in_seconds)
 
     for name, gespeicherte_charaktere in daten.get("charaktere", {}).items():
         if name not in charaktere.Charaktere:

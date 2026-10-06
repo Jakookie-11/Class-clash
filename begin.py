@@ -291,7 +291,7 @@ def begin():
                                     ).decode("utf-8")
 
                                     confic.passwoerter[spieler] = passwort_hash
-                                    speichern.spiel_speichern(spieler)
+                                    speichern.spiel_speichern(spieler, ist_erstellung=True)
                                     print("Registrierung erfolgreich")
                                     time.sleep(2)
 

@@ -51,6 +51,8 @@ try:
 
     hauptmenue = True
 
+    confic.start_zeit = int(time.time())
+
     while hauptmenue == True:
 
         sound.musik_abspielen("test.mp3",lautstaerke=0.4)
@@ -118,7 +120,12 @@ try:
 except Exception:
 
     # Spielstand sichern
-    speichern.spiel_speichern(spieler)
+    spielstand_gespeichert = True
+    try:
+        speichern.spiel_speichern(spieler)
+    except OSError as speicher_fehler:
+        spielstand_gespeichert = False
+        print(f"Spielstand konnte nicht gespeichert werden: {speicher_fehler}")
 
     # Crash-Report erstellen
     dateiname, fehler_id, crash_pfad = crash_handler.crash_speichern(
@@ -137,7 +144,10 @@ except Exception:
     print("Leider ist ein unerwarteter Fehler aufgetreten.")
     print()
 
-    print("Dein Spielstand wurde automatisch gespeichert.")
+    if spielstand_gespeichert:
+        print("Dein Spielstand wurde automatisch gespeichert.")
+    else:
+        print("Der Spielstand konnte nicht automatisch gespeichert werden.")
     print("Ein Fehlerbericht wurde erstellt.")
     print()
 

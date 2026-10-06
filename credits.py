@@ -43,7 +43,7 @@ def credits():
         print()
 
         print("---Coder---")
-        print("Jakob")
+        print("   Jakob")
         print()
 
         print("PROBLEMFINDUNG")

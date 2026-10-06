@@ -9,3 +9,10 @@ passwort_sichtbarkeitshinweis_anzeigen = True
 passwoerter = {}
 
 gewonnene_kaempfe = 0
+
+time_played_in_seconds = 0
+
+
+#temp
+start_zeit = None
+end_zeit   = None
