@@ -31,10 +31,9 @@ HELL_WEISS    = "\033[97m"
 
 def credits():
 
-    sound.musik_abspielen("Hugs and Kisses.mp3", lautstaerke=2)
-
     while True:
 
+        sound.musik_abspielen("Hugs and Kisses.mp3", lautstaerke=2)
         os.system(confic.terminal_clear)
 
         print(f"{MAGENTA}══════════════════════════════")
@@ -125,8 +124,10 @@ def probleme_anzeigen(von_wem_gemeldet):
     for problem in probleme.probleme[von_wem_gemeldet]:
         print(f"{HELL_MAGENTA}----{problem['id']}----{RESET}")
         print(f"Beschreibung: {problem['beschreibung']}")
+
         if problem['status'] == "behoben":
             print(f"{GRUEN}Status      : {problem['status']}{RESET}")
         else:
             print(f"{HELL_ROT}Status      : {problem['status']}{RESET}")
+            
         print()

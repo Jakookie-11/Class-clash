@@ -8,6 +8,7 @@ import spiel_starten
 import time
 import kampange
 import os
+import speichern
 
 Herausforderungs_fortschritt = []
 Herausforderungs_kaempfe_fortschritt = []
@@ -120,10 +121,11 @@ Charakter_Level_Stufen = [
     {"ziel": 13, "belohnung": 1500},
 ]
 Zeit_Gespielt_Stufen = [
-    {"ziel": 180, "belohnung": 500},
-    {"ziel": 600, "belohnung": 1200},
-    {"ziel": 1800, "belohnung": 3500},
-    {"ziel": 3600, "belohnung": 6000},
+    {"ziel": 180,  "belohnung": 300},
+    {"ziel": 600,  "belohnung": 500},
+    {"ziel": 1800, "belohnung": 1200},
+    {"ziel": 3600, "belohnung": 3000},
+    {"ziel": 7200, "belohnung": 8000}
 ]
 
 
@@ -380,9 +382,8 @@ def herausforderung_erfuellt(Herausforderung):
 def belohnung_vergeben(Herausforderung, belohnung):
 
     welche_ressource = Herausforderung.belohnung_typ
-    wie_viel = belohnung
-
-    ressourcen.ressourcen_verändern(welche_ressource, wie_viel)
+    ressourcen.ressourcen[welche_ressource] += belohnung
+    return True
 
 
 # --------------------------------------------------
@@ -527,6 +528,8 @@ def Herausforderungs_fortschritt_laden(gespeicherte_daten,):
 
 def herausforderungen(spieler_name):
 
+    speichern.spiel_speichern(spieler_name)
+
     titel_anzeigen("Herausforderungen")
 
     for Herausforderung in normale_herausforderungen():
@@ -559,6 +562,7 @@ def herausforderungen(spieler_name):
 
             if auswahl == "y":
                 belohnung_abholen(Herausforderung)
+                speichern.spiel_speichern(spieler_name)
         else:
             print(f"{GELB}Noch nicht erfüllt{RESET}")
         print()
@@ -570,6 +574,7 @@ def herausforderungen(spieler_name):
 def herausforderungskaempfe(spieler_name):
 
     while True:
+        speichern.spiel_speichern(spieler_name)
         os.system(confic.terminal_clear)
         titel_anzeigen("Herausforderungskaempfe")
 

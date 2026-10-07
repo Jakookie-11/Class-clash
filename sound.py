@@ -8,24 +8,41 @@ MUSIK_ORDNER = Path(__file__).parent / "musik"
 
 SOUNDS = {}
 
+_aktuelle_musik = None
+_musik_fadeout_aktiv = False
+
 
 def musik_abspielen(datei, lautstaerke=1):
-    if pygame.mixer.music.get_busy():
+    global _aktuelle_musik, _musik_fadeout_aktiv
+
+    if (
+        pygame.mixer.music.get_busy()
+        and _aktuelle_musik == datei
+        and not _musik_fadeout_aktiv
+    ):
         return
+
+    pygame.mixer.music.stop()
 
     dateipfad = MUSIK_ORDNER / datei
 
     pygame.mixer.music.load(str(dateipfad))
     pygame.mixer.music.set_volume(lautstaerke)
     pygame.mixer.music.play(-1)
+    _aktuelle_musik = datei
+    _musik_fadeout_aktiv = False
 
 
 def musik_einmal_abspielen(datei, lautstaerke=1):
+    global _aktuelle_musik, _musik_fadeout_aktiv
+
     dateipfad = MUSIK_ORDNER / datei
 
     pygame.mixer.music.load(str(dateipfad))
     pygame.mixer.music.set_volume(lautstaerke)
     pygame.mixer.music.play()
+    _aktuelle_musik = datei
+    _musik_fadeout_aktiv = False
 
 
 def sound_abspielen(datei, lautstaerke=1.0):
@@ -43,4 +60,7 @@ def musik_lautstaerke(lautstaerke):
 
 
 def musik_stoppen(dauer=2000):
+    global _musik_fadeout_aktiv
+
     pygame.mixer.music.fadeout(dauer)
+    _musik_fadeout_aktiv = pygame.mixer.music.get_busy()

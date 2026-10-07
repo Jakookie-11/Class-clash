@@ -22,16 +22,18 @@ def spiel_speichern(spieler, ist_erstellung = False):
     os.makedirs("saves", exist_ok=True)
 
     confic_setup_speichern()
-    gespeicherter_herausforderungs_fortschritt = (herausforderungen.Herausforderungs_fortschritt_speichern())
-    gespeicherter_herausforderungs_kaempf_fortschritt = (herausforderungen.Herausforderungs_kampf_fortschritt_speichern())
+
+    if not ist_erstellung and confic.start_zeit is not None:
+        confic.end_zeit = int(time.time())
+        confic.time_played_in_seconds += confic.end_zeit - confic.start_zeit
+        confic.start_zeit = confic.end_zeit
+
+    gespeicherter_herausforderungs_fortschritt = herausforderungen.Herausforderungs_fortschritt_speichern()
+    gespeicherter_herausforderungs_kaempf_fortschritt = herausforderungen.Herausforderungs_kampf_fortschritt_speichern()
 
     spiel_starten.alle_statuseffekte_resetten()
     spiel_starten.alle_faehigkeits_abklingzeiten_resetten()
     spiel_starten.HP_zuruecksetzen()
-
-    if not ist_erstellung:
-        confic.end_zeit = int(time.time())
-        confic.time_played_in_seconds += confic.end_zeit - confic.start_zeit
 
     gespeicherte_charaktere = {}
 
