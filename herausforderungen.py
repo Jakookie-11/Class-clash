@@ -1,4 +1,6 @@
 
+"""Verwaltung von Herausforderungen, Belohnungen und Kampf-Quests."""
+
 import confic
 import ressourcen
 import charaktere
@@ -117,6 +119,12 @@ Charakter_Level_Stufen = [
     {"ziel": 10, "belohnung": 600},
     {"ziel": 13, "belohnung": 1500},
 ]
+Zeit_Gespielt_Stufen = [
+    {"ziel": 180, "belohnung": 500},
+    {"ziel": 600, "belohnung": 1200},
+    {"ziel": 1800, "belohnung": 3500},
+    {"ziel": 3600, "belohnung": 6000},
+]
 
 
 # --------------------------------------------------
@@ -223,6 +231,16 @@ Lara_Leveln = herausforderung(
     stufen=Charakter_Level_Stufen
 )
 
+Zeit_Gespielt = herausforderung(
+    "Zeit_Gespielt",
+    "zeit_gespielt",
+    "time_played_in_seconds",
+    180,
+    "Credits",
+    500,
+    stufen=Zeit_Gespielt_Stufen
+)
+
 Alle_Herausforderungen = [
     Gewonnene_Kaempfe,
     Jakob_Leveln,
@@ -230,9 +248,51 @@ Alle_Herausforderungen = [
     Rico_Leveln,
     Sara_Leveln,
     Lara_Leveln,
+    Zeit_Gespielt,
     Ja_Ha,
     der_ultimative_kampf_gegen_die_Fuenftklaessler,
 ]
+
+
+# --------------------------------------------------
+# Hilfsfunktionen
+# --------------------------------------------------
+
+
+def normale_herausforderungen():
+    return [
+        herausforderung
+        for herausforderung in Alle_Herausforderungen
+        if herausforderung.typ != "herausforderungskampf"
+    ]
+
+
+def kampf_herausforderungen():
+    return [
+        herausforderung
+        for herausforderung in Alle_Herausforderungen
+        if herausforderung.typ == "herausforderungskampf"
+    ]
+
+
+def titel_anzeigen(titel):
+    print(f"{CYAN}═══════════════════════════════")
+    print(f"     {titel}")
+    print(f"═══════════════════════════════{RESET}")
+    print()
+
+
+def team_fuer_herausforderung(herausforderung):
+    return [
+        gegner
+        for gegner in [
+            herausforderung.gegner_1,
+            herausforderung.gegner_2,
+            herausforderung.gegner_3,
+            herausforderung.gegner_4,
+        ]
+        if gegner is not None
+    ]
 
 
 # --------------------------------------------------
@@ -278,6 +338,9 @@ def aktuellen_fortschritt_abrufen(Herausforderung):
             return 0
 
         return charakter.level
+
+    if Herausforderung.typ == "zeit_gespielt":
+        return getattr(confic, "time_played_in_seconds", 0)
 
     return getattr(
         confic,
@@ -393,11 +456,7 @@ def Herausforderungs_fortschritt_speichern():
 
     Herausforderungs_fortschritt.clear()
 
-    for Herausforderung in Alle_Herausforderungen:
-
-        if Herausforderung.typ == "herausforderungskampf":
-            continue
-
+    for Herausforderung in normale_herausforderungen():
         Herausforderungs_fortschritt.append({
             "name": Herausforderung.name,
             "stufe": getattr(Herausforderung, "stufe", 1),
@@ -407,15 +466,12 @@ def Herausforderungs_fortschritt_speichern():
 
     return Herausforderungs_fortschritt
 
+
 def Herausforderungs_kampf_fortschritt_speichern():
 
     Herausforderungs_kaempfe_fortschritt.clear()
 
-    for Herausforderung in Alle_Herausforderungen:
-
-        if Herausforderung.typ != "herausforderungskampf":
-            continue
-
+    for Herausforderung in kampf_herausforderungen():
         Herausforderungs_kaempfe_fortschritt.append({
             "name": Herausforderung.name,
             "abgeschlossen": Herausforderung.abgeschlossen,
@@ -471,23 +527,14 @@ def Herausforderungs_fortschritt_laden(gespeicherte_daten,):
 
 def herausforderungen(spieler_name):
 
-    print(f"{CYAN}═══════════════════════════════")
-    print("     Herausforderungen")
-    print(f"═══════════════════════════════{RESET}")
-    print()
+    titel_anzeigen("Herausforderungen")
 
-    for Herausforderung in Alle_Herausforderungen:
-
-        if Herausforderung.typ == "herausforderungskampf":
-            continue
-
+    for Herausforderung in normale_herausforderungen():
         print(f"{BLAU}{Herausforderung.name}{RESET}")
 
         if Herausforderung.abgeschlossen:
-
             print(f"{GRUEN}Alle Stufen abgeschlossen!{RESET}")
             print()
-
             continue
 
         stufe = aktuelle_stufe_abrufen(Herausforderung)
@@ -497,16 +544,14 @@ def herausforderungen(spieler_name):
 
         ziel = stufe["ziel"]
         belohnung = stufe["belohnung"]
-
         aktueller_wert = aktuellen_fortschritt_abrufen(Herausforderung)
 
         print(f"Stufe: {Herausforderung.stufe}")
-        print(f"Fortschritt: "f"{min(aktueller_wert, ziel)}/{ziel}")
-        print(f"Belohnung: "f"{belohnung} "f"{Herausforderung.belohnung_typ}")
+        print(f"Fortschritt: {min(aktueller_wert, ziel)}/{ziel}")
+        print(f"Belohnung: {belohnung} {Herausforderung.belohnung_typ}")
 
         if Herausforderung.abgeholt:
             print(f"{GRUEN}Belohnung bereits abgeholt{RESET}")
-
         elif herausforderung_erfuellt(Herausforderung):
             print(f"{GELB}Herausforderung erfüllt!{RESET}")
 
@@ -514,7 +559,6 @@ def herausforderungen(spieler_name):
 
             if auswahl == "y":
                 belohnung_abholen(Herausforderung)
-
         else:
             print(f"{GELB}Noch nicht erfüllt{RESET}")
         print()
@@ -523,38 +567,23 @@ def herausforderungen(spieler_name):
 
 
 
-
-
-
 def herausforderungskaempfe(spieler_name):
 
     while True:
         os.system(confic.terminal_clear)
+        titel_anzeigen("Herausforderungskaempfe")
 
-        print(f"{CYAN}═══════════════════════════════")
-        print("     Herausforderungskaempfe")
-        print(f"═══════════════════════════════{RESET}")
-        print()
-
-        for Herausforderung in Alle_Herausforderungen:
-
-            if Herausforderung.typ != "herausforderungskampf":
-                continue
-
+        for Herausforderung in kampf_herausforderungen():
             print(f"{BLAU}[{Herausforderung.nummer}] {Herausforderung.name}{RESET}")
             print(f"Belohnung: {Herausforderung.belohnung_nummer} {Herausforderung.belohnung_typ}")
             print(f"Beschreibung: {Herausforderung.beschreibung}")
-
-            if Herausforderung.abgeschlossen:
-                print(f"{GRUEN}Belohnung bereits abgeholt{RESET}")
-
-            else:
-                print(f"{GELB}Noch nicht erfüllt{RESET}")
+            status = "Abgeschlossen" if Herausforderung.abgeschlossen else "Noch nicht erfüllt"
+            print(f"Status: {GRUEN if Herausforderung.abgeschlossen else GELB}{status}{RESET}")
             print()
 
         wahl = input("Wähle eine Herausforderung (Nummer)/[0]zurueck: ")
 
-        #safe check for exit
+        # safe check for exit
         if wahl == "0":
             return
 
@@ -562,16 +591,11 @@ def herausforderungskaempfe(spieler_name):
             print(f"{ROT}Ungültige Eingabe!{RESET}")
             continue
 
-        #richtigen kampf finden
         wahl = int(wahl)
 
         ausgewaehlte_herausforderung = None
 
-        for Herausforderung in Alle_Herausforderungen:
-
-            if Herausforderung.typ != "herausforderungskampf":
-                continue
-
+        for Herausforderung in kampf_herausforderungen():
             if Herausforderung.nummer == wahl:
                 ausgewaehlte_herausforderung = Herausforderung
                 break
@@ -580,43 +604,46 @@ def herausforderungskaempfe(spieler_name):
             print(f"{ROT}Herausforderung nicht gefunden!{RESET}")
             continue
 
-        #eignen Kampf starten
-        team_2 = [gegner
-            for gegner in [
-                ausgewaehlte_herausforderung.gegner_1,
-                ausgewaehlte_herausforderung.gegner_2,
-                ausgewaehlte_herausforderung.gegner_3,
-                ausgewaehlte_herausforderung.gegner_4,
-            ]
-            if gegner is not None
-        ]
+        team_2 = team_fuer_herausforderung(ausgewaehlte_herausforderung)
 
         if len(team_2) < 2:
             print("Es müssen mindestens 2 Gegner vorhanden sein!")
             time.sleep(5)
             return
-        
+
         team_groesse_1 = ausgewaehlte_herausforderung.team_groesse_1
         team_groesse_2 = ausgewaehlte_herausforderung.team_groesse_2
         ki = ausgewaehlte_herausforderung.ki
         musik = ausgewaehlte_herausforderung.musik
 
-        kampange.npc_level_setzen(level=ausgewaehlte_herausforderung.level, Leader_2=ausgewaehlte_herausforderung.gegner_1, spieler_2_2=ausgewaehlte_herausforderung.gegner_2, spieler_3_2=ausgewaehlte_herausforderung.gegner_3, spieler_4_2=ausgewaehlte_herausforderung.gegner_4)
+        kampange.npc_level_setzen(
+            level=ausgewaehlte_herausforderung.level,
+            Leader_2=ausgewaehlte_herausforderung.gegner_1,
+            spieler_2_2=ausgewaehlte_herausforderung.gegner_2,
+            spieler_3_2=ausgewaehlte_herausforderung.gegner_3,
+            spieler_4_2=ausgewaehlte_herausforderung.gegner_4,
+        )
 
-        is_win = spiel_starten.kampf(team_2=team_2, team_groesse_1=team_groesse_1,team_groesse_2=team_groesse_2, Ki=ki, gegner_ki=True, musik=musik)
+        is_win = spiel_starten.kampf(
+            team_2=team_2,
+            team_groesse_1=team_groesse_1,
+            team_groesse_2=team_groesse_2,
+            Ki=ki,
+            gegner_ki=True,
+            musik=musik,
+        )
 
-        if is_win==1:
-
+        if is_win == 1:
             print(f"{GRUEN}══════════════════════════════════")
             print("          KAMPF GEWONNEN!")
             print(f"══════════════════════════════════{RESET}")
             print()
-            print(f"Du hast die Herausforderung")
-            print(f"{GELB}{Herausforderung.name}{RESET}")
+            print("Du hast die Herausforderung")
+            print(f"{GELB}{ausgewaehlte_herausforderung.name}{RESET}")
             print("erfolgreich abgeschlossen!")
             print()
-            if not Herausforderung.abgeschlossen:
-                print(f"Belohnung: {Herausforderung.belohnung_nummer} "f"{Herausforderung.belohnung_typ}")
+            if not ausgewaehlte_herausforderung.abgeschlossen:
+                print(f"Belohnung: {ausgewaehlte_herausforderung.belohnung_nummer} {ausgewaehlte_herausforderung.belohnung_typ}")
                 print()
             print("[1] Weiter")
             print("[0] Zurück")
@@ -626,13 +653,12 @@ def herausforderungskaempfe(spieler_name):
             kampange.level_zuruecksetzen(ausgewaehlte_herausforderung.gegner_3)
             kampange.level_zuruecksetzen(ausgewaehlte_herausforderung.gegner_4)
 
-            if not Herausforderung.abgeschlossen:
-                if not Herausforderung.ist_belohnung_2:
-                    belohnung_vergeben(Herausforderung, Herausforderung.belohnung_nummer)
-                    
-                elif Herausforderung.ist_belohnung_2:
-                    belohnung_vergeben(Herausforderung, Herausforderung.belohnung_nummer)
-                    belohnung_vergeben(Herausforderung, Herausforderung.belohnung_2_nummer)
+            if not ausgewaehlte_herausforderung.abgeschlossen:
+                if not ausgewaehlte_herausforderung.ist_belohnung_2:
+                    belohnung_vergeben(ausgewaehlte_herausforderung, ausgewaehlte_herausforderung.belohnung_nummer)
+                elif ausgewaehlte_herausforderung.ist_belohnung_2:
+                    belohnung_vergeben(ausgewaehlte_herausforderung, ausgewaehlte_herausforderung.belohnung_nummer)
+                    belohnung_vergeben(ausgewaehlte_herausforderung, ausgewaehlte_herausforderung.belohnung_2_nummer)
 
             wahl = input("Auswahl: ")
 
