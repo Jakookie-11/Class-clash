@@ -115,12 +115,10 @@ def charaktere_anzeigen():
 
 def level_up(wen, max_hp_permanent_erhoehen=False):
     charakter = charaktere.Charaktere[wen]
-    charakter.level += 1
-    charakter.hp *= 1.2
-    charakter.max_hp *= 1.2
-    if max_hp_permanent_erhoehen:
-        charakter.max_max_hp *= 1.2
-    charakter.schaden *= 1.2
+    charaktere.charakter_level_erhoehen(
+        charakter,
+        max_hp_permanent_erhoehen=max_hp_permanent_erhoehen
+    )
 
 
 

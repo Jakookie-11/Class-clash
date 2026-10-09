@@ -8,6 +8,7 @@
 
 - Benutzerkonto mit Registrierung und Anmeldung
 - Benutzerdefinierte Kämpfe
+- Lokale Zwei-Spieler-Kämpfe mit den Charakter-Leveln beider Konten
 - Kampagne **Down in Mars**
 - Charakterbibliothek zum Anzeigen und Leveln der Charaktere
 - Charakterbilder bei der Charakterauswahl und während des Kampfes
@@ -66,7 +67,7 @@ Beim ersten Start wählst du das Betriebssystem aus, damit das Spiel den Bildsch
 
 ## Spielstände und lokale Daten
 
-Lokale Spielstände und Profile werden im Ordner [`saves/`](./saves/) gespeichert. Der Ordner wird beim ersten Start automatisch angelegt. Teile die darin enthaltenen Dateien nicht öffentlich, da sie zu deinem lokalen Spielprofil gehören.
+Lokale Spielstände und Profile werden im Ordner [`saves/`](./saves/) gespeichert. Der Ordner wird beim ersten Start automatisch angelegt. Pro Charakter speichert ein Spielstand nur Name und Level; beim Laden werden die Charakterwerte aus den Basiswerten anhand des Levels neu berechnet. Ältere Spielstände mit gespeicherten Einzelwerten werden weiterhin geladen. Im benutzerdefinierten Kampf kann Person 2 ein anderes Konto mit vorhandenem Spielstand auswählen; dessen Charakter-Level werden für den Kampf geladen, ohne den Spielstand zu überschreiben. Teile die darin enthaltenen Dateien nicht öffentlich, da sie zu deinem lokalen Spielprofil gehören.
 
 ## Charakterbilder
 

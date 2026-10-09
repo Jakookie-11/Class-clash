@@ -48,7 +48,7 @@ def spiel_starten(spieler_name):
         wahl = funktions.menue(menues.spiel_starten_menue, spieler_name)
 
         if wahl == 1:
-            is_break_kampf = benutzerdefinierten_kampf_starten()
+            is_break_kampf = benutzerdefinierten_kampf_starten(spieler_name)
 
             if is_break_kampf == 1 or is_break_kampf == 2 or is_break_kampf == 3:
                 continue
@@ -107,7 +107,7 @@ def ganzzahl_einlesen(prompt, minimum, maximum):
         print(f"Bitte eine Zahl zwischen {minimum} und {maximum} eingeben.")
 
 
-def benutzerdefinierten_kampf_starten():
+def benutzerdefinierten_kampf_starten(spieler_name):
     os.system(confic.terminal_clear)
 
     print("===== Benutzerdefinierter Kampf =====")
@@ -132,10 +132,42 @@ def benutzerdefinierten_kampf_starten():
     gegner_typ = ganzzahl_einlesen("Auswahl: ", 1, 2)
 
     ki_stufe = 1
+    spieler_2_name = None
+    spieler_2_charakterdaten = None
     if gegner_typ == 1:
         print()
         print("KI-Stufen: 1 Zufällig, 2 Taktisch, 3 Stark, 4 Meister")
         ki_stufe = ganzzahl_einlesen("KI-Stufe (1-4): ", 1, 4)
+    else:
+        verfuegbare_spieler = [
+            name
+            for name in confic.passwoerter
+            if name != spieler_name
+            and os.path.isfile(os.path.join("saves", f"{name}.json"))
+        ]
+
+        if not verfuegbare_spieler:
+            print("Es gibt kein weiteres Konto mit einem gespeicherten Spielstand.")
+            input("\nEnter zum Zurückkehren...")
+            return 2
+
+        print()
+        print("Verfügbare Spieler:")
+        for name in verfuegbare_spieler:
+            print(f"- {name}")
+        print("[0] Abbrechen")
+
+        while True:
+            spieler_2_name = input("Konto von Person 2: ").strip()
+            if spieler_2_name == "0":
+                return 2
+            if spieler_2_name in verfuegbare_spieler:
+                break
+            print("Bitte ein Konto aus der Liste auswählen.")
+
+        import speichern
+
+        spieler_2_charakterdaten = speichern.spielstand_charaktere_laden(spieler_2_name)
 
     input("\nEnter zum Starten...")
 
@@ -145,18 +177,24 @@ def benutzerdefinierten_kampf_starten():
         Ki=ki_stufe,
         gegner_ki=gegner_typ == 1,
         benutzerdefiniert=True,
+        spieler_2_aktiv=gegner_typ == 2,
+        spieler_2_charakterdaten=spieler_2_charakterdaten,
+        spieler_2_name=spieler_2_name,
     )
 
 
 def charaktere_auswaelen(
     nur_eigenes_team=False,
     team_groesse=2,
-    ki_aktiv=False
+    ki_aktiv=False,
+    spieler_name=None,
 ):
 
     os.system(confic.terminal_clear)
 
     print("Verfügbare Charaktere:")
+    if spieler_name is not None:
+        print(f"Auswahl für Person 2 ({spieler_name}):")
     print()
     if ki_aktiv:
         print("Alle existierenden Charaktere können ausgewählt werden.")
@@ -364,7 +402,7 @@ def kampf_charakter_anzeigen(name):
 
     text = []
 
-    text.append(f"{CYAN}{name}{RESET}")
+    text.append(f"{CYAN}{kampf_name_anzeigen(name)}{RESET}")
     text.append(
         f"{GRUEN}{balken} "
         f"{charakter.hp:.2f}/{charakter.max_hp:.2f} HP{RESET}"
@@ -381,6 +419,13 @@ def kampf_charakter_anzeigen(name):
         text.append("Effekte: Keine")
 
     return text
+
+
+def kampf_name_anzeigen(name):
+    charakter = charaktere.Charaktere[name]
+    if getattr(charakter, "spieler_2_charakter", False):
+        return f"{charakter.name} (Person 2)"
+    return name
 
 
 
@@ -452,7 +497,7 @@ def ziel_auswaehlen(wer, team_1, team_2, zieltyp):
     print()
 
     for nummer, name in enumerate(moegliche_ziele, start=1):
-        print(f"[{nummer}] {name}")
+        print(f"[{nummer}] {kampf_name_anzeigen(name)}")
 
     print()
 
@@ -487,10 +532,36 @@ def kampf_charaktere_kopieren(ausgewaehlte_charaktere):
         charaktere.Charaktere[neuer_name] = copy.deepcopy(
             charaktere.Charaktere[name]
         )
+        charaktere.Charaktere[neuer_name].kampf_klon = True
 
         neue_charaktere.append(neuer_name)
 
     return neue_charaktere
+
+
+def spieler_2_charaktere_kopieren(team_2, charakterdaten):
+    neue_team_2 = []
+    for nummer, name in enumerate(team_2, start=1):
+        neuer_name = f"{name}__spieler2_{nummer}"
+        while neuer_name in charaktere.Charaktere:
+            neuer_name = f"_{neuer_name}"
+
+        kopie = copy.deepcopy(charaktere.Charaktere[name])
+        charaktere.charakter_auf_level_setzen(
+            kopie,
+            charakterdaten.get(name, kopie.basis_level)
+        )
+        kopie.kampf_klon = True
+        kopie.spieler_2_charakter = True
+        charaktere.Charaktere[neuer_name] = kopie
+        neue_team_2.append(neuer_name)
+
+    return neue_team_2
+
+
+def kampf_klone_entfernen(klone):
+    for name in klone:
+        charaktere.Charaktere.pop(name, None)
 
 
 
@@ -538,6 +609,9 @@ def kampf(
     gegner_ki=False,
     benutzerdefiniert = False,
     musik = None,
+    spieler_2_aktiv=False,
+    spieler_2_charakterdaten=None,
+    spieler_2_name=None,
 ):
 
     os.system(confic.terminal_clear)
@@ -572,12 +646,21 @@ def kampf(
             charaktere_auswaelen(
                 nur_eigenes_team=False,
                 team_groesse=team_groesse_2,
-                ki_aktiv=gegner_ki
+                ki_aktiv=gegner_ki,
+                spieler_name=spieler_2_name if spieler_2_aktiv else None,
             )
         )
 
     else:
         team_2 = list(team_2)
+
+    kampf_klone = set()
+    if spieler_2_aktiv and spieler_2_charakterdaten is not None:
+        team_2 = spieler_2_charaktere_kopieren(
+            team_2,
+            spieler_2_charakterdaten
+        )
+        kampf_klone.update(team_2)
 
 
     # ══════════════════════════════════════════════════════════════
@@ -588,6 +671,7 @@ def kampf(
         print("Ein Team darf nicht leer sein.")
         time.sleep(2)
         bilder.bild_rechts_schliessen()
+        kampf_klone_entfernen(kampf_klone)
         return 2
 
 
@@ -602,8 +686,12 @@ def kampf(
     # Doppelte Charaktere kopieren
     # ══════════════════════════════════════════════════════════════
 
+    vorhandene_charaktere = set(charaktere.Charaktere)
     ausgewaehlte_charaktere = kampf_charaktere_kopieren(
         ausgewaehlte_charaktere
+    )
+    kampf_klone.update(
+        set(charaktere.Charaktere) - vorhandene_charaktere
     )
 
 
@@ -648,6 +736,7 @@ def kampf(
         # und die Reihenfolge leer geworden ist
         if not reinfolge:
             bilder.bild_rechts_schliessen()
+            kampf_klone_entfernen(kampf_klone)
             return 2
 
 
@@ -686,11 +775,13 @@ def kampf(
             # Spielerzug
             # ══════════════════════════════════════════════════════
 
-            if wer in team_1:
+            if wer in team_1 or spieler_2_aktiv:
+                eigenes_team = team_1 if wer in team_1 else team_2
+                gegner_team = team_2 if wer in team_1 else team_1
 
                 while True:
 
-                    print(f"{wer} ist am zug!")
+                    print(f"{kampf_name_anzeigen(wer)} ist am zug!")
                     print("----Status----")
                     print(
                         f"{GRUEN}HP        : "
@@ -743,6 +834,7 @@ def kampf(
 
                         bilder.bild_rechts_schliessen()
                         sound.musik_stoppen()
+                        kampf_klone_entfernen(kampf_klone)
                         return 2
 
 
@@ -875,14 +967,14 @@ def kampf(
                         faehigkeit.funktion(
                             wer,
                             ziel,
-                            team_1,
-                            team_2
+                            eigenes_team,
+                            gegner_team
                         )
                     else:
                         faehigkeit.funktion(
                             wer,
                             ziel,
-                            team_1
+                            eigenes_team
                         ) 
 
                     geheimes.wer_hat_wieviel_schaden_genommen(
@@ -911,13 +1003,16 @@ def kampf(
 
                     if is_win(team_2):
                         bilder.bild_rechts_schliessen()
+                        kampf_klone_entfernen(kampf_klone)
                         return 1
 
                     if is_win(team_1):
                         bilder.bild_rechts_schliessen()
+                        kampf_klone_entfernen(kampf_klone)
                         return 3
 
                     bilder.bild_rechts_schliessen()
+                    kampf_klone_entfernen(kampf_klone)
                     return 2
 
                 faehigkeit.abklingzeit = faehigkeit.max_abklingzeit
@@ -979,6 +1074,7 @@ def kampf(
 
             bilder.bild_rechts_schliessen()
             sound.musik_stoppen()
+            kampf_klone_entfernen(kampf_klone)
             return 1
 
 
@@ -999,6 +1095,7 @@ def kampf(
 
             bilder.bild_rechts_schliessen()
             sound.musik_stoppen()
+            kampf_klone_entfernen(kampf_klone)
             return 3
 
 

@@ -1,0 +1,43 @@
+========================================
+       CLASS CLASH CRASH REPORT
+========================================
+
+Spieler: Spieler1
+Datum: 2026-10-09
+Uhrzeit: 16:35:46
+Fehler-ID: 13a0878288a44480e236c40d23eed1bcf1f25d2b022f75044e39ccce9fd8b463
+Status: gefixt
+
+----------------------------------------
+FEHLER / TRACEBACK
+----------------------------------------
+
+Traceback (most recent call last):
+  File "c:\Users\Jakob Samstag\Desktop\git\Class-clash\main.py", line 66, in <module>
+    is_brake_spiel_starten = spiel_starten.spiel_starten(spieler)
+  File "c:\Users\Jakob Samstag\Desktop\git\Class-clash\spiel_starten.py", line 51, in spiel_starten
+    is_break_kampf = benutzerdefinierten_kampf_starten(spieler_name)
+  File "c:\Users\Jakob Samstag\Desktop\git\Class-clash\spiel_starten.py", line 174, in benutzerdefinierten_kampf_starten
+    return kampf(
+        team_groesse_1=team_groesse_1,
+    ...<6 lines>...
+        spieler_2_name=spieler_2_name,
+    )
+  File "c:\Users\Jakob Samstag\Desktop\git\Class-clash\spiel_starten.py", line 974, in kampf
+    faehigkeit.funktion(
+    ~~~~~~~~~~~~~~~~~~~^
+        wer,
+        ^^^^
+        ziel,
+        ^^^^^
+        eigenes_team
+        ^^^^^^^^^^^^
+    )
+    ^
+  File "c:\Users\Jakob Samstag\Desktop\git\Class-clash\faehigkeiten.py", line 402, in ich_mach_mit_obj
+    funktions.unterstuetzt_Hannah_d_verteilen(eigenes_team)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "c:\Users\Jakob Samstag\Desktop\git\Class-clash\funktions.py", line 152, in unterstuetzt_Hannah_d_verteilen
+    if mitglied.name == "Jakob":
+       ^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'name'

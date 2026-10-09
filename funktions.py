@@ -8,6 +8,7 @@ from urllib.request import urlopen
 #temp
 import status_effekte
 import random
+import charaktere
 
 def menue(liste, spieler_name=None,):
 
@@ -148,6 +149,8 @@ def daten_herunterladen():
 def unterstuetzt_Hannah_d_verteilen(eigenes_team):
 
     for mitglied in eigenes_team:
+
+        mitglied = charaktere.Charaktere[mitglied]
 
         if mitglied.name == "Jakob":
             status_effekte.status_effekte_hinzufügen(mitglied, "von_Hannah_d_unterstuetzt")

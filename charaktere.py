@@ -47,15 +47,44 @@ class charakter:
         self.max_max_hp = max_max_hp
         self.schaden = schaden
         self.max_schaden = max_schaden
+        self.basis_hp = hp
+        self.basis_max_hp = max_hp
+        self.basis_max_max_hp = max_max_hp
+        self.basis_schaden = schaden
+        self.basis_max_schaden = max_schaden
         self.gender = gender
         self.speed = speed
         self.level = level
+        self.basis_level = level
 
         self.faehigkeit_1 = copy.copy(faehigkeit_1)
         self.faehigkeit_2 = copy.copy(faehigkeit_2)
         self.faehigkeit_3 = copy.copy(faehigkeit_3)
 
         self.status_effekte = []
+
+
+def charakter_level_erhoehen(charakter, max_hp_permanent_erhoehen=False):
+    charakter.level += 1
+    charakter.hp *= 1.2
+    charakter.max_hp *= 1.2
+    if max_hp_permanent_erhoehen:
+        charakter.max_max_hp *= 1.2
+    charakter.schaden *= 1.2
+
+
+def charakter_auf_level_setzen(charakter, level):
+    charakter.hp = charakter.basis_hp
+    charakter.max_hp = charakter.basis_max_hp
+    charakter.max_max_hp = charakter.basis_max_max_hp
+    charakter.schaden = charakter.basis_schaden
+    charakter.max_schaden = charakter.basis_max_schaden
+    charakter.level = charakter.basis_level
+
+    while charakter.level < level:
+        charakter_level_erhoehen(charakter, max_hp_permanent_erhoehen=True)
+
+    charakter.hp = charakter.max_hp
                
 
 

@@ -460,7 +460,7 @@ def gib_mir_die_roehre_obj(wer, wen, eigenes_team):
 
     if status_effekte.status_effekt_vorhanden(wer, "die_Roehre"):
         schaden = schaden * 2
-        if wen == "Max":
+        if charaktere.Charaktere[wen].name == "Max":
             schaden = schaden * 1.5
 
     else:
