@@ -1,1 +1,74 @@
-{"ressourcen": {"Credits": 1000, "M_Credits": 1000, "Material 1": 50, "Energie": 100}, "charaktere": {"Jakob": {"hp": 200, "max_hp": 200, "max_max_hp": 200, "schaden": -20, "level": 1}, "Leo": {"hp": 70, "max_hp": 70, "max_max_hp": 70, "schaden": -20, "level": 1}, "Simon": {"hp": 110, "max_hp": 110, "max_max_hp": 110, "schaden": -10, "level": 1}, "Max": {"hp": 200, "max_hp": 200, "max_max_hp": 200, "schaden": -10, "level": 1}, "Lovis": {"hp": 100, "max_hp": 100, "max_max_hp": 100, "schaden": -10, "level": 1}, "Hannah_d": {"hp": 150, "max_hp": 150, "max_max_hp": 150, "schaden": -25, "level": 1}, "Sascha": {"hp": 80, "max_hp": 80, "max_max_hp": 80, "schaden": -10, "level": 1}, "Noah": {"hp": 120, "max_hp": 120, "max_max_hp": 120, "schaden": -15, "level": 1}, "John": {"hp": 180, "max_hp": 180, "max_max_hp": 180, "schaden": -18, "level": 1}, "Sara": {"hp": 150, "max_hp": 150, "max_max_hp": 150, "schaden": -15, "level": 1}, "Lara": {"hp": 140, "max_hp": 140, "max_max_hp": 140, "schaden": -12, "level": 1}, "Rico": {"hp": 160, "max_hp": 160, "max_max_hp": 160, "schaden": -22, "level": 1}, "Chasker": {"hp": 240, "max_hp": 240, "max_max_hp": 240, "schaden": -16, "level": 1}, "marine_schuetze": {"hp": 130, "max_hp": 130, "max_max_hp": 130, "schaden": -14, "level": 1}, "marine_sturmsoldat": {"hp": 170, "max_hp": 170, "max_max_hp": 170, "schaden": -18, "level": 1}, "marine_sanitaeter": {"hp": 115, "max_hp": 115, "max_max_hp": 115, "schaden": -9, "level": 1}}}
+{
+  "ressourcen": {
+    "Credits": 1000,
+    "M_Credits": 1000,
+    "Material 1": 50,
+    "Energie": 100
+  },
+  "charaktere": [
+    {
+      "name": "Jakob",
+      "level": 1
+    },
+    {
+      "name": "Leo",
+      "level": 1
+    },
+    {
+      "name": "Simon",
+      "level": 1
+    },
+    {
+      "name": "Max",
+      "level": 1
+    },
+    {
+      "name": "Lovis",
+      "level": 1
+    },
+    {
+      "name": "Hannah_d",
+      "level": 1
+    },
+    {
+      "name": "Sascha",
+      "level": 1
+    },
+    {
+      "name": "Noah",
+      "level": 1
+    },
+    {
+      "name": "John",
+      "level": 1
+    },
+    {
+      "name": "Sara",
+      "level": 1
+    },
+    {
+      "name": "Lara",
+      "level": 1
+    },
+    {
+      "name": "Rico",
+      "level": 1
+    },
+    {
+      "name": "Chasker",
+      "level": 1
+    },
+    {
+      "name": "marine_schuetze",
+      "level": 1
+    },
+    {
+      "name": "marine_sturmsoldat",
+      "level": 1
+    },
+    {
+      "name": "marine_sanitaeter",
+      "level": 1
+    }
+  ]
+}
