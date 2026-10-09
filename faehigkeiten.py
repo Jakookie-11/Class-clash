@@ -86,6 +86,9 @@ def HP_verändern(wem, wie_viel):
         if status_effekte.status_effekt_vorhanden(wem, "schaden_erhalten_minus"):
             wie_viel *= 0.7
 
+        if status_effekte.status_effekt_vorhanden(wem, "unverwundbar"):
+            wie_viel = 0
+
     charakter.hp = round(charakter.hp + wie_viel, 2)
 
     if charakter.hp > charakter.max_hp:
@@ -112,6 +115,13 @@ def effekte_berügsichtigen(wer):
             to_return = 1
         else:
             to_return = 0.7
+
+    if status_effekte.status_effekt_vorhanden(wer, "blossgestellt"):
+        to_return *= status_effekte.blossgestellt.wert
+    elif status_effekte.status_effekt_vorhanden(wer, "verunsichert"):
+        to_return *= status_effekte.verunsichert.wert
+    elif status_effekte.status_effekt_vorhanden(wer, "beeindruckt"):
+        to_return *= 1.2
 
     return to_return
 
@@ -158,7 +168,7 @@ class faehigkeit:
 
 # --- Einfacher Angriff ---
 
-def einfacher_angriff_obj(wer, wen, team=None):
+def einfacher_angriff_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer)
 
@@ -177,7 +187,7 @@ einfacher_angriff = faehigkeit(
 
 # --- Einfache Heilung ---
 
-def einfache_heilung_obj(wer, wen, team=None):
+def einfache_heilung_obj(wer, wen, eigenes_team=None):
 
     HP_verändern(wen, 50)
 
@@ -194,7 +204,7 @@ einfache_heilung = faehigkeit(
 
 # --- Stärkende Heilung ---
 
-def staerkende_heilung_obj(wer, wen, team=None):
+def staerkende_heilung_obj(wer, wen, eigenes_team=None):
 
     status_effekte.status_effekte_hinzufügen(
         wen,
@@ -216,7 +226,7 @@ staerkende_heilung = faehigkeit(
 
 # --- Blutiger Schlag ---
 
-def blutiger_schlag_obj(wer, wen, team=None):
+def blutiger_schlag_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer)
 
@@ -240,7 +250,7 @@ blutiger_schlag = faehigkeit(
 
 # --- Starker Schlag ---
 
-def starker_schlag_obj(wer, wen, team=None):
+def starker_schlag_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer)
 
@@ -264,7 +274,7 @@ starker_schlag = faehigkeit(
 
 # --- Bleibender Schlag ---
 
-def bleibender_schlag_obj(wer, wen, team=None):
+def bleibender_schlag_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer)
 
@@ -285,6 +295,11 @@ bleibender_schlag = faehigkeit(
     "gegner"
 )
 
+
+
+
+
+
 # ══════════════════════════════════════════════════════════════
 
 # Aus der KLasse
@@ -295,11 +310,11 @@ bleibender_schlag = faehigkeit(
 # Generell
 # ══════════════════════════════════════════════════════════════
 
-def einfacher_angriff_b_obj(wer, wen, team=None):
+def einfacher_angriff_b_obj(wer, wen, eigenes_team=None):
 
     import geheimes
 
-    schaden = geheimes.einfacher_angriff_b_obj(wer, wen, team)
+    schaden = geheimes.einfacher_angriff_b_obj(wer, wen, eigenes_team)
 
     HP_verändern(wen, schaden)
 
@@ -313,11 +328,11 @@ einfacher_angriff_b = faehigkeit(
 )
 
 
-def einfacher_angriff_g_obj(wer, wen, team=None):
+def einfacher_angriff_g_obj(wer, wen, eigenes_team=None):
 
     import geheimes
 
-    schaden = geheimes.einfacher_angriff_g_obj(wer, wen, team)
+    schaden = geheimes.einfacher_angriff_g_obj(wer, wen, eigenes_team)
 
     HP_verändern(wen, schaden)
 
@@ -334,11 +349,11 @@ einfacher_angriff_g = faehigkeit(
 # Jakob
 # ══════════════════════════════════════════════════════════════
 
-def jakobs_basic_obj(wer, wen, team_1, team_2):
+def jakobs_basic_obj(wer, wen, eigenes_team, gegner_team):
 
     import geheimes
 
-    schaden = geheimes.geheime_attake_jakob(wer, wen, team_1, team_2)
+    schaden = geheimes.geheime_attake_jakob(wer, wen, eigenes_team, gegner_team)
 
     HP_verändern(wen, schaden)
 
@@ -355,17 +370,59 @@ jakobs_basic = faehigkeit(
 # Hannah_d
 # ══════════════════════════════════════════════════════════════
 
+def balance_obj(wer, wen, eigenes_team):
 
+    import geheimes
+
+    schaden = geheimes.einfacher_angriff_g_obj(wer, wen, eigenes_team)
+    schaden *= 1.5
+    if wen == "Mohamed":
+        schaden *= 2
+
+    status_effekte.status_effekte_hinzufügen(wer, "unverwundbar")
+
+    HP_verändern(wen, schaden)
+
+balance = faehigkeit(
+    "balance",
+    balance_obj,
+    "„Hannah findet immer die richtige Balance.“ Sie greift einen Gegner mit erhöhter Stärke an und wird danach unverwundbar.",
+    5,
+    1,
+    "gegner"
+)
+
+
+def ich_mach_mit_obj(wer, wen, eigenes_team):
+
+    import geheimes
+    schaden = geheimes.einfacher_angriff_g_obj(wer, wen, eigenes_team)
+
+    import funktions
+    funktions.unterstuetzt_Hannah_d_verteilen(eigenes_team)
+
+    status_effekte.status_effekte_hinzufügen(wer, "healing_over_time_1")
+
+    HP_verändern(wen, schaden)
+
+ich_mach_mit = faehigkeit(
+    "ich_mach_mit",
+    ich_mach_mit_obj,
+    "Hannah greift den Gegner an, dabei unter stuetzt sie ihr Teammitglieder (Bei Jungs zu 50%). Sie erhaelt healing over time",
+    5,
+    1,
+    "gegner"
+)
 
 # ══════════════════════════════════════════════════════════════
 # Max
 # ══════════════════════════════════════════════════════════════
 
-def knielauf_obj(wer, wen, team, team_2):
+def knielauf_obj(wer, wen, eigenes_team, gegner_team):
 
     import geheimes
 
-    schaden = geheimes.einfacher_angriff_b_obj(wer, wen, team)
+    schaden = geheimes.einfacher_angriff_b_obj(wer, wen, eigenes_team)
 
     charakter = charaktere.Charaktere[wen]
 
@@ -374,7 +431,7 @@ def knielauf_obj(wer, wen, team, team_2):
     if charakter.gender == "6":
         schaden = schaden * 1.5
 
-    for gegner in team_2:
+    for gegner in gegner_team:
         ziel_charakter = charaktere.Charaktere[gegner]
 
         if ziel_charakter.gender != "5" and ziel_charakter.gender != "6":
@@ -386,7 +443,7 @@ knielauf = faehigkeit(
     "knielauf",
     knielauf_obj,
     "Max lauuft durch die Menge an Kindern. Er kickt jedem 5/6 Klaessler aus dem Gegnerteam ins Gesicht.",
-    5,
+    4,
     1,
     "gegner"
 )
@@ -395,29 +452,27 @@ knielauf = faehigkeit(
 # Noah
 # ══════════════════════════════════════════════════════════════
 
-def gib_mir_die_roehre_obj(wer, wen, team_1):
+def gib_mir_die_roehre_obj(wer, wen, eigenes_team):
 
     import geheimes
 
-    schaden = geheimes.einfacher_angriff_b_obj(wer, wen, team_1)
+    schaden = geheimes.einfacher_angriff_b_obj(wer, wen, eigenes_team)
 
     if status_effekte.status_effekt_vorhanden(wer, "die_Roehre"):
-        schaden = schaden * 1.5
+        schaden = schaden * 2
         if wen == "Max":
             schaden = schaden * 1.5
-            return schaden
-        return schaden
 
     else:
         status_effekte.status_effekte_hinzufügen(wer, status_effekte.die_Roehre)
-        return schaden
 
+    HP_verändern(wen, schaden)
 
 gib_mir_die_roehre = faehigkeit(
     "gib_mir_die_roehre",
     gib_mir_die_roehre_obj,
     "Noah klopft an die tür des Gegners, wen er die Roehre hat verursacht er 50 % mehr Schaden, wen er die Roehre nicht hat verursacht er normalen Schaden und bekommt die Roehre.",
-    3,
+    2,
     0,
     "gegner"
 )
@@ -427,16 +482,15 @@ gib_mir_die_roehre = faehigkeit(
 # Sascha
 # ══════════════════════════════════════════════════════════════
 
-def leberkaesbroetchen_essen_obj(wer, wen, team=None):
+def leberkaesbroetchen_essen_obj(wer, wen):
 
     charakter = charaktere.Charaktere[wer]
 
     heilung = 60
     heilung *= charakter.level
-    heilung *= 0.7
+    heilung *= 0.5
 
     HP_verändern(wer, heilung)
-
 
 leberkaesbroetchen_essen = faehigkeit(
     "Leberkaesbroetchen_essen",
@@ -448,14 +502,187 @@ leberkaesbroetchen_essen = faehigkeit(
 )
 
 
+# ══════════════════════════════════════════════════════════════
+# Simon
+# ══════════════════════════════════════════════════════════════
+
+def Simons_basic_obj(wer, wen, eigenes_team):
+
+    import geheimes
+
+    schaden = geheimes.einfacher_angriff_b_obj(wer, wen, eigenes_team)
+
+    counter = 0
+
+    for charakter in eigenes_team:
+        if status_effekte.status_effekt_vorhanden(charakter, "belehrt_ueber_die_geschichte") or status_effekte.status_effekt_vorhanden(charakter, "belehrt_ueber_die_geschichte_k"):
+            counter += 1
+
+    faktor_2 = 1 + counter * 0.1
+    schaden = schaden * faktor_2
+
+    HP_verändern(wen, schaden)
+    
+Simons_basic = faehigkeit(
+    "Simons_basic",
+    Simons_basic_obj,
+    "Simon greift normal an, wobei er fuer jedes Teammitglied, was über die Geschichte belehrt wurde 10% mehr Schaden verursacht.",
+    0,
+    0,
+    "gegner"
+)
 
 
+def habe_ich_da_Geschichte_gehoert_obj(wer, wen, eigenes_team, gegner_team):
+
+    import geheimes
+
+    schaden = geheimes.einfacher_angriff_b_obj(wer, wen, eigenes_team)
+    schaden = schaden / len(gegner_team)
+
+    for charakter in eigenes_team:
+        if charakter in charaktere.Geschichtsinteressierte:
+            status_effekte.status_effekte_hinzufügen(charakter, "belehrt_ueber_die_geschichte")
+
+        elif charakter in charaktere.Ok_Geschichtsinteressierte:
+            status_effekte.status_effekte_hinzufügen(charakter, "belehrt_ueber_die_geschichte_k")
+
+        else:
+            status_effekte.status_effekte_hinzufügen(charakter, "schaden_minus")
+
+    for gegner in gegner_team:
+        HP_verändern(gegner, schaden)
+
+habe_ich_da_Geschichte_gehoert = faehigkeit(
+    "habe_ich_da_Geschichte_gehoert",
+    habe_ich_da_Geschichte_gehoert_obj,
+    "Simon belehrt sein Team ueber die Geschichte, aber das bleibt nur bei den Interressierten haengen. Das gerede nervt die gegner, wodurch jeder ein bischen schaden erleidet",
+    4,
+    1,
+    "gegner"
+)
 
 
+# ══════════════════════════════════════════════════════════════
+# Leo
+# ══════════════════════════════════════════════════════════════
+
+def i_know_the_game_obj(wer,wen, eigenes_team):
+
+    import geheimes 
+
+    schaden = geheimes.einfacher_angriff_b_obj(wer, wen, eigenes_team)
+    schaden *= 2
+
+    status_effekte.status_effekte_hinzufügen(wer, "schaden_plus")
+    status_effekte.status_effekte_hinzufügen(wer, "schaden_erhalten_minus")
+    status_effekte.status_effekte_hinzufügen(wer, "healing_over_time_1")
+
+    status_effekte.status_effekte_hinzufügen(wer, "betaeubt")
+
+    HP_verändern(wen, schaden)
+
+i_know_the_game = faehigkeit(
+    "i_know_the_game",
+    i_know_the_game_obj,
+    "Leo hat grosse Erfahrung im Spiel, wodurch er sich fast alle positiven fähigkeiten verschaft. Er verursacht doppelten Schaden und beteubt den Gegner",
+    4,
+    1,
+    "gegner"
+)
 
 
+def direkter_kommentar_obj(wer, wen, eigenes_team):
+
+    import geheimes 
+
+    schaden = geheimes.einfacher_angriff_b_obj(wer, wen, eigenes_team)
+    schaden *= 1.5
+
+    status_effekte.status_effekte_hinzufügen(wen, "verunsichert")
+
+    status_effekte.status_effekte_hinzufügen(random.choice(eigenes_team), "beeindruckt")
+
+    HP_verändern(wen, schaden)
+
+direkter_kommentar = faehigkeit(
+    "direkter_kommentar",
+    direkter_kommentar_obj,
+    "Leo findet die passenden Worte und verunsichert den Gegner. Ein zufälliger Verbündeter wird von seinem selbstsicheren Auftreten beeindruckt.",
+    3,
+    0,
+    "gegner"
+)
 
 
+# ══════════════════════════════════════════════════════════════
+# Paul
+# ══════════════════════════════════════════════════════════════
+
+def schnappschuss_obj(wer, wen, eigenes_team):
+
+    import geheimes 
+
+    schaden = geheimes.einfacher_angriff_b_obj(wer, wen, eigenes_team)
+
+    HP_verändern(wen, schaden)
+
+schnappschuss = faehigkeit(
+    "schnappschuss",
+    schnappschuss_obj,
+    "Paul macht schnell ein Foto und trifft den Gegner mit einem präzisen Angriff.",
+    0,
+    0,
+    "gegner"
+)
+
+
+def auf_4K_ertappt_obj(wer, wen, eigenes_team):
+
+    import geheimes 
+
+    schaden = geheimes.einfacher_angriff_b_obj(wer, wen, eigenes_team)
+    schaden *= 2
+
+    status_effekte.status_effekte_hinzufügen(wen, "blossgestellt")
+
+    HP_verändern(wen, schaden)
+
+auf_4K_ertappt = faehigkeit(
+    "auf_4K_ertappt",
+    auf_4K_ertappt_obj,
+    "Paul erwischt den Gegner auf 4K! Der gestochen scharfe Schnappschuss richtet doppelten Schaden an und stellt den Gegner bloß.",
+    4,
+    0,
+    "gegner"
+)
+
+
+def teamfoto_obj(wer, wen, eigenes_team, gegner_team):
+
+    import geheimes 
+
+    schaden = geheimes.einfacher_angriff_b_obj(wer, wen, eigenes_team)
+    schaden *= 0.4
+
+    for mitglied in eigenes_team:
+        status_effekte.status_effekte_hinzufügen(mitglied, "schaden_erhalten_minus")
+
+        if random.random() < 0.5:
+            status_effekte.status_effekte_hinzufügen(mitglied, "healing_over_time_1")
+
+    for gegner in gegner_team:
+        status_effekte.status_effekte_hinzufügen(gegner, "schaden_minus")
+        HP_verändern(gegner, schaden)
+
+teamfoto = faehigkeit(
+    "teamfoto",
+    teamfoto_obj,
+    "Paul schießt ein Teamfoto, das seine Verbündeten stärkt. Das gegnerische Team wird geschwächt, während Pauls Team weniger Schaden erleidet und mit etwas Glück Lebenspunkte regeneriert.",
+    5,
+    1,
+    "gegner"
+)
 
 
 
@@ -484,7 +711,7 @@ leberkaesbroetchen_essen = faehigkeit(
 # John
 # ============================================================
 
-def john_geziehlter_schuss_obj(wer, wen, team=None):
+def john_geziehlter_schuss_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer) * 1.5
 
@@ -500,7 +727,7 @@ john_geziehlter_schuss = faehigkeit(
 )
 
 
-def john_taktischer_angriff_obj(wer, wen, team=None):
+def john_taktischer_angriff_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer) * 1.2
 
@@ -522,7 +749,7 @@ john_taktischer_angriff = faehigkeit(
 # Sara
 # ============================================================
 
-def sara_geziehlter_schuss_obj(wer, wen, team=None):
+def sara_geziehlter_schuss_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer) * 1.3
 
@@ -540,7 +767,7 @@ sara_geziehlter_schuss = faehigkeit(
 )
 
 
-def sara_ausweichen_obj(wer, wen, team=None):
+def sara_ausweichen_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer) * 1.2
 
@@ -562,7 +789,7 @@ sara_ausweichen = faehigkeit(
 # Lara
 # ============================================================
 
-def lara_erste_hilfe_obj(wer, wen, team=None):
+def lara_erste_hilfe_obj(wer, wen, eigenes_team=None):
 
     heilung = 60
 
@@ -583,7 +810,7 @@ lara_erste_hilfe = faehigkeit(
 )
 
 
-def lara_unterstuetzung_obj(wer, wen, team=None):
+def lara_unterstuetzung_obj(wer, wen, eigenes_team=None):
 
     status_effekte.status_effekte_hinzufügen(
         wen,
@@ -604,7 +831,7 @@ lara_unterstuetzung = faehigkeit(
 # Rico
 # ============================================================
 
-def rico_starker_schuss_obj(wer, wen, team=None):
+def rico_starker_schuss_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer) * 1.7
 
@@ -620,7 +847,7 @@ rico_starker_schuss = faehigkeit(
 )
 
 
-def rico_feuerstoss_obj(wer, wen, team=None):
+def rico_feuerstoss_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer) * 2
 
@@ -640,7 +867,7 @@ rico_feuerstoss = faehigkeit(
 # Chasker
 # ============================================================
 
-def chasker_schutz_obj(wer, wen, team=None):
+def chasker_schutz_obj(wer, wen, eigenes_team=None):
 
     status_effekte.status_effekte_hinzufügen(
         wer,
@@ -657,7 +884,7 @@ chasker_schutz = faehigkeit(
 )
 
 
-def chasker_schwerer_angriff_obj(wer, wen, team=None):
+def chasker_schwerer_angriff_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer) * 2
 
@@ -678,7 +905,7 @@ chasker_schwerer_angriff = faehigkeit(
 # ══════════════════════════════════════════════════════════════
 
 
-def marine_gewehrsalve_obj(wer, wen, team=None):
+def marine_gewehrsalve_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer) * 1.2
     HP_verändern(wen, schaden)
@@ -694,7 +921,7 @@ marine_gewehrsalve = faehigkeit(
 )
 
 
-def marine_verteidigung_obj(wer, wen, team=None):
+def marine_verteidigung_obj(wer, wen, eigenes_team=None):
 
     status_effekte.status_effekte_hinzufügen(
         wer,
@@ -712,7 +939,7 @@ marine_verteidigung = faehigkeit(
 )
 
 
-def marine_granate_obj(wer, wen, team=None):
+def marine_granate_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer) * 1.6
     HP_verändern(wen, schaden)
@@ -734,7 +961,7 @@ marine_granate = faehigkeit(
 )
 
 
-def marine_verband_obj(wer, wen, team=None):
+def marine_verband_obj(wer, wen, eigenes_team=None):
 
     HP_verändern(wen, 60)
 
@@ -755,7 +982,7 @@ marine_verband = faehigkeit(
 )
 
 
-def marine_anweisung_obj(wer, wen, team=None):
+def marine_anweisung_obj(wer, wen, eigenes_team=None):
 
     status_effekte.status_effekte_hinzufügen(
         wen,
@@ -786,7 +1013,7 @@ marine_anweisung = faehigkeit(
 # Mars-Sicherheitsdrohne
 # ══════════════════════════════════════════════════════════════
 
-def mars_sicherheitsdrohne_stoerimpuls_obj(wer, wen, team=None):
+def mars_sicherheitsdrohne_stoerimpuls_obj(wer, wen, eigenes_team=None):
 
     if random.random() < 0.4:
         status_effekte.status_effekte_hinzufügen(wen, status_effekte.betaeubt)
@@ -804,7 +1031,7 @@ mars_sicherheitsdrohne_stoerimpuls = faehigkeit(
 )
 
 
-def mars_sicherheitsdrohne_scan_obj(wer, wen, team=None):
+def mars_sicherheitsdrohne_scan_obj(wer, wen, eigenes_team=None):
 
     if random.random() < 0.5:
         status_effekte.status_effekte_hinzufügen(wer, status_effekte.schaden_plus)
@@ -823,7 +1050,7 @@ mars_sicherheitsdrohne_scan = faehigkeit(
 # Mars-Wachroboter
 # ══════════════════════════════════════════════════════════════
 
-def mars_wachroboter_stoss_obj(wer, wen, team=None):
+def mars_wachroboter_stoss_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer) * 1.3
     HP_verändern(wen, schaden)
@@ -838,7 +1065,7 @@ mars_wachroboter_stoss = faehigkeit(
 )
 
 
-def mars_wachroboter_schild_obj(wer, wen, team=None):
+def mars_wachroboter_schild_obj(wer, wen, eigenes_team=None):
 
     status_effekte.status_effekte_hinzufügen(wer, status_effekte.schaden_erhalten_minus)
 
@@ -856,7 +1083,7 @@ mars_wachroboter_schild = faehigkeit(
 # Marsianischer Wächter
 # ══════════════════════════════════════════════════════════════
 
-def marsianischer_waechter_schild_obj(wer, wen, team=None):
+def marsianischer_waechter_schild_obj(wer, wen, eigenes_team=None):
 
     status_effekte.status_effekte_hinzufügen(wer, status_effekte.schaden_erhalten_minus)
 
@@ -870,7 +1097,7 @@ marsianischer_waechter_schild = faehigkeit(
 )
 
 
-def marsianischer_waechter_markieren_obj(wer, wen, team=None):
+def marsianischer_waechter_markieren_obj(wer, wen, eigenes_team=None):
 
     status_effekte.status_effekte_hinzufügen(wen, status_effekte.schaden_minus)
 
@@ -888,7 +1115,7 @@ marsianischer_waechter_markieren = faehigkeit(
 # Marsianischer Soldat
 # ══════════════════════════════════════════════════════════════
 
-def marsianischer_soldat_salvo_obj(wer, wen, team=None):
+def marsianischer_soldat_salvo_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer) * 1.6
     HP_verändern(wen, schaden)
@@ -903,7 +1130,7 @@ marsianischer_soldat_salvo = faehigkeit(
 )
 
 
-def marsianischer_soldat_adrenalin_obj(wer, wen, team=None):
+def marsianischer_soldat_adrenalin_obj(wer, wen, eigenes_team=None):
 
     status_effekte.status_effekte_hinzufügen(wer, status_effekte.schaden_plus)
 
@@ -920,7 +1147,7 @@ marsianischer_soldat_adrenalin = faehigkeit(
 # Stationsdrohne
 # ══════════════════════════════════════════════════════════════
 
-def stationsdrohne_reparatur_obj(wer, wen, team=None):
+def stationsdrohne_reparatur_obj(wer, wen, eigenes_team=None):
 
     heilung = 35
 
@@ -941,7 +1168,7 @@ stationsdrohne_reparatur = faehigkeit(
 )
 
 
-def stationsdrohne_stoerung_obj(wer, wen, team=None):
+def stationsdrohne_stoerung_obj(wer, wen, eigenes_team=None):
 
     if random.random() < 0.5:
         status_effekte.status_effekte_hinzufügen(wen,status_effekte.betaeubt)
@@ -960,7 +1187,7 @@ stationsdrohne_stoerung = faehigkeit(
 # Infizierter Roboter
 # ══════════════════════════════════════════════════════════════
 
-def infizierter_roboter_aeon_energie_obj(wer, wen, team=None):
+def infizierter_roboter_aeon_energie_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer) * 1.4
     HP_verändern(wen, schaden)
@@ -978,7 +1205,7 @@ infizierter_roboter_aeon_energie = faehigkeit(
 )
 
 
-def infizierter_roboter_selbstreparatur_obj(wer, wen, team=None):
+def infizierter_roboter_selbstreparatur_obj(wer, wen, eigenes_team=None):
 
     heilung = 60
 
@@ -1002,7 +1229,7 @@ infizierter_roboter_selbstreparatur = faehigkeit(
 # Das neue Wir
 # ══════════════════════════════════════════════════════════════
 
-def neues_wir_uebernahme_obj(wer, wen, team=None):
+def neues_wir_uebernahme_obj(wer, wen, eigenes_team=None):
 
     status_effekte.status_effekte_hinzufügen(wen, status_effekte.schaden_minus)
 
@@ -1022,7 +1249,7 @@ neues_wir_uebernahme = faehigkeit(
 )
 
 
-def neues_wir_anpassung_obj(wer, wen, team=None):
+def neues_wir_anpassung_obj(wer, wen, eigenes_team=None):
 
     if random.random() < 0.5:
         status_effekte.status_effekte_hinzufügen(wer, status_effekte.schaden_plus)
@@ -1043,7 +1270,7 @@ neues_wir_anpassung = faehigkeit(
 # Neues Wir – Elite
 # ══════════════════════════════════════════════════════════════
 
-def neues_wir_elite_strain_obj(wer, wen, team=None):
+def neues_wir_elite_strain_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer) * 1.8
     HP_verändern(wen, schaden)
@@ -1061,7 +1288,7 @@ neues_wir_elite_strain = faehigkeit(
 )
 
 
-def neues_wir_elite_regeneration_obj(wer, wen, team=None):
+def neues_wir_elite_regeneration_obj(wer, wen, eigenes_team=None):
 
     charakter = charaktere.Charaktere[wer]
 
@@ -1087,7 +1314,7 @@ neues_wir_elite_regeneration = faehigkeit(
 # Aeon-Splitter
 # ══════════════════════════════════════════════════════════════
 
-def aeon_splitter_verfall_obj(wer, wen, team=None):
+def aeon_splitter_verfall_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer) * 0.7
     HP_verändern(wen, schaden)
@@ -1105,7 +1332,7 @@ aeon_splitter_verfall = faehigkeit(
 )
 
 
-def aeon_splitter_zerfall_obj(wer, wen, team=None):
+def aeon_splitter_zerfall_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer) * 1.5
     HP_verändern(wen, schaden)
@@ -1124,7 +1351,7 @@ aeon_splitter_zerfall = faehigkeit(
 # Aeon-Jäger
 # ══════════════════════════════════════════════════════════════
 
-def aeon_jaeger_sprung_obj(wer, wen, team=None):
+def aeon_jaeger_sprung_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer) * 1.5
     HP_verändern(wen, schaden)
@@ -1142,7 +1369,7 @@ aeon_jaeger_sprung = faehigkeit(
 )
 
 
-def aeon_jaeger_blutrausch_obj(wer, wen, team=None):
+def aeon_jaeger_blutrausch_obj(wer, wen, eigenes_team=None):
 
     charakter = charaktere.Charaktere[wer]
 
@@ -1169,7 +1396,7 @@ aeon_jaeger_blutrausch = faehigkeit(
 # Aeon
 # ══════════════════════════════════════════════════════════════
 
-def aeon_energiebruch_obj(wer, wen, team=None):
+def aeon_energiebruch_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer) * 2
     HP_verändern(wen, schaden)
@@ -1187,7 +1414,7 @@ aeon_energiebruch = faehigkeit(
 )
 
 
-def aeon_anpassung_obj(wer, wen, team=None):
+def aeon_anpassung_obj(wer, wen, eigenes_team=None):
 
     zufall = random.random()
 
@@ -1210,7 +1437,7 @@ aeon_anpassung = faehigkeit(
 # Schattenwesen
 # ══════════════════════════════════════════════════════════════
 
-def schattenwesen_sprung_aus_der_dunkelheit_obj(wer, wen, team=None):
+def schattenwesen_sprung_aus_der_dunkelheit_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer) * 2
 
@@ -1232,7 +1459,7 @@ schattenwesen_sprung_aus_der_dunkelheit = faehigkeit(
 )
 
 
-def schattenwesen_schrecken_obj(wer, wen, team=None):
+def schattenwesen_schrecken_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer) // 2
 
@@ -1256,7 +1483,7 @@ schattenwesen_schrecken = faehigkeit(
 # Traum Sara
 # ══════════════════════════════════════════════════════════════
 
-def traum_sara_schattenangriff_obj(wer, wen, team=None):
+def traum_sara_schattenangriff_obj(wer, wen, eigenes_team=None):
     schaden = entgültigen_schaden_berechnen(wer)
     HP_verändern(wen, schaden)
 
@@ -1271,7 +1498,7 @@ traum_sara_schattenangriff = faehigkeit(
 )
 
 
-def traum_sara_zerreissender_griff_obj(wer, wen, team=None):
+def traum_sara_zerreissender_griff_obj(wer, wen, eigenes_team=None):
     schaden = entgültigen_schaden_berechnen(wer) * 2
     HP_verändern(wen, schaden)
 
@@ -1286,7 +1513,7 @@ traum_sara_zerreissender_griff = faehigkeit(
 )
 
 
-def traum_sara_es_beginnt_obj(wer, wen, team=None):
+def traum_sara_es_beginnt_obj(wer, wen, eigenes_team=None):
     schaden = entgültigen_schaden_berechnen(wer) * 3
     HP_verändern(wen, schaden)
 
@@ -1305,7 +1532,7 @@ traum_sara_es_beginnt = faehigkeit(
 # Aeon-Infizierter
 # ══════════════════════════════════════════════════════════════
 
-def aeon_infizierter_hieb_obj(wer, wen, team=None):
+def aeon_infizierter_hieb_obj(wer, wen, eigenes_team=None):
 
     HP_verändern(wen, entgültigen_schaden_berechnen(wer))
 
@@ -1320,7 +1547,7 @@ aeon_infizierter_hieb = faehigkeit(
 )
 
 
-def aeon_infizierter_fremdgewebe_obj(wer, wen, team=None):
+def aeon_infizierter_fremdgewebe_obj(wer, wen, eigenes_team=None):
 
     HP_verändern(wen, entgültigen_schaden_berechnen(wer) * 1.2)
     status_effekte.status_effekte_hinzufügen(
@@ -1339,7 +1566,7 @@ aeon_infizierter_fremdgewebe = faehigkeit(
 )
 
 
-def aeon_infizierter_hordenruf_obj(wer, wen, team=None):
+def aeon_infizierter_hordenruf_obj(wer, wen, eigenes_team=None):
 
     status_effekte.status_effekte_hinzufügen(
         wen,
@@ -1361,7 +1588,7 @@ aeon_infizierter_hordenruf = faehigkeit(
 # Aeon-Schleicher
 # ══════════════════════════════════════════════════════════════
 
-def aeon_schleicher_schattenhieb_obj(wer, wen, team=None):
+def aeon_schleicher_schattenhieb_obj(wer, wen, eigenes_team=None):
 
     HP_verändern(wen, entgültigen_schaden_berechnen(wer))
 
@@ -1376,7 +1603,7 @@ aeon_schleicher_schattenhieb = faehigkeit(
 )
 
 
-def aeon_schleicher_schattensturz_obj(wer, wen, team=None):
+def aeon_schleicher_schattensturz_obj(wer, wen, eigenes_team=None):
 
     HP_verändern(wen, entgültigen_schaden_berechnen(wer) * 1.5)
 
@@ -1397,7 +1624,7 @@ aeon_schleicher_schattensturz = faehigkeit(
 )
 
 
-def aeon_schleicher_verschwinden_obj(wer, wen, team=None):
+def aeon_schleicher_verschwinden_obj(wer, wen, eigenes_team=None):
 
     status_effekte.status_effekte_hinzufügen(
         wer,
@@ -1419,7 +1646,7 @@ aeon_schleicher_verschwinden = faehigkeit(
 # Aeon-Brecher
 # ══════════════════════════════════════════════════════════════
 
-def aeon_brecher_schlag_obj(wer, wen, team=None):
+def aeon_brecher_schlag_obj(wer, wen, eigenes_team=None):
 
     HP_verändern(wen, entgültigen_schaden_berechnen(wer))
 
@@ -1434,7 +1661,7 @@ aeon_brecher_schlag = faehigkeit(
 )
 
 
-def aeon_brecher_hindernisbruch_obj(wer, wen, team=None):
+def aeon_brecher_hindernisbruch_obj(wer, wen, eigenes_team=None):
 
     HP_verändern(wen, entgültigen_schaden_berechnen(wer) * 1.8)
     status_effekte.status_effekte_hinzufügen(
@@ -1453,7 +1680,7 @@ aeon_brecher_hindernisbruch = faehigkeit(
 )
 
 
-def aeon_brecher_verhaertung_obj(wer, wen, team=None):
+def aeon_brecher_verhaertung_obj(wer, wen, eigenes_team=None):
 
     status_effekte.status_effekte_hinzufügen(
         wer,
@@ -1475,7 +1702,7 @@ aeon_brecher_verhaertung = faehigkeit(
 # Aeon-Hüter
 # ══════════════════════════════════════════════════════════════
 
-def aeon_hueter_klauenhieb_obj(wer, wen, team=None):
+def aeon_hueter_klauenhieb_obj(wer, wen, eigenes_team=None):
 
     HP_verändern(wen, entgültigen_schaden_berechnen(wer))
 
@@ -1490,7 +1717,7 @@ aeon_hueter_klauenhieb = faehigkeit(
 )
 
 
-def aeon_hueter_resonanzruf_obj(wer, wen, team=None):
+def aeon_hueter_resonanzruf_obj(wer, wen, eigenes_team=None):
 
     status_effekte.status_effekte_hinzufügen(
         wen,
@@ -1508,7 +1735,7 @@ aeon_hueter_resonanzruf = faehigkeit(
 )
 
 
-def aeon_hueter_fremdsignal_obj(wer, wen, team=None):
+def aeon_hueter_fremdsignal_obj(wer, wen, eigenes_team=None):
 
     HP_verändern(wen, entgültigen_schaden_berechnen(wer) * 1.3)
     status_effekte.status_effekte_hinzufügen(
@@ -1550,7 +1777,7 @@ aeon_hueter_fremdsignal = faehigkeit(
 
 # --- Radiergummi werfen ---
 
-def radiergummi_wefen_obj(wer, wen, team=None):
+def radiergummi_wefen_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer)
 
@@ -1569,7 +1796,7 @@ radiergummi_wefen = faehigkeit(
 
 # --- Er hat nichts gemacht ---
 
-def er_hat_nichts_gemacht_obj(wer, wen, team=None):
+def er_hat_nichts_gemacht_obj(wer, wen, eigenes_team=None):
 
     charakter = charaktere.Charaktere[wen]
 
@@ -1593,11 +1820,11 @@ er_hat_nichts_gemacht = faehigkeit(
 
 # --- Hordenangriff ---
 
-def hordenangriff_obj(wer, wen, team):
+def hordenangriff_obj(wer, wen, eigenes_team):
 
     gesamtschaden = 0
 
-    for charakter_name in team:
+    for charakter_name in eigenes_team:
 
         charakter = charaktere.Charaktere[charakter_name]
         gesamtschaden += charakter.schaden
@@ -1627,7 +1854,7 @@ hordenangriff = faehigkeit(
 
 # --- Ey, was guckst du? ---
 
-def ey_was_guckst_du_obj(wer, wen, team=None):
+def ey_was_guckst_du_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer)
 
@@ -1651,7 +1878,7 @@ ey_was_guckst_du = faehigkeit(
 
 # --- Sonnenbrille auf ---
 
-def sonnenbrille_auf_obj(wer, wen, team=None):
+def sonnenbrille_auf_obj(wer, wen, eigenes_team=None):
 
     status_effekte.status_effekte_hinzufügen(
         wer,
@@ -1676,7 +1903,7 @@ sonnenbrille_auf = faehigkeit(
 
 # --- Ranzenwurf ---
 
-def ranzenwurf_obj(wer, wen, team=None):
+def ranzenwurf_obj(wer, wen, eigenes_team=None):
 
     charakter = charaktere.Charaktere[wer]
 
@@ -1702,7 +1929,7 @@ ranzenwurf = faehigkeit(
 
 # --- Das ist falsch ---
 
-def das_ist_falsch_obj(wer, wen, team=None):
+def das_ist_falsch_obj(wer, wen, eigenes_team=None):
 
     status_effekte.status_effekte_hinzufügen(
         wen,
@@ -1722,7 +1949,7 @@ das_ist_falsch = faehigkeit(
 
 # --- Hausaufgaben zeigen ---
 
-def hausaufgaben_zeigen_obj(wer, wen, team=None):
+def hausaufgaben_zeigen_obj(wer, wen, eigenes_team=None):
 
     HP_verändern(wen, 40)
 
@@ -1739,7 +1966,7 @@ hausaufgaben_zeigen = faehigkeit(
 
 # --- Musterlösung ---
 
-def musterloesung_obj(wer, wen, team=None):
+def musterloesung_obj(wer, wen, eigenes_team=None):
 
     charakter = charaktere.Charaktere[wen]
 
@@ -1766,7 +1993,7 @@ musterloesung = faehigkeit(
 
 # --- Strafarbeit ---
 
-def strafarbeit_obj(wer, wen, team=None):
+def strafarbeit_obj(wer, wen, eigenes_team=None):
 
     status_effekte.status_effekte_hinzufügen(
         wen,
@@ -1791,7 +2018,7 @@ strafarbeit = faehigkeit(
 
 # --- Ordnungsruf ---
 
-def ordnungsruf_obj(wer, wen, team=None):
+def ordnungsruf_obj(wer, wen, eigenes_team=None):
 
     status_effekte.status_effekte_hinzufügen(
         wen,
@@ -1816,7 +2043,7 @@ ordnungsruf = faehigkeit(
 
 # --- Pausenbrot ---
 
-def pausenbrot_obj(wer, wen, team=None):
+def pausenbrot_obj(wer, wen, eigenes_team=None):
 
     HP_verändern(wen, 55)
 
@@ -1838,7 +2065,7 @@ pausenbrot = faehigkeit(
 
 # --- Glockenschlag ---
 
-def glockenschlag_obj(wer, wen, team=None):
+def glockenschlag_obj(wer, wen, eigenes_team=None):
 
     HP_verändern(
         wen,
@@ -1863,7 +2090,7 @@ glockenschlag = faehigkeit(
 
 # --- Autorität ---
 
-def autoritaet_obj(wer, wen, team=None):
+def autoritaet_obj(wer, wen, eigenes_team=None):
 
     status_effekte.status_effekte_hinzufügen(
         wer,
@@ -1893,7 +2120,7 @@ autoritaet = faehigkeit(
 
 # --- Klassenstreich ---
 
-def streich_obj(wer, wen, team=None):
+def streich_obj(wer, wen, eigenes_team=None):
 
     HP_verändern(
         wen,
@@ -1918,7 +2145,7 @@ streich = faehigkeit(
 
 # --- Lachanfall ---
 
-def lachanfall_obj(wer, wen, team=None):
+def lachanfall_obj(wer, wen, eigenes_team=None):
 
     HP_verändern(
         wen,
@@ -1947,7 +2174,7 @@ lachanfall = faehigkeit(
 
 # --- Schubser ---
 
-def schubser_obj(wer, wen, team=None):
+def schubser_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer)
 
@@ -1971,7 +2198,7 @@ schubser = faehigkeit(
 
 # --- Rennen gehen ---
 
-def rennen_gehen_obj(wer, wen, team=None):
+def rennen_gehen_obj(wer, wen, eigenes_team=None):
 
     HP_verändern(wer, 10)
 
@@ -1993,7 +2220,7 @@ rennen_gehen = faehigkeit(
 
 # --- Wütender Schlag ---
 
-def wütender_schlag_obj(wer, wen, team=None):
+def wütender_schlag_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer)
 
@@ -2012,7 +2239,7 @@ wütender_schlag = faehigkeit(
 
 # --- Voll drauf ---
 
-def voll_drauf_obj(wer, wen, team=None):
+def voll_drauf_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer)
 
@@ -2036,7 +2263,7 @@ voll_drauf = faehigkeit(
 
 # --- Noch wütender ---
 
-def noch_wuetender_obj(wer, wen, team=None):
+def noch_wuetender_obj(wer, wen, eigenes_team=None):
 
     status_effekte.status_effekte_hinzufügen(
         wer,
@@ -2056,7 +2283,7 @@ noch_wuetender = faehigkeit(
 
 # --- Schlag ---
 
-def schlag_obj(wer, wen, team=None):
+def schlag_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer)
 
@@ -2075,7 +2302,7 @@ schlag = faehigkeit(
 
 # --- Festhalten ---
 
-def festhalten_obj(wer, wen, team=None):
+def festhalten_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer)
 
@@ -2099,7 +2326,7 @@ festhalten = faehigkeit(
 
 # --- Nicht weggehen ---
 
-def nicht_weggehen_obj(wer, wen, team=None):
+def nicht_weggehen_obj(wer, wen, eigenes_team=None):
 
     HP_verändern(wer, 20)
 
@@ -2121,7 +2348,7 @@ nicht_weggehen = faehigkeit(
 
 # --- Klugscheißen ---
 
-def klugscheissen_obj(wer, wen, team=None):
+def klugscheissen_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer)
 
@@ -2145,7 +2372,7 @@ klugscheissen = faehigkeit(
 
 # --- Hausaufgaben helfen ---
 
-def hausaufgaben_helfen_obj(wer, wen, team=None):
+def hausaufgaben_helfen_obj(wer, wen, eigenes_team=None):
 
     HP_verändern(wen, 40)
 
@@ -2162,7 +2389,7 @@ hausaufgaben_helfen = faehigkeit(
 
 # --- Ich hab einen Plan ---
 
-def ich_hab_einen_plan_obj(wer, wen, team=None):
+def ich_hab_einen_plan_obj(wer, wen, eigenes_team=None):
 
     status_effekte.status_effekte_hinzufügen(
         wen,
@@ -2182,7 +2409,7 @@ ich_hab_einen_plan = faehigkeit(
 
 # --- Nerven ---
 
-def nerven_obj(wer, wen, team=None):
+def nerven_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer)
 
@@ -2201,7 +2428,7 @@ nerven = faehigkeit(
 
 # --- Ablenken ---
 
-def ablenken_obj(wer, wen, team=None):
+def ablenken_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer)
 
@@ -2225,7 +2452,7 @@ ablenken = faehigkeit(
 
 # --- Hör auf ---
 
-def hoer_auf_obj(wer, wen, team=None):
+def hoer_auf_obj(wer, wen, eigenes_team=None):
 
     status_effekte.status_effekte_hinzufügen(
         wen,
@@ -2245,7 +2472,7 @@ hoer_auf = faehigkeit(
 
 # --- Cooler Schlag ---
 
-def cooler_schlag_obj(wer, wen, team=None):
+def cooler_schlag_obj(wer, wen, eigenes_team=None):
 
     schaden = entgültigen_schaden_berechnen(wer)
 

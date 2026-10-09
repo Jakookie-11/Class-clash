@@ -103,8 +103,8 @@ Hannah_d = charakter(
     130,
     1,
     faehigkeit_1=faehigkeiten.einfacher_angriff_g,
-    faehigkeit_2=faehigkeiten.einfache_heilung,
-    faehigkeit_3=faehigkeiten.staerkende_heilung
+    faehigkeit_2=faehigkeiten.balance,
+    faehigkeit_3=faehigkeiten.ich_mach_mit
 )
 Ha = charakter(
     "Ha",
@@ -129,13 +129,13 @@ Leo = charakter(
     70,
     70,
     70,
-    -20,
+    -30,
     "boy",
     80,
     1,
     faehigkeit_1=faehigkeiten.einfacher_angriff_b,
-    faehigkeit_2=faehigkeiten.blutiger_schlag,
-    faehigkeit_3=faehigkeiten.bleibender_schlag
+    faehigkeit_2=faehigkeiten.direkter_kommentar,
+    faehigkeit_3=faehigkeiten.i_know_the_game
 )
 
 
@@ -151,7 +151,7 @@ Simon = charakter(
     70,
     1,
     faehigkeit_1=faehigkeiten.einfacher_angriff_b,
-    faehigkeit_2=faehigkeiten.einfache_heilung,
+    faehigkeit_2=faehigkeiten.habe_ich_da_Geschichte_gehoert,
     faehigkeit_3=faehigkeiten.staerkende_heilung
 )
 
@@ -224,6 +224,21 @@ Sascha = charakter(
 )
 
 
+#---Paul---#
+Paul = charakter(
+    "Paul",
+    "Unterstuetzer",
+    80,
+    80,
+    80,
+    -10,
+    "boy",
+    82,
+    1,
+    faehigkeit_1=faehigkeiten.schnappschuss,
+    faehigkeit_2=faehigkeiten.auf_4K_ertappt,
+    faehigkeit_3=faehigkeiten.teamfoto
+)
 
 
 
@@ -777,8 +792,10 @@ cooler_6_klaessler = charakter(
 
 
 
+# ══════════════════════════════════════════════════════════════
+# ALLE Charaktere
+# ══════════════════════════════════════════════════════════════
 
-#----Charaktere----#
 Charaktere = {
     #Normale
     "Jakob"   : Jakob,
@@ -787,8 +804,9 @@ Charaktere = {
     "Max"     : Max,
     "Lovis"   : Lovis,
     "Hannah_d": Hannah_d,
-    "Sascha" : Sascha,
-    "Noah" : Noah,
+    "Sascha"  : Sascha,
+    "Noah"    : Noah,
+    "Paul"    : Paul,
 
     #Down in Mars
     "John": John,
@@ -839,3 +857,10 @@ Charaktere = {
     "Jakob_h" : Jakob_h,
 
 }
+
+# ══════════════════════════════════════════════════════════════
+# Spezielle Gruppen (Für manche Fähigkeiten)
+# ══════════════════════════════════════════════════════════════
+
+Geschichtsinteressierte = ["Simon","Noah","Lara"]
+Ok_Geschichtsinteressierte = ["Jakob", "Max"]

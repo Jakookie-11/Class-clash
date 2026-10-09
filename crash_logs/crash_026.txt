@@ -1,0 +1,43 @@
+========================================
+       CLASS CLASH CRASH REPORT
+========================================
+
+Spieler: test
+Datum: 2026-10-09
+Uhrzeit: 16:03:40
+Fehler-ID: 113fe2f30b7fc80348f9bd9e40f4aa3b0944b3a8990c35610c9424d04f4e97ea
+Status: gefixt
+
+----------------------------------------
+FEHLER / TRACEBACK
+----------------------------------------
+
+Traceback (most recent call last):
+  File "c:\Users\Jakob Samstag\Desktop\git\Class-clash\main.py", line 66, in <module>
+    is_brake_spiel_starten = spiel_starten.spiel_starten(spieler)
+  File "c:\Users\Jakob Samstag\Desktop\git\Class-clash\spiel_starten.py", line 51, in spiel_starten
+    is_break_kampf = benutzerdefinierten_kampf_starten()
+  File "c:\Users\Jakob Samstag\Desktop\git\Class-clash\spiel_starten.py", line 142, in benutzerdefinierten_kampf_starten
+    return kampf(
+        team_groesse_1=team_groesse_1,
+    ...<3 lines>...
+        benutzerdefiniert=True,
+    )
+  File "c:\Users\Jakob Samstag\Desktop\git\Class-clash\spiel_starten.py", line 882, in kampf
+    faehigkeit.funktion(
+    ~~~~~~~~~~~~~~~~~~~^
+        wer,
+        ^^^^
+        ziel,
+        ^^^^^
+        team_1
+        ^^^^^^
+    )
+    ^
+  File "c:\Users\Jakob Samstag\Desktop\git\Class-clash\faehigkeiten.py", line 578, in i_know_the_game_obj
+    status_effekte.status_effekte_hinzufügen(wer, "schaden_erhalten_minus")
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Jakob Samstag\Desktop\git\Class-clash\status_effekte.py", line 61, in status_effekte_hinzufügen
+    if effekt.name == was.name:
+       ^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'name'

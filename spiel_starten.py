@@ -863,15 +863,15 @@ def kampf(
                     )
 
 
-                    # ──────────────────────────────────────────────
+                    # ────────────────────────────────────────────────────────────────────────────────────────────
                     # Fähigkeit benutzen
-                    # ──────────────────────────────────────────────
+                    # ────────────────────────────────────────────────────────────────────────────────────────────
 
                     faehigkeit.abklingzeit = (
                         faehigkeit.max_abklingzeit
                     )
 
-                    if faehigkeit.name == "knielauf" or faehigkeit.name == "jakobs_basic":
+                    if faehigkeit.name == "knielauf" or faehigkeit.name == "jakobs_basic" or faehigkeit.name == "habe_ich_da_Geschichte_gehoert" or faehigkeit.name == "teamfoto":
                         faehigkeit.funktion(
                             wer,
                             ziel,
@@ -921,7 +921,11 @@ def kampf(
                     return 2
 
                 faehigkeit.abklingzeit = faehigkeit.max_abklingzeit
-                faehigkeit.funktion(wer, ziel, team_2)
+
+                if faehigkeit.name == "knielauf" or faehigkeit.name == "jakobs_basic" or faehigkeit.name == "habe_ich_da_Geschichte_gehoert" or faehigkeit.name == "teamfoto":
+                    faehigkeit.funktion(wer, ziel, team_2, team_1)
+                else:
+                    faehigkeit.funktion(wer, ziel, team_2)
 
                 geheimes.wer_hat_wieviel_schaden_genommen(
                     wer,

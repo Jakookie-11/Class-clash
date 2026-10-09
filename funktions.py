@@ -5,6 +5,10 @@ import json
 import confic
 from urllib.request import urlopen
 
+#temp
+import status_effekte
+import random
+
 def menue(liste, spieler_name=None,):
 
     while True:
@@ -136,3 +140,22 @@ def daten_herunterladen():
 
 
     return url_to_return
+
+
+
+#temp
+
+def unterstuetzt_Hannah_d_verteilen(eigenes_team):
+
+    for mitglied in eigenes_team:
+
+        if mitglied.name == "Jakob":
+            status_effekte.status_effekte_hinzufügen(mitglied, "von_Hannah_d_unterstuetzt")
+
+        elif mitglied.gender == "boy":
+            if not mitglied.name == "Mohamed":
+                if random.random() < 0.5:
+                    status_effekte.status_effekte_hinzufügen(mitglied, "von_Hannah_d_unterstuetzt")
+
+        elif mitglied.gender == "girl":
+            status_effekte.status_effekte_hinzufügen(mitglied, "von_Hannah_d_unterstuetzt")
