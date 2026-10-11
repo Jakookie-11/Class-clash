@@ -5,10 +5,6 @@ import json
 import confic
 from urllib.request import urlopen
 
-#temp
-import status_effekte
-import random
-import charaktere
 
 def menue(liste, spieler_name=None,):
 
@@ -20,10 +16,24 @@ def menue(liste, spieler_name=None,):
         for schlüssel in liste:
             print(schlüssel)
 
+        #--zusätze für manche menüs---#
         if liste == menues.profil_menue:
             print()
             print(f"Aktuelle Passwort_sichtbarkeit: {confic.passwort_sichtbarkeit}")
             print()
+
+        if liste == menues.audio_menue:
+            print()
+
+            if confic.ton == True:
+                print(f"Ton        : An")
+            else:
+                print(f"Ton        : Aus")
+
+            if confic.main_musik == True:
+                print(f"Main Musik : An")
+            else:
+                print(f"Main Musik : Aus")
 
         #---Wahl---#
         auswahl = input("Wahl? ")
@@ -141,24 +151,3 @@ def daten_herunterladen():
 
 
     return url_to_return
-
-
-
-#temp
-
-def unterstuetzt_Hannah_d_verteilen(eigenes_team):
-
-    for mitglied in eigenes_team:
-
-        mitglied = charaktere.Charaktere[mitglied]
-
-        if mitglied.name == "Jakob":
-            status_effekte.status_effekte_hinzufügen(mitglied, "von_Hannah_d_unterstuetzt")
-
-        elif mitglied.gender == "boy":
-            if not mitglied.name == "Mohamed":
-                if random.random() < 0.5:
-                    status_effekte.status_effekte_hinzufügen(mitglied, "von_Hannah_d_unterstuetzt")
-
-        elif mitglied.gender == "girl":
-            status_effekte.status_effekte_hinzufügen(mitglied, "von_Hannah_d_unterstuetzt")

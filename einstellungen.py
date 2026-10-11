@@ -44,12 +44,20 @@ def einstellungen(spieler_name):
         elif wahl == 2:
             os.system(confic.terminal_clear)
 
+            is_breake_audio = audio(spieler_name)
+
+            if is_breake_audio == 1:
+                continue
+
+        elif wahl == 3:
+            os.system(confic.terminal_clear)
+
             is_break_credits = credits.credits()
 
             if is_break_credits == 1:
                 continue
 
-        elif wahl == 3:
+        elif wahl == 4:
             os.system(confic.terminal_clear)
 
             wichtige_links_zeigen()
@@ -387,6 +395,107 @@ def profil_loeschen(spieler_name):
         print("Profil Loeschen abgebrochen")
         time.sleep(2)
         return 1
+
+
+
+
+def neue_zahl():
+
+    while True:
+    
+        os.system(confic.terminal_clear)
+
+        print(f"Gebe eine Zahl zwischen 0 und 1 ein. {ROT}Benutze einen Punkt und kein Komma!!{RESET}")
+        text = input("Zahl?  ")
+
+        try:
+            try:
+                zahl = int(text)
+            except ValueError:
+                zahl = float(text)
+        except ValueError:
+            continue
+
+        if 0 <= zahl <= 1:
+            return zahl
+
+
+
+
+def lautstaerke_aendern(spieler_name):
+
+    while True:
+
+        os.system(confic.terminal_clear)
+
+        pos_balken = round(confic.lautstaerke * 20)
+        neg_balken = 20 - pos_balken 
+
+        print("Lautstaerke aendern")
+        print("===================")
+        print()
+        print("Aktuell:")
+        for i in range(pos_balken):
+            print("█", end="")
+        for i in range(neg_balken):
+            print("░", end="")
+        print()
+        print()
+        print("[1] Aendern")
+        print("[0] Zurueck")
+
+        time.sleep(1)
+        sound.sound_abspielen("good morning.mp3", lautstaerke=2)
+
+        wahl = input("Wahl? ")
+
+        if wahl == "0":
+            return 
+
+        if wahl == "1":
+            zahl = neue_zahl()
+            confic.lautstaerke = zahl
+            speichern.spiel_speichern(spieler_name)
+            continue
+
+
+
+
+def audio(spieler_name):
+
+    while True:
+
+        os.system(confic.terminal_clear)
+
+        wahl = funktions.menue(menues.audio_menue, spieler_name)
+
+        if wahl == 1:
+            if confic.ton == True:
+                confic.ton = False
+                confic.main_musik = False
+            else:
+                confic.ton = True
+                           
+            speichern.spiel_speichern(spieler_name)
+            continue
+
+        elif wahl == 2:
+            if confic.main_musik == True:
+                confic.main_musik = False
+            else:
+                confic.main_musik = True
+
+            speichern.spiel_speichern(spieler_name)
+            continue
+
+        elif wahl == 3:
+            lautstaerke_aendern(spieler_name)
+
+        elif wahl == 0:
+            return 1
+
+        else:
+            continue
 
 
 

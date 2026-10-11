@@ -30,6 +30,9 @@ def spiel_speichern(spieler, ist_erstellung = False):
 
     gespeicherter_herausforderungs_fortschritt = herausforderungen.Herausforderungs_fortschritt_speichern()
     gespeicherter_herausforderungs_kaempf_fortschritt = herausforderungen.Herausforderungs_kampf_fortschritt_speichern()
+    gespeicherte_lautstaerke = confic.lautstaerke
+    gespeicherter_ton = confic.ton
+    gespeicherte_main_musik = confic.main_musik
 
     spiel_starten.alle_statuseffekte_resetten()
     spiel_starten.alle_faehigkeits_abklingzeiten_resetten()
@@ -68,6 +71,9 @@ def spiel_speichern(spieler, ist_erstellung = False):
         "Erstellungsdatum"                   : erstellungsdatum,
         "Letztes_Speichern"                  : datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "time_played_in_seconds"             : confic.time_played_in_seconds,
+        "lautstaerke"                        : gespeicherte_lautstaerke,
+        "ton"                                : gespeicherter_ton,
+        "main_musik"                         : gespeicherte_main_musik,
         "ressourcen"                         : ressourcen.ressourcen,
         "charaktere"                         : list(gespeicherte_charaktere.values()),
         "kampangen_fortschritt"              : gespeicherter_fortschritt,
@@ -128,10 +134,13 @@ def spiel_laden(spieler):
     with open(datei, "r", encoding="utf-8") as datei_lesen:
         daten = json.load(datei_lesen)
 
-    ressourcen.ressourcen                          = daten.get("ressourcen", ressourcen.ressourcen)
     herausforderungen.Herausforderungs_fortschritt_laden(daten.get("Herausforderungs_Fortschritt", []))
+    ressourcen.ressourcen                          = daten.get("ressourcen", ressourcen.ressourcen)
     confic.gewonnene_kaempfe                       = daten.get("gewonnene_kaempfe", confic.gewonnene_kaempfe)
-    confic.time_played_in_seconds                   = daten.get("time_played_in_seconds", confic.time_played_in_seconds)
+    confic.time_played_in_seconds                  = daten.get("time_played_in_seconds", confic.time_played_in_seconds)
+    confic.lautstaerke                             = daten.get("lautstaerke", confic.lautstaerke)
+    confic.ton                                     = daten.get("ton", confic.ton)
+    confic.main_musik                              = daten.get("main_musik", confic.main_musik)
 
     gespeicherte_level = _charakter_level_normalisieren(
         daten.get("charaktere", {})

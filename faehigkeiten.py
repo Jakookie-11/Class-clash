@@ -397,9 +397,7 @@ def ich_mach_mit_obj(wer, wen, eigenes_team):
 
     import geheimes
     schaden = geheimes.einfacher_angriff_g_obj(wer, wen, eigenes_team)
-
-    import funktions
-    funktions.unterstuetzt_Hannah_d_verteilen(eigenes_team)
+    geheimes.unterstuetzt_Hannah_d_verteilen(eigenes_team)
 
     status_effekte.status_effekte_hinzufügen(wer, "healing_over_time_1")
 

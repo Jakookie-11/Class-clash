@@ -38,8 +38,9 @@ charakter_bip_menue = [
 
 einstellungen_menue = [
     "[1] Profil",
-    f"{MAGENTA}[2] Credits{RESET}",
-    "[3] Wichtige Links",
+    "[2] Audio",
+    f"{MAGENTA}[3] Credits{RESET}",
+    "[4] Wichtige Links",
     "[0] Zurueck"
 ]
 #->Y
@@ -49,6 +50,13 @@ profil_menue = [
     f"{ORANGE}[3] Profil Zuruecksetzen{RESET}",
     f"{ROT}[4] Profil Loeschen{RESET}",
     "[5] Passwort-sichtbarkeit aendern",
+    "[0] Zurueck"
+]
+#->Y
+audio_menue = [
+    "[1] Ton        (an/aus) schalten",
+    "[2] Main Musik (an/aus) schalten",
+    "[3] Generelle Lautstaerke aendern",
     "[0] Zurueck"
 ]
 
