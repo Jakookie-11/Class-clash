@@ -171,7 +171,7 @@ def benutzerdefinierten_kampf_starten(spieler_name):
 
     input("\nEnter zum Starten...")
 
-    return kampf(
+    kampf(
         team_groesse_1=team_groesse_1,
         team_groesse_2=team_groesse_2,
         Ki=ki_stufe,

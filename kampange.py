@@ -92,15 +92,19 @@ class kampange:
 # Allgemeine Funktionen
 # ══════════════════════════════════════════════════════════════
 
-def dialog_anzeigen(dialog):
+def dialog_anzeigen(dialog, spieler_name):
+
+    os.system(confic.terminal_clear)
 
     if not dialog:
         return
 
-    os.system(confic.terminal_clear)
+    dialog_mit_sprechern = [
+        (spieler_name if sprecher == "Jakob" else sprecher, text)
+        for sprecher, text in dialog
+    ]
 
-    laengster_sprecher = max(len(sprecher) for sprecher, text in dialog)
-    breite = laengster_sprecher + 1
+    breite = max(len(sprecher) for sprecher, text in dialog_mit_sprechern) + 2
 
     for sprecher, text in dialog:
 
@@ -108,7 +112,10 @@ def dialog_anzeigen(dialog):
             print()
             continue
 
-        print(f"{sprecher :{breite}}: ", end="", flush=True)
+        if sprecher != "Spieler":
+            print(f"{sprecher :{breite}}: ", end="", flush=True)
+        else:
+            print(f"{spieler_name :{breite}}: ", end="", flush=True)
 
         for buchstabe in text:
 
@@ -248,7 +255,7 @@ def kampangen(spieler_name):
 
                 if not ausgewaehlter_kampf.ist_kampf:
 
-                    dialog_anzeigen(ausgewaehlter_kampf.story_vorher)
+                    dialog_anzeigen(ausgewaehlter_kampf.story_vorher, spieler_name)
 
                     if wahl == kampange.fortschritt + 1:
                         kampange.fortschritt += 1
@@ -263,7 +270,7 @@ def kampangen(spieler_name):
                 print(f"Du startest: {ausgewaehlter_kampf.name}")
                 time.sleep(2)
 
-                dialog_anzeigen(ausgewaehlter_kampf.story_vorher)
+                dialog_anzeigen(ausgewaehlter_kampf.story_vorher, spieler_name)
 
                 os.system(confic.terminal_clear)
 
@@ -301,7 +308,7 @@ def kampangen(spieler_name):
 
                     os.system(confic.terminal_clear)
 
-                    dialog_anzeigen(ausgewaehlter_kampf.story_nachher)
+                    dialog_anzeigen(ausgewaehlter_kampf.story_nachher, spieler_name)
 
                     os.system(confic.terminal_clear)
 
@@ -515,23 +522,23 @@ kampf_1_3 = kampangen_kampf(
     team_groesse=2,
 
     story_vorher=[
-        ("Jakob", "Wo ist eigentlich mein Zeug?"),
-        ("Jakob", "Ich hatte das doch gerade noch hier."),
+        ("Spieler", "Wo ist eigentlich mein Zeug?"),
+        ("Spieler", "Ich hatte das doch gerade noch hier."),
         ("???", "Suchst du vielleicht DAS hier?"),
-        ("Jakob", "Mein Zeug?!"),
+        ("Spieler", "Mein Zeug?!"),
         ("6.-Klässler", "Jo."),
-        ("Jakob", "Gib es zurück."),
+        ("Spieler", "Gib es zurück."),
         ("6.-Klässler", "Nö."),
-        ("Jakob", "Okay..."),
-        ("Jakob", "Dann machen wir das eben anders.")
+        ("Spieler", "Okay..."),
+        ("Spieler", "Dann machen wir das eben anders.")
     ],
 
     story_nachher=[
-        ("Jakob", "So. Und jetzt gib mir meine Sachen."),
+        ("Spieler", "So. Und jetzt gib mir meine Sachen."),
         ("6.-Klässler", "Die anderen haben sie."),
-        ("Jakob", "Welche anderen?"),
+        ("Spieler", "Welche anderen?"),
         ("6.-Klässler", "Die Bande."),
-        ("Jakob", "Natürlich gibt es eine Bande...")
+        ("Spieler", "Natürlich gibt es eine Bande...")
     ]
 )
 
@@ -550,23 +557,23 @@ kampf_2_3 = kampangen_kampf(
     team_groesse=2,
 
     story_vorher=[
-        ("Jakob", "Also gut. Wo ist diese Bande?"),
+        ("Spieler", "Also gut. Wo ist diese Bande?"),
         ("6.-Klässler", "Da vorne."),
-        ("Jakob", "Das sind zwei Leute."),
+        ("Spieler", "Das sind zwei Leute."),
         ("6.-Klässler", "Das reicht."),
-        ("Jakob", "Ihr habt mein Zeug geklaut und seid zu zweit?"),
+        ("Spieler", "Ihr habt mein Zeug geklaut und seid zu zweit?"),
         ("Aggressiver 6.-Klässler", "Wir sind mehr als genug."),
-        ("Jakob", "Das werden wir ja sehen.")
+        ("Spieler", "Das werden wir ja sehen.")
     ],
 
     story_nachher=[
-        ("Jakob", "Wo sind meine Sachen?"),
+        ("Spieler", "Wo sind meine Sachen?"),
         ("Aggressiver 6.-Klässler", "Wir haben sie nicht mehr."),
-        ("Jakob", "Was soll das heißen?"),
+        ("Spieler", "Was soll das heißen?"),
         ("Aggressiver 6.-Klässler", "Wir mussten sie abgeben."),
-        ("Jakob", "An wen?"),
+        ("Spieler", "An wen?"),
         ("Aggressiver 6.-Klässler", "Keine Ahnung."),
-        ("Jakob", "Das wird ja immer besser.")
+        ("Spieler", "Das wird ja immer besser.")
     ]
 )
 
@@ -586,21 +593,21 @@ kampf_3_3 = kampangen_kampf(
     team_groesse=3,
 
     story_vorher=[
-        ("Jakob", "Okay. Das soll also das Lager sein."),
-        ("Jakob", "Warum stehen hier ungefähr hundert Sachen herum?"),
+        ("Spieler", "Okay. Das soll also das Lager sein."),
+        ("Spieler", "Warum stehen hier ungefähr hundert Sachen herum?"),
         ("Schlauer 6.-Klässler", "Wir sammeln sie."),
-        ("Jakob", "Ihr klaut sie."),
+        ("Spieler", "Ihr klaut sie."),
         ("Schlauer 6.-Klässler", "Das ist eine Frage der Perspektive."),
-        ("Jakob", "Da liegt sogar ein ganzer Rucksack."),
+        ("Spieler", "Da liegt sogar ein ganzer Rucksack."),
         ("Nerviger 6.-Klässler", "Den wollte jemand nicht mehr."),
-        ("Jakob", "Der Besitzer sieht das wahrscheinlich anders.")
+        ("Spieler", "Der Besitzer sieht das wahrscheinlich anders.")
     ],
 
     story_nachher=[
-        ("Jakob", "Hier muss irgendwo eine Liste sein."),
-        ("Jakob", "Moment..."),
-        ("Jakob", "Warum steht da mein Name?"),
-        ("Jakob", "Und warum steht dahinter 'Priorität'?")
+        ("Spieler", "Hier muss irgendwo eine Liste sein."),
+        ("Spieler", "Moment..."),
+        ("Spieler", "Warum steht da mein Name?"),
+        ("Spieler", "Und warum steht dahinter 'Priorität'?")
     ]
 )
 
@@ -620,24 +627,24 @@ kampf_4_3 = kampangen_kampf(
     team_groesse=3,
 
     story_vorher=[
-        ("Jakob", "Warum bin ich auf dieser Liste?"),
-        ("Jakob", "Was habe ich euch überhaupt getan?"),
+        ("Spieler", "Warum bin ich auf dieser Liste?"),
+        ("Spieler", "Was habe ich euch überhaupt getan?"),
         ("Nerviger 6.-Klässler", "Keine Ahnung."),
-        ("Jakob", "Was?!"),
+        ("Spieler", "Was?!"),
         ("Nerviger 6.-Klässler", "Wir haben nur den Auftrag bekommen."),
-        ("Jakob", "Von wem?"),
+        ("Spieler", "Von wem?"),
         ("Aggressiver 6.-Klässler", "Das geht dich nichts an."),
-        ("Jakob", "Dann finde ich es eben selbst heraus.")
+        ("Spieler", "Dann finde ich es eben selbst heraus.")
     ],
 
     story_nachher=[
-        ("Jakob", "Jetzt redet."),
+        ("Spieler", "Jetzt redet."),
         ("Aggressiver 6.-Klässler", "Wir bekommen unsere Befehle über Zettel."),
-        ("Jakob", "Zettel?"),
+        ("Spieler", "Zettel?"),
         ("Aggressiver 6.-Klässler", "Ja."),
-        ("Jakob", "Und woher kommen die?"),
+        ("Spieler", "Und woher kommen die?"),
         ("Nerviger 6.-Klässler", "Sie liegen morgens immer an einem bestimmten Ort."),
-        ("Jakob", "Wo?")
+        ("Spieler", "Wo?")
     ]
 )
 
@@ -657,23 +664,23 @@ kampf_5_3 = kampangen_kampf(
     team_groesse=3,
 
     story_vorher=[
-        ("Jakob", "Da ist also der Ort."),
-        ("Jakob", "Und da liegt tatsächlich ein neuer Zettel."),
-        ("Jakob", "Mal sehen..."),
-        ("Jakob", "Ich soll etwas holen."),
-        ("Jakob", "Und danach verschwinden."),
+        ("Spieler", "Da ist also der Ort."),
+        ("Spieler", "Und da liegt tatsächlich ein neuer Zettel."),
+        ("Spieler", "Mal sehen..."),
+        ("Spieler", "Ich soll etwas holen."),
+        ("Spieler", "Und danach verschwinden."),
         ("Cooler 6.-Klässler", "Du solltest den Zettel nicht lesen."),
-        ("Jakob", "Zu spät."),
+        ("Spieler", "Zu spät."),
         ("Starker 6.-Klässler", "Dann müssen wir dich wohl aufhalten.")
     ],
 
     story_nachher=[
-        ("Jakob", "Was soll ich holen?"),
+        ("Spieler", "Was soll ich holen?"),
         ("Cooler 6.-Klässler", "Das wissen wir nicht."),
-        ("Jakob", "Ihr arbeitet für jemanden und wisst nicht einmal, was ihr tut?"),
+        ("Spieler", "Ihr arbeitet für jemanden und wisst nicht einmal, was ihr tut?"),
         ("Cooler 6.-Klässler", "Wir bekommen Credits."),
-        ("Jakob", "Ah. Sehr überzeugend."),
-        ("Jakob", "Wer gibt euch die Zettel?")
+        ("Spieler", "Ah. Sehr überzeugend."),
+        ("Spieler", "Wer gibt euch die Zettel?")
     ]
 )
 
@@ -692,22 +699,22 @@ kampf_6_3 = kampangen_kampf(
     team_groesse=2,
 
     story_vorher=[
-        ("Jakob", "Du weißt mehr als die anderen."),
+        ("Spieler", "Du weißt mehr als die anderen."),
         ("Schlauer 6.-Klässler", "Vielleicht."),
-        ("Jakob", "Wer steckt dahinter?"),
+        ("Spieler", "Wer steckt dahinter?"),
         ("Schlauer 6.-Klässler", "Das willst du wirklich wissen?"),
-        ("Jakob", "Ja."),
+        ("Spieler", "Ja."),
         ("Schlauer 6.-Klässler", "Dann musst du erst an uns vorbei.")
     ],
 
     story_nachher=[
         ("Schlauer 6.-Klässler", "Okay."),
-        ("Jakob", "Endlich."),
+        ("Spieler", "Endlich."),
         ("Schlauer 6.-Klässler", "Die Befehle kommen nicht von einem 6.-Klässler."),
-        ("Jakob", "Das dachte ich mir."),
-        ("Jakob", "Von wem dann?"),
+        ("Spieler", "Das dachte ich mir."),
+        ("Spieler", "Von wem dann?"),
         ("Schlauer 6.-Klässler", "Jemand, der hier schon ziemlich lange arbeitet."),
-        ("Jakob", "Ein Lehrer?"),
+        ("Spieler", "Ein Lehrer?"),
         ("Schlauer 6.-Klässler", "Nein.")
     ]
 )
@@ -729,23 +736,23 @@ kampf_7_3 = kampangen_kampf(
     team_groesse=4,
 
     story_vorher=[
-        ("Jakob", "Du bist also der Anführer."),
+        ("Spieler", "Du bist also der Anführer."),
         ("Cooler 6.-Klässler", "Man könnte es so nennen."),
-        ("Jakob", "Dann weißt du auch, wer euch beauftragt."),
+        ("Spieler", "Dann weißt du auch, wer euch beauftragt."),
         ("Cooler 6.-Klässler", "Natürlich."),
-        ("Jakob", "Wer?"),
+        ("Spieler", "Wer?"),
         ("Cooler 6.-Klässler", "Das wirst du nicht erfahren."),
-        ("Jakob", "Dann müssen wir wohl noch einmal kämpfen.")
+        ("Spieler", "Dann müssen wir wohl noch einmal kämpfen.")
     ],
 
     story_nachher=[
         ("Cooler 6.-Klässler", "Okay! Okay!"),
-        ("Jakob", "Name."),
+        ("Spieler", "Name."),
         ("Cooler 6.-Klässler", "Der Hausmeister."),
-        ("Jakob", "..."),
-        ("Jakob", "Der Hausmeister?!"),
+        ("Spieler", "..."),
+        ("Spieler", "Der Hausmeister?!"),
         ("Cooler 6.-Klässler", "Ja."),
-        ("Jakob", "Das ergibt überhaupt keinen Sinn.")
+        ("Spieler", "Das ergibt überhaupt keinen Sinn.")
     ]
 )
 
@@ -764,22 +771,22 @@ kampf_8_3 = kampangen_kampf(
     team_groesse=2,
 
     story_vorher=[
-        ("Jakob", "Da bist du ja."),
+        ("Spieler", "Da bist du ja."),
         ("Hausmeister", "Ich hatte mich schon gefragt, wann du auftauchst."),
-        ("Jakob", "Du hast die 6.-Klässler beauftragt."),
+        ("Spieler", "Du hast die 6.-Klässler beauftragt."),
         ("Hausmeister", "Das stimmt."),
-        ("Jakob", "Warum?"),
+        ("Spieler", "Warum?"),
         ("Hausmeister", "Du hast etwas gefunden, das du nicht finden solltest."),
-        ("Jakob", "Was denn?"),
+        ("Spieler", "Was denn?"),
         ("Hausmeister", "Das spielt jetzt keine Rolle mehr.")
     ],
 
     story_nachher=[
-        ("Jakob", "Jetzt redest du."),
+        ("Spieler", "Jetzt redest du."),
         ("Hausmeister", "Die 6.-Klässler sollten nur die Unterlagen finden."),
-        ("Jakob", "Welche Unterlagen?"),
+        ("Spieler", "Welche Unterlagen?"),
         ("Hausmeister", "Du hast sie bereits."),
-        ("Jakob", "Was?"),
+        ("Spieler", "Was?"),
         ("Hausmeister", "Du hast die ganze Zeit danach gesucht.")
     ]
 )
@@ -800,22 +807,22 @@ kampf_9_3 = kampangen_kampf(
     team_groesse=3,
 
     story_vorher=[
-        ("Jakob", "Warum hilft dir der Direktor?"),
+        ("Spieler", "Warum hilft dir der Direktor?"),
         ("Direktor", "Ich habe keine Ahnung, wovon du sprichst."),
-        ("Jakob", "Dann erklär mir das hier."),
+        ("Spieler", "Dann erklär mir das hier."),
         ("Direktor", "Woher hast du diese Unterlagen?"),
-        ("Jakob", "Aus eurem Lager."),
+        ("Spieler", "Aus eurem Lager."),
         ("Hausmeister", "Wir müssen das jetzt beenden."),
-        ("Jakob", "Genau das dachte ich mir.")
+        ("Spieler", "Genau das dachte ich mir.")
     ],
 
     story_nachher=[
         ("Direktor", "Warte."),
-        ("Jakob", "Was?"),
+        ("Spieler", "Was?"),
         ("Direktor", "Der Hausmeister hat uns ebenfalls belogen."),
-        ("Jakob", "Dann hat er alleine gehandelt?"),
+        ("Spieler", "Dann hat er alleine gehandelt?"),
         ("Direktor", "Nein."),
-        ("Jakob", "Wer dann?"),
+        ("Spieler", "Wer dann?"),
         ("Direktor", "Jemand außerhalb der Schule.")
     ]
 )
@@ -837,29 +844,29 @@ kampf_10_3 = kampangen_kampf(
     team_groesse=4,
 
     story_vorher=[
-        ("Jakob", "Also gut."),
-        ("Jakob", "Dann bringen wir das jetzt zu Ende."),
+        ("Spieler", "Also gut."),
+        ("Spieler", "Dann bringen wir das jetzt zu Ende."),
         ("Direktor", "Du verstehst immer noch nicht, worum es geht."),
-        ("Jakob", "Dann erklär es mir."),
+        ("Spieler", "Dann erklär es mir."),
         ("Direktor", "Die Unterlagen sind viel wichtiger, als du denkst."),
-        ("Jakob", "Dann werde ich sie wohl behalten."),
+        ("Spieler", "Dann werde ich sie wohl behalten."),
         ("Hausmeister", "Das werden wir verhindern."),
-        ("Jakob", "Na dann. Kommt.")
+        ("Spieler", "Na dann. Kommt.")
     ],
 
     story_nachher=[
-        ("Jakob", "Das war's."),
+        ("Spieler", "Das war's."),
         ("Hausmeister", "Du hast gewonnen."),
-        ("Jakob", "Was stand in den Unterlagen?"),
+        ("Spieler", "Was stand in den Unterlagen?"),
         ("Direktor", "Eine Liste."),
-        ("Jakob", "Eine Liste mit was?"),
+        ("Spieler", "Eine Liste mit was?"),
         ("Direktor", "Mit Namen."),
-        ("Jakob", "Welche Namen?"),
+        ("Spieler", "Welche Namen?"),
         ("Direktor", "Von Schülern."),
-        ("Jakob", "..."),
-        ("Jakob", "Und meiner war ganz oben."),
+        ("Spieler", "..."),
+        ("Spieler", "Und meiner war ganz oben."),
         ("Direktor", "Ja."),
-        ("Jakob", "Dann ist die Sache wohl doch noch nicht vorbei.")
+        ("Spieler", "Dann ist die Sache wohl doch noch nicht vorbei.")
     ]
 )
 
@@ -911,23 +918,23 @@ kampf_1_4 = kampangen_kampf(
     team_groesse=2,
 
     story_vorher=[
-        ("Jakob", "Also gut. Schauen wir uns diese Liste einmal genauer an."),
+        ("Spieler", "Also gut. Schauen wir uns diese Liste einmal genauer an."),
         ("Direktor", "Was steht dort?"),
-        ("Jakob", "Mehrere Namen."),
+        ("Spieler", "Mehrere Namen."),
         ("Direktor", "Schüler?"),
-        ("Jakob", "Ja."),
-        ("Jakob", "Und neben jedem Namen stehen irgendwelche Angaben."),
+        ("Spieler", "Ja."),
+        ("Spieler", "Und neben jedem Namen stehen irgendwelche Angaben."),
         ("Direktor", "Was steht neben deinem Namen?"),
-        ("Jakob", "Priorität 1."),
+        ("Spieler", "Priorität 1."),
         ("Direktor", "..."),
-        ("Jakob", "Das gefällt mir irgendwie nicht.")
+        ("Spieler", "Das gefällt mir irgendwie nicht.")
     ],
 
     story_nachher=[
-        ("Jakob", "Ihr wisst also wirklich nicht, was das bedeutet?"),
+        ("Spieler", "Ihr wisst also wirklich nicht, was das bedeutet?"),
         ("6.-Klässler", "Nein."),
-        ("Jakob", "Dann finde ich es eben selbst heraus."),
-        ("Jakob", "Aber zuerst will ich wissen, wer noch auf dieser Liste steht.")
+        ("Spieler", "Dann finde ich es eben selbst heraus."),
+        ("Spieler", "Aber zuerst will ich wissen, wer noch auf dieser Liste steht.")
     ]
 )
 
@@ -946,22 +953,22 @@ kampf_2_4 = kampangen_kampf(
     team_groesse=2,
 
     story_vorher=[
-        ("Jakob", "Ich habe mir die anderen Namen angesehen."),
-        ("Jakob", "Einige davon kenne ich."),
-        ("Jakob", "Andere habe ich noch nie gehört."),
+        ("Spieler", "Ich habe mir die anderen Namen angesehen."),
+        ("Spieler", "Einige davon kenne ich."),
+        ("Spieler", "Andere habe ich noch nie gehört."),
         ("Direktor", "Zeig mir die Liste."),
-        ("Jakob", "Hier."),
+        ("Spieler", "Hier."),
         ("Direktor", "Moment."),
         ("Direktor", "Dieser Name..."),
-        ("Jakob", "Was ist damit?"),
+        ("Spieler", "Was ist damit?"),
         ("Direktor", "Das war einmal ein Schüler dieser Schule.")
     ],
 
     story_nachher=[
-        ("Jakob", "Und was ist aus ihm geworden?"),
+        ("Spieler", "Und was ist aus ihm geworden?"),
         ("Direktor", "Ich weiß es nicht."),
-        ("Jakob", "Er steht auf dieser Liste."),
-        ("Jakob", "Dann sollten wir herausfinden, warum.")
+        ("Spieler", "Er steht auf dieser Liste."),
+        ("Spieler", "Dann sollten wir herausfinden, warum.")
     ]
 )
 
@@ -982,22 +989,22 @@ kampf_3_4 = kampangen_kampf(
 
     story_vorher=[
         ("Direktor", "Vielleicht gibt es noch alte Unterlagen im Keller."),
-        ("Jakob", "Im Keller?"),
+        ("Spieler", "Im Keller?"),
         ("Direktor", "Dort wurden früher die alten Schulakten gelagert."),
-        ("Jakob", "Na dann los."),
-        ("Jakob", "Hier ist ja alles voller Kartons."),
+        ("Spieler", "Na dann los."),
+        ("Spieler", "Hier ist ja alles voller Kartons."),
         ("Direktor", "Die meisten davon wurden seit Jahren nicht angerührt."),
-        ("Jakob", "Und da hinten ist ein Schrank."),
-        ("Jakob", "Der ist abgeschlossen."),
+        ("Spieler", "Und da hinten ist ein Schrank."),
+        ("Spieler", "Der ist abgeschlossen."),
         ("Direktor", "Dann brauchen wir wohl einen Schlüssel.")
     ],
 
     story_nachher=[
-        ("Jakob", "Das war's."),
-        ("Jakob", "Und jetzt der Schrank."),
+        ("Spieler", "Das war's."),
+        ("Spieler", "Und jetzt der Schrank."),
         ("Direktor", "Du hast den Schlüssel?"),
-        ("Jakob", "Natürlich."),
-        ("Jakob", "Mal sehen, was da drin ist.")
+        ("Spieler", "Natürlich."),
+        ("Spieler", "Mal sehen, was da drin ist.")
     ]
 )
 
@@ -1016,23 +1023,23 @@ kampf_4_4 = kampangen_kampf(
     team_groesse=2,
 
     story_vorher=[
-        ("Jakob", "Hier sind jede Menge alte Akten."),
+        ("Spieler", "Hier sind jede Menge alte Akten."),
         ("Direktor", "Vielleicht finden wir etwas über die Liste."),
-        ("Jakob", "Moment."),
-        ("Jakob", "Da ist eine alte Version davon."),
+        ("Spieler", "Moment."),
+        ("Spieler", "Da ist eine alte Version davon."),
         ("Direktor", "Eine alte Liste?"),
-        ("Jakob", "Ja."),
-        ("Jakob", "Und sie ist ziemlich alt."),
+        ("Spieler", "Ja."),
+        ("Spieler", "Und sie ist ziemlich alt."),
         ("Direktor", "Wie alt?"),
-        ("Jakob", "Mehr als zehn Jahre.")
+        ("Spieler", "Mehr als zehn Jahre.")
     ],
 
     story_nachher=[
-        ("Jakob", "Das kann nicht sein."),
+        ("Spieler", "Das kann nicht sein."),
         ("Direktor", "Was hast du gefunden?"),
-        ("Jakob", "Meinen Namen."),
+        ("Spieler", "Meinen Namen."),
         ("Direktor", "..."),
-        ("Jakob", "Auf einer Liste, die älter ist als meine Zeit an dieser Schule.")
+        ("Spieler", "Auf einer Liste, die älter ist als meine Zeit an dieser Schule.")
     ]
 )
 
@@ -1052,23 +1059,23 @@ kampf_5_4 = kampangen_kampf(
     team_groesse=3,
 
     story_vorher=[
-        ("Jakob", "Vielleicht ist das einfach nur ein anderer Jakob."),
+        ("Spieler", "Vielleicht ist das einfach nur jemand anderes mit dem selben Name."),
         ("Direktor", "Das könnte sein."),
-        ("Jakob", "Aber hier steht mein vollständiger Name."),
+        ("Spieler", "Aber hier steht mein vollständiger Name."),
         ("Direktor", "Zeig mal das Datum."),
-        ("Jakob", "Da."),
+        ("Spieler", "Da."),
         ("Direktor", "..."),
-        ("Jakob", "Was ist?"),
+        ("Spieler", "Was ist?"),
         ("Direktor", "An diesem Datum warst du noch gar nicht hier."),
-        ("Jakob", "Das wird immer seltsamer.")
+        ("Spieler", "Das wird immer seltsamer.")
     ],
 
     story_nachher=[
-        ("Jakob", "Was weißt du über diese Liste?"),
+        ("Spieler", "Was weißt du über diese Liste?"),
         ("Direktor", "Nicht viel."),
-        ("Jakob", "Du weißt doch irgendetwas."),
+        ("Spieler", "Du weißt doch irgendetwas."),
         ("Direktor", "Es gab damals ein Projekt."),
-        ("Jakob", "Was für ein Projekt?")
+        ("Spieler", "Was für ein Projekt?")
     ]
 )
 
@@ -1088,22 +1095,22 @@ kampf_6_4 = kampangen_kampf(
 
     story_vorher=[
         ("Direktor", "Offiziell ging es um die Förderung bestimmter Schüler."),
-        ("Jakob", "Und inoffiziell?"),
+        ("Spieler", "Und inoffiziell?"),
         ("Direktor", "Das weiß ich nicht."),
-        ("Jakob", "Was wurde gemacht?"),
+        ("Spieler", "Was wurde gemacht?"),
         ("Direktor", "Es wurden Daten gesammelt."),
-        ("Jakob", "Welche Daten?"),
+        ("Spieler", "Welche Daten?"),
         ("Direktor", "Leistungen. Verhalten. Kontakte."),
-        ("Jakob", "Also wurden Schüler beobachtet..."),
+        ("Spieler", "Also wurden Schüler beobachtet..."),
         ("Direktor", "Offenbar.")
     ],
 
     story_nachher=[
-        ("Jakob", "Und wie hieß dieses Projekt?"),
+        ("Spieler", "Und wie hieß dieses Projekt?"),
         ("Direktor", "Ich erinnere mich nur an einen Namen."),
-        ("Jakob", "Welchen?"),
+        ("Spieler", "Welchen?"),
         ("Direktor", "Projekt K."),
-        ("Jakob", "Projekt K?")
+        ("Spieler", "Projekt K?")
     ]
 )
 
@@ -1123,21 +1130,21 @@ kampf_7_4 = kampangen_kampf(
     team_groesse=3,
 
     story_vorher=[
-        ("Jakob", "Nach dem Stromausfall fehlt eine Akte."),
+        ("Spieler", "Nach dem Stromausfall fehlt eine Akte."),
         ("Direktor", "Jemand muss hier gewesen sein."),
-        ("Jakob", "Da liegt ein Zettel."),
-        ("Jakob", "Was steht da?"),
-        ("Jakob", "Ihr hättet die Liste nicht finden dürfen."),
+        ("Spieler", "Da liegt ein Zettel."),
+        ("Spieler", "Was steht da?"),
+        ("Spieler", "Ihr hättet die Liste nicht finden dürfen."),
         ("Direktor", "Das ist nicht gut."),
-        ("Jakob", "Darunter steht eine Adresse."),
+        ("Spieler", "Darunter steht eine Adresse."),
         ("Direktor", "Das ist keine Adresse hier an der Schule."),
-        ("Jakob", "Dann weiß ich, wo wir als Nächstes hingehen.")
+        ("Spieler", "Dann weiß ich, wo wir als Nächstes hingehen.")
     ],
 
     story_nachher=[
-        ("Jakob", "Die Person wusste, dass wir die Liste gefunden haben."),
+        ("Spieler", "Die Person wusste, dass wir die Liste gefunden haben."),
         ("Direktor", "Dann weiß sie auch, dass wir ihr auf der Spur sind."),
-        ("Jakob", "Umso besser.")
+        ("Spieler", "Umso besser.")
     ]
 )
 
@@ -1156,20 +1163,20 @@ kampf_8_4 = kampangen_kampf(
     team_groesse=2,
 
     story_vorher=[
-        ("Jakob", "Das soll also die Adresse sein."),
+        ("Spieler", "Das soll also die Adresse sein."),
         ("Direktor", "Sieht ziemlich verlassen aus."),
-        ("Jakob", "Da vorne ist eine Tür."),
+        ("Spieler", "Da vorne ist eine Tür."),
         ("Direktor", "Warte."),
-        ("Jakob", "Was?"),
+        ("Spieler", "Was?"),
         ("Direktor", "Da sind Unterlagen."),
-        ("Jakob", "Und auf denen steht wieder Projekt K."),
-        ("Jakob", "Dann sind wir hier richtig.")
+        ("Spieler", "Und auf denen steht wieder Projekt K."),
+        ("Spieler", "Dann sind wir hier richtig.")
     ],
 
     story_nachher=[
-        ("Jakob", "Hier steht etwas über die Liste."),
+        ("Spieler", "Hier steht etwas über die Liste."),
         ("Direktor", "Was?"),
-        ("Jakob", "Status: aktiv."),
+        ("Spieler", "Status: aktiv."),
         ("Direktor", "Dann ist das Projekt noch nicht beendet.")
     ]
 )
@@ -1190,23 +1197,23 @@ kampf_9_4 = kampangen_kampf(
     team_groesse=3,
 
     story_vorher=[
-        ("Jakob", "Hier ist eine aktuelle Akte."),
-        ("Jakob", "Zielperson: Jakob."),
-        ("Jakob", "Priorität: 1."),
+        ("Spieler", "Hier ist eine aktuelle Akte."),
+        ("Spieler", "Zielperson: ... Ich, wer sonnst."),
+        ("Spieler", "Priorität: 1."),
         ("Direktor", "Was bedeutet das?"),
-        ("Jakob", "Keine Ahnung."),
-        ("Jakob", "Aber hier steht noch etwas."),
-        ("Jakob", "Phase 2 beginnt nach Kontakt mit der Zielperson."),
+        ("Spieler", "Keine Ahnung."),
+        ("Spieler", "Aber hier steht noch etwas."),
+        ("Spieler", "Phase 2 beginnt nach Kontakt mit der Zielperson."),
         ("Direktor", "Phase 2?"),
         ("???", "Du solltest diese Akte nicht lesen.")
     ],
 
     story_nachher=[
-        ("Jakob", "Wer bist du?"),
+        ("Spieler", "Wer bist du?"),
         ("Unbekannter", "Jemand, der für andere arbeitet."),
-        ("Jakob", "Für wen?"),
+        ("Spieler", "Für wen?"),
         ("Unbekannter", "Das wirst du noch früh genug herausfinden."),
-        ("Jakob", "Das glaube ich kaum.")
+        ("Spieler", "Das glaube ich kaum.")
     ]
 )
 
@@ -1227,27 +1234,27 @@ kampf_10_4 = kampangen_kampf(
     team_groesse=4,
 
     story_vorher=[
-        ("Jakob", "Ihr wisst beide mehr, als ihr mir erzählt."),
-        ("Direktor", "Jakob..."),
-        ("Jakob", "Was ist Projekt K?"),
+        ("Spieler", "Ihr wisst beide mehr, als ihr mir erzählt."),
+        ("Direktor", "..."),
+        ("Spieler", "Was ist Projekt K?"),
         ("Hausmeister", "Das solltest du nicht wissen."),
-        ("Jakob", "Warum steht mein Name auf der Liste?"),
+        ("Spieler", "Warum steht mein Name auf der Liste?"),
         ("Direktor", "Das wissen wir selbst nicht vollständig."),
-        ("Jakob", "Dann werde ich es eben herausfinden."),
+        ("Spieler", "Dann werde ich es eben herausfinden."),
         ("Hausmeister", "Du verstehst nicht, womit du dich anlegst.")
     ],
 
     story_nachher=[
-        ("Jakob", "Jetzt habe ich endlich Antworten."),
+        ("Spieler", "Jetzt habe ich endlich Antworten."),
         ("Direktor", "Nein."),
-        ("Jakob", "Was?"),
+        ("Spieler", "Was?"),
         ("Direktor", "Du hast nur angefangen, die richtigen Fragen zu stellen."),
-        ("Jakob", "..."),
-        ("Jakob", "Was soll das heißen?"),
+        ("Spieler", "..."),
+        ("Spieler", "Was soll das heißen?"),
         ("Direktor", "Das Projekt ist größer, als du denkst."),
-        ("Jakob", "Dann war das hier also nur der Anfang."),
+        ("Spieler", "Dann war das hier also nur der Anfang."),
         ("Direktor", "Ja."),
-        ("Jakob", "Dann finde ich den Rest auch noch heraus.")
+        ("Spieler", "Dann finde ich den Rest auch noch heraus.")
     ]
 )
 
@@ -1299,24 +1306,24 @@ kampf_1_5 = kampangen_kampf(
     team_groesse=2,
 
     story_vorher=[
-        ("Jakob", "Also gut. Dann schauen wir uns diese Akte einmal genauer an."),
+        ("Spieler", "Also gut. Dann schauen wir uns diese Akte einmal genauer an."),
         ("Direktor", "Was steht darin?"),
-        ("Jakob", "Eine Menge Informationen."),
-        ("Jakob", "Und hier ist wieder dieses K."),
+        ("Spieler", "Eine Menge Informationen."),
+        ("Spieler", "Und hier ist wieder dieses K."),
         ("Direktor", "Projekt K."),
-        ("Jakob", "Genau."),
-        ("Jakob", "Aber was bedeutet die Nummer daneben?"),
+        ("Spieler", "Genau."),
+        ("Spieler", "Aber was bedeutet die Nummer daneben?"),
         ("Direktor", "Welche Nummer?"),
-        ("Jakob", "K-001."),
-        ("Jakob", "Und hier gibt es K-002, K-003 und noch viele weitere.")
+        ("Spieler", "K-001."),
+        ("Spieler", "Und hier gibt es K-002, K-003 und noch viele weitere.")
     ],
 
     story_nachher=[
-        ("Jakob", "Insgesamt gibt es siebzehn Akten."),
+        ("Spieler", "Insgesamt gibt es siebzehn Akten."),
         ("Direktor", "Siebzehn?"),
-        ("Jakob", "Ja."),
-        ("Jakob", "Und ich bin K-001."),
-        ("Jakob", "Ich will wissen, wer die anderen sind.")
+        ("Spieler", "Ja."),
+        ("Spieler", "Und ich bin K-001."),
+        ("Spieler", "Ich will wissen, wer die anderen sind.")
     ]
 )
 
@@ -1335,21 +1342,21 @@ kampf_2_5 = kampangen_kampf(
     team_groesse=2,
 
     story_vorher=[
-        ("Jakob", "Eine der Akten ist noch nicht vollständig zerstört."),
-        ("Jakob", "Hier steht ein Name."),
+        ("Spieler", "Eine der Akten ist noch nicht vollständig zerstört."),
+        ("Spieler", "Hier steht ein Name."),
         ("Direktor", "Kennst du ihn?"),
-        ("Jakob", "Ich glaube schon."),
-        ("Jakob", "Das war ein ehemaliger Schüler."),
+        ("Spieler", "Ich glaube schon."),
+        ("Spieler", "Das war ein ehemaliger Schüler."),
         ("Direktor", "Ja."),
-        ("Jakob", "Was ist mit ihm passiert?"),
+        ("Spieler", "Was ist mit ihm passiert?"),
         ("Direktor", "Er hat die Schule vor Jahren verlassen."),
-        ("Jakob", "Laut dieser Akte ist er verschwunden.")
+        ("Spieler", "Laut dieser Akte ist er verschwunden.")
     ],
 
     story_nachher=[
-        ("Jakob", "Was bedeutet 'Status: unbekannt'?"),
+        ("Spieler", "Was bedeutet 'Status: unbekannt'?"),
         ("Direktor", "Ich weiß es nicht."),
-        ("Jakob", "Dann müssen wir herausfinden, was mit den anderen passiert ist.")
+        ("Spieler", "Dann müssen wir herausfinden, was mit den anderen passiert ist.")
     ]
 )
 
@@ -1369,21 +1376,21 @@ kampf_3_5 = kampangen_kampf(
     team_groesse=3,
 
     story_vorher=[
-        ("Jakob", "Wir sollten die Namen aus den Akten überprüfen."),
+        ("Spieler", "Wir sollten die Namen aus den Akten überprüfen."),
         ("Direktor", "Ich habe einige alte Schülerlisten gefunden."),
-        ("Jakob", "Und?"),
+        ("Spieler", "Und?"),
         ("Direktor", "Mehrere Namen stimmen überein."),
-        ("Jakob", "Was steht bei ihnen?"),
+        ("Spieler", "Was steht bei ihnen?"),
         ("Direktor", "Bei einigen steht 'unbekannt'."),
-        ("Jakob", "Und bei den anderen?"),
+        ("Spieler", "Und bei den anderen?"),
         ("Direktor", "Bei einigen steht 'abgeschlossen'."),
-        ("Jakob", "Abgeschlossen?")
+        ("Spieler", "Abgeschlossen?")
     ],
 
     story_nachher=[
-        ("Jakob", "Was soll das bedeuten?"),
+        ("Spieler", "Was soll das bedeuten?"),
         ("Direktor", "Das weiß ich nicht."),
-        ("Jakob", "Dann finden wir es eben heraus.")
+        ("Spieler", "Dann finden wir es eben heraus.")
     ]
 )
 
@@ -1402,21 +1409,21 @@ kampf_4_5 = kampangen_kampf(
     team_groesse=2,
 
     story_vorher=[
-        ("Jakob", "Hier ist eine weitere Akte."),
-        ("Jakob", "K-001."),
+        ("Spieler", "Hier ist eine weitere Akte."),
+        ("Spieler", "K-001."),
         ("Direktor", "Deine Akte?"),
-        ("Jakob", "Ja."),
-        ("Jakob", "Hier stehen Dinge, an die ich mich überhaupt nicht erinnere."),
+        ("Spieler", "Ja."),
+        ("Spieler", "Hier stehen Dinge, an die ich mich überhaupt nicht erinnere."),
         ("Direktor", "Was genau?"),
-        ("Jakob", "Ereignisse aus meiner Kindheit."),
-        ("Jakob", "Und hier steht: 'Subjekt zeigt erwartete Reaktion.'"),
+        ("Spieler", "Ereignisse aus meiner Kindheit."),
+        ("Spieler", "Und hier steht: 'Subjekt zeigt erwartete Reaktion.'"),
         ("Direktor", "Das ist ungewöhnlich.")
     ],
 
     story_nachher=[
-        ("Jakob", "Woher konnten die Leute hinter diesem Projekt das alles wissen?"),
+        ("Spieler", "Woher konnten die Leute hinter diesem Projekt das alles wissen?"),
         ("Direktor", "Ich weiß es nicht."),
-        ("Jakob", "Du weißt mehr, als du sagst.")
+        ("Spieler", "Du weißt mehr, als du sagst.")
     ]
 )
 
@@ -1435,21 +1442,21 @@ kampf_5_5 = kampangen_kampf(
     team_groesse=2,
 
     story_vorher=[
-        ("Jakob", "Wir müssen jemanden finden, der etwas über Projekt K weiß."),
+        ("Spieler", "Wir müssen jemanden finden, der etwas über Projekt K weiß."),
         ("Direktor", "Es gibt eine ehemalige Mitarbeiterin."),
-        ("Jakob", "Und sie weiß etwas?"),
+        ("Spieler", "Und sie weiß etwas?"),
         ("Direktor", "Vielleicht."),
-        ("Jakob", "Dann sollten wir sie fragen."),
+        ("Spieler", "Dann sollten wir sie fragen."),
         ("Direktor", "Sie wird wahrscheinlich nicht freiwillig reden."),
-        ("Jakob", "Dann überzeugen wir sie eben.")
+        ("Spieler", "Dann überzeugen wir sie eben.")
     ],
 
     story_nachher=[
-        ("Jakob", "Also? Wer hat Projekt K gestartet?"),
+        ("Spieler", "Also? Wer hat Projekt K gestartet?"),
         ("Mitarbeiterin", "Nicht die Schule."),
-        ("Jakob", "Was?"),
+        ("Spieler", "Was?"),
         ("Mitarbeiterin", "Die Schule wurde nur benutzt."),
-        ("Jakob", "Von wem?"),
+        ("Spieler", "Von wem?"),
         ("Mitarbeiterin", "Kronos.")
     ]
 )
@@ -1470,22 +1477,22 @@ kampf_6_5 = kampangen_kampf(
     team_groesse=3,
 
     story_vorher=[
-        ("Jakob", "Kronos."),
+        ("Spieler", "Kronos."),
         ("Direktor", "Ja."),
-        ("Jakob", "Was ist das?"),
+        ("Spieler", "Was ist das?"),
         ("Direktor", "Eine Organisation."),
-        ("Jakob", "Existiert sie noch?"),
+        ("Spieler", "Existiert sie noch?"),
         ("Direktor", "Offiziell nicht."),
-        ("Jakob", "Und Projekt K?"),
+        ("Spieler", "Und Projekt K?"),
         ("Direktor", "Das ist die Frage."),
-        ("Jakob", "Dann suchen wir weiter.")
+        ("Spieler", "Dann suchen wir weiter.")
     ],
 
     story_nachher=[
-        ("Jakob", "Hier ist ein alter Computer."),
+        ("Spieler", "Hier ist ein alter Computer."),
         ("Direktor", "Vielleicht finden wir darauf etwas."),
-        ("Jakob", "Er ist passwortgeschützt."),
-        ("Jakob", "Aber die Dateien sind noch da.")
+        ("Spieler", "Er ist passwortgeschützt."),
+        ("Spieler", "Aber die Dateien sind noch da.")
     ]
 )
 
@@ -1505,24 +1512,24 @@ kampf_7_5 = kampangen_kampf(
     team_groesse=3,
 
     story_vorher=[
-        ("Jakob", "Ich habe die Dateien geöffnet."),
+        ("Spieler", "Ich habe die Dateien geöffnet."),
         ("Direktor", "Was steht darin?"),
-        ("Jakob", "Informationen über die siebzehn Personen."),
+        ("Spieler", "Informationen über die siebzehn Personen."),
         ("Direktor", "Und bei jeder gibt es eine Kategorie."),
-        ("Jakob", "Eignung."),
+        ("Spieler", "Eignung."),
         ("Direktor", "Eignung wofür?"),
-        ("Jakob", "Keine Ahnung."),
-        ("Jakob", "Ich öffne meine Akte.")
+        ("Spieler", "Keine Ahnung."),
+        ("Spieler", "Ich öffne meine Akte.")
     ],
 
     story_nachher=[
-        ("Jakob", "K-001."),
-        ("Jakob", "Eignung: AUSGEZEICHNET."),
+        ("Spieler", "K-001."),
+        ("Spieler", "Eignung: AUSGEZEICHNET."),
         ("Direktor", "Was bedeutet das?"),
-        ("Jakob", "Hier steht noch mehr."),
-        ("Jakob", "Phase 1: abgeschlossen."),
-        ("Jakob", "Phase 2: abgeschlossen."),
-        ("Jakob", "Phase 3: ausstehend.")
+        ("Spieler", "Hier steht noch mehr."),
+        ("Spieler", "Phase 1: abgeschlossen."),
+        ("Spieler", "Phase 2: abgeschlossen."),
+        ("Spieler", "Phase 3: ausstehend.")
     ]
 )
 
@@ -1541,21 +1548,21 @@ kampf_8_5 = kampangen_kampf(
     team_groesse=2,
 
     story_vorher=[
-        ("Jakob", "Was ist Phase 3?"),
+        ("Spieler", "Was ist Phase 3?"),
         ("Direktor", "Das weiß ich nicht."),
-        ("Jakob", "Aber meine Akte sagt etwas anderes."),
-        ("Direktor", "Jakob..."),
-        ("Jakob", "Nur bestimmte Zielpersonen kommen in Phase 3."),
-        ("Jakob", "Und ich bin eine davon."),
+        ("Spieler", "Aber meine Akte sagt etwas anderes."),
+        ("Direktor", "..."),
+        ("Spieler", "Nur bestimmte Zielpersonen kommen in Phase 3."),
+        ("Spieler", "Und ich bin eine davon."),
         ("Direktor", "Du solltest damit aufhören."),
-        ("Jakob", "Warum?")
+        ("Spieler", "Warum?")
     ],
 
     story_nachher=[
-        ("Jakob", "Ich habe eine Nachricht bekommen."),
+        ("Spieler", "Ich habe eine Nachricht bekommen."),
         ("Direktor", "Von wem?"),
-        ("Jakob", "Keine Ahnung."),
-        ("Jakob", "Darin steht eine Adresse."),
+        ("Spieler", "Keine Ahnung."),
+        ("Spieler", "Darin steht eine Adresse."),
         ("Direktor", "Dann wissen wir, wo wir als Nächstes suchen müssen.")
     ]
 )
@@ -1576,23 +1583,23 @@ kampf_9_5 = kampangen_kampf(
     team_groesse=3,
 
     story_vorher=[
-        ("Jakob", "Das ist also der Ort."),
+        ("Spieler", "Das ist also der Ort."),
         ("Direktor", "Sieht verlassen aus."),
-        ("Jakob", "Hier unten ist ein Raum."),
-        ("Jakob", "Und dort sind die alten Unterlagen."),
+        ("Spieler", "Hier unten ist ein Raum."),
+        ("Spieler", "Und dort sind die alten Unterlagen."),
         ("Direktor", "Was steht in der Akte?"),
-        ("Jakob", "K-001."),
-        ("Jakob", "Hier steht, dass ich bereits vor meiner Einschulung aufgenommen wurde."),
+        ("Spieler", "K-001."),
+        ("Spieler", "Hier steht, dass ich bereits vor meiner Einschulung aufgenommen wurde."),
         ("Direktor", "..."),
-        ("Jakob", "Du wusstest davon.")
+        ("Spieler", "Du wusstest davon.")
     ],
 
     story_nachher=[
-        ("Jakob", "Hier steht noch etwas."),
-        ("Jakob", "Verantwortlich: [GESCHWÄRZT]."),
-        ("Direktor", "Jakob..."),
-        ("Jakob", "Und darunter steht etwas handgeschrieben."),
-        ("Jakob", "Er darf niemals erfahren, wer ihn ausgewählt hat.")
+        ("Spieler", "Hier steht noch etwas."),
+        ("Spieler", "Verantwortlich: [GESCHWÄRZT]."),
+        ("Direktor", "..."),
+        ("Spieler", "Und darunter steht etwas handgeschrieben."),
+        ("Spieler", "Er darf niemals erfahren, wer ihn ausgewählt hat.")
     ]
 )
 
@@ -1613,36 +1620,36 @@ kampf_10_5 = kampangen_kampf(
     team_groesse=4,
 
     story_vorher=[
-        ("Jakob", "Also gut."),
-        ("Jakob", "Dann öffne ich die letzte Seite."),
+        ("Spieler", "Also gut."),
+        ("Spieler", "Dann öffne ich die letzte Seite."),
         ("Direktor", "Warte."),
-        ("Jakob", "Nein."),
-        ("Jakob", "Ich will endlich wissen, was hier passiert."),
-        ("Jakob", "PROJEKT K."),
-        ("Jakob", "SUBJEKT: K-001."),
-        ("Jakob", "NAME: JAKOB."),
-        ("Jakob", "STATUS: AKTIV."),
-        ("Jakob", "AUFNAHME: VOR SCHULEINTRITT."),
-        ("Jakob", "PHASE 3: FREIGEGEBEN.")
+        ("Spieler", "Nein."),
+        ("Spieler", "Ich will endlich wissen, was hier passiert."),
+        ("Spieler", "PROJEKT K."),
+        ("Spieler", "SUBJEKT: K-001."),
+        ("Spieler", "NAME: Natürlich ich."),
+        ("Spieler", "STATUS: AKTIV."),
+        ("Spieler", "AUFNAHME: VOR SCHULEINTRITT."),
+        ("Spieler", "PHASE 3: FREIGEGEBEN.")
     ],
 
     story_nachher=[
-        ("Jakob", "Du wusstest davon?"),
+        ("Spieler", "Du wusstest davon?"),
         ("Direktor", "Nicht alles."),
-        ("Jakob", "Aber du wusstest, dass mein Name schon einmal gefallen ist."),
+        ("Spieler", "Aber du wusstest, dass mein Name schon einmal gefallen ist."),
         ("Direktor", "Ja."),
-        ("Jakob", "Wer hat mich ausgewählt?"),
+        ("Spieler", "Wer hat mich ausgewählt?"),
         ("Direktor", "Das weiß ich nicht."),
-        ("Jakob", "Dann finde ich es heraus."),
-        ("Jakob", "Was ist das?"),
+        ("Spieler", "Dann finde ich es heraus."),
+        ("Spieler", "Was ist das?"),
         ("Direktor", "Was?"),
-        ("Jakob", "Der Bildschirm."),
-        ("Jakob", "PROJEKT K."),
-        ("Jakob", "PHASE 3: AKTIV."),
-        ("Jakob", "K-001: BESTÄTIGT."),
-        ("Jakob", "..."),
-        ("Jakob", "Das reicht für heute."),
-        ("Jakob", "Die Sache mit Projekt K ist hiermit beendet.")
+        ("Spieler", "Der Bildschirm."),
+        ("Spieler", "PROJEKT K."),
+        ("Spieler", "PHASE 3: AKTIV."),
+        ("Spieler", "K-001: BESTÄTIGT."),
+        ("Spieler", "..."),
+        ("Spieler", "Das reicht für heute."),
+        ("Spieler", "Die Sache mit Projekt K ist hiermit beendet.")
     ]
 )
 

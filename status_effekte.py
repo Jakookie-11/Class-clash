@@ -49,13 +49,29 @@ von_Hannah_d_unterstuetzt = StatusEffekt("von_Hannah_d_unterstuetzt", 99, 1)
 
 
 def status_effekte_ausgeben(von_wem):
-    effekte = charaktere.Charaktere[von_wem].status_effekte
+    effekte = _charakter_abrufen(von_wem).status_effekte
     return effekte
+
+
+def _charakter_schluessel_abrufen(wem):
+    if isinstance(wem, str):
+        return wem
+
+    for name, charakter in charaktere.Charaktere.items():
+        if charakter is wem:
+            return name
+
+    raise ValueError("Der Charakter ist nicht in charaktere.Charaktere registriert.")
+
+
+def _charakter_abrufen(wem):
+    return charaktere.Charaktere[_charakter_schluessel_abrufen(wem)]
 
 
 def status_effekte_hinzufügen(wem, was):
 
-    effekte = charaktere.Charaktere[wem].status_effekte
+    charakter = _charakter_abrufen(wem)
+    effekte = charakter.status_effekte
 
     if isinstance(was, str):
         for effekt in globals().values():
@@ -78,7 +94,7 @@ def status_effekte_hinzufügen(wem, was):
 
 def status_effekt_vorhanden(bei_wem, name):
 
-    for effekt in charaktere.Charaktere[bei_wem].status_effekte:
+    for effekt in _charakter_abrufen(bei_wem).status_effekte:
 
         if effekt.name == name:
             return True
@@ -87,16 +103,17 @@ def status_effekt_vorhanden(bei_wem, name):
 
 def status_effekte_aktualisieren(wer):
 
-    charakter = charaktere.Charaktere[wer]
+    charakter_schluessel = _charakter_schluessel_abrufen(wer)
+    charakter = charaktere.Charaktere[charakter_schluessel]
 
     for effekt in charakter.status_effekte:
 
         #---Über Zeit Effekte---#
         if effekt.name == "damage_over_time_1":
-           faehigkeiten.HP_verändern(wer, effekt.wert)
+           faehigkeiten.HP_verändern(charakter_schluessel, effekt.wert)
 
         if effekt.name == "healing_over_time_1":
-           faehigkeiten.HP_verändern(wer, effekt.wert) 
+           faehigkeiten.HP_verändern(charakter_schluessel, effekt.wert) 
 
         effekt.dauer -= 1
 
@@ -111,7 +128,7 @@ def status_effekte_anzeigen(wem):
 
     ausgabe = ""
 
-    for effekt in charaktere.Charaktere[wem].status_effekte:
+    for effekt in _charakter_abrufen(wem).status_effekte:
         ausgabe += f"[{effekt.name} {effekt.dauer}] "
 
     return ausgabe
