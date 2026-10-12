@@ -1,8 +1,12 @@
 import os
 import time
-import confic
 import sys
+import subprocess
+import start_pruefung
 
+start_pruefung.pruefe_startvoraussetzungen()
+
+import confic
 import funktions
 import menues
 import charakter_bip
@@ -11,7 +15,6 @@ import spiel_starten
 import speichern
 import begin
 import einstellungen
-import subprocess
 import crash_handler
 import herausforderungen
 import sound

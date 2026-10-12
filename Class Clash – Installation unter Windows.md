@@ -1,13 +1,15 @@
 # Class Clash – Installation unter Windows
 
-## 1. Python 3.14 herunterladen und installieren
+## 1. Python 3.15 (64-Bit) herunterladen und installieren
 
-Damit Class Clash funktioniert, benötigst du **Python 3.14 (64-Bit)**.
+Damit Class Clash funktioniert, benötigst du **CPython 3.15 (64-Bit)**. Die
+mitgelieferte Erweiterung `geheimes.cp315-win_amd64.pyd` ist an diese Version
+und Windows 64-Bit gebunden.
 
 ### Schritt 1: Python herunterladen
 
-1. Öffne die offizielle Python-Downloadseite: [Python für Windows herunterladen](https://www.python.org/downloads/release/python-3147/).
-2. Suche nach Python 3.14 und lade den **Windows Installer (64-bit)** herunter.
+1. Öffne die offizielle Python-Downloadseite: [Python für Windows herunterladen](https://www.python.org/downloads/release/python-3150/).
+2. Suche nach Python 3.15 und lade den **Windows Installer (64-bit)** herunter.
 3. Öffne die heruntergeladene Installationsdatei.
 
 ### Schritt 2: Python installieren
@@ -23,13 +25,13 @@ Im Installationsfenster:
 Öffne PowerShell und gib Folgendes ein:
 
 ```powershell
-py -3.14 --version
+py -3.15 --version
 ```
 
 Wenn alles funktioniert, sollte eine Ausgabe ähnlich dieser erscheinen:
 
 ```text
-Python 3.14.x
+Python 3.15.x
 ```
 
 Die genaue Versionsnummer kann abweichen.
@@ -90,7 +92,10 @@ Wenn die Installation erfolgreich abgeschlossen ist, kannst du das Spiel starten
 python main.py
 ```
 
-Class Clash sollte nun im Terminal starten.
+Beim Start prüft Class Clash automatisch, ob Python 3.15 (64-Bit) zur
+Erweiterung passt. Fehlende Pakete aus `requirements.txt` werden automatisch
+installiert; dafür ist beim ersten Start gegebenenfalls eine Internetverbindung
+erforderlich.
 
 ---
 
@@ -118,7 +123,8 @@ python main.py
 
 ### Python wird nicht gefunden
 
-Wenn `py -3.14` nicht funktioniert, überprüfe, ob Python 3.14 installiert wurde.
+Wenn `py -3.15` nicht funktioniert, überprüfe, ob Python 3.15 (64-Bit)
+installiert wurde.
 
 Du kannst alternativ Folgendes testen:
 
