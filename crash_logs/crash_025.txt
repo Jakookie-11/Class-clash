@@ -1,0 +1,29 @@
+========================================
+       CLASS CLASH CRASH REPORT
+========================================
+
+Spieler: Jakob
+Datum: 2026-10-07
+Uhrzeit: 16:25:00
+Fehler-ID: e87410dc2f3a13764ad68ecfc08b7b7c5bd9fb57c67cf5d3d56ab5e8029c209c
+Status: gefixt
+
+----------------------------------------
+FEHLER / TRACEBACK
+----------------------------------------
+
+Traceback (most recent call last):
+  File "c:\Users\Jakob Samstag\Desktop\git\Class-clash\main.py", line 66, in <module>
+    is_brake_spiel_starten = spiel_starten.spiel_starten(spieler)
+  File "c:\Users\Jakob Samstag\Desktop\git\Class-clash\spiel_starten.py", line 51, in spiel_starten
+    is_break_kampf = benutzerdefinierten_kampf_starten()
+  File "c:\Users\Jakob Samstag\Desktop\git\Class-clash\spiel_starten.py", line 142, in benutzerdefinierten_kampf_starten
+    return kampf(
+        team_groesse_1=team_groesse_1,
+    ...<3 lines>...
+        benutzerdefiniert=True,
+    )
+  File "c:\Users\Jakob Samstag\Desktop\git\Class-clash\spiel_starten.py", line 924, in kampf
+    faehigkeit.funktion(wer, ziel, team_2)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+TypeError: knielauf_obj() missing 1 required positional argument: 'team_2'

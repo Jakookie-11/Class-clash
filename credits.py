@@ -31,10 +31,9 @@ HELL_WEISS    = "\033[97m"
 
 def credits():
 
-    sound.musik_abspielen("Hugs and Kisses.mp3", lautstaerke=2)
-
     while True:
 
+        sound.musik_abspielen("Hugs and Kisses.mp3", lautstaerke=2)
         os.system(confic.terminal_clear)
 
         print(f"{MAGENTA}══════════════════════════════")
@@ -43,7 +42,7 @@ def credits():
         print()
 
         print("---Coder---")
-        print("Jakob")
+        print("   Jakob")
         print()
 
         print("PROBLEMFINDUNG")
@@ -64,36 +63,29 @@ def credits():
         print()
         print()
 
-        genauere_informationen_zu_findern = input("möchtest du mehr über eine(n) Problemfinder(in) herausfinden? ")
+        zu_wem = input("möchtest du mehr über eine(n) Problemfinder(in) herausfinden? (Name/[0]abbrechen)")
 
-        if genauere_informationen_zu_findern == "ja":
-
-            funktions.zeilen_loeschen(1)
-
-            while True:
-
-                zu_wem = input("zu Wem? ")
-
-                if zu_wem not in probleme.probleme:
-                    print()
-                    print("Diese Person hat keine Fehler gefunden")
-                    time.sleep(2)
-                    funktions.zeilen_loeschen(3)
-                    continue
-
-                elif zu_wem == "":
-                    return 1
-
-                else:
-                    break
-
-            probleme_anzeigen(zu_wem)
-
-            input("fertig? ")
-
-        else:
+        if zu_wem == "0":
             sound.musik_stoppen()
-            return 1
+            break
+
+        if zu_wem == "":
+            sound.musik_stoppen()
+            break
+
+        funktions.zeilen_loeschen(1)
+
+        if zu_wem not in probleme.probleme:
+            print("Diese Person hat keine Fehler gefunden")
+            time.sleep(2)
+            funktions.zeilen_loeschen(1)
+            continue
+
+        probleme_anzeigen(zu_wem)
+
+        input("fertig? ")
+        
+        continue
 
   
 
@@ -132,8 +124,10 @@ def probleme_anzeigen(von_wem_gemeldet):
     for problem in probleme.probleme[von_wem_gemeldet]:
         print(f"{HELL_MAGENTA}----{problem['id']}----{RESET}")
         print(f"Beschreibung: {problem['beschreibung']}")
+
         if problem['status'] == "behoben":
             print(f"{GRUEN}Status      : {problem['status']}{RESET}")
         else:
             print(f"{HELL_ROT}Status      : {problem['status']}{RESET}")
+            
         print()

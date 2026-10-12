@@ -1,9 +1,11 @@
 GRUEN  = "\033[32m"
 GELB   = "\033[33m"
 CYAN   = "\033[36m"
-RESET  = "\033[0m"
 ROT    = "\033[31m"
 ORANGE = "\033[38;5;208m"
+MAGENTA  = "\033[35m"
+
+RESET  = "\033[0m"
 
 
 anmelden_menue = [
@@ -36,8 +38,10 @@ charakter_bip_menue = [
 
 einstellungen_menue = [
     "[1] Profil",
-    "[2] Credits",
-    "[3] Wichtige Links",
+    "[2] Audio",
+    f"{MAGENTA}[3] Credits{RESET}",
+    "[4] Wichtige Links",
+    "[5] Hilfe & Fehlerbehebung",
     "[0] Zurueck"
 ]
 #->Y
@@ -47,6 +51,22 @@ profil_menue = [
     f"{ORANGE}[3] Profil Zuruecksetzen{RESET}",
     f"{ROT}[4] Profil Loeschen{RESET}",
     "[5] Passwort-sichtbarkeit aendern",
+    "[0] Zurueck"
+]
+#->Y
+audio_menue = [
+    "[1] Ton        (an/aus) schalten",
+    "[2] Main Musik (an/aus) schalten",
+    "[3] Generelle Lautstaerke aendern",
+    "[0] Zurueck"
+]
+
+hilfe_menue = [
+    "[1] Python 3.15 installieren / pruefen",
+    "[2] Falsche Python-Version beheben",
+    "[3] PDF-Hilfen oeffnen",
+    "[4] Crash-Logs anzeigen",
+    "[5] GitHub Issue melden",
     "[0] Zurueck"
 ]
 

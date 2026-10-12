@@ -15,23 +15,33 @@ def ressourcen_anzeigen():
         print(f"{schlüssel :10} : {wert}")
 
 
-def ressourcen_verändern(welche, wie_viel):
+def ressourcen_verändern(welche_1, wie_viel_1, welche_2=None, wie_viel_2=None):
     #-Bestätigung-#
-    bestaetigung = input(f"Möchtest du den Deal {wie_viel} {welche} eingehen? ")
+    bestaetigung = input(f"Möchtest du den Deal {wie_viel_1} {welche_1} eingehen? ")
 
     if bestaetigung == "ja":
 
-        if wie_viel < 0:
-            if abs(wie_viel) <= ressourcen[welche]:
-                ressourcen[welche] = ressourcen[welche] + wie_viel
-            else:
-                print(f"Zu wenig {welche}")
-                time.sleep(2)
-                os.system(confic.terminal_clear)
-                return 1
+        if wie_viel_1 < 0:
+            if welche_2 != None and wie_viel_2 != None:
+                if abs(wie_viel_1) <= ressourcen[welche_1] and abs(wie_viel_2) <= ressourcen[welche_2]:
+                    ressourcen[welche_1] = ressourcen[welche_1] + wie_viel_1
+                    ressourcen[welche_2] = ressourcen[welche_2] + wie_viel_2
+                
+                else:
+                    print(f"Zu wenig {welche_1} oder {welche_2}")
+                    time.sleep(2)
+                    os.system(confic.terminal_clear)
+                    return 1
 
-        elif wie_viel > 0:
-            ressourcen[welche] = ressourcen[welche] + wie_viel
+            elif welche_2 == None and wie_viel_2 == None:
+                if abs(wie_viel_1) <= ressourcen[welche_1]:
+                    ressourcen[welche_1] = ressourcen[welche_1] + wie_viel_1
+                
+                else:
+                    print(f"Zu wenig {welche_1}")
+                    time.sleep(2)
+                    os.system(confic.terminal_clear)
+                    return 1
 
     else:
         print("Kauf abgebrochen.")

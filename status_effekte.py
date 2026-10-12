@@ -24,15 +24,27 @@ class StatusEffekt:
 
 
 #----Buffs----#
+
+#generell
 betaeubt = StatusEffekt("betaeubt", 1, 0)
 schaden_plus = StatusEffekt("schaden_plus", 2, 1.3)
 schaden_minus = StatusEffekt("schaden_minus", 2, 0.7)
 schaden_erhalten_minus = StatusEffekt("schaden_erhalten_minus", 5, 0.7)
 
-damage_over_time_1 = StatusEffekt("damage_over_time_1", 2, -10)
-healing_over_time_1 = StatusEffekt("healing_over_time_1", 2, 10)
+damage_over_time_1 = StatusEffekt("damage_over_time_1", 2, -20)
+healing_over_time_1 = StatusEffekt("healing_over_time_1", 2, 20)
 
-die_Roehre = StatusEffekt("die_Roehre", 99, 0)
+#allgemein
+beeindruckt = StatusEffekt("beeindruckt", 3, 1)
+verunsichert = StatusEffekt("verunsichert", 2, 0.75)
+unverwundbar = StatusEffekt("unverwundbar", 2, 1)
+blossgestellt = StatusEffekt("blossgestellt", 2, 0.6)
+
+#spezial
+die_Roehre = StatusEffekt("die_Roehre", 99, 1)
+belehrt_ueber_die_geschichte = StatusEffekt("belehrt_ueber_die_geschichte", 10, 1)
+belehrt_ueber_die_geschichte_k = StatusEffekt("belehrt_ueber_die_geschichte_k", 3, 1)
+von_Hannah_d_unterstuetzt = StatusEffekt("von_Hannah_d_unterstuetzt", 99, 1)
 
 
 
@@ -44,6 +56,17 @@ def status_effekte_ausgeben(von_wem):
 def status_effekte_hinzufügen(wem, was):
 
     effekte = charaktere.Charaktere[wem].status_effekte
+
+    if isinstance(was, str):
+        for effekt in globals().values():
+            if isinstance(effekt, StatusEffekt) and effekt.name == was:
+                was = effekt
+                break
+        else:
+            return
+
+    if not hasattr(was, "name"):
+        return
 
     for i, effekt in enumerate(effekte):
         if effekt.name == was.name:

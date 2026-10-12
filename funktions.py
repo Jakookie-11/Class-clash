@@ -5,6 +5,7 @@ import json
 import confic
 from urllib.request import urlopen
 
+
 def menue(liste, spieler_name=None,):
 
     while True:
@@ -15,10 +16,24 @@ def menue(liste, spieler_name=None,):
         for schlüssel in liste:
             print(schlüssel)
 
+        #--zusätze für manche menüs---#
         if liste == menues.profil_menue:
             print()
             print(f"Aktuelle Passwort_sichtbarkeit: {confic.passwort_sichtbarkeit}")
             print()
+
+        if liste == menues.audio_menue:
+            print()
+
+            if confic.ton == True:
+                print(f"Ton        : An")
+            else:
+                print(f"Ton        : Aus")
+
+            if confic.main_musik == True:
+                print(f"Main Musik : An")
+            else:
+                print(f"Main Musik : Aus")
 
         #---Wahl---#
         auswahl = input("Wahl? ")

@@ -79,7 +79,6 @@ def bild_rechts_anzeigen(name):
     bild_pfad = BILDER_ORDNER / f"CC-{name}.png"
     if not bild_pfad.exists():
         bild_rechts_schliessen()
-        print(f"Bild nicht gefunden: {bild_pfad}")
         return
 
     with Image.open(bild_pfad) as quellbild:
