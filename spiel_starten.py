@@ -1059,7 +1059,20 @@ def kampf(
 
             os.system(confic.terminal_clear)
 
-            print("Team 1 hat gewonnen!")
+            print()
+            print("Team 2 hat gewonnen!")
+            
+            if musik != None:
+                musik = musik.removesuffix(".mp3")
+                print()
+                print("-------------------------------")
+                print("Musik Ttel:")
+                print(musik)
+                print(f"{MAGENTA}Genauere Infos zur Musik in den Credits.{RESET}")
+                print("-------------------------------")
+
+            print()
+            input("Enter...")
 
             time.sleep(2)
 
@@ -1085,7 +1098,19 @@ def kampf(
             print()
             print("Team 2 hat gewonnen!")
 
-            time.sleep(2)
+            if musik != None:
+                musik = musik.removesuffix(".mp3")
+                print()
+                print("-------------------------------")
+                print("Musik Ttel:")
+                print()
+                print(f"{CYAN}{musik}{RESET}")
+                print()
+                print(f"{MAGENTA}Genauere Infos zur Musik in den Credits.{RESET}")
+                print("-------------------------------")
+
+            print()
+            input("Enter...")
 
             os.system(confic.terminal_clear)
 

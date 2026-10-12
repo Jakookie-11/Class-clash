@@ -222,11 +222,11 @@ Wichtige Dateien:
 
 ```text
 Class-clash/
-├── begin.py                 # Ersteinrichtung und Login/Register
-├── main.py                  # Hauptspielschleife und Menüsteuerung
-├── kampange.py              # Kampagnenlogik, Story und Kämpfe
-├── spiel_starten.py         # Kampfstart, Benutzerkämpfe und KI-Setup
-├── charaktere.py            # Charakterdaten, Werte und Basislogik
+├── begin.py                # Ersteinrichtung und Login/Register
+├── main.py                 # Hauptspielschleife und Menüsteuerung
+├── kampange.py             # Kampagnenlogik, Story und Kämpfe
+├── spiel_starten.py        # Kampfstart, Benutzerkämpfe und KI-Setup
+├── charaktere.py           # Charakterdaten, Werte und Basislogik
 ├── charakter_bip.py        # Charakterbibliothek und Leveln
 ├── shop.py                 # Shop und Ressourcenfunktionen
 ├── einstellungen.py        # Profil- und Audio-Einstellungen
