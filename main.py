@@ -1,20 +1,4 @@
-import os
-import time
-import sys
-import subprocess
 import start_pruefung
-import confic
-import funktions
-import menues
-import charakter_bip
-import shop
-import spiel_starten
-import speichern
-import begin
-import einstellungen
-import crash_handler
-import herausforderungen
-import sound
 
 try:
     start_pruefung.pruefe_startvoraussetzungen()
@@ -26,16 +10,24 @@ except SystemExit as err:
     print()
     print(str(err))
     print()
-    print("[1] Hilfe & Fehlerbehebung anzeigen")
-    print("[2] Nur beenden")
-    wahl = input("Wahl? ")
-    if wahl == "1":
-        try:
-            einstellungen.hilfe_und_fehlerbehebung("Start")
-        except Exception:
-            pass
-    raise SystemExit(1)
+    input("Enter...")
 
+import os
+import time
+import sys
+import subprocess
+import confic
+import funktions
+import menues
+import charakter_bip
+import shop
+import spiel_starten
+import speichern
+import begin
+import crash_handler
+import herausforderungen
+import sound
+import einstellungen
 
 SCHWARZ  = "\033[30m"
 ROT      = "\033[31m"
