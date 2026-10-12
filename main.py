@@ -10,7 +10,15 @@ except SystemExit as err:
     print()
     print(str(err))
     print()
-    input("Enter...")
+    print("[1] Hilfe & Fehlerbehebung anzeigen")
+    print("[2] Nur beenden")
+    print()
+    wahl = input("Wahl? ")
+    if wahl == "1":
+        try:
+            start_pruefung.hilfe_und_fehlerbehebung("Crash")
+        except Exception:
+            pass
 
 import os
 import time
@@ -186,7 +194,7 @@ except Exception:
     wahl = input("Wahl? ")
     if wahl == "1":
         try:
-            einstellungen.hilfe_und_fehlerbehebung("Crash")
+            start_pruefung.hilfe_und_fehlerbehebung("Crash")
         except Exception:
             pass
 

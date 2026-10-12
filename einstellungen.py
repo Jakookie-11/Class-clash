@@ -12,6 +12,7 @@ import funktions
 import credits
 import speichern
 import sound
+import start_pruefung
 
 
 SCHWARZ  = "\033[30m"
@@ -66,7 +67,7 @@ def einstellungen(spieler_name):
         elif wahl == 5:
             os.system(confic.terminal_clear)
 
-            hilfe_und_fehlerbehebung(spieler_name)
+            start_pruefung.hilfe_und_fehlerbehebung(spieler_name)
 
         else:
             speichern.spiel_speichern(spieler_name)
@@ -503,16 +504,14 @@ def audio(spieler_name):
             continue
 
 
-
-
 def wichtige_links_zeigen():
 
     wichtige_links = {
         "Python 3.15 Download    " : "https://www.python.org/downloads/release/python-3150/",
         "README.pdf              " : "Datei im Spielordner: README.pdf",
         "README.md               " : "Datei im Spielordner: README.md",
-        "Installation PDF        " : "Datei im Spielordner: Class Clash – Installation unter Windows.pdf",
-        "Installation MD         " : "Datei im Spielordner: Class Clash – Installation unter Windows.md",
+        "Installation PDF        " : "Datei im Spielordner: Class Clash - Installation unter Windows.pdf",
+        "Installation MD         " : "Datei im Spielordner: Class Clash - Installation unter Windows.md",
         "More info PDF           " : "Datei im Spielordner: More info.pdf",
         "Github des Spiels       " : "https://github.com/Jakookie-11/Class-clash",
         "Issues des Spiels melden" : "https://github.com/Jakookie-11/Class-clash/issues",
@@ -526,7 +525,7 @@ def wichtige_links_zeigen():
     print("Wenn du beim Start einen Python-Fehler siehst, pruefe zuerst:")
     print("- Python 3.15 64-Bit")
     print("- README.pdf oder README.md")
-    print("- Class Clash – Installation unter Windows.pdf")
+    print("- Class Clash - Installation unter Windows.pdf")
     print()
 
     for schlüssel, wert in wichtige_links.items():
@@ -536,132 +535,4 @@ def wichtige_links_zeigen():
     print("Hinweis: Class Clash benoetigt CPython 3.15 (64-Bit).")
     print("Falls ein Fehler auftritt, schau auch in den Ordner 'crash_logs/'.")
     print()
-    print("[Enter] Weiter ansehen / [0] Zurueck")
-    eingabe = input("Wahl? ")
-    if eingabe == "0":
-        return 1
-
-
-
-def hilfe_und_fehlerbehebung(spieler_name):
-
-    while True:
-        os.system(confic.terminal_clear)
-
-        print("══════════════════════════════")
-        print("   Hilfe & Fehlerbehebung")
-        print("══════════════════════════════")
-        print()
-        print("[1] Python 3.15 installieren / pruefen")
-        print("[2] Falsche Python-Version beheben")
-        print("[3] PDF-Hilfen oeffnen")
-        print("[4] Crash-Logs anzeigen")
-        print("[5] GitHub Issue melden")
-        print("[0] Zurueck")
-        print()
-
-        wahl = input("Wahl? ")
-
-        if wahl == "0":
-            return 1
-
-        if wahl == "1":
-            os.system(confic.terminal_clear)
-            print("Python 3.15 (64-Bit) erforderlich")
-            print("=================================")
-            print()
-            print("1. Python 3.15 64-Bit installieren:")
-            print("   https://www.python.org/downloads/release/python-3150/")
-            print()
-            print("2. Beim Installer 'Add python.exe to PATH' aktivieren.")
-            print("3. Danach in PowerShell prüfen:")
-            print("   py -3.15 --version")
-            print("4. Wenn die Version 3.15.x angezeigt wird, geht es weiter.")
-            print()
-            print("[Enter] Zurueck zum Hilfe-Menue / [0] Beenden")
-            eingabe = input("Wahl? ")
-            if eingabe == "0":
-                return 1
-            continue
-
-        if wahl == "2":
-            os.system(confic.terminal_clear)
-            print("Falsche Python-Version beheben")
-            print("=============================")
-            print()
-            print("Wenn Class Clash meldet, dass Python 3.15 (64-Bit) erforderlich ist, dann:")
-            print("- Python 3.15 64-Bit neu oder erneut installieren")
-            print("- Pfad prüfen und PowerShell neu starten")
-            print("- Danach genau so starten:")
-            print("  py -3.15 main.py")
-            print()
-            print("Oder eine neue virtuelle Umgebung erstellen:")
-            print("  python -m venv .venv")
-            print("  .\\.venv\\Scripts\\Activate.ps1")
-            print("  python -m pip install -r requirements.txt")
-            print()
-            print("Danach: python main.py")
-            print()
-            print("[Enter] Zurueck zum Hilfe-Menue / [0] Beenden")
-            eingabe = input("Wahl? ")
-            if eingabe == "0":
-                return 1
-            continue
-
-        if wahl == "3":
-            os.system(confic.terminal_clear)
-            dateien = [
-                "README.pdf",
-                "More info.pdf",
-                "Class Clash – Installation unter Windows.pdf",
-                "README.md",
-                "More info.md",
-                "Class Clash – Installation unter Windows.md",
-            ]
-
-            print("PDF-Hilfen werden geöffnet...")
-            for datei in dateien:
-                if os.path.exists(datei):
-                    try:
-                        os.startfile(datei)
-                    except Exception:
-                        pass
-            print()
-            print("[Enter] Zurueck zum Hilfe-Menue / [0] Beenden")
-            eingabe = input("Wahl? ")
-            if eingabe == "0":
-                return 1
-            continue
-
-        if wahl == "4":
-            os.system(confic.terminal_clear)
-            ordner = os.path.join(os.getcwd(), "crash_logs")
-            os.makedirs(ordner, exist_ok=True)
-            print("Crash-Logs Ordner wird geöffnet:")
-            print(ordner)
-            try:
-                os.startfile(ordner)
-            except Exception:
-                pass
-            print()
-            print("[Enter] Zurueck zum Hilfe-Menue / [0] Beenden")
-            eingabe = input("Wahl? ")
-            if eingabe == "0":
-                return 1
-            continue
-
-        if wahl == "5":
-            os.system(confic.terminal_clear)
-            url = "https://github.com/Jakookie-11/Class-clash/issues"
-            print("GitHub Issues werden geöffnet:")
-            print(url)
-            try:
-                webbrowser.open(url, new=2)
-            except Exception:
-                pass
-            print()
-            print("[Enter] Zurueck zum Hilfe-Menue / [0] Beenden")
-            eingabe = input("Wahl? ")
-            if eingabe == "0":
-                return 1
-            continue
+    input("Enter...")
