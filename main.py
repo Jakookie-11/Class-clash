@@ -3,9 +3,6 @@ import time
 import sys
 import subprocess
 import start_pruefung
-
-start_pruefung.pruefe_startvoraussetzungen()
-
 import confic
 import funktions
 import menues
@@ -18,6 +15,26 @@ import einstellungen
 import crash_handler
 import herausforderungen
 import sound
+
+try:
+    start_pruefung.pruefe_startvoraussetzungen()
+except SystemExit as err:
+    print()
+    print("══════════════════════════════════════════════════")
+    print("            CLASS CLASH - STARTFEHLER")
+    print("══════════════════════════════════════════════════")
+    print()
+    print(str(err))
+    print()
+    print("[1] Hilfe & Fehlerbehebung anzeigen")
+    print("[2] Nur beenden")
+    wahl = input("Wahl? ")
+    if wahl == "1":
+        try:
+            einstellungen.hilfe_und_fehlerbehebung("Start")
+        except Exception:
+            pass
+    raise SystemExit(1)
 
 
 SCHWARZ  = "\033[30m"
@@ -146,12 +163,15 @@ except Exception:
 
     print("Leider ist ein unerwarteter Fehler aufgetreten.")
     print()
+    print("Das Spiel ist nicht absichtlich beendet worden, sondern hat einen internen Fehler erkannt.")
+    print("Ein Fehlerbericht wurde erstellt, damit der Fehler nachvollziehbar bleibt.")
+    print("Wenn du hilfe brauchst, kannst du die Hilfe & Fehlerbehebung direkt hier öffnen.")
+    print()
 
     if spielstand_gespeichert:
         print("Dein Spielstand wurde automatisch gespeichert.")
     else:
         print("Der Spielstand konnte nicht automatisch gespeichert werden.")
-    print("Ein Fehlerbericht wurde erstellt.")
     print()
 
     print("Bitte sende den Fehlerbericht an den Entwickler,")
@@ -168,13 +188,24 @@ except Exception:
     print("Bitte sende genau diese Datei an den Entwickler.")
     print()
 
+    print("[1] Hilfe & Fehlerbehebung anzeigen")
+    print("[2] Nur beenden")
+    print()
+    wahl = input("Wahl? ")
+    if wahl == "1":
+        try:
+            einstellungen.hilfe_und_fehlerbehebung("Crash")
+        except Exception:
+            pass
+
+    print()
     print("Class Clash wird jetzt beendet.")
     print()
 
     input("Drücke ENTER zum Beenden...")
 
     print()
-    print("Falls es dich interessiert, dass ist der fehler: ")
+    print("Falls es dich interessiert, hier ist der Fehler-Text:")
     print()
 
     # Ursprünglichen Fehler weiterhin anzeigen

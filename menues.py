@@ -41,6 +41,7 @@ einstellungen_menue = [
     "[2] Audio",
     f"{MAGENTA}[3] Credits{RESET}",
     "[4] Wichtige Links",
+    "[5] Hilfe & Fehlerbehebung",
     "[0] Zurueck"
 ]
 #->Y
@@ -57,6 +58,15 @@ audio_menue = [
     "[1] Ton        (an/aus) schalten",
     "[2] Main Musik (an/aus) schalten",
     "[3] Generelle Lautstaerke aendern",
+    "[0] Zurueck"
+]
+
+hilfe_menue = [
+    "[1] Python 3.15 installieren / pruefen",
+    "[2] Falsche Python-Version beheben",
+    "[3] PDF-Hilfen oeffnen",
+    "[4] Crash-Logs anzeigen",
+    "[5] GitHub Issue melden",
     "[0] Zurueck"
 ]
 
