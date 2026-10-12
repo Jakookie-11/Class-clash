@@ -20,9 +20,9 @@
 
 ## Voraussetzungen
 
-- Python 3.14 oder eine kompatible Python-Version
+- CPython 3.15 (64-Bit, Windows), passend zur Erweiterung `geheimes.cp315-win_amd64.pyd`
 - Eine Konsole beziehungsweise ein Terminal
-- Internetzugang nur für Updates erforderlich
+- Internetzugang für Updates und gegebenenfalls die automatische Installation fehlender Pakete erforderlich
 
 ## Installation
 
@@ -38,6 +38,9 @@
    ```bash
    python -m pip install -r requirements.txt
    ```
+
+   Beim Start prüft Class Clash zusätzlich die Python-Kompatibilität und installiert
+   fehlende Pakete aus `requirements.txt` automatisch.
 
    Optional empfiehlt sich dafür eine virtuelle Umgebung:
 
