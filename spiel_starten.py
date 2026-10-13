@@ -132,12 +132,14 @@ def benutzerdefinierten_kampf_starten(spieler_name):
     gegner_typ = ganzzahl_einlesen("Auswahl: ", 1, 2)
 
     ki_stufe = 1
+    gegner_level = 1
     spieler_2_name = None
     spieler_2_charakterdaten = None
     if gegner_typ == 1:
         print()
         print("KI-Stufen: 1 Zufällig, 2 Taktisch, 3 Stark, 4 Meister")
         ki_stufe = ganzzahl_einlesen("KI-Stufe (1-4): ", 1, 4)
+        gegner_level = ganzzahl_einlesen("Level der Gegner (1-20): ", 1, 20)
     else:
         verfuegbare_spieler = [
             name
@@ -176,6 +178,7 @@ def benutzerdefinierten_kampf_starten(spieler_name):
         team_groesse_2=team_groesse_2,
         Ki=ki_stufe,
         gegner_ki=gegner_typ == 1,
+        gegner_level=gegner_level,
         benutzerdefiniert=True,
         spieler_2_aktiv=gegner_typ == 2,
         spieler_2_charakterdaten=spieler_2_charakterdaten,
@@ -188,6 +191,7 @@ def charaktere_auswaelen(
     team_groesse=2,
     ki_aktiv=False,
     spieler_name=None,
+    anzeige_level=None,
 ):
 
     os.system(confic.terminal_clear)
@@ -224,7 +228,10 @@ def charaktere_auswaelen(
             if nummer > 0:
                 print()
             for name in gruppe:
-                print(name)
+                if anzeige_level is None:
+                    print(name)
+                else:
+                    print(f"{name} (Level {anzeige_level})")
     else:
         normale_charaktere = [
             name
@@ -425,6 +432,8 @@ def kampf_name_anzeigen(name):
     charakter = charaktere.Charaktere[name]
     if getattr(charakter, "spieler_2_charakter", False):
         return f"{charakter.name} (Person 2)"
+    if getattr(charakter, "kampf_gegner", False):
+        return charakter.name
     return name
 
 
@@ -559,6 +568,23 @@ def spieler_2_charaktere_kopieren(team_2, charakterdaten):
     return neue_team_2
 
 
+def kampf_gegner_auf_level_setzen(team_2, level):
+    neue_team_2 = []
+    for nummer, name in enumerate(team_2, start=1):
+        neuer_name = f"{name}__kampfgegner_{nummer}"
+        while neuer_name in charaktere.Charaktere:
+            neuer_name = f"_{neuer_name}"
+
+        kopie = copy.deepcopy(charaktere.Charaktere[name])
+        charaktere.charakter_auf_level_setzen(kopie, level)
+        kopie.kampf_klon = True
+        kopie.kampf_gegner = True
+        charaktere.Charaktere[neuer_name] = kopie
+        neue_team_2.append(neuer_name)
+
+    return neue_team_2
+
+
 def kampf_klone_entfernen(klone):
     for name in klone:
         charaktere.Charaktere.pop(name, None)
@@ -612,6 +638,7 @@ def kampf(
     spieler_2_aktiv=False,
     spieler_2_charakterdaten=None,
     spieler_2_name=None,
+    gegner_level=1,
 ):
 
     os.system(confic.terminal_clear)
@@ -648,6 +675,11 @@ def kampf(
                 team_groesse=team_groesse_2,
                 ki_aktiv=gegner_ki,
                 spieler_name=spieler_2_name if spieler_2_aktiv else None,
+                anzeige_level=(
+                    gegner_level
+                    if benutzerdefiniert and gegner_ki
+                    else None
+                ),
             )
         )
 
@@ -655,6 +687,10 @@ def kampf(
         team_2 = list(team_2)
 
     kampf_klone = set()
+    if benutzerdefiniert and gegner_ki:
+        team_2 = kampf_gegner_auf_level_setzen(team_2, gegner_level)
+        kampf_klone.update(team_2)
+
     if spieler_2_aktiv and spieler_2_charakterdaten is not None:
         team_2 = spieler_2_charaktere_kopieren(
             team_2,
