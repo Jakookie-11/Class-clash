@@ -376,12 +376,13 @@ in einem portablen Ordner; auf dem Ziel-PC muss Python nicht installiert sein.
    Beim ersten Lauf wird PyInstaller installiert; dafür ist eine
    Internetverbindung erforderlich.
 3. Nach erfolgreichem Build liegt
-   `dist\Class-Clash-Windows-x64.zip` bereit. Teile diese ZIP-Datei, nicht
-   einzelne Dateien aus dem Build-Ordner.
-4. Die andere Person entpackt die ZIP vollständig in einen beschreibbaren
-   Ordner und startet `Class Clash.exe`. Spielstände und Einstellungen werden
-   im `saves`-Ordner neben der EXE angelegt. Persönliche Spielstände und
-   Crash-Logs aus dem Quellprojekt werden nicht in den Build übernommen.
+   `dist\Class-Clash-Windows-x64.zip` bereit. Die ZIP enthält eine einzelne
+   EXE; Bilder sowie persönliche Spielstände und Crash-Logs werden nicht
+   mitgeliefert. Die für das Spiel benötigte native Erweiterung ist in der EXE
+   gebündelt.
+4. Die andere Person entpackt die ZIP in einen beschreibbaren Ordner und
+   startet `Class Clash.exe`. Spielstände und Einstellungen werden im `saves`-
+   Ordner neben der EXE angelegt.
 
 Der Build ist für 64-Bit-Windows gedacht. EXE-Updates werden nicht automatisch
 installiert; bei einem verfügbaren Update muss die neue ZIP von der

@@ -12,10 +12,6 @@ for directory in ("musik", "Down_in_Mars"):
         raise FileNotFoundError(f"Required game assets are missing: {source}")
     datas.append((str(source), directory))
 
-image_directory = project / "bilder"
-if image_directory.is_dir():
-    datas.append((str(image_directory), "bilder"))
-
 for filename in (
     "standard.json",
     "version.txt",
@@ -58,13 +54,4 @@ exe = EXE(
     upx=True,
     console=True,
     disable_windowed_traceback=False,
-)
-coll = COLLECT(
-    exe,
-    a.binaries,
-    a.datas,
-    strip=False,
-    upx=True,
-    upx_exclude=[],
-    name="Class Clash",
 )

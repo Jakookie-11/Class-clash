@@ -8,8 +8,8 @@ from pathlib import Path
 
 PROJECT = Path(__file__).resolve().parent
 DIST = PROJECT / "dist"
-APP = DIST / "Class Clash"
 ARCHIVE = DIST / "Class-Clash-Windows-x64.zip"
+EXE = DIST / "Class Clash.exe"
 
 
 def main():
@@ -47,21 +47,11 @@ def main():
         check=True,
     )
 
-    if not (APP / "Class Clash.exe").is_file():
-        raise FileNotFoundError(f"The EXE was not created: {APP / 'Class Clash.exe'}")
+    if not EXE.is_file():
+        raise FileNotFoundError(f"The EXE was not created: {EXE}")
 
     with zipfile.ZipFile(ARCHIVE, "w", zipfile.ZIP_DEFLATED) as archive:
-        for file_path in APP.rglob("*"):
-            if file_path.is_file():
-                relative_path = file_path.relative_to(APP)
-                if relative_path.parts[0] in {"saves", "crash_logs", "update"}:
-                    continue
-                if relative_path.name == "update.zip":
-                    continue
-                archive.write(
-                    file_path,
-                    file_path.relative_to(DIST),
-                )
+        archive.write(EXE, EXE.name)
 
     print(f"Build complete: {ARCHIVE}")
 
