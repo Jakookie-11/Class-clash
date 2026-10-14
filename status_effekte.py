@@ -35,10 +35,12 @@ damage_over_time_1 = StatusEffekt("damage_over_time_1", 2, -20)
 healing_over_time_1 = StatusEffekt("healing_over_time_1", 2, 20)
 
 #allgemein
-beeindruckt = StatusEffekt("beeindruckt", 3, 1)
+beeindruckt = StatusEffekt("beeindruckt", 3, 1.2)
 verunsichert = StatusEffekt("verunsichert", 2, 0.75)
 unverwundbar = StatusEffekt("unverwundbar", 2, 1)
 blossgestellt = StatusEffekt("blossgestellt", 2, 0.6)
+wir_sind_ein_team = StatusEffekt("wir_sind_ein_team", 4, 1.2)
+perfekte_vorlage = StatusEffekt("perfekte_vorlage", 1, 2)
 
 #spezial
 die_Roehre = StatusEffekt("die_Roehre", 99, 1)

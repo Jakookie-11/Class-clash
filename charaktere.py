@@ -170,7 +170,7 @@ Leo = charakter(
     80,
     1,
     faehigkeit_1=faehigkeiten.einfacher_angriff_b,
-    faehigkeit_2=faehigkeiten.direkter_kommentar,
+    faehigkeit_2=faehigkeiten.direkter_kommentar_Leo,
     faehigkeit_3=faehigkeiten.i_know_the_game
 )
 
@@ -203,9 +203,9 @@ Max = charakter(
     "boy",
     90,
     1,
-    faehigkeit_1=faehigkeiten.einfacher_angriff_b,
+    faehigkeit_1=faehigkeiten.aufschlag,
     faehigkeit_2=faehigkeiten.knielauf,
-    faehigkeit_3=faehigkeiten.blutiger_schlag
+    faehigkeit_3=faehigkeiten.perfekte_vorlage
 )
 
 
@@ -250,7 +250,7 @@ Sascha = charakter(
     80,
     80,
     80,
-    -10,
+    -30,
     "boy",
     74,
     1,
@@ -277,7 +277,21 @@ Paul = charakter(
 )
 
 
-
+#---Medine---#
+Medine = charakter(
+    "Medine",
+    "unterstuetzer",
+    100,
+    100,
+    100,
+    -10,
+    "girl",
+    30.5,
+    1,
+    faehigkeit_1=faehigkeiten.spontane_aktion,
+    faehigkeit_2=faehigkeiten.direkter_kommentar_Medine,
+    faehigkeit_3=faehigkeiten.mitreissen
+)
 
 
 
@@ -843,6 +857,7 @@ Charaktere = {
     "Sascha"  : Sascha,
     "Noah"    : Noah,
     "Paul"    : Paul,
+    "Medine"  : Medine,
 
     #Down in Mars
     "John": John,

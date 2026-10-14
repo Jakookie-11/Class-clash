@@ -121,7 +121,10 @@ def effekte_berügsichtigen(wer):
     elif status_effekte.status_effekt_vorhanden(wer, "verunsichert"):
         to_return *= status_effekte.verunsichert.wert
     elif status_effekte.status_effekt_vorhanden(wer, "beeindruckt"):
-        to_return *= 1.2
+        to_return *= status_effekte.beeindruckt.wert
+
+    if status_effekte.status_effekt_vorhanden(wer, "wir_sind_ein_team"):
+        to_return *= status_effekte.wir_sind_ein_team.wert
 
     return to_return
 
@@ -313,7 +316,6 @@ bleibender_schlag = faehigkeit(
 def einfacher_angriff_b_obj(wer, wen, eigenes_team=None):
 
     import geheimes
-
     schaden = geheimes.einfacher_angriff_b_obj(wer, wen, eigenes_team)
 
     HP_verändern(wen, schaden)
@@ -331,7 +333,6 @@ einfacher_angriff_b = faehigkeit(
 def einfacher_angriff_g_obj(wer, wen, eigenes_team=None):
 
     import geheimes
-
     schaden = geheimes.einfacher_angriff_g_obj(wer, wen, eigenes_team)
 
     HP_verändern(wen, schaden)
@@ -352,7 +353,6 @@ einfacher_angriff_g = faehigkeit(
 def jakobs_basic_obj(wer, wen, eigenes_team, gegner_team):
 
     import geheimes
-
     schaden = geheimes.geheime_attake_jakob(wer, wen, eigenes_team, gegner_team)
 
     HP_verändern(wen, schaden)
@@ -373,7 +373,6 @@ jakobs_basic = faehigkeit(
 def balance_obj(wer, wen, eigenes_team):
 
     import geheimes
-
     schaden = geheimes.einfacher_angriff_g_obj(wer, wen, eigenes_team)
     schaden *= 1.5
     if wen == "Mohamed":
@@ -416,10 +415,26 @@ ich_mach_mit = faehigkeit(
 # Max
 # ══════════════════════════════════════════════════════════════
 
+def aufschlag_obj(wer, wen, eigenes_team):
+
+    import geheimes
+    schaden = geheimes.einfacher_angriff_b_obj(wer, wen, eigenes_team)
+
+    HP_verändern(wen, schaden)
+
+aufschlag = faehigkeit(
+    "aufschlag",
+    aufschlag_obj,
+    "Max macht einen aufschlag, aber direkt auf den Gegner",
+    0,
+    0,
+    "gegner"
+)
+
+
 def knielauf_obj(wer, wen, eigenes_team, gegner_team):
 
     import geheimes
-
     schaden = geheimes.einfacher_angriff_b_obj(wer, wen, eigenes_team)
 
     charakter = charaktere.Charaktere[wen]
@@ -446,6 +461,23 @@ knielauf = faehigkeit(
     "gegner"
 )
 
+
+def perfekte_vorlage_obj(wer, wen, eigenes_team):
+
+    status_effekte.status_effekte_hinzufügen(wen, "perfekte_vorlage")
+
+    status_effekte.status_effekte_hinzufügen(random.choice(eigenes_team), "beeindruckt")
+
+perfekte_vorlage = faehigkeit(
+    "perfekte_vorlage",
+    perfekte_vorlage_obj,
+    "Max gibt dem ausgewaehlten verbündeten eine perfekte Vorlage und beeindruckt einen zufaelligen Verbuendeten.",
+    3,
+    1,
+    "verbündete"
+) 
+
+
 # ══════════════════════════════════════════════════════════════
 # Noah
 # ══════════════════════════════════════════════════════════════
@@ -453,7 +485,6 @@ knielauf = faehigkeit(
 def gib_mir_die_roehre_obj(wer, wen, eigenes_team):
 
     import geheimes
-
     schaden = geheimes.einfacher_angriff_b_obj(wer, wen, eigenes_team)
 
     if status_effekte.status_effekt_vorhanden(wer, "die_Roehre"):
@@ -507,7 +538,6 @@ leberkaesbroetchen_essen = faehigkeit(
 def Simons_basic_obj(wer, wen, eigenes_team):
 
     import geheimes
-
     schaden = geheimes.einfacher_angriff_b_obj(wer, wen, eigenes_team)
 
     counter = 0
@@ -534,7 +564,6 @@ Simons_basic = faehigkeit(
 def habe_ich_da_Geschichte_gehoert_obj(wer, wen, eigenes_team, gegner_team):
 
     import geheimes
-
     schaden = geheimes.einfacher_angriff_b_obj(wer, wen, eigenes_team)
     schaden = schaden / len(gegner_team)
 
@@ -568,7 +597,6 @@ habe_ich_da_Geschichte_gehoert = faehigkeit(
 def i_know_the_game_obj(wer,wen, eigenes_team):
 
     import geheimes 
-
     schaden = geheimes.einfacher_angriff_b_obj(wer, wen, eigenes_team)
     schaden *= 2
 
@@ -576,7 +604,7 @@ def i_know_the_game_obj(wer,wen, eigenes_team):
     status_effekte.status_effekte_hinzufügen(wer, "schaden_erhalten_minus")
     status_effekte.status_effekte_hinzufügen(wer, "healing_over_time_1")
 
-    status_effekte.status_effekte_hinzufügen(wer, "betaeubt")
+    status_effekte.status_effekte_hinzufügen(wen, "betaeubt")
 
     HP_verändern(wen, schaden)
 
@@ -590,10 +618,9 @@ i_know_the_game = faehigkeit(
 )
 
 
-def direkter_kommentar_obj(wer, wen, eigenes_team):
+def direkter_kommentar_Leo_obj(wer, wen, eigenes_team):
 
     import geheimes 
-
     schaden = geheimes.einfacher_angriff_b_obj(wer, wen, eigenes_team)
     schaden *= 1.5
 
@@ -603,9 +630,9 @@ def direkter_kommentar_obj(wer, wen, eigenes_team):
 
     HP_verändern(wen, schaden)
 
-direkter_kommentar = faehigkeit(
-    "direkter_kommentar",
-    direkter_kommentar_obj,
+direkter_kommentar_Leo = faehigkeit(
+    "direkter_kommentar_Leo",
+    direkter_kommentar_Leo_obj,
     "Leo findet die passenden Worte und verunsichert den Gegner. Ein zufälliger Verbündeter wird von seinem selbstsicheren Auftreten beeindruckt.",
     3,
     0,
@@ -620,7 +647,6 @@ direkter_kommentar = faehigkeit(
 def schnappschuss_obj(wer, wen, eigenes_team):
 
     import geheimes 
-
     schaden = geheimes.einfacher_angriff_b_obj(wer, wen, eigenes_team)
 
     HP_verändern(wen, schaden)
@@ -638,7 +664,6 @@ schnappschuss = faehigkeit(
 def auf_4K_ertappt_obj(wer, wen, eigenes_team):
 
     import geheimes 
-
     schaden = geheimes.einfacher_angriff_b_obj(wer, wen, eigenes_team)
     schaden *= 2
 
@@ -659,7 +684,6 @@ auf_4K_ertappt = faehigkeit(
 def teamfoto_obj(wer, wen, eigenes_team, gegner_team):
 
     import geheimes 
-
     schaden = geheimes.einfacher_angriff_b_obj(wer, wen, eigenes_team)
     schaden *= 0.4
 
@@ -681,6 +705,75 @@ teamfoto = faehigkeit(
     1,
     "gegner"
 )
+
+
+# ══════════════════════════════════════════════════════════════
+# Medine
+# ══════════════════════════════════════════════════════════════
+
+def spontane_aktion_obj(wer, wen, eigenes_team):
+
+    import geheimes
+    schaden = geheimes.einfacher_angriff_g_obj(wer, wen, eigenes_team)
+
+    if status_effekte.status_effekt_vorhanden(wer, "von_Hannah_d_unterstuetzt"):
+        schaden *= 1.15
+
+    HP_verändern(wen, schaden)
+
+spontane_aktion = faehigkeit(
+    "spontane_aktion",
+    spontane_aktion_obj,
+    "Medine fuehrt eine spontane Aktion aus. Wenn sie von Hannah_d unterstuetzt ist, wird der schaden um 15% erhoet",
+    0,
+    0,
+    "gegner"
+)
+
+
+def direkter_kommentar_Medine_obj(wer, wen, eigenes_team):
+
+    import geheimes 
+    schaden = geheimes.einfacher_angriff_g_obj(wer, wen, eigenes_team)
+    schaden *= 1.5
+
+    status_effekte.status_effekte_hinzufügen(wen, "verunsichert")
+
+    status_effekte.status_effekte_hinzufügen(random.choice(eigenes_team), "beeindruckt")
+
+    HP_verändern(wen, schaden)
+
+direkter_kommentar_Medine = faehigkeit(
+    "direkter_kommentar_Medine",
+    direkter_kommentar_Medine_obj,
+    "Medine findet die passenden Worte und verunsichert den Gegner. Ein zufälliger Verbündeter wird von ihrem selbstsicheren Auftreten beeindruckt.",
+    3,
+    0,
+    "gegner"
+)
+
+
+def mitreissen_obj(wer, wen, eigenes_team):
+
+    import geheimes 
+    schaden = geheimes.einfacher_angriff_g_obj(wer, wen, eigenes_team)
+
+    for mitglied in eigenes_team:
+        status_effekte.status_effekte_hinzufügen(mitglied, "wir_sind_ein_team")
+
+    HP_verändern(wen, schaden)
+
+mitreissen = faehigkeit(
+    "mitreissen",
+    mitreissen_obj,
+    "Mitreißen - Greift einen Gegner an und verleiht allen Verbündeten den Statuseffekt „Wir sind ein Team“. Gemeinsam sind wir stärker!",
+    7,
+    2,
+    "gegner"
+)
+
+
+
 
 
 

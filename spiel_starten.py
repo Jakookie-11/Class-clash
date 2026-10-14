@@ -93,7 +93,6 @@ def verfuegbare_charaktere(nur_eigenes_team=False, ki_aktiv=False):
         for name, charakter in charaktere.Charaktere.items()
         if charakter.klasse != "npc"
         and charakter.klasse != "down_in_mars_gegner"
-        and charakter.name != "Hannah_d"
     ]
 
 
@@ -215,7 +214,6 @@ def charaktere_auswaelen(
     verfuegbare_anzeige = [
         name
         for name in verfuegbare
-        if charaktere.Charaktere[name].name != "Hannah_d"
     ]
 
     if ki_aktiv:
@@ -257,12 +255,8 @@ def charaktere_auswaelen(
     for nummer in range(1, team_groesse + 1):
         while True:
             name = input(f"Charakter {nummer}: ").strip()
-            ist_hannah = (
-                name in charaktere.Charaktere
-                and charaktere.Charaktere[name].name == "Hannah_d"
-            )
 
-            if name in verfuegbare or ist_hannah:
+            if name in verfuegbare:
                 team.append(name)
                 bilder.bild_rechts_anzeigen(
                     charaktere.Charaktere[name].name
