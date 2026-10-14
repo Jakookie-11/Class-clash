@@ -6,6 +6,7 @@ import bcrypt
 import json
 
 import confic
+from pfade import ressourcen_pfad
 
 import menues
 import funktions
@@ -298,8 +299,7 @@ def profil_zuruecksetzen(spieler_name):
             datei.close()
 
             #---Generelle Daten holen---#
-            datei = "standard.json"
-            datei = open(datei, "r")
+            datei = open(ressourcen_pfad("standard.json"), "r")
             generelle_daten = json.load(datei)
 
             generelle_daten_ressourcen = generelle_daten["ressourcen"]
@@ -508,11 +508,11 @@ def wichtige_links_zeigen():
 
     wichtige_links = {
         "Python 3.15 Download    " : "https://www.python.org/downloads/release/python-3150/",
-        "README.pdf              " : "Datei im Spielordner: README.pdf",
-        "README.md               " : "Datei im Spielordner: README.md",
-        "Installation PDF        " : "Datei im Spielordner: Class Clash - Installation unter Windows.pdf",
-        "Installation MD         " : "Datei im Spielordner: Class Clash - Installation unter Windows.md",
-        "More info PDF           " : "Datei im Spielordner: More info.pdf",
+        "README.pdf              " : "Mitgelieferte PDF-Hilfe",
+        "README.md               " : "Mitgelieferte Hilfe (Markdown)",
+        "Installation PDF        " : "Mitgelieferte PDF-Hilfe",
+        "Installation MD         " : "Mitgelieferte Hilfe (Markdown)",
+        "More info PDF           " : "Mitgelieferte PDF-Hilfe",
         "Github des Spiels       " : "https://github.com/Jakookie-11/Class-clash",
         "Issues des Spiels melden" : "https://github.com/Jakookie-11/Class-clash/issues",
         "Fehlerhilfe             " : "Pruefe crash_logs/ und notiere die Fehler-ID"

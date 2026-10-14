@@ -4,3 +4,5 @@ geheim/
 bilder/
 **/test.py
 *.pyc
+build/
+dist/

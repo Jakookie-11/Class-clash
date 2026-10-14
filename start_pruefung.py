@@ -7,21 +7,22 @@ from pathlib import Path
 import os
 import webbrowser
 import confic
+from pfade import ressourcen_pfad
 
 
 PROJEKT_ORDNER = Path(__file__).resolve().parent
 GEHEIMES_DATEI = PROJEKT_ORDNER / "geheimes.cp315-win_amd64.pyd"
 REQUIREMENTS_DATEI = PROJEKT_ORDNER / "requirements.txt"
 README_DATEI = PROJEKT_ORDNER / "README.md"
-INSTALLATIONS_DATEI = PROJEKT_ORDNER / "Class Clash - Installation unter Windows.md"
+INSTALLATIONS_DATEI = PROJEKT_ORDNER / "Class Clash – Installation unter Windows.md"
 
 
 def _hilfe_ausgeben(fehlermeldung: str):
     hilfe = (
         f"\n{fehlermeldung}\n"
         "\nHilfe:"
-        "\n- Öffne die PDF-Versionen im Spielordner: 'README.pdf', 'More info.pdf' und 'Class Clash - Installation unter Windows.pdf'."
-        "\n- Oder lese die Markdown-Dateien 'README.md' und 'Class Clash - Installation unter Windows.md'."
+        "\n- Öffne die mitgelieferten PDF-Hilfen: 'README.pdf', 'More info.pdf' und 'Class Clash – Installation unter Windows.pdf'."
+        "\n- Oder lies die Markdown-Dateien 'README.md' und 'Class Clash – Installation unter Windows.md'."
         "\n- Nutze zusätzlich den Menüpunkt 'Einstellungen > Wichtige Links' oder 'Einstellungen > Hilfe & Fehlerbehebung' im Spiel."
         "\n- Wichtig: Class Clash braucht CPython 3.15 (64-Bit), nicht eine andere Python-Version(CPython ist aber in der neuen Python version enthalten)."
     )
@@ -29,6 +30,9 @@ def _hilfe_ausgeben(fehlermeldung: str):
 
 
 def pruefe_startvoraussetzungen():
+    if getattr(sys, "frozen", False):
+        return
+
     extension_suffix = sysconfig.get_config_var("EXT_SUFFIX")
     if (
         sys.implementation.name != "cpython"
@@ -149,17 +153,18 @@ def hilfe_und_fehlerbehebung(spieler_name):
             dateien = [
                 "README.pdf",
                 "More info.pdf",
-                "Class Clash - Installation unter Windows.pdf",
+                "Class Clash – Installation unter Windows.pdf",
                 "README.md",
                 "More info.md",
-                "Class Clash - Installation unter Windows.md",
+                "Class Clash – Installation unter Windows.md",
             ]
 
             print("PDF-Hilfen werden geöffnet...")
             for datei in dateien:
-                if os.path.exists(datei):
+                dateipfad = ressourcen_pfad(datei)
+                if dateipfad.exists():
                     try:
-                        os.startfile(datei)
+                        os.startfile(dateipfad)
                     except Exception:
                         pass
             print()
