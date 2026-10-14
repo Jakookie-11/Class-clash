@@ -67,18 +67,17 @@ def charaktere_anzeigen():
             if charakter.klasse != "npc":
                 if charakter.klasse != "down_in_mars":
                     if charakter.klasse != "down_in_mars_gegner":
-                        if charakter.name != "Hannah_d":
-                            print((f"{CYAN}--------{schlüssel}--------{RESET}"))
+                        print((f"{CYAN}--------{schlüssel}--------{RESET}"))
 
-                            print(f"Level        : {charakter.level}")
-                            print(f"Klasse       : {charakter.klasse}")
-                            print(f"{GRUEN}HP           : {charakter.hp:.2f}{RESET}")
-                            print(f"Schaden      : {charakter.schaden}")
-                            print(f"Speed        : {charakter.speed}")
-                            print(f"Faehigkeit 1 : {charakter.faehigkeit_1.name}")
-                            print(f"Faehigkeit 2 : {charakter.faehigkeit_2.name}")
-                            print(f"Faehigkeit 3 : {charakter.faehigkeit_3.name}")
-                            print()
+                        print(f"Level        : {charakter.level}")
+                        print(f"Klasse       : {charakter.klasse}")
+                        print(f"{GRUEN}HP           : {charakter.hp:.2f}{RESET}")
+                        print(f"Schaden      : {charakter.schaden}")
+                        print(f"Speed        : {charakter.speed}")
+                        print(f"Faehigkeit 1 : {charakter.faehigkeit_1.name}")
+                        print(f"Faehigkeit 2 : {charakter.faehigkeit_2.name}")
+                        print(f"Faehigkeit 3 : {charakter.faehigkeit_3.name}")
+                        print()
 
         print()
         print((f"{GELB}══════════════════════════════════════════════════{RESET}"))
@@ -179,8 +178,7 @@ def charaktere_aufleveln(spieler):
             if charakter.klasse != "npc":
                 if charakter.klasse != "down_in_mars":
                     if charakter.klasse != "down_in_mars_gegner":
-                        if charakter.name != "Hannah_d":
-                            print(f"Name: {schlüssel :10} Level: {charakter.level}")
+                        print(f"Name: {schlüssel :10} Level: {charakter.level}")
 
         print()
         print(f"{CYAN}Down in Mars:{RESET}")
