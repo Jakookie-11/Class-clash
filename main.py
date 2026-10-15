@@ -24,6 +24,12 @@ import os
 import time
 import sys
 import subprocess
+import webbrowser
+
+from pfade import spiel_ordnung
+
+os.chdir(spiel_ordnung())
+
 import confic
 import funktions
 import menues
@@ -54,6 +60,17 @@ spieler = begin.begin()
 try:
 
     if spieler == "break":
+
+        if getattr(sys, "frozen", False):
+            print("EXE-Updates werden nicht automatisch installiert.")
+            print("Bitte lade die aktuelle Windows-Version von GitHub herunter:")
+            print("https://github.com/Jakookie-11/Class-clash/releases")
+            webbrowser.open(
+                "https://github.com/Jakookie-11/Class-clash/releases",
+                new=2,
+            )
+            input("Enter zum Beenden...")
+            sys.exit()
 
         updater = os.path.join(
             os.path.dirname(os.path.abspath(__file__)),

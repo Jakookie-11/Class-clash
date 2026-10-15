@@ -359,6 +359,35 @@ Wenn du ein Problem findest:
 - prüfe, ob das Problem mit einem bestimmten Menü, Kampf oder einer Kampagne zusammenhängt
 - melde es sauber, damit es behoben werden kann
 
+## 9. Class Clash als EXE bauen und weitergeben
+
+Für den EXE-Build brauchst du weiterhin **64-Bit-CPython 3.15**. Die native
+Erweiterung `geheimes.cp315-win_amd64.pyd` ist an diese Python-Version und
+Windows gebunden. Das Build-Skript bündelt Python und die Spiel-Abhängigkeiten
+in einem portablen Ordner; auf dem Ziel-PC muss Python nicht installiert sein.
+
+1. Öffne PowerShell im Projektordner.
+2. Starte den Build:
+
+   ```powershell
+   python build_exe.py
+   ```
+
+   Beim ersten Lauf wird PyInstaller installiert; dafür ist eine
+   Internetverbindung erforderlich.
+3. Nach erfolgreichem Build liegt
+   `dist\Class-Clash-Windows-x64.zip` bereit. Die ZIP enthält eine einzelne
+   EXE; Bilder sowie persönliche Spielstände und Crash-Logs werden nicht
+   mitgeliefert. Die für das Spiel benötigte native Erweiterung ist in der EXE
+   gebündelt.
+4. Die andere Person entpackt die ZIP in einen beschreibbaren Ordner und
+   startet `Class Clash.exe`. Spielstände und Einstellungen werden im `saves`-
+   Ordner neben der EXE angelegt.
+
+Der Build ist für 64-Bit-Windows gedacht. EXE-Updates werden nicht automatisch
+installiert; bei einem verfügbaren Update muss die neue ZIP von der
+GitHub-Releases-Seite heruntergeladen und entpackt werden.
+
 ---
 
 ## 9. Wichtig zu wissen

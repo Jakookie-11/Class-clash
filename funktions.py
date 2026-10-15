@@ -3,6 +3,7 @@ import menues
 import json
 
 import confic
+from pfade import ressourcen_pfad
 from urllib.request import urlopen
 
 
@@ -115,7 +116,7 @@ def online_version_abrufen():
 
 def lokale_version_abrufen():
     try:
-        with open("version.txt", "r", encoding="utf-8") as datei:
+        with ressourcen_pfad("version.txt").open("r", encoding="utf-8") as datei:
             return datei.read().strip()
     except FileNotFoundError:
         return "0.0.0"
@@ -126,7 +127,7 @@ def versionen_vergleichen():
     try:
         online_version = online_version_abrufen()
 
-        with open("version.txt", "r", encoding="utf-8") as datei:
+        with ressourcen_pfad("version.txt").open("r", encoding="utf-8") as datei:
             aktuelle_version = datei.read().strip()
 
         return online_version == aktuelle_version

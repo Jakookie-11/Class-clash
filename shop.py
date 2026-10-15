@@ -7,13 +7,10 @@ import speichern
 import menues
 import ressourcen
 import confic
+from pfade import spiel_ordnung
 
 
-PASSWOERTER_DATEI = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)),
-    "saves",
-    "passwoerter.json",
-)
+PASSWOERTER_DATEI = spiel_ordnung() / "saves" / "passwoerter.json"
 
 
 def _passwoerter_laden():
