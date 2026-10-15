@@ -4,3 +4,6 @@ geheim/
 bilder/
 **/test.py
 *.pyc
+build/
+dist/*
+!dist/Class-Clash-Windows-x64.zip

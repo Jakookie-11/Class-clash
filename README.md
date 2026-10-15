@@ -6,6 +6,8 @@ Class Clash ist ein deutschsprachiges, rundenbasiertes Konsolenspiel mit Charakt
 
 > PDF-Versionen der wichtigsten Hilfen sind ebenfalls im Projektordner verfügbar: `README.pdf`, `More info.pdf` und `Class Clash – Installation unter Windows.pdf`.
 
+Für einen portablen Windows-Build als EXE siehe [Abschnitt 9 der Installationsanleitung](./Class%20Clash%20%E2%80%93%20Installation%20unter%20Windows.md#9-class-clash-als-exe-bauen-und-weitergeben). Der Build benötigt 64-Bit-CPython 3.15; auf dem PC, auf dem die fertige EXE gestartet wird, ist Python nicht erforderlich.
+
 ## Überblick
 
 Class Clash kombiniert:
@@ -222,11 +224,11 @@ Wichtige Dateien:
 
 ```text
 Class-clash/
-├── begin.py                 # Ersteinrichtung und Login/Register
-├── main.py                  # Hauptspielschleife und Menüsteuerung
-├── kampange.py              # Kampagnenlogik, Story und Kämpfe
-├── spiel_starten.py         # Kampfstart, Benutzerkämpfe und KI-Setup
-├── charaktere.py            # Charakterdaten, Werte und Basislogik
+├── begin.py                # Ersteinrichtung und Login/Register
+├── main.py                 # Hauptspielschleife und Menüsteuerung
+├── kampange.py             # Kampagnenlogik, Story und Kämpfe
+├── spiel_starten.py        # Kampfstart, Benutzerkämpfe und KI-Setup
+├── charaktere.py           # Charakterdaten, Werte und Basislogik
 ├── charakter_bip.py        # Charakterbibliothek und Leveln
 ├── shop.py                 # Shop und Ressourcenfunktionen
 ├── einstellungen.py        # Profil- und Audio-Einstellungen

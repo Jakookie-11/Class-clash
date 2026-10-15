@@ -17,6 +17,7 @@ GRUEN = "\033[32m"
 GELB = "\033[33m"
 CYAN = "\033[36m"
 RESET = "\033[0m"
+ROT      = "\033[31m"
 
 
 def begin():
@@ -117,16 +118,18 @@ def begin():
     print(f"║  {GELB}WICHTIG{RESET}                                                                         ║")
     print("║  Sichere deine Spielstände regelmäßig. Während der Beta können Fehler auftreten  ║")
     print("║  und Inhalte verändert werden.                                                   ║")
-    print("║  !!!Das Spiel niemals über Fensterschliessung schliessen, sondern über Beenden   ║")
+    print(f"║  {ROT}!!!Das Spiel niemals über Fensterschliessung schliessen, sondern über Beenden{RESET}   ║")
     print("║                                                                                  ║")
     print("║  CHANGELOGS UND WEITERE INFORMATIONEN                                            ║")
     print("║  Die Changelogs findest du auf GitHub unter Releases. Weitere Informationen      ║")
     print("║  zu Fehlerberichten, Mitarbeit und dem Beta-Test stehen in der More info.md.     ║")
     print("║                                                                                  ║")
-    print(f"║                           {GRUEN}Viel Erfolg und Spaß!{RESET}                                  ║")
+    print(f"║                                   {GRUEN}Viel Erfolg und Spaß!{RESET}                          ║")
     print("╚══════════════════════════════════════════════════════════════════════════════════╝")
 
     input("Enter...")
+
+    Vorbild = True
 
     while True:
 
@@ -134,13 +137,14 @@ def begin():
 
         if funktions.versionen_vergleichen() or pass_update == True:
 
+            if Vorbild:
             #---Vorbild---#
-            sound.musik_abspielen("test.mp3",lautstaerke=0.4)
-            print(f"{GRUEN}══════════════════════════════")
-            print("        Willkommen bei ")
-            print("          Class clash")
-            print(f"══════════════════════════════{RESET}")
-            time.sleep(2)
+                sound.musik_abspielen("test.mp3",lautstaerke=0.4)
+                print(f"{GRUEN}══════════════════════════════")
+                print("        Willkommen bei ")
+                print("          Class clash")
+                print(f"══════════════════════════════{RESET}")
+                time.sleep(2)
 
             while True:
 
@@ -159,6 +163,7 @@ def begin():
                         spieler = input("Wie heisst du?/[0]abbrechen  ").strip()
 
                         if spieler == "0":
+                            Vorbild = False
                             break
 
                         if confic.passwort_sichtbarkeitshinweis_anzeigen == True:
