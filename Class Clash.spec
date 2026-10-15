@@ -48,6 +48,7 @@ exe = EXE(
     a.datas,
     [],
     name="Class Clash",
+
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
