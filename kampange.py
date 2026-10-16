@@ -7,6 +7,7 @@ import speichern
 import charakter_bip
 import charaktere
 import msvcrt
+import sound
 
 
 fortschritt = {}
@@ -40,7 +41,8 @@ class kampangen_kampf:
         team_groesse_2=None,
         story_vorher=None,
         story_nachher=None,
-        ist_kampf=True
+        ist_kampf=True,
+        anzeige_musik = None
     ):
         self.name = name
         self.spieler_1 = spieler_1
@@ -65,6 +67,7 @@ class kampangen_kampf:
         self.story_vorher = story_vorher
         self.story_nachher = story_nachher
         self.ist_kampf = ist_kampf
+        self.anzeige_musik = anzeige_musik
 
 class kampange:
 
@@ -184,6 +187,8 @@ def level_zuruecksetzen(wen):
 def kampangen(spieler_name):
 
     while True:
+        
+        sound.musik_stoppen()
 
         os.system(confic.terminal_clear)
 

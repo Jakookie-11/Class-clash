@@ -3,6 +3,7 @@ __pycache__/
 geheim/
 bilder/
 **/test.py
+**/To Do.txt
 *.pyc
 build/
 dist/*

@@ -1,3 +1,5 @@
+import csv
+import ctypes
 import json
 import os
 import time
@@ -9,6 +11,9 @@ import charaktere
 import ressourcen
 import spiel_starten
 import herausforderungen
+
+
+LEADERBOARD_EMAIL = "dcs.acc_05@yahoo.com"
 
 
 def alle_kampangen_laden():
@@ -87,6 +92,134 @@ def spiel_speichern(spieler, ist_erstellung = False):
 
 
 
+def leaderboard_csv_exportieren(spieler):
+    spiel_speichern(spieler)
+
+    zeitstempel = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+    export_datei = os.path.join("saves", f"leaderboard_export_{zeitstempel}.csv")
+
+    with open(export_datei, "w", newline="", encoding="utf-8-sig") as datei_ausgabe:
+        writer = csv.writer(datei_ausgabe, delimiter=";")
+        writer.writerow(("Spielername", "Spielzeit in Sekunden", "Gewonnene Kämpfe"))
+        writer.writerow((
+            spieler,
+            confic.time_played_in_seconds,
+            confic.gewonnene_kaempfe,
+        ))
+
+    return export_datei
+
+
+def leaderboard_email_entwurf_oeffnen(spieler, csv_datei):
+    class MapiRecipDesc(ctypes.Structure):
+        _fields_ = [
+            ("ulReserved", ctypes.c_ulong),
+            ("ulRecipClass", ctypes.c_ulong),
+            ("lpszName", ctypes.c_char_p),
+            ("lpszAddress", ctypes.c_char_p),
+            ("ulEIDSize", ctypes.c_ulong),
+            ("lpEntryID", ctypes.c_void_p),
+        ]
+
+    class MapiFileDesc(ctypes.Structure):
+        _fields_ = [
+            ("ulReserved", ctypes.c_ulong),
+            ("flFlags", ctypes.c_ulong),
+            ("nPosition", ctypes.c_ulong),
+            ("lpszPathName", ctypes.c_char_p),
+            ("lpszFileName", ctypes.c_char_p),
+            ("lpFileType", ctypes.c_void_p),
+        ]
+
+    class MapiMessage(ctypes.Structure):
+        _fields_ = [
+            ("ulReserved", ctypes.c_ulong),
+            ("lpszSubject", ctypes.c_char_p),
+            ("lpszNoteText", ctypes.c_char_p),
+            ("lpszMessageType", ctypes.c_char_p),
+            ("lpszDateReceived", ctypes.c_char_p),
+            ("lpszConversationID", ctypes.c_char_p),
+            ("flFlags", ctypes.c_ulong),
+            ("lpOriginator", ctypes.POINTER(MapiRecipDesc)),
+            ("nRecipCount", ctypes.c_ulong),
+            ("lpRecips", ctypes.POINTER(MapiRecipDesc)),
+            ("nFileCount", ctypes.c_ulong),
+            ("lpFiles", ctypes.POINTER(MapiFileDesc)),
+        ]
+
+    def mapi_text(text):
+        return text.encode("mbcs", errors="replace")
+
+    recipient_name = mapi_text(LEADERBOARD_EMAIL)
+    recipient_address = mapi_text("SMTP:" + LEADERBOARD_EMAIL)
+    subject = mapi_text(f"Class Clash Leaderboard-Daten: {spieler}")
+    body = mapi_text(
+        f"Hallo,\n\nanbei sind meine Leaderboard-Daten aus Class Clash.\n"
+        f"Spielername: {spieler}\n"
+    )
+    attachment_path = mapi_text(os.path.abspath(csv_datei))
+    attachment_name = mapi_text(os.path.basename(csv_datei))
+
+    recipient = MapiRecipDesc(
+        0, 1, recipient_name, recipient_address, 0, None
+    )
+    attachment = MapiFileDesc(
+        0, 0, 0xFFFFFFFF, attachment_path, attachment_name, None
+    )
+    message = MapiMessage(
+        0,
+        subject,
+        body,
+        None,
+        None,
+        None,
+        0,
+        None,
+        1,
+        ctypes.pointer(recipient),
+        1,
+        ctypes.pointer(attachment),
+    )
+
+    try:
+        mapi = ctypes.WinDLL("MAPI32.DLL")
+        send_mail = mapi.MAPISendMail
+    except OSError as fehler:
+        raise OSError(
+            "Windows Simple MAPI ist nicht verfügbar. Prüfe, ob ein "
+            "MAPI-kompatibles E-Mail-Programm installiert und eingerichtet ist."
+        ) from fehler
+    except AttributeError as fehler:
+        raise OSError(
+            "Die Windows-MAPI-Schnittstelle zum Öffnen des E-Mail-Fensters fehlt."
+        ) from fehler
+
+    send_mail.argtypes = [
+        ctypes.c_ulong,
+        ctypes.c_void_p,
+        ctypes.POINTER(MapiMessage),
+        ctypes.c_ulong,
+        ctypes.c_ulong,
+    ]
+    send_mail.restype = ctypes.c_ulong
+    ergebnis = send_mail(
+        0,
+        None,
+        ctypes.byref(message),
+        0x00000008,
+        0,
+    )
+
+    if ergebnis == 1:
+        return False
+    if ergebnis != 0:
+        raise OSError(
+            f"Das E-Mail-Fenster konnte nicht geöffnet werden (MAPI-Fehler {ergebnis})."
+        )
+    return True
+
+
+
 def confic_setup_laden():
     os.makedirs("saves", exist_ok=True)
     datei = "saves/confic_setup.json"
@@ -94,8 +227,8 @@ def confic_setup_laden():
     if not os.path.exists(datei):
         confic.first_start_configurator = True
         confic.terminal_clear = "clear"
-        confic.passwort_sichtbarkeit = False
-        confic.passwort_sichtbarkeitshinweis_anzeigen = True
+        confic.passwort_art = "sternchen"
+        confic.passwort_artshinweis_anzeigen = True
         confic_setup_speichern()
         return
 

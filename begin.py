@@ -139,7 +139,7 @@ def begin():
 
             if Vorbild:
             #---Vorbild---#
-                sound.musik_abspielen("test.mp3",lautstaerke=0.4)
+                sound.musik_abspielen(confic.Haupt_musik, confic.Haupt_musik_lautstaerke)
                 print(f"{GRUEN}══════════════════════════════")
                 print("        Willkommen bei ")
                 print("          Class clash")

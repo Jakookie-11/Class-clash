@@ -1,7 +1,6 @@
 import os
 import sys
 import time
-import webbrowser
 import bcrypt
 import json
 
@@ -31,6 +30,8 @@ RESET    = "\033[0m"
 def einstellungen(spieler_name):
 
     while True:
+
+        sound.musik_abspielen(confic.Haupt_musik, confic.Haupt_musik_lautstaerke)
 
         os.system(confic.terminal_clear)
 
@@ -69,6 +70,32 @@ def einstellungen(spieler_name):
             os.system(confic.terminal_clear)
 
             start_pruefung.hilfe_und_fehlerbehebung(spieler_name)
+
+        elif wahl == 6:
+            os.system(confic.terminal_clear)
+            print("laden...")
+
+            try:
+                export_datei = speichern.leaderboard_csv_exportieren(spieler_name)
+                entwurf_geoeffnet = speichern.leaderboard_email_entwurf_oeffnen(
+                    spieler_name,
+                    export_datei,
+                )
+            except OSError as fehler:
+                os.system(confic.terminal_clear)
+                print(f"E-Mail-Fenster konnte nicht geöffnet werden: {fehler}")
+            else:
+                if entwurf_geoeffnet:
+                    os.system(confic.terminal_clear)
+                    print("E-Mail-Fenster mit CSV-Anhang wurde geöffnet.")
+                    print("Prüfe die E-Mail und drücke dort selbst auf Senden.")
+                else:
+                    os.system(confic.terminal_clear)
+                    print("E-Mail-Versand wurde im E-Mail-Programm abgebrochen.")
+                print(f"Empfänger: {speichern.LEADERBOARD_EMAIL}")
+                print(f"CSV: {os.path.abspath(export_datei)}")
+
+            input("Enter...")
 
         else:
             speichern.spiel_speichern(spieler_name)
@@ -513,6 +540,7 @@ def lautstaerke_aendern(spieler_name):
 def audio(spieler_name):
 
     while True:
+        sound.musik_stoppen()
 
         os.system(confic.terminal_clear)
 

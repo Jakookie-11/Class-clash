@@ -9,6 +9,7 @@ import time
 import kampange
 import os
 import speichern
+import sound
 
 Herausforderungs_fortschritt = []
 Herausforderungs_kaempfe_fortschritt = []
@@ -572,6 +573,8 @@ def herausforderungen(spieler_name):
 
 
 def herausforderungskaempfe(spieler_name):
+
+    sound.musik_stoppen()
 
     while True:
         speichern.spiel_speichern(spieler_name)

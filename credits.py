@@ -31,6 +31,8 @@ HELL_WEISS    = "\033[97m"
 
 def credits():
 
+    sound.musik_stoppen()
+
     while True:
 
         sound.musik_abspielen("Hugs and Kisses.mp3", lautstaerke=2)
@@ -48,8 +50,9 @@ def credits():
         print("  Die vollständigen Quellenangaben liegen mir leider nicht mehr von Allen vor.")
         print("  Aber folgende schon:")
         print()
-        print("- Hugs and Kisses                      : JISOO")
-        print("- Home                                 : Jessica Baio")
+        print(f"- Hugs and Kisses                      : {GRUEN}JISOO{RESET}")
+        print(f"- Home                                 : {GRUEN}Jessica Baio{RESET}")
+        print(f"- Imaginary Friend                     : {GRUEN}ITZY{RESET}")
     #   print("- I Really want to stay at your House  : Samuel Kim und Lorien")
         print()
         print(f"{CYAN}PROBLEMFINDUNG{RESET}")

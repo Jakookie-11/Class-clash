@@ -14,15 +14,15 @@ PROJEKT_ORDNER = Path(__file__).resolve().parent
 GEHEIMES_DATEI = PROJEKT_ORDNER / "geheimes.cp315-win_amd64.pyd"
 REQUIREMENTS_DATEI = PROJEKT_ORDNER / "requirements.txt"
 README_DATEI = PROJEKT_ORDNER / "README.md"
-INSTALLATIONS_DATEI = PROJEKT_ORDNER / "Class Clash – Installation unter Windows.md"
+INSTALLATIONS_DATEI = PROJEKT_ORDNER / "Class Clash - Installation unter Windows.md"
 
 
 def _hilfe_ausgeben(fehlermeldung: str):
     hilfe = (
         f"\n{fehlermeldung}\n"
         "\nHilfe:"
-        "\n- Öffne die mitgelieferten PDF-Hilfen: 'README.pdf', 'More info.pdf' und 'Class Clash – Installation unter Windows.pdf'."
-        "\n- Oder lies die Markdown-Dateien 'README.md' und 'Class Clash – Installation unter Windows.md'."
+        "\n- Öffne die mitgelieferten PDF-Hilfen: 'README.pdf', 'More info.pdf' und 'Class Clash - Installation unter Windows.pdf'."
+        "\n- Oder lies die Markdown-Dateien 'README.md' und 'Class Clash - Installation unter Windows.md'."
         "\n- Nutze zusätzlich den Menüpunkt 'Einstellungen > Wichtige Links' oder 'Einstellungen > Hilfe & Fehlerbehebung' im Spiel."
         "\n- Wichtig: Class Clash braucht CPython 3.15 (64-Bit), nicht eine andere Python-Version(CPython ist aber in der neuen Python version enthalten)."
     )
@@ -133,14 +133,7 @@ def hilfe_und_fehlerbehebung(spieler_name):
             print("- Python 3.15 64-Bit neu oder erneut installieren")
             print("- Pfad prüfen und PowerShell neu starten")
             print("- Danach genau so starten:")
-            print("  py -3.15 main.py")
-            print()
-            print("Oder eine neue virtuelle Umgebung erstellen:")
-            print("  python -m venv .venv")
-            print("  .\\.venv\\Scripts\\Activate.ps1")
-            print("  python -m pip install -r requirements.txt")
-            print()
-            print("Danach: python main.py")
+            print("  py -3.15 -m main.py")
             print()
             print("[Enter] Zurueck zum Hilfe-Menue / [0] Beenden")
             eingabe = input("Wahl? ")
@@ -153,10 +146,10 @@ def hilfe_und_fehlerbehebung(spieler_name):
             dateien = [
                 "README.pdf",
                 "More info.pdf",
-                "Class Clash – Installation unter Windows.pdf",
+                "Class Clash - Installation unter Windows.pdf",
                 "README.md",
                 "More info.md",
-                "Class Clash – Installation unter Windows.md",
+                "Class Clash - Installation unter Windows.md",
             ]
 
             print("PDF-Hilfen werden geöffnet...")

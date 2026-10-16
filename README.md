@@ -100,6 +100,7 @@ Im Menü "Einstellungen" gibt es:
 - Audio
 - Credits
 - Wichtige Links
+- Export der Leaderboard-Daten als CSV
 
 Audio-Optionen:
 
@@ -112,6 +113,7 @@ Audio-Optionen:
 - Spielstände werden lokal in `saves/` gespeichert
 - Jeder Spieler erhält eigene JSON-Dateien
 - Fortschritt, Charakter-Level und Ressourcen werden automatisch gespeichert
+- Über "Einstellungen" kann der angemeldete Spieler eine CSV mit Spielername, Spielzeit und gewonnenen Kämpfen exportieren. Anschließend öffnet Windows über Simple MAPI das normale Verfassen-Fenster des eingerichteten E-Mail-Programms. Die CSV ist angehängt und die Empfängeradresse ist im Code hinterlegt; der Spieler muss den Versand selbst bestätigen. Dafür muss ein MAPI-kompatibles E-Mail-Programm eingerichtet sein. Das Spiel speichert oder verwendet keine E-Mail-Zugangsdaten.
 - Beim Start wird eine lokale Konfigurationsdatei geladen
 - Crash-Reports werden in `crash_logs/` abgelegt
 
