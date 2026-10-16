@@ -377,9 +377,9 @@ in einem portablen Ordner; auf dem Ziel-PC muss Python nicht installiert sein.
    Internetverbindung erforderlich.
 3. Nach erfolgreichem Build liegt
    `dist\Class-Clash-Windows-x64.zip` bereit. Die ZIP enthält eine einzelne
-   EXE; Bilder sowie persönliche Spielstände und Crash-Logs werden nicht
-   mitgeliefert. Die für das Spiel benötigte native Erweiterung ist in der EXE
-   gebündelt.
+   EXE mit dem Class-Clash-Programmsymbol; Bilder sowie persönliche Spielstände
+   und Crash-Logs werden nicht mitgeliefert. Die für das Spiel benötigte native
+   Erweiterung ist in der EXE gebündelt.
 4. Die andere Person entpackt die ZIP in einen beschreibbaren Ordner und
    startet `Class Clash.exe`. Spielstände und Einstellungen werden im `saves`-
    Ordner neben der EXE angelegt.
