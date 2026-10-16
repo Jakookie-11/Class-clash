@@ -384,6 +384,11 @@ in einem portablen Ordner; auf dem Ziel-PC muss Python nicht installiert sein.
    startet `Class Clash.exe`. Spielstände und Einstellungen werden im `saves`-
    Ordner neben der EXE angelegt.
 
+In den Dateieigenschaften der EXE wird **Jakob Samstag** als Unternehmen
+angezeigt. Eine verifizierte Herausgeberanzeige in der Windows-
+Sicherheitsabfrage erfordert zusätzlich eine Authenticode-Signatur mit einem
+Code-Signing-Zertifikat.
+
 Der Build ist für 64-Bit-Windows gedacht. EXE-Updates werden nicht automatisch
 installiert; bei einem verfügbaren Update muss die neue ZIP von der
 GitHub-Releases-Seite heruntergeladen und entpackt werden.

@@ -104,8 +104,8 @@ def confic_setup_laden():
 
     confic.first_start_configurator = daten.get("starter_menue", True)
     confic.terminal_clear = daten.get("terminal_clear", "cls")
-    confic.passwort_sichtbarkeit = daten.get("passwort_sichtbarkeit", False)
-    confic.passwort_sichtbarkeitshinweis_anzeigen = daten.get("passwort_sichtbarkeitshinweis_anzeigen", True)
+    confic.passwort_art = daten.get("passwort_art", "sternchen")
+    confic.passwort_artshinweis_anzeigen = daten.get("passwort_artshinweis_anzeigen", True)
 
 
 
@@ -116,8 +116,8 @@ def confic_setup_speichern():
     daten = {
         "starter_menue"  : confic.first_start_configurator,
         "terminal_clear" : confic.terminal_clear,
-        "passwort_sichtbarkeit" : confic.passwort_sichtbarkeit,
-        "passwort_sichtbarkeitshinweis_anzeigen" : confic.passwort_sichtbarkeitshinweis_anzeigen
+        "passwort_art" : confic.passwort_art,
+        "passwort_artshinweis_anzeigen" : confic.passwort_artshinweis_anzeigen
     }
 
     with open(datei, "w", encoding="utf-8") as datei_ausgabe:

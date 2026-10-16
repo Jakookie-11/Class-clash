@@ -96,14 +96,6 @@ def verfuegbare_charaktere(nur_eigenes_team=False, ki_aktiv=False):
     ]
 
 
-def ganzzahl_einlesen(prompt, minimum, maximum):
-    while True:
-        wahl = input(prompt).strip()
-
-        if wahl.isdigit() and minimum <= int(wahl) <= maximum:
-            return int(wahl)
-
-        print(f"Bitte eine Zahl zwischen {minimum} und {maximum} eingeben.")
 
 
 def benutzerdefinierten_kampf_starten(spieler_name):
@@ -114,12 +106,12 @@ def benutzerdefinierten_kampf_starten(spieler_name):
     print("Passe deinen Kampf an.")
     print()
 
-    team_groesse_1 = ganzzahl_einlesen(
+    team_groesse_1 = funktions.ganzzahl_einlesen(
         "Teamgröße deines Teams (1-4): ",
         1,
         4
     )
-    team_groesse_2 = ganzzahl_einlesen(
+    team_groesse_2 = funktions.ganzzahl_einlesen(
         "Teamgröße des gegnerischen Teams (1-4): ",
         1,
         4
@@ -128,7 +120,7 @@ def benutzerdefinierten_kampf_starten(spieler_name):
     print()
     print("[1] Gegner wird von der KI gesteuert")
     print("[2] Zweiter Spieler steuert das Gegnerteam")
-    gegner_typ = ganzzahl_einlesen("Auswahl: ", 1, 2)
+    gegner_typ = funktions.ganzzahl_einlesen("Auswahl: ", 1, 2)
 
     ki_stufe = 1
     gegner_level = 1
@@ -137,8 +129,8 @@ def benutzerdefinierten_kampf_starten(spieler_name):
     if gegner_typ == 1:
         print()
         print("KI-Stufen: 1 Zufällig, 2 Taktisch, 3 Stark, 4 Meister")
-        ki_stufe = ganzzahl_einlesen("KI-Stufe (1-4): ", 1, 4)
-        gegner_level = ganzzahl_einlesen("Level der Gegner (1-20): ", 1, 20)
+        ki_stufe = funktions.ganzzahl_einlesen("KI-Stufe (1-4): ", 1, 4)
+        gegner_level = funktions.ganzzahl_einlesen("Level der Gegner (1-20): ", 1, 20)
     else:
         verfuegbare_spieler = [
             name
@@ -196,15 +188,16 @@ def charaktere_auswaelen(
     os.system(confic.terminal_clear)
 
     print("Verfügbare Charaktere:")
+
     if spieler_name is not None:
         print(f"Auswahl für Person 2 ({spieler_name}):")
     print()
+
     if ki_aktiv:
         print("Alle existierenden Charaktere können ausgewählt werden.")
+
     else:
-        print(
-            "NPCs und Gegner aus Down in Mars sind nicht verfügbar."
-        )
+        print("NPCs und Gegner aus Down in Mars sind nicht verfügbar.")
     print()
 
     verfuegbare = verfuegbare_charaktere(
@@ -229,7 +222,7 @@ def charaktere_auswaelen(
                 if anzeige_level is None:
                     print(name)
                 else:
-                    print(f"{name} (Level {anzeige_level})")
+                    print(f"{name :30} (Level {anzeige_level})")
     else:
         normale_charaktere = [
             name
@@ -502,6 +495,8 @@ def ziel_auswaehlen(wer, team_1, team_2, zieltyp):
     for nummer, name in enumerate(moegliche_ziele, start=1):
         print(f"[{nummer}] {kampf_name_anzeigen(name)}")
 
+    print("[0] zurueck")
+
     print()
 
     while True:
@@ -509,6 +504,9 @@ def ziel_auswaehlen(wer, team_1, team_2, zieltyp):
 
         if wahl.isdigit():
             nummer = int(wahl)
+
+            if nummer == 0:
+                return "zurueck"
 
             if 1 <= nummer <= len(moegliche_ziele):
                 return moegliche_ziele[nummer - 1]
@@ -747,11 +745,13 @@ def kampf(
 
     while True:
 
+        zurueck = False
+
         os.system(confic.terminal_clear)
 
         print(f"{HELL_ROT}═════════════════════════")
         print("          Kampf          ")
-        print(f"         Runde {runde}")
+        print(f"        Runde {runde}")
         print(f"═════════════════════════{RESET}")
         print()
 
@@ -809,7 +809,8 @@ def kampf(
                 eigenes_team = team_1 if wer in team_1 else team_2
                 gegner_team = team_2 if wer in team_1 else team_1
 
-                while True:
+                while not zurueck:
+
 
                     print(f"{kampf_name_anzeigen(wer)} ist am zug!")
                     print("----Status----")
@@ -825,21 +826,21 @@ def kampf(
 
                     print(
                         f"[1] "
-                        f"{charaktere.Charaktere[wer].faehigkeit_1.name :30}"
+                        f"{charaktere.Charaktere[wer].faehigkeit_1.name :32}"
                         f"Cooldown: "
                         f"{charaktere.Charaktere[wer].faehigkeit_1.abklingzeit}"
                     )
 
                     print(
                         f"[2] "
-                        f"{charaktere.Charaktere[wer].faehigkeit_2.name :30}"
+                        f"{charaktere.Charaktere[wer].faehigkeit_2.name :32}"
                         f"Cooldown: "
                         f"{charaktere.Charaktere[wer].faehigkeit_2.abklingzeit}"
                     )
 
                     print(
                         f"[3] "
-                        f"{charaktere.Charaktere[wer].faehigkeit_3.name :30}"
+                        f"{charaktere.Charaktere[wer].faehigkeit_3.name :32}"
                         f"Cooldown: "
                         f"{charaktere.Charaktere[wer].faehigkeit_3.abklingzeit}"
                     )
@@ -984,6 +985,10 @@ def kampf(
                         faehigkeit.zieltyp
                     )
 
+                    if ziel == "zurueck":
+                        zurueck = True
+                        continue
+
 
                     # ────────────────────────────────────────────────────────────────────────────────────────────
                     # Fähigkeit benutzen
@@ -1018,6 +1023,9 @@ def kampf(
                     abklingzeiten_aktualisieren(wer)
 
                     break
+
+                if zurueck == True:
+                    continue
 
 
             # ══════════════════════════════════════════════════════

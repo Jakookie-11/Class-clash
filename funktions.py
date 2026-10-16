@@ -1,6 +1,8 @@
 import os
 import menues
 import json
+import sys
+import msvcrt
 
 import confic
 from pfade import ressourcen_pfad
@@ -20,7 +22,7 @@ def menue(liste, spieler_name=None,):
         #--zusätze für manche menüs---#
         if liste == menues.profil_menue:
             print()
-            print(f"Aktuelle Passwort_sichtbarkeit: {confic.passwort_sichtbarkeit}")
+            print(f"Aktuelle Passwort_art: {confic.passwort_art}")
             print()
 
         if liste == menues.audio_menue:
@@ -152,3 +154,49 @@ def daten_herunterladen():
 
 
     return url_to_return
+
+
+
+
+def passwort_eingeben(prompt="Passwort: "):
+    print(prompt, end="", flush=True)
+    zeichen = []
+
+    while True:
+        taste = msvcrt.getwch()
+
+        if taste in ("\r", "\n"):  # Enter
+            print()
+            return "".join(zeichen)
+
+        if taste == "\b":  # Backspace
+            if zeichen:
+                zeichen.pop()
+                sys.stdout.write("\b \b")
+                sys.stdout.flush()
+            continue
+
+        if taste in ("\x00", "\xe0"):  # Sondertasten ignorieren
+            msvcrt.getwch()
+            continue
+
+        if taste == "\x03":  # Strg+C
+            raise KeyboardInterrupt
+
+        if taste.isprintable():
+            zeichen.append(taste)
+            sys.stdout.write("*")
+            sys.stdout.flush()
+
+
+
+
+def ganzzahl_einlesen(prompt, minimum, maximum):
+    while True:
+        wahl = input(prompt).strip()
+
+        if wahl.isdigit() and minimum <= int(wahl) <= maximum:
+            return int(wahl)
+
+        print(f"Bitte eine Zahl zwischen {minimum} und {maximum} eingeben.")
+        zeilen_loeschen(2)
