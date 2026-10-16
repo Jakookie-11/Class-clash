@@ -1,0 +1,25 @@
+========================================
+       CLASS CLASH CRASH REPORT
+========================================
+
+Spieler: Jakob
+Datum: 2026-10-16
+Uhrzeit: 12:22:33
+Fehler-ID: afccbf05258355aceb8ec871b3ce53a0dc254e157a7402f777ffa6de8a5a26cc
+Status: gefixt
+
+----------------------------------------
+FEHLER / TRACEBACK
+----------------------------------------
+
+Traceback (most recent call last):
+  File "c:\Users\jakob\Desktop\Git\Class clash\main.py", line 122, in <module>
+    is_brake_einstellungen = einstellungen.einstellungen(spieler)
+  File "c:\Users\jakob\Desktop\Git\Class clash\einstellungen.py", line 42, in einstellungen
+    is_breake_profil_einstellungen = profil_enstellungen(spieler_name)
+  File "c:\Users\jakob\Desktop\Git\Class clash\einstellungen.py", line 136, in profil_enstellungen
+    wahl = funktions.menue(menues.profil_menue, spieler_name)
+  File "c:\Users\jakob\Desktop\Git\Class clash\funktions.py", line 25, in menue
+    print(f"Aktuelle Passwort_sichtbarkeit: {confic.passwort_sichtbarkeit}")
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'confic' has no attribute 'passwort_sichtbarkeit'

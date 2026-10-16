@@ -166,18 +166,21 @@ def begin():
                             Vorbild = False
                             break
 
-                        if confic.passwort_sichtbarkeitshinweis_anzeigen == True:
+                        if confic.passwort_artshinweis_anzeigen == True:
                             print(f"{GELB}-------------")
-                            print("! Das Passwort ist unsichtbar, das Kann in den Einstellungen unter Profil aber geaendert werden.")
+                            print("! Das Passwort wird mit Sternchen dargestelle, in den Einstellungen kann dies aber geaendert werden.")
                             print(f"-------------{RESET}")
-                            confic.passwort_sichtbarkeitshinweis_anzeigen = False
+                            confic.passwort_artshinweis_anzeigen = False
                             speichern.confic_setup_speichern()
 
-                        if confic.passwort_sichtbarkeit == False:
+                        if confic.passwort_art == "unsichtbar":
                             passwort = getpass.getpass("Passwort? ").strip()
 
-                        elif confic.passwort_sichtbarkeit == True:
+                        elif confic.passwort_art == "sichtbar":
                             passwort = input("Passwort? ")
+
+                        else:
+                            passwort = funktions.passwort_eingeben()
                         
                         print()
 

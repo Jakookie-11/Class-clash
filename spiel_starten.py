@@ -96,14 +96,6 @@ def verfuegbare_charaktere(nur_eigenes_team=False, ki_aktiv=False):
     ]
 
 
-def ganzzahl_einlesen(prompt, minimum, maximum):
-    while True:
-        wahl = input(prompt).strip()
-
-        if wahl.isdigit() and minimum <= int(wahl) <= maximum:
-            return int(wahl)
-
-        print(f"Bitte eine Zahl zwischen {minimum} und {maximum} eingeben.")
 
 
 def benutzerdefinierten_kampf_starten(spieler_name):
@@ -114,12 +106,12 @@ def benutzerdefinierten_kampf_starten(spieler_name):
     print("Passe deinen Kampf an.")
     print()
 
-    team_groesse_1 = ganzzahl_einlesen(
+    team_groesse_1 = funktions.ganzzahl_einlesen(
         "Teamgröße deines Teams (1-4): ",
         1,
         4
     )
-    team_groesse_2 = ganzzahl_einlesen(
+    team_groesse_2 = funktions.ganzzahl_einlesen(
         "Teamgröße des gegnerischen Teams (1-4): ",
         1,
         4
@@ -128,7 +120,7 @@ def benutzerdefinierten_kampf_starten(spieler_name):
     print()
     print("[1] Gegner wird von der KI gesteuert")
     print("[2] Zweiter Spieler steuert das Gegnerteam")
-    gegner_typ = ganzzahl_einlesen("Auswahl: ", 1, 2)
+    gegner_typ = funktions.ganzzahl_einlesen("Auswahl: ", 1, 2)
 
     ki_stufe = 1
     gegner_level = 1
@@ -137,8 +129,8 @@ def benutzerdefinierten_kampf_starten(spieler_name):
     if gegner_typ == 1:
         print()
         print("KI-Stufen: 1 Zufällig, 2 Taktisch, 3 Stark, 4 Meister")
-        ki_stufe = ganzzahl_einlesen("KI-Stufe (1-4): ", 1, 4)
-        gegner_level = ganzzahl_einlesen("Level der Gegner (1-20): ", 1, 20)
+        ki_stufe = funktions.ganzzahl_einlesen("KI-Stufe (1-4): ", 1, 4)
+        gegner_level = funktions.ganzzahl_einlesen("Level der Gegner (1-20): ", 1, 20)
     else:
         verfuegbare_spieler = [
             name

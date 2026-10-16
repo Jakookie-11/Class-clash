@@ -2,9 +2,9 @@ first_start_configurator = True
 
 terminal_clear = "cls"
 
-passwort_sichtbarkeit = False
+passwort_art = "sternchen"
 
-passwort_sichtbarkeitshinweis_anzeigen = True
+passwort_artshinweis_anzeigen = True
 
 passwoerter = {}
 

@@ -48,7 +48,8 @@ exe = EXE(
     a.datas,
     [],
     name="Class Clash",
-
+    icon=str(project / "class_clash.ico"),
+    
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,

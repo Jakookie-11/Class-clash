@@ -77,6 +77,56 @@ def einstellungen(spieler_name):
 
 
 
+def passwort_art_aendern():
+
+    while True:
+        os.system(confic.terminal_clear)
+
+        print("Moeglichkeiten:")
+        print("[1] sternchen")
+        print("[2] unsichtbar")
+        print("[3] sichtbar")
+        print("[0] zurueck")
+        print()
+        wahl = funktions.ganzzahl_einlesen("wahl? ", 0, 3)
+
+        if wahl == 0:
+            return 1
+
+        if wahl == 1:
+            confic.passwort_art = "sternchen"
+            speichern.confic_setup_speichern()
+
+            os.system(confic.terminal_clear)
+            print()
+            print(f"Passwort_art wurde geändert zu: {confic.passwort_art}")
+            print()
+            input("Enter...")
+
+        elif wahl == 2:
+            confic.passwort_art = "unsichtbar"
+            speichern.confic_setup_speichern()
+
+            os.system(confic.terminal_clear)
+            print()
+            print(f"Passwort_art wurde geändert zu: {confic.passwort_art}")
+            print()
+            input("Enter...")
+
+        elif wahl == 3:
+            confic.passwort_art = "sichtbar"
+            speichern.confic_setup_speichern()
+
+            os.system(confic.terminal_clear)
+            print()
+            print(f"Passwort_art wurde geändert zu: {confic.passwort_art}")
+            print()
+            input("Enter...")
+
+        continue         
+
+
+
 def profil_enstellungen(spieler_name):
 
     while True:
@@ -107,17 +157,10 @@ def profil_enstellungen(spieler_name):
                 continue
 
         elif wahl == 5:
-            if confic.passwort_sichtbarkeit == False:
-                confic.passwort_sichtbarkeit = True
-
-            elif confic.passwort_sichtbarkeit == True:
-                confic.passwort_sichtbarkeit = False
-
-            os.system(confic.terminal_clear)
-            print()
-            print(f"Passwort_sichtbarkeit wurde geändert zu: {confic.passwort_sichtbarkeit}")
-            print()
-            input("Enter...")
+            is_breake_passwort_art_aendern = passwort_art_aendern()
+            
+            if is_breake_passwort_art_aendern == 1:
+                continue
 
         else:
             return 1
