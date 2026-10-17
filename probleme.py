@@ -65,6 +65,11 @@ probleme = {
             "id": "CC-08",
             "beschreibung": "Mehrere Logigfehler in der Down in Mars Kampange + etwas mehr Charaktervielfalt",
             "status": "behoben"
-        },  
+        },
+        {
+            "id": "CC-09",
+            "beschreibung": "Fehler beim verlassen der Kaempfeanzeige von Kampangen in 3.01.00-beta",
+            "status": "behoben"
+        },    
     ]
 }

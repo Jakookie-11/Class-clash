@@ -27,6 +27,7 @@ spiel_starten_menue = [
     "[1] Benutzerdefinierter Kampf",
     "[2] Kampange(n)",
     "[3] Herausforderungskaempfe",
+    "[4] Endlos",
     "[0] Zurueck"
 ]
 
