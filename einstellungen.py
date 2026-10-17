@@ -1,7 +1,6 @@
 import os
 import sys
 import time
-import webbrowser
 import bcrypt
 import json
 
@@ -31,6 +30,8 @@ RESET    = "\033[0m"
 def einstellungen(spieler_name):
 
     while True:
+
+        sound.musik_abspielen(confic.Haupt_musik)
 
         os.system(confic.terminal_clear)
 
@@ -69,6 +70,32 @@ def einstellungen(spieler_name):
             os.system(confic.terminal_clear)
 
             start_pruefung.hilfe_und_fehlerbehebung(spieler_name)
+
+        elif wahl == 6:
+            os.system(confic.terminal_clear)
+            print("laden...")
+
+            try:
+                export_datei = speichern.leaderboard_csv_exportieren(spieler_name)
+                entwurf_geoeffnet = speichern.leaderboard_email_entwurf_oeffnen(
+                    spieler_name,
+                    export_datei,
+                )
+            except OSError as fehler:
+                os.system(confic.terminal_clear)
+                print(f"E-Mail-Fenster konnte nicht geöffnet werden: {fehler}")
+            else:
+                if entwurf_geoeffnet:
+                    os.system(confic.terminal_clear)
+                    print("E-Mail-Fenster mit CSV-Anhang wurde geöffnet.")
+                    print("Prüfe die E-Mail und drücke dort selbst auf Senden.")
+                else:
+                    os.system(confic.terminal_clear)
+                    print("E-Mail-Versand wurde im E-Mail-Programm abgebrochen.")
+                print(f"Empfänger: {speichern.LEADERBOARD_EMAIL}")
+                print(f"CSV: {os.path.abspath(export_datei)}")
+
+            input("Enter...")
 
         else:
             speichern.spiel_speichern(spieler_name)
@@ -324,7 +351,7 @@ def profil_zuruecksetzen(spieler_name):
 
     if bestätigung == "ja":
 
-        sound.sound_abspielen("invalid-login-or-password.mp3", lautstaerke=2)
+        sound.sound_abspielen("invalid-login-or-password")
         bestätigung_2 = input("schreibe: ich bin mir sicher, dass ich mein Profil zuruecksetzen moechte :   ")
 
         if bestätigung_2 == "ich bin mir sicher, dass ich mein Profil zuruecksetzen moechte":
@@ -406,7 +433,7 @@ def profil_loeschen(spieler_name):
 
     if bestätigung == "ja":
 
-        sound.sound_abspielen("invalid-login-or-password.mp3", lautstaerke=2)
+        sound.sound_abspielen("invalid-login-or-password")
         bestätigung_2 = input("schreibe: ich bin mir sicher, dass ich mein Profil loeschen moechte :   ")
 
         if bestätigung_2 == "ich bin mir sicher, dass ich mein Profil loeschen moechte":
@@ -494,7 +521,7 @@ def lautstaerke_aendern(spieler_name):
         print("[0] Zurueck")
 
         time.sleep(1)
-        sound.sound_abspielen("good morning.mp3", lautstaerke=2)
+        sound.sound_abspielen("good morning")
 
         wahl = input("Wahl? ")
 
@@ -512,8 +539,9 @@ def lautstaerke_aendern(spieler_name):
 
 def audio(spieler_name):
 
-    while True:
+    sound.musik_stoppen()
 
+    while True:
         os.system(confic.terminal_clear)
 
         wahl = funktions.menue(menues.audio_menue, spieler_name)
@@ -522,17 +550,22 @@ def audio(spieler_name):
             if confic.ton == True:
                 confic.ton = False
                 confic.main_musik = False
+                sound.musik_stoppen()
             else:
                 confic.ton = True
-                           
+                if confic.main_musik:
+                    sound.musik_abspielen(confic.Haupt_musik)
+
             speichern.spiel_speichern(spieler_name)
             continue
 
         elif wahl == 2:
             if confic.main_musik == True:
                 confic.main_musik = False
+                sound.musik_stoppen()
             else:
                 confic.main_musik = True
+                sound.musik_abspielen(confic.Haupt_musik)
 
             speichern.spiel_speichern(spieler_name)
             continue

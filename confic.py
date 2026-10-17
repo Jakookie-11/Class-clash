@@ -16,6 +16,7 @@ ton = True
 main_musik = True
 lautstaerke = 1
 
+Haupt_musik = "Imaginary Friend"
 
 #temp
 start_zeit = None

@@ -42,6 +42,7 @@ einstellungen_menue = [
     f"{MAGENTA}[3] Credits{RESET}",
     "[4] Wichtige Links",
     "[5] Hilfe & Fehlerbehebung",
+    "[6] Leaderboard-Daten als CSV exportieren",
     "[0] Zurueck"
 ]
 #->Y

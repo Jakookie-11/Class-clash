@@ -43,6 +43,8 @@ def spiel_starten(spieler_name):
 
     while spiel_starten_menue == True:
 
+        sound.musik_abspielen(confic.Haupt_musik)
+
         os.system(confic.terminal_clear)
 
         wahl = funktions.menue(menues.spiel_starten_menue, spieler_name)
@@ -99,7 +101,9 @@ def verfuegbare_charaktere(nur_eigenes_team=False, ki_aktiv=False):
 
 
 def benutzerdefinierten_kampf_starten(spieler_name):
+
     os.system(confic.terminal_clear)
+    sound.musik_stoppen()
 
     print("===== Benutzerdefinierter Kampf =====")
     print()
@@ -639,7 +643,8 @@ def kampf(
     runde = 1
 
     if musik is not None:
-        sound.musik_abspielen(musik, lautstaerke=1)
+        sound.musik_stoppen()
+        sound.musik_abspielen(musik)
 
     # ══════════════════════════════════════════════════════════════
     # Teams bestimmen

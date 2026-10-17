@@ -9,6 +9,7 @@ import time
 import kampange
 import os
 import speichern
+import sound
 
 Herausforderungs_fortschritt = []
 Herausforderungs_kaempfe_fortschritt = []
@@ -144,7 +145,7 @@ Ja_Ha = herausforderungskampf(
     name="Ja_Ha",
     nummer=1,
     beschreibung="Besiege Jakob und Ha (beide Level 13) in einem Kampf, um die Herausforderung abzuschließen.",
-    musik="home.mp3",
+    musik="home",
     typ="herausforderungskampf",
     ki=4,
     belohnung_typ="Credits",
@@ -572,6 +573,8 @@ def herausforderungen(spieler_name):
 
 
 def herausforderungskaempfe(spieler_name):
+
+    sound.musik_stoppen()
 
     while True:
         speichern.spiel_speichern(spieler_name)
