@@ -31,7 +31,7 @@ def einstellungen(spieler_name):
 
     while True:
 
-        sound.musik_abspielen(confic.Haupt_musik, confic.Haupt_musik_lautstaerke)
+        sound.musik_abspielen(confic.Haupt_musik)
 
         os.system(confic.terminal_clear)
 
@@ -351,7 +351,7 @@ def profil_zuruecksetzen(spieler_name):
 
     if bestätigung == "ja":
 
-        sound.sound_abspielen("invalid-login-or-password.mp3", lautstaerke=2)
+        sound.sound_abspielen("invalid-login-or-password")
         bestätigung_2 = input("schreibe: ich bin mir sicher, dass ich mein Profil zuruecksetzen moechte :   ")
 
         if bestätigung_2 == "ich bin mir sicher, dass ich mein Profil zuruecksetzen moechte":
@@ -433,7 +433,7 @@ def profil_loeschen(spieler_name):
 
     if bestätigung == "ja":
 
-        sound.sound_abspielen("invalid-login-or-password.mp3", lautstaerke=2)
+        sound.sound_abspielen("invalid-login-or-password")
         bestätigung_2 = input("schreibe: ich bin mir sicher, dass ich mein Profil loeschen moechte :   ")
 
         if bestätigung_2 == "ich bin mir sicher, dass ich mein Profil loeschen moechte":
@@ -521,7 +521,7 @@ def lautstaerke_aendern(spieler_name):
         print("[0] Zurueck")
 
         time.sleep(1)
-        sound.sound_abspielen("good morning.mp3", lautstaerke=2)
+        sound.sound_abspielen("good morning")
 
         wahl = input("Wahl? ")
 
@@ -539,9 +539,9 @@ def lautstaerke_aendern(spieler_name):
 
 def audio(spieler_name):
 
-    while True:
-        sound.musik_stoppen()
+    sound.musik_stoppen()
 
+    while True:
         os.system(confic.terminal_clear)
 
         wahl = funktions.menue(menues.audio_menue, spieler_name)
@@ -550,17 +550,22 @@ def audio(spieler_name):
             if confic.ton == True:
                 confic.ton = False
                 confic.main_musik = False
+                sound.musik_stoppen()
             else:
                 confic.ton = True
-                           
+                if confic.main_musik:
+                    sound.musik_abspielen(confic.Haupt_musik)
+
             speichern.spiel_speichern(spieler_name)
             continue
 
         elif wahl == 2:
             if confic.main_musik == True:
                 confic.main_musik = False
+                sound.musik_stoppen()
             else:
                 confic.main_musik = True
+                sound.musik_abspielen(confic.Haupt_musik)
 
             speichern.spiel_speichern(spieler_name)
             continue

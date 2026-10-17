@@ -92,7 +92,7 @@ try:
 
     while hauptmenue == True:
 
-        sound.musik_abspielen(confic.Haupt_musik, confic.Haupt_musik_lautstaerke)
+        sound.musik_abspielen(confic.Haupt_musik)
         
         wahl = funktions.menue(menues.hauptmenue, spieler)
         os.system(confic.terminal_clear)
@@ -140,7 +140,7 @@ try:
 
         else:
             sound.musik_stoppen()
-            sound.musik_einmal_abspielen("shutdown.mp3")
+            sound.musik_einmal_abspielen("shutdown")
             speichern.spiel_speichern(spieler)
             print("Spiel wird gespeichert...")
             time.sleep(3)
@@ -167,7 +167,7 @@ except Exception:
     # Crash-Report erstellen
     dateiname, fehler_id, crash_pfad = crash_handler.crash_speichern(spieler)
 
-    sound.musik_einmal_abspielen("emergency-alarm.mp3", lautstaerke=1.5)
+    sound.musik_einmal_abspielen("emergency alarm")
     # Fehlermeldung anzeigen
     print()
     print("╔══════════════════════════════════════════════════╗")

@@ -16,8 +16,7 @@ ton = True
 main_musik = True
 lautstaerke = 1
 
-Haupt_musik = "Imaginary Friend.mp3"
-Haupt_musik_lautstaerke = 0.4
+Haupt_musik = "Imaginary Friend"
 
 #temp
 start_zeit = None

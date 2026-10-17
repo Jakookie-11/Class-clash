@@ -139,7 +139,7 @@ def begin():
 
             if Vorbild:
             #---Vorbild---#
-                sound.musik_abspielen(confic.Haupt_musik, confic.Haupt_musik_lautstaerke)
+                sound.musik_abspielen(confic.Haupt_musik)
                 print(f"{GRUEN}══════════════════════════════")
                 print("        Willkommen bei ")
                 print("          Class clash")
@@ -186,7 +186,7 @@ def begin():
 
                         if spieler == "" or spieler not in confic.passwoerter:
                             print("Benutzername unbekannt")
-                            sound.sound_abspielen("acces denied.mp3", lautstaerke=2.5)
+                            sound.sound_abspielen("acces denied")
                             time.sleep(2)
                             os.system(confic.terminal_clear)
                             funktions.zeilen_loeschen(4)
@@ -204,12 +204,12 @@ def begin():
 
                         if passwort_ok:
                             print("Passwort korrekt")
-                            sound.sound_abspielen("click.mp3", lautstaerke=3)
+                            sound.sound_abspielen("click")
                             break
 
                         else:
                             print("Passwort falsch")
-                            sound.sound_abspielen("acces denied.mp3", lautstaerke=2.5)
+                            sound.sound_abspielen("acces denied")
                             time.sleep(2)
                             os.system(confic.terminal_clear)
                             funktions.zeilen_loeschen(4)
@@ -221,7 +221,7 @@ def begin():
                     os.system(confic.terminal_clear)
                     print()
                     print(f"Willkommen {spieler}")
-                    sound.sound_abspielen("good morning.mp3", lautstaerke=2)
+                    sound.sound_abspielen("good morning")
                     time.sleep(1)
 
                     os.system(confic.terminal_clear)

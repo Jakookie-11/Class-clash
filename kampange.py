@@ -42,7 +42,7 @@ class kampangen_kampf:
         story_vorher=None,
         story_nachher=None,
         ist_kampf=True,
-        anzeige_musik = None
+        musik = None
     ):
         self.name = name
         self.spieler_1 = spieler_1
@@ -67,7 +67,7 @@ class kampangen_kampf:
         self.story_vorher = story_vorher
         self.story_nachher = story_nachher
         self.ist_kampf = ist_kampf
-        self.anzeige_musik = anzeige_musik
+        self.musik = musik
 
 class kampange:
 
@@ -79,6 +79,7 @@ class kampange:
         anzahl_kaempfe,
         kaempfe,
         fortschritt=0,
+        anzeige_musik = None,
 
     ):
 
@@ -88,6 +89,7 @@ class kampange:
         self.anzahl_kaempfe = anzahl_kaempfe
         self.kaempfe = kaempfe
         self.fortschritt = fortschritt
+        self.anzeige_musik = anzeige_musik
 
 
 
@@ -217,6 +219,10 @@ def kampangen(spieler_name):
         while True:
 
             os.system(confic.terminal_clear)
+            sound.musik_stoppen()
+
+            if kampange.anzeige_musik is not None:
+                sound.musik_abspielen(kampange.anzeige_musik)
 
             print(f"Verfuegbare Kaempfe in der Kampange {kampange.name}: ")
             print()
@@ -232,7 +238,7 @@ def kampangen(spieler_name):
                     print(f"[{nummer:02d}] {kampf.name:<30} [Story]")
 
             print()
-            print(f"[{nummer+1}] Zurueck")
+            print("[0] Zurueck")
 
             wahl = input("Wahl? ")
 
@@ -244,6 +250,9 @@ def kampangen(spieler_name):
 
             wahl = int(wahl)
 
+            if wahl == 0:
+                continue
+
             if wahl == nummer + 1:
                 break
 
@@ -251,6 +260,8 @@ def kampangen(spieler_name):
                 continue
 
             else:
+
+                sound.musik_stoppen()
 
                 # ══════════════════════════════════════════════════════════════
                 # Eigentlicher Kampf
@@ -306,7 +317,8 @@ def kampangen(spieler_name):
                     team_2=gegner_team,
                     Ki=ausgewaehlter_kampf.ki,
                     team_groesse_1=ausgewaehlter_kampf.team_groesse_1,
-                    team_groesse_2=ausgewaehlter_kampf.team_groesse_2
+                    team_groesse_2=ausgewaehlter_kampf.team_groesse_2,
+                    musik=ausgewaehlter_kampf.musik if ausgewaehlter_kampf.musik is not None else None
                 )
 
                 if is_win == 1:
@@ -4088,7 +4100,8 @@ Kampange_6 = kampange(
         Die_letzten_Aufzeichnungen_6,
         Die_vergessene_Anlage_6,
     ],
-    fortschritt=0
+    fortschritt=0,
+    anzeige_musik="test"
 )
 
 

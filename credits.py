@@ -35,7 +35,7 @@ def credits():
 
     while True:
 
-        sound.musik_abspielen("Hugs and Kisses.mp3", lautstaerke=2)
+        sound.musik_abspielen("Hugs and Kisses")
         os.system(confic.terminal_clear)
 
         print(f"{MAGENTA}══════════════════════════════")

@@ -1,0 +1,32 @@
+========================================
+       CLASS CLASH CRASH REPORT
+========================================
+
+Spieler: Jakob
+Datum: 2026-10-17
+Uhrzeit: 12:53:25
+Fehler-ID: 11cc592acc00a4f642dbf41939e0865771baa787b0e744421a5e2a12eb54e629
+Status: gefixt
+
+----------------------------------------
+FEHLER / TRACEBACK
+----------------------------------------
+
+Traceback (most recent call last):
+  File "c:\Users\jakob\Desktop\Git\Class clash\main.py", line 103, in <module>
+    is_brake_spiel_starten = spiel_starten.spiel_starten(spieler)
+  File "c:\Users\jakob\Desktop\Git\Class clash\spiel_starten.py", line 65, in spiel_starten
+    is_break_herausforderungskaempfe = herausforderungen.herausforderungskaempfe(spieler_name)
+  File "c:\Users\jakob\Desktop\Git\Class clash\herausforderungen.py", line 635, in herausforderungskaempfe
+    is_win = spiel_starten.kampf(
+        team_2=team_2,
+    ...<4 lines>...
+        musik=musik,
+    )
+  File "c:\Users\jakob\Desktop\Git\Class clash\spiel_starten.py", line 647, in kampf
+    sound.musik_abspielen(musik)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "c:\Users\jakob\Desktop\Git\Class clash\sound.py", line 97, in musik_abspielen
+    obj = jede_musik[titel]
+          ~~~~~~~~~~^^^^^^^
+KeyError: 'home'

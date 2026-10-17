@@ -43,7 +43,7 @@ def spiel_starten(spieler_name):
 
     while spiel_starten_menue == True:
 
-        sound.musik_abspielen(confic.Haupt_musik, confic.Haupt_musik_lautstaerke)
+        sound.musik_abspielen(confic.Haupt_musik)
 
         os.system(confic.terminal_clear)
 
@@ -644,7 +644,7 @@ def kampf(
 
     if musik is not None:
         sound.musik_stoppen()
-        sound.musik_abspielen(musik, lautstaerke=1)
+        sound.musik_abspielen(musik)
 
     # ══════════════════════════════════════════════════════════════
     # Teams bestimmen
