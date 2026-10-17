@@ -251,9 +251,6 @@ def kampangen(spieler_name):
             wahl = int(wahl)
 
             if wahl == 0:
-                continue
-
-            if wahl == nummer + 1:
                 break
 
             if wahl < 1 or wahl > nummer:

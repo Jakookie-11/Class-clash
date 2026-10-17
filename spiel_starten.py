@@ -1,6 +1,7 @@
 import os
 import time
 import re
+import random
 
 import charaktere
 import herausforderungen
@@ -14,6 +15,7 @@ import kampange
 import geheimes
 import copy
 import bilder
+import ressourcen
 
 
 SCHWARZ  = "\033[30m"
@@ -67,10 +69,275 @@ def spiel_starten(spieler_name):
             if is_break_herausforderungskaempfe == 1:
                 continue
 
+        elif wahl == 4:
+            endlos_modus(spieler_name)
+
         else:
             return 1
 
 
+
+
+def charaktere_auswaelen(
+    nur_eigenes_team=False,
+    team_groesse=2,
+    ki_aktiv=False,
+    spieler_name=None,
+    anzeige_level=None,
+):
+
+    os.system(confic.terminal_clear)
+
+    print("Verfügbare Charaktere:")
+
+    if spieler_name is not None:
+        print(f"Auswahl für Person 2 ({spieler_name}):")
+    print()
+
+    if ki_aktiv:
+        print("Alle existierenden Charaktere können ausgewählt werden.")
+
+    else:
+        print("NPCs und Gegner aus Down in Mars sind nicht verfügbar.")
+    print()
+
+    verfuegbare = verfuegbare_charaktere(
+        nur_eigenes_team=nur_eigenes_team,
+        ki_aktiv=ki_aktiv
+    )
+    verfuegbare_anzeige = [
+        name
+        for name in verfuegbare
+    ]
+
+    if ki_aktiv:
+        gruppen = {}
+        for name in verfuegbare_anzeige:
+            klasse = charaktere.Charaktere[name].klasse
+            gruppen.setdefault(klasse, []).append(name)
+
+        for nummer, gruppe in enumerate(gruppen.values()):
+            if nummer > 0:
+                print()
+            for name in gruppe:
+                if anzeige_level is None:
+                    print(name)
+                else:
+                    print(f"{name :30} (Level {anzeige_level})")
+    else:
+        normale_charaktere = [
+            name
+            for name in verfuegbare_anzeige
+            if charaktere.Charaktere[name].klasse != "down_in_mars"
+        ]
+        down_in_mars_charaktere = [
+            name
+            for name in verfuegbare_anzeige
+            if charaktere.Charaktere[name].klasse == "down_in_mars"
+        ]
+
+        for name in normale_charaktere:
+            print(name)
+        if normale_charaktere and down_in_mars_charaktere:
+            print()
+        for name in down_in_mars_charaktere:
+            print(name)
+    print()
+    print(f"Wähle {team_groesse} Charakter(e) aus:")
+    print()
+    team = []
+    for nummer in range(1, team_groesse + 1):
+        while True:
+            name = input(f"Charakter {nummer}: ").strip()
+
+            if name in verfuegbare:
+                team.append(name)
+                bilder.bild_rechts_anzeigen(
+                    charaktere.Charaktere[name].name
+                )
+                break
+
+            if name not in charaktere.Charaktere:
+                print("--- Dieser Charakter existiert nicht. ---")
+            else:
+                print("--- Dieser Charakter ist hier nicht verfügbar. ---")
+            funktions.zeilen_loeschen(2)
+
+    print()
+    print("Team:")
+    for name in team:
+        print(f"- {name}")
+    input("\nEnter zum Bestätigen...")
+    bilder.bild_rechts_schliessen()
+    return team
+
+
+
+
+def preise_fuer_endlos(counter):
+    if counter <= 0:
+        return "Keine Belohnung"
+
+    belohnungen_pro_sieg = [
+        100,
+        150,
+        200,
+        300,
+        400,
+        550,
+        700,
+        900,
+        1100,
+        1400,
+        1800,
+        2200,
+    ]
+    gesamt_belohnung = sum(belohnungen_pro_sieg[:counter])
+
+    if counter > len(belohnungen_pro_sieg):
+        belohnung_fuer_sieg = belohnungen_pro_sieg[-1]
+        for _ in range(len(belohnungen_pro_sieg) + 1, counter + 1):
+            belohnung_fuer_sieg = int(
+                belohnung_fuer_sieg * 1.25 / 100 + 0.5
+            ) * 100
+            gesamt_belohnung += belohnung_fuer_sieg
+
+    return gesamt_belohnung, "Credits"
+
+
+def endlos_lauf_beenden(spieler_name, siege, meldung):
+    os.system(confic.terminal_clear)
+    print(meldung)
+
+    belohnung = preise_fuer_endlos(siege)
+    if isinstance(belohnung, tuple):
+        betrag, waehrung = belohnung
+        ressourcen.ressourcen[waehrung] += betrag
+        import speichern
+        speichern.spiel_speichern(spieler_name)
+        print(f"Belohnung für {siege} Siege: +{betrag} {waehrung}")
+    else:
+        print("Keine Belohnung")
+
+    input("\nEnter zum Zurückkehren...")
+
+
+def endlos_modus(spieler_name):
+    os.system(confic.terminal_clear)
+    print("===== Endlos =====")
+    print("Nach jedem Sieg kannst du weiterspielen oder den Lauf beenden.")
+    print()
+
+    team_groesse = funktions.ganzzahl_einlesen("Teamgröße (1-4): ", 1, 4)
+    team_1 = charaktere_auswaelen(
+        nur_eigenes_team=True,
+        team_groesse=team_groesse,
+    )
+
+    gegner_pool = [
+        name
+        for name in verfuegbare_charaktere(ki_aktiv=True)
+        if name not in team_1
+    ]
+    if len(gegner_pool) < team_groesse:
+        os.system(confic.terminal_clear)
+        print("Es gibt nicht genügend Charaktere für ein gegnerisches Team.")
+        input("\nEnter zum Zurückkehren...")
+        return
+
+    runde = 1
+    siegescounter = 0
+    team_level = max(
+        1,
+        round(
+            sum(charaktere.Charaktere[name].level for name in team_1)
+            / len(team_1) // 1.5
+        ),
+    )
+    level_abstaende = {
+        1: 0,
+        2: 0,
+        3: 1,
+        4: 1,
+        5: 2,
+        6: 2,
+        7: 3,
+        8: 4,
+        9: 5,
+        10: 6,
+        11: 8,
+        12: 10,
+    }
+
+    while True:
+        team_2 = random.sample(gegner_pool, team_groesse)
+        level_abstand = level_abstaende.get(runde, 10 + 2 * (runde - 12))
+        gegner_level = team_level + level_abstand
+        if runde < 5:
+            ki_stufe = 2
+        elif runde < 9:
+            ki_stufe = 3
+        else:
+            ki_stufe = 4
+
+        os.system(confic.terminal_clear)
+        print(f"===== Endlos - Runde {runde} =====")
+        print(f"Gegner-Level: {gegner_level} | KI-Stufe: {ki_stufe}")
+        start_auswahl = input(
+            "\nEnter zum Kämpfen, a zum Abbrechen: "
+        ).strip().lower()
+        if start_auswahl in ("a", "abbrechen"):
+            endlos_lauf_beenden(
+                spieler_name,
+                siegescounter,
+                f"Arenalauf abgebrochen. Du hast {siegescounter} Runde(n) geschafft.",
+            )
+            return
+
+        sound.musik_stoppen()
+        ergebnis = kampf(
+            team_1=team_1,
+            team_2=team_2,
+            Ki=ki_stufe,
+            gegner_ki=True,
+            benutzerdefiniert=True,
+            gegner_level=gegner_level,
+        )
+
+        if ergebnis == 3:
+            endlos_lauf_beenden(
+                spieler_name,
+                siegescounter,
+                f"Niederlage. Du hast {siegescounter} Runde(n) geschafft.",
+            )
+            return
+        if ergebnis == 2:
+            endlos_lauf_beenden(
+                spieler_name,
+                siegescounter,
+                "Der Kampf konnte nicht regulär abgeschlossen werden.",
+            )
+            return
+
+        siegescounter += 1
+        print(f"Sieg! Bisher {siegescounter} Runde(n) geschafft.")
+
+        while True:
+            weiterspielen = input("Weiterkämpfen? (y/n): ").strip().lower()
+            if weiterspielen in ("y", "ja"):
+                runde += 1
+                break
+            if weiterspielen in ("n", "nein"):
+                endlos_lauf_beenden(
+                    spieler_name,
+                    siegescounter,
+                    f"Arenalauf beendet. Du hast {siegescounter} Runde(n) geschafft.",
+                )
+                return
+
+            print("Bitte y oder n eingeben.")
+            time.sleep(1)
+            funktions.zeilen_loeschen(2)
 
 
 def charakter_anzeigen(name):
@@ -179,100 +446,6 @@ def benutzerdefinierten_kampf_starten(spieler_name):
         spieler_2_charakterdaten=spieler_2_charakterdaten,
         spieler_2_name=spieler_2_name,
     )
-
-
-def charaktere_auswaelen(
-    nur_eigenes_team=False,
-    team_groesse=2,
-    ki_aktiv=False,
-    spieler_name=None,
-    anzeige_level=None,
-):
-
-    os.system(confic.terminal_clear)
-
-    print("Verfügbare Charaktere:")
-
-    if spieler_name is not None:
-        print(f"Auswahl für Person 2 ({spieler_name}):")
-    print()
-
-    if ki_aktiv:
-        print("Alle existierenden Charaktere können ausgewählt werden.")
-
-    else:
-        print("NPCs und Gegner aus Down in Mars sind nicht verfügbar.")
-    print()
-
-    verfuegbare = verfuegbare_charaktere(
-        nur_eigenes_team=nur_eigenes_team,
-        ki_aktiv=ki_aktiv
-    )
-    verfuegbare_anzeige = [
-        name
-        for name in verfuegbare
-    ]
-
-    if ki_aktiv:
-        gruppen = {}
-        for name in verfuegbare_anzeige:
-            klasse = charaktere.Charaktere[name].klasse
-            gruppen.setdefault(klasse, []).append(name)
-
-        for nummer, gruppe in enumerate(gruppen.values()):
-            if nummer > 0:
-                print()
-            for name in gruppe:
-                if anzeige_level is None:
-                    print(name)
-                else:
-                    print(f"{name :30} (Level {anzeige_level})")
-    else:
-        normale_charaktere = [
-            name
-            for name in verfuegbare_anzeige
-            if charaktere.Charaktere[name].klasse != "down_in_mars"
-        ]
-        down_in_mars_charaktere = [
-            name
-            for name in verfuegbare_anzeige
-            if charaktere.Charaktere[name].klasse == "down_in_mars"
-        ]
-
-        for name in normale_charaktere:
-            print(name)
-        if normale_charaktere and down_in_mars_charaktere:
-            print()
-        for name in down_in_mars_charaktere:
-            print(name)
-    print()
-    print(f"Wähle {team_groesse} Charakter(e) aus:")
-    print()
-    team = []
-    for nummer in range(1, team_groesse + 1):
-        while True:
-            name = input(f"Charakter {nummer}: ").strip()
-
-            if name in verfuegbare:
-                team.append(name)
-                bilder.bild_rechts_anzeigen(
-                    charaktere.Charaktere[name].name
-                )
-                break
-
-            if name not in charaktere.Charaktere:
-                print("--- Dieser Charakter existiert nicht. ---")
-            else:
-                print("--- Dieser Charakter ist hier nicht verfügbar. ---")
-            funktions.zeilen_loeschen(2)
-
-    print()
-    print("Team:")
-    for name in team:
-        print(f"- {name}")
-    input("\nEnter zum Bestätigen...")
-    bilder.bild_rechts_schliessen()
-    return team
 
 
     

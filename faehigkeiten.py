@@ -773,9 +773,14 @@ mitreissen = faehigkeit(
 )
 
 
+# ══════════════════════════════════════════════════════════════
+# Niayesh
+# ══════════════════════════════════════════════════════════════
 
+def ich_bin_jetzt_Klassensprecherin(wer, wen, eigenes_team):
 
-
+    import geheimes 
+    schaden = geheimes.einfacher_angriff_g_obj(wer, wen, eigenes_team) 
 
 
 

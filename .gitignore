@@ -4,6 +4,7 @@ geheim/
 bilder/
 **/test.py
 **/To Do.txt
+drawio
 *.pyc
 build/
 dist/*
